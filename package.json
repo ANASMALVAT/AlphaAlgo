@@ -1,7 +1,7 @@
 {
   "name": "alpha-algo",
   "version": "0.1.0",
-  "homepage": "https://github.com/ANASMALVAT/AlphaAlgo.git",
+  "homepage": "https://anasmalvat.github.io/AlphaAlgo",
   "private": true,
   "dependencies": {
     "@monaco-editor/react": "^4.5.1",

@@ -90,13 +90,14 @@ const Landing = () => {
                 <div className="flex flex-row space-x-5 mb-6">
                   <LanguageDropDown onSelectChange = {onSelectChange} />
                   <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme}/>
-                  <button class=" w-1/4  bg-transparent text-white font-semibold hover:text-white py-2 px-4 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200  flex-shrink-0 rounded-md "> View Problem </button>
                 </div>
                 <CustomInput/>
                 <CodeOutput/>
                 <div className="flex flex-row justify-end">
-                  <button class=" w-1/4 bg-transparent m-1 mr-4 text-white font-semibold hover:text-white py-2 px-4 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)]  hover:shadow transition duration-200 flex-shrink-0 rounded"> Compile </button>
-                  <button class=" w-1/4  m-1 bg-transparent text-white font-semibold hover:text-white py-2 px-4 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200  flex-shrink-0 rounded"> Submit </button>
+                  <button class="  bg-transparent m-1 mr-4 text-white font-semibold hover:text-white py-2 px-4 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)]  hover:shadow transition duration-200 flex-shrink-0 rounded"> View Problem </button>
+                  <button class="  bg-transparent m-1 mr-4 text-white font-semibold hover:text-white py-2 px-4 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)]  hover:shadow transition duration-200 flex-shrink-0 rounded"> Compile </button>
+                  <button class="  m-1 bg-transparent text-white font-semibold hover:text-white py-2 px-4 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200  flex-shrink-0 rounded"> Submit </button>
+
                 </div>
             </div>
         </div>

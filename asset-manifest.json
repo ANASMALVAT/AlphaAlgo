@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/AlphaAlgo/static/css/main.64d6638b.css",
-    "main.js": "/AlphaAlgo/static/js/main.af02aecd.js",
+    "main.css": "/AlphaAlgo/static/css/main.8fc0560a.css",
+    "main.js": "/AlphaAlgo/static/js/main.d72dd2b5.js",
     "static/js/266.1bbea1d3.chunk.js": "/AlphaAlgo/static/js/266.1bbea1d3.chunk.js",
     "static/js/4450.ee64d21a.chunk.js": "/AlphaAlgo/static/js/4450.ee64d21a.chunk.js",
     "static/js/8849.bbe9d900.chunk.js": "/AlphaAlgo/static/js/8849.bbe9d900.chunk.js",
@@ -337,8 +337,8 @@
     "static/js/787.54c22d1d.chunk.js": "/AlphaAlgo/static/js/787.54c22d1d.chunk.js",
     "static/media/logo.svg": "/AlphaAlgo/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/AlphaAlgo/index.html",
-    "main.64d6638b.css.map": "/AlphaAlgo/static/css/main.64d6638b.css.map",
-    "main.af02aecd.js.map": "/AlphaAlgo/static/js/main.af02aecd.js.map",
+    "main.8fc0560a.css.map": "/AlphaAlgo/static/css/main.8fc0560a.css.map",
+    "main.d72dd2b5.js.map": "/AlphaAlgo/static/js/main.d72dd2b5.js.map",
     "refractor-core-import.7d00ec2b.chunk.js.map": "/AlphaAlgo/static/js/react-syntax-highlighter/refractor-core-import.7d00ec2b.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_abap.d56555d4.chunk.js.map": "/AlphaAlgo/static/js/react-syntax-highlighter_languages_refractor_abap.d56555d4.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_abnf.2dcdda3e.chunk.js.map": "/AlphaAlgo/static/js/react-syntax-highlighter_languages_refractor_abnf.2dcdda3e.chunk.js.map",
@@ -620,7 +620,7 @@
     "787.54c22d1d.chunk.js.map": "/AlphaAlgo/static/js/787.54c22d1d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.64d6638b.css",
-    "static/js/main.af02aecd.js"
+    "static/css/main.8fc0560a.css",
+    "static/js/main.d72dd2b5.js"
   ]
 }

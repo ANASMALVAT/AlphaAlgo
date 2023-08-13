@@ -189,11 +189,11 @@ const Landing = () => {
       <>
         <ToastContainer/>
 
-        <div  className="flex flex-wrap w-[100vw]  py-4 bg-algoblack min-w-[700px]">
+        <div  className="flex flex-wrap w-[100vw] h-full  py-4 bg-algoblack min-w-[700px]">
 
             <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
-            <div className=" w-8/12  mb-4">
+            <div className=" w-8/12   mb-4">
                 <CodeEditorWindow
                   code={code}
                   onChangeData={onChange}
@@ -225,7 +225,7 @@ const Landing = () => {
                   <button className= "w-28  bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Submit </button>
                 </div>
                 <div className=" mr-4 mt-4" >
-                  <button className="w-36 whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> View Problem </button>
+                  <button className="w-28  whitespace-nowrap break-keep bg-transparent text-white text-justify font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Problem </button>
                 </div>
               </div>
 

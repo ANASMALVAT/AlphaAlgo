@@ -1,8 +1,5 @@
 import React from "react";
 import { useState,useEffect,useRef } from "react";
-
-// import { ToastContainer, toast } from "react-toastify";
-
 import CodeEditorWindow from "./windows/codeEditorWindow";
 import CustomInput from "./ui/customInput";
 import LanguageDropDown from "./drop-downs/languageDropDown";
@@ -12,12 +9,9 @@ import { defineTheme } from "../../data/themeOptions";
 import { languageOptions } from "../../data/codingLanguages";
 import CodeOutput from "./ui/codeOutput";
 import SlidingPane from "./ui/slidingPane";
-import CodeToast from "./ui/codeToast";
 import { ToastContainer,toast } from "react-toastify";
 import axios from "axios";
-
-
-// import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const javascriptDefault = "";
 const REACT_APP_JUDGE0_URL = 'https://judge0-ce.p.rapidapi.com/submissions'
@@ -195,11 +189,11 @@ const Landing = () => {
       <>
         <ToastContainer/>
 
-        <div  className="flex xl:flex-wrap py-4 bg-algoblack">
+        <div  className="flex flex-wrap w-[100vw]  py-4 bg-algoblack min-w-[700px]">
 
             <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
-            <div className=" w-8/12 mb-4">
+            <div className=" w-8/12  mb-4">
                 <CodeEditorWindow
                   code={code}
                   onChangeData={onChange}
@@ -208,10 +202,8 @@ const Landing = () => {
                 />
             </div>
             
-            <div className=" w-4/12 flex flex-col p-5 ">
-
+            <div className=" w-4/12 overflow-hidden flex flex-col p-5 ">
               <div className="flex flex-wrap mb-8 ml-2 ">
-
                 <div className=" justify-start mb-2">
                   <LanguageDropDown onSelectChange={onSelectChange} />
                 </div>

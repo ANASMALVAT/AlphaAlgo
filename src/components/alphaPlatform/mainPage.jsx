@@ -189,11 +189,11 @@ const Landing = () => {
       <>
         <ToastContainer/>
 
-        <div  className="flex flex-wrap w-[100vw] h-full  py-4 bg-algoblack min-w-[700px]">
+        <div  className="flex flex-wrap w-[100vw] h-[100vh]  py-4 bg-algoblack min-w-[700px]">
 
             <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
-            <div className=" w-8/12   mb-4">
+            <div className=" w-8/12  mb-4">
                 <CodeEditorWindow
                   code={code}
                   onChangeData={onChange}

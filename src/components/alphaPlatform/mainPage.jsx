@@ -1,5 +1,6 @@
 import React from "react";
 import { useState,useEffect,useRef } from "react";
+
 import CodeEditorWindow from "./windows/codeEditorWindow";
 import CustomInput from "./ui/customInput";
 import LanguageDropDown from "./drop-downs/languageDropDown";
@@ -11,6 +12,8 @@ import CodeOutput from "./ui/codeOutput";
 import SlidingPane from "./ui/slidingPane";
 import { ToastContainer,toast } from "react-toastify";
 import axios from "axios";
+
+
 import "react-toastify/dist/ReactToastify.css";
 
 const javascriptDefault = "";
@@ -189,11 +192,11 @@ const Landing = () => {
       <>
         <ToastContainer/>
 
-        <div  className="flex flex-wrap w-[100vw] h-[100vh]  py-4 bg-algoblack min-w-[700px]">
+        <div  className="flex h-[200%] overflow-hidden py-4 bg-algoblack min-w-[700px]">
 
             <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
-            <div className=" w-8/12  mb-4">
+            <div className=" w-7/12 min-h-[100%] mb-4">
                 <CodeEditorWindow
                   code={code}
                   onChangeData={onChange}
@@ -202,8 +205,10 @@ const Landing = () => {
                 />
             </div>
             
-            <div className=" w-4/12 overflow-hidden flex flex-col p-5 ">
+            <div className=" min-h-[100vh] w-5/12 flex flex-col p-5 ">
+
               <div className="flex flex-wrap mb-8 ml-2 ">
+
                 <div className=" justify-start mb-2">
                   <LanguageDropDown onSelectChange={onSelectChange} />
                 </div>
@@ -219,13 +224,13 @@ const Landing = () => {
               <div className="flex flex-wrap ml-2">
                 
                 <div className="mr-4 mt-4">
-                  <button className="w-28 	bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Compile </button>
+                  <button className="w-32 	bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Compile </button>
                 </div>
                 <div className="mr-4 mt-4">
-                  <button className= "w-28  bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Submit </button>
+                  <button className= "w-32  bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Submit </button>
                 </div>
                 <div className=" mr-4 mt-4" >
-                  <button className="w-28  whitespace-nowrap break-keep bg-transparent text-white text-justify font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Problem </button>
+                  <button className="w-32 whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Problem </button>
                 </div>
               </div>
 

@@ -22,17 +22,16 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme }) => {
       };
 
     return(
-        <div  className=" p-2 w-full h-[95vh] overflow-hidden shadow-4xl  border-solid border-2 border-[#2f857e]">
+        <div  className=" p-6 min-w-[300px] w-full h-[100%] overflow-hidden shadow-4xl  border-solid border border-[#30789e]">
             <Editor
                 theme={theme}
-                height="95%"
-                width={`100vw`}
+                height="100%"
+                width={`100%`}
                 language={language || "javascript"}
                 value={value}
                 defaultValue=""
                 onChange={editorChange}
                 options={editorOptions}
-                
             />
         </div>
     );

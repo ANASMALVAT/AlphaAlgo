@@ -3,9 +3,11 @@ import { useState } from "react";
 import Editor, {loader} from "@monaco-editor/react";
 import { constrainedEditor } from "constrained-editor-plugin";
 import "../styles/codeEditorWindow.css"
+import LanguageDropDown from "../drop-downs/languageDropDown";
+import ThemeDropdown from "../drop-downs/themeDropDown";
 // The editor receives the props onChange, language, code, and theme from its parent component, which is Landing.js.
 // Every time the value in the code editor changes, we call the onChange handler that is present in the parent Landing component.
-const CodeEditorWindow = ({ onChangeData, language, code, theme }) => {
+const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, onSelectChange,handleThemeChange  }) => {
 
     const [value,setValue] = useState(code || "");
 
@@ -22,7 +24,11 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme }) => {
       };
 
     return(
-        <div  className=" p-6 min-w-[300px] w-full h-[100%] overflow-hidden shadow-4xl  border-solid border border-[#30789e]">
+        <div  className=" flex flex-col  min-w-[300px] w-full h-[100%] overflow-hidden border-r border-[#30789e]">
+            <div className=" flex flex-row mt-1 ml-1">
+                <LanguageDropDown onSelectChange={onSelectChange}/>
+                <ThemeDropdown handleThemeChange={handleThemeChange} theme={themeOptions}/>
+            </div>
             <Editor
                 theme={theme}
                 height="100%"

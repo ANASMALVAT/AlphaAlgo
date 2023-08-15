@@ -5,7 +5,7 @@ import { languageOptions } from '../../../data/codingLanguages';
 
 const LanguageDropDown = ({onSelectChange}) => {
     return(
-        <div className=' mr-4 mt-2'>
+        <div className='mr-1 border-r border-["#2684FF"]'>
             <Select
                 placeholder={`Filter By Category`}
                 options={languageOptions}

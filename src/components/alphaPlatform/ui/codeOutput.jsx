@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 const CodeOutput = ( { outputDetail } ) => 
 {
-    let errorId = outputDetail.status_id;
+    let errorId = outputDetail?.status_id;
 
     const codeOutPut = () => {
         switch(errorId)
@@ -34,13 +34,12 @@ const CodeOutput = ( { outputDetail } ) =>
                     </pre>
                 )
         }
-        
     }
     return (
         <>
-            <div className='mb-6 h-64'>
-                <h1 className= "  items-start mb-1 text-xl font-bold  text-left text-white font-mono  m-1 dark:text-white"> Code Output:</h1>
-                <div className= " text-start w-full h-60 bg-[#1c283b]  border-solid  text-white font-normal text-sm rounded-sm overflow-y-auto m-1 ">
+            <div className='w-full h-full'>
+                {/* <h1 className= "  items-start mb-1 text-xl font-bold  text-left text-white font-mono  m-1 dark:text-white"> Code Output:</h1> */}
+                <div className= " text-start w-full h-full bg-[#1c283b]  text-white font-normal text-sm rounded-sm overflow-y-auto ">
                     {outputDetail ? <> {codeOutPut()} </>: null} 
                 </div>
             </div>

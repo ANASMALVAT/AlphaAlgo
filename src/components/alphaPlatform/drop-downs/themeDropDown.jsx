@@ -7,7 +7,7 @@ const ThemeDropdown = ({ handleThemeChange, theme }) => {
   const scrollRef = React.useRef(null);
 
   return (
-    <div className="mt-2">   
+    <div className="">   
     <Select
       placeholder={`Select Theme`}
       options={Object.entries(monacoThemes).map(([themeId, themeName]) => ({

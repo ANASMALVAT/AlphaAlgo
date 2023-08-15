@@ -12,7 +12,7 @@ import CodeOutput from "./ui/codeOutput";
 import SlidingPane from "./ui/slidingPane";
 import { ToastContainer,toast } from "react-toastify";
 import axios from "axios";
-
+import ConsoleInput from "./ui/ConsoleInput";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -192,7 +192,7 @@ const Landing = () => {
       <>
         <ToastContainer/>
 
-        <div  className="flex h-[100%] overflow-hidden py-4 bg-algoblack min-w-[700px]">
+        <div  className="flex h-[100%] overflow-hidden bg-algoblack min-w-[700px]">
 
             <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
@@ -202,12 +202,16 @@ const Landing = () => {
                   onChangeData={onChange}
                   language={language?.value}
                   theme={theme?.value}
+                  themeOptions = {theme}
+                  onSelectChange = {onSelectChange}
+                  handleThemeChange = {handleThemeChange}
+
                 />
             </div>
             
             <div className=" min-h-[100vh] w-4/12 flex flex-col p-5 ">
 
-              <div className="flex flex-wrap mb-8 ml-2 ">
+              {/* <div className="flex flex-wrap mb-8 ml-2 ">
 
                 <div className=" justify-start mb-2">
                   <LanguageDropDown onSelectChange={onSelectChange} />
@@ -216,21 +220,26 @@ const Landing = () => {
                   <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
                 </div>
 
-              </div>
+              </div> */}
 
-              <CustomInput/>
-              <CodeOutput outputDetail={output}/>
+              <ConsoleInput output={output}/>
 
               <div className="flex flex-wrap ml-2">
                 
                 <div className="mr-4 mt-4">
-                  <button className="w-32 	bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Compile </button>
+                  <button className="w-32 font-mono	text-lg bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Compile </button>
                 </div>
                 <div className="mr-4 mt-4">
-                  <button className= "w-32  bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Submit </button>
+                  <button className= "w-32 font-mono text-lg bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Submit </button>
                 </div>
                 <div className=" mr-4 mt-4" >
-                  <button className="w-32 whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Problem </button>
+                  <button className="w-32 font-mono text-lg whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Problem </button>
+                </div>
+                <div className=" mr-4 mt-4" >
+                  <button className="w-32 font-mono text-lg whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Notes </button>
+                </div>
+                <div className=" mr-4 mt-4" >
+                  <button className="w-32 font-mono text-lg whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Solution </button>
                 </div>
               </div>
 

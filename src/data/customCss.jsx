@@ -1,15 +1,14 @@
 export const customStyles = {
-  singleValue:(styles) => ({
-    ...styles,
-    color:'#fff',
-    borderOpacity: "1",
-    border: "1 px solid rgb(59 130 246)",
-    overflow: 'hidden',
-    textAlign: 'start',
 
+    singleValue:(styles) => ({
+      ...styles,
+      color:'#fff',
+      overflow: 'hidden',
+      textAlign: 'start',
+      border:"none",
+      background:"transparent"
+    }),
 
-
-  }),
     control: (styles) => ({
       ...styles,
       width: "100%",
@@ -24,16 +23,12 @@ export const customStyles = {
       minWidth:'175px',
       maxWidth:'215px',
       width:'200px',
-
       overflow: 'hidden',
-      ":hover": {
-        order: "2px solid #000000",
+      border:"none",
+    ":hover": {
         boxShadow: "none",
+        border:"none"
       },
-    borderOpacity: "1",
-    border: "1 px solid rgb(59 130 246)",
-    boxShadow: "4px 4px 0px 0px rgba(255,255,255);",
-
     }),
     option: (styles) => {
       return {
@@ -43,35 +38,30 @@ export const customStyles = {
         lineHeight: "1.5rem",
         width: "100%",
         fontweight: "bold",
-        background:"white",
         opacity: "1",
-        ":hover": {
-        cursor: "pointer",
-        transition: "0.2s",
-        color: "#3B82F6",
-        fontSize: "1rem",
-
-        },
-        boxShadow: "5px 5px 0px 0px rgba(255,255,255);",
         textAlign: "left",
         overflow:"hidden",
-        whiteSpace: "nowrap"
+        whiteSpace: "nowrap",
+        background:"#12151D",
+        color:"white",
 
-
+        ":hover": {
+          cursor: "pointer",
+          transition: "0.2s",
+          color: "#3B82F6",
+          fontSize: "1rem",
+        },
       };
     },
     menu: (styles) => {
       return {
         ...styles,
-        
         maxWidth: "12rem",
-        borderRadius: "10px",
-        background:"transparent",
-        boxShadow: "5px 5px 0px 0px rgba(255,255,255);",
         zIndex:"100",
-        overflow:"hidden"
-
-
+        overflow:"hidden",
+        border:"none",
+        borderRadius:"3px",
+        background:"transparent",
     };
     },
     placeholder: (defaultStyles) => {
@@ -80,6 +70,8 @@ export const customStyles = {
         color: "#fff",
         fontSize: "0.8rem",
         lineHeight: "1.75rem",
+        border:"none"
+
       };
     },
   };

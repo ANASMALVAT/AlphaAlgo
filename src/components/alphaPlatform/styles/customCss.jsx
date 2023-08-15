@@ -42,8 +42,8 @@ export const customStyles = {
         textAlign: "left",
         overflow:"hidden",
         whiteSpace: "nowrap",
-        background:"#12151D",
-        color:"white",
+        background:"white",
+        color:"blue",
 
         ":hover": {
           cursor: "pointer",

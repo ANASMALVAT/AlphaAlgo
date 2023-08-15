@@ -25,13 +25,13 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
 
     return(
         <div  className=" flex flex-col  min-w-[350px] w-full h-[100%] overflow-hidden border-r border-[#30789e]">
-            <div className=" flex flex-wrap mt-1 ml-1">
-                <LanguageDropDown onSelectChange={onSelectChange}/>
+            <div className=" flex flex-wrap mt-1 ml-1 mb-1">
                 <ThemeDropdown handleThemeChange={handleThemeChange} theme={themeOptions}/>
+                <LanguageDropDown onSelectChange={onSelectChange}/>
             </div>
             <Editor
                 theme={theme}
-                height="100%"
+                height="90%"
                 width={`100%`}
                 language={language || "javascript"}
                 value={value}

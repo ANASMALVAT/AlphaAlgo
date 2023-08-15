@@ -208,18 +208,7 @@ const Landing = () => {
                 />
             </div>
             
-            <div className=" min-h-[100vh] w-4/12 flex flex-col p-5 ">
-
-              {/* <div className="flex flex-wrap mb-8 ml-2 ">
-
-                <div className=" justify-start mb-2">
-                  <LanguageDropDown onSelectChange={onSelectChange} />
-                </div>
-                <div className=" justify-start mb-2">
-                  <ThemeDropdown handleThemeChange={handleThemeChange} theme={theme} />
-                </div>
-
-              </div> */}
+            <div className=" min-h-[100vh] w-4/12 flex flex-col p-3 ">
 
               <ConsoleInput output={output}/>
 

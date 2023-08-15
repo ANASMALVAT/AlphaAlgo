@@ -109,9 +109,8 @@ const Landing = () => {
                 showError("Quota of 100 requests exceeded for the Day!");
                }
         });
-
       };
-     
+
     const checkStatus = async (token) => {
 
         const request = {

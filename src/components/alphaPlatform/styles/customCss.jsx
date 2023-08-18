@@ -3,10 +3,7 @@ export const customStyles = {
     singleValue:(styles) => ({
       ...styles,
       color:'#fff',
-      overflow: 'hidden',
-      textAlign: 'start',
-      border:"none",
-      background:"transparent"
+      
     }),
 
     control: (styles) => ({
@@ -15,42 +12,46 @@ export const customStyles = {
       maxWidth: "14rem",
       minWidth: "12rem",
       borderRadius: "3px",
-      fontSize: "1rem",
-      lineHeight: "1.75rem",
+      fontSize: "0.9rem",
+      lineHeight: "2rem",
       background:"transparent",
       cursor: "pointer",
-      className: "basic-single",
-      minWidth:'175px',
+      minWidth:'150px',
       maxWidth:'215px',
-      width:'200px',
-      overflow: 'hidden',
-      border:"none",
+      width:"175px",
+      border:"1px solid #07A7C3",
     ":hover": {
         boxShadow: "none",
         border:"none"
       },
+      overflow:"auto"
+      
+
+
     }),
     option: (styles) => {
       return {
         ...styles,
         color:'black',
         fontSize: "0.8rem",
-        lineHeight: "1.5rem",
+        lineHeight:"1.3rem",
         width: "100%",
         fontweight: "bold",
         opacity: "1",
         textAlign: "left",
-        overflow:"hidden",
         whiteSpace: "nowrap",
-        background:"white",
-        color:"blue",
-
+        background:"#1c283b",
+        color:"white",
         ":hover": {
           cursor: "pointer",
-          transition: "0.2s",
-          color: "#3B82F6",
+          transition: "0.1s",
+          color: "white",
           fontSize: "1rem",
         },
+        border:"2px solid #161D26",
+        overflow:"hidden",
+
+
       };
     },
     menu: (styles) => {
@@ -58,10 +59,12 @@ export const customStyles = {
         ...styles,
         maxWidth: "12rem",
         zIndex:"100",
-        overflow:"hidden",
+        // overflow:"hidden",
         border:"none",
         borderRadius:"3px",
         background:"transparent",
+        overflow:"auto"
+
     };
     },
     placeholder: (defaultStyles) => {

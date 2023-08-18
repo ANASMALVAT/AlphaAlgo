@@ -82,7 +82,7 @@ const ProblemLayout = ({ problemData }) => {
 
                 <div name = 'constraint' className="mb-8">
                     <h1 name = "example" className="font-mono text-xl antialiased  font-bold tracking-normal landing-relaxed text-white mb-2">Constraints {problemData?.name} </h1>
-                    <div className="h-16 w-full bg-algoprob rounded-md text-center font-mono text-xl antialiased  font-bold tracking-normal landing-relaxed text-white">
+                        <div className="h-16 w-full bg-algoprob rounded-md text-center font-mono text-xl antialiased  font-bold tracking-normal landing-relaxed text-white">
                            
                     </div>
                 </div>

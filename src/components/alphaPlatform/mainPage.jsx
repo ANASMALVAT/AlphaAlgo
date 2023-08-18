@@ -1,32 +1,24 @@
 import React from "react";
 import { useState,useEffect,useRef } from "react";
-
 import CodeEditorWindow from "./windows/codeEditorWindow";
-import CustomInput from "./ui/customInput";
-import LanguageDropDown from "./drop-downs/languageDropDown";
-import ThemeDropdown from "./drop-downs/themeDropDown";
 import useKeyPress from "../../hooks/useKeyPress";
 import { defineTheme } from "../../data/themeOptions";
 import { languageOptions } from "../../data/codingLanguages";
-import CodeOutput from "./ui/codeOutput";
-import SlidingPane from "./ui/slidingPane";
+import SlidingPane from "./ui/problemSlidingPane";
 import { ToastContainer,toast } from "react-toastify";
 import axios from "axios";
-import ConsoleInput from "./ui/ConsoleInput";
-
+import ConsoleInput from "./console/ConsoleInput";
 import "react-toastify/dist/ReactToastify.css";
 
 const javascriptDefault = "";
-const REACT_APP_JUDGE0_URL = 'https://judge0-ce.p.rapidapi.com/submissions'
-const REACT_APP_JUDGE0_HOST = 'judge0-ce.p.rapidapi.com'
-const REACT_APP_JUDGE0_API_KEY = '5076ef1933mshdeca93c0698d71cp114d45jsn3010b1bb3a30'
+
 
 
 const Landing = () => {
     const [code, setCode] = useState("");
     const [theme, setTheme] = useState("cobalt");
     const [language, setLanguage] = useState(languageOptions[0]);
-    const [problem,setProblem] = useState({visible: false, data : "" })
+    const [problem,setProblem] = useState(false)
     const [customInput, setCustomInput] = useState("");
     const [output, setOutput] = useState("")
     const toastId = useRef(null)
@@ -71,11 +63,11 @@ const Landing = () => {
     const handleCompile = () => {
 
       toastId.current  = toast("Processing...",{
-        autoClose:5000
+        autoClose:15000
       });
 
       if(code.trim() === ""){
-          toast.update(toastId.current, {autoClose:10})
+          toast.update(toastId.current, {autoClose:1})
           showError("No Code Is Written!");
           return;
       }
@@ -86,59 +78,46 @@ const Landing = () => {
         stdin: btoa(customInput)
       }
 
-      const request = {
-          method: "post",
-          url: REACT_APP_JUDGE0_URL,
-          params: {base64_encoded: "true", fields: "*" },
-          headers: {
-            "content-type" : "application/json",
-            "X-RapidAPI-Host" : REACT_APP_JUDGE0_HOST,
-            "X-RapidAPI-Key" : REACT_APP_JUDGE0_API_KEY,
-            accept: "application/json"
-          },
-        data: requestData
-      };
-
-      axios.request(request)
-            .then((response) => {
+      axios.post('http://localhost:5000/api/compile',requestData)
+           .then((response) => {
+              console.log(response);
               checkStatus(response.data.token);
-          })
-            .catch((error) => {
-               if(error.response.status === 429){
-                toast.update(toastId.current, {autoClose:10})
-                showError("Quota of 100 requests exceeded for the Day!");
-               }
-        });
-      };
+           })
 
-    const checkStatus = async (token) => {
+           .catch((error) => {
+              if (error.response && error.response.status === 429)
+              {
+                toast.update(toastId.current, { autoClose: 1 });
+                showError('Quota of 100 requests exceeded for the Day!');
+              } 
+              else 
+              {
+                toast.update(toastId.current, { autoClose: 1 });
+                showError('An error occurred during compilation.');
+              } 
+           })
+    }
 
-        const request = {
-          method: "GET",
-          url: REACT_APP_JUDGE0_URL + "/" + token,
-          params: { base64_encoded: "true", fields: "*" },
-          headers: {
-            "X-RapidAPI-Host": REACT_APP_JUDGE0_HOST,
-            "X-RapidAPI-Key": REACT_APP_JUDGE0_API_KEY,
+    const checkStatus = async (token) => 
+    {
+      try{
+          const response = await axios.get(`http://localhost:5000/api/status/${token}`);
+          if (response.data.status?.id === 1 || response.data.status?.id === 2)
+            {
+              setTimeout(() => {
+                checkStatus(token);
+              }, 2000);
+            }
+          else {
+            setOutput(response.data);
+            toast.update(toastId.current, { autoClose: 1 });
+            showSuccess('Compiled Successfully');
           }
-        };
-        axios.request(request)
-              .then((response) => {
-                  if(response.data.status?.id == 1 || response.data.status?.id == 2){
-                        setTimeout( () => {
-                          checkStatus(token);
-                        },2000);
-                  }
-                  else{
-                    setOutput(response.data);
-                    toast.update(toastId.current, {autoClose:10})
-                    showSuccess("Compiled Successfully")
-                  }
-              })
-              .catch((error)=> {
-                toast.update(toastId.current, {autoClose:10})
-                showError();
-              })
+      } 
+      catch (error) {
+        toast.update(toastId.current, { autoClose: 1 });
+        showError('An error occurred while checking the status.');
+      }
     };
   
     function handleThemeChange(th) {
@@ -191,11 +170,11 @@ const Landing = () => {
       <>
         <ToastContainer/>
 
-        <div  className="flex h-[100%] overflow-hidden bg-algoblack min-w-[700px]">
+        <div  className="flex h-[100%] overflow-scroll bg-algoblack min-w-[700px]">
 
             <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
-            <div className=" w-8/12 min-h-[100%] mb-4">
+            <div className=" w-[60%] min-h-[100%] mb-4">
                 <CodeEditorWindow
                   code={code}
                   onChangeData={onChange}
@@ -208,24 +187,11 @@ const Landing = () => {
                 />
             </div>
             
-            <div className=" min-h-[100vh] w-4/12 flex flex-col p-3 ">
+            <div className=" min-h-[100vh] w-[39%] flex flex-col p-2 ">
 
-              <ConsoleInput output={output}/>
+              <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem}/>
 
               <div className="flex flex-wrap ml-2">
-                
-                <div className="mr-4 mt-4">
-                  <button className="w-32 font-mono	text-lg bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Compile </button>
-                </div>
-                <div className="mr-4 mt-4">
-                  <button className= "w-32 font-mono text-lg bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={handleCompile}> Submit </button>
-                </div>
-                <div className=" mr-4 mt-4" >
-                  <button className="w-32 font-mono text-lg whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Problem </button>
-                </div>
-                <div className=" mr-4 mt-4" >
-                  <button className="w-32 font-mono text-lg whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Notes </button>
-                </div>
                 <div className=" mr-4 mt-4" >
                   <button className="w-32 font-mono text-lg whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Solution </button>
                 </div>

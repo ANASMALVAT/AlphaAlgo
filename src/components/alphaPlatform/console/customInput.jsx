@@ -7,11 +7,11 @@ const CustomInput = () => {
     return (
     <div className= " w-full h-full">
         <Textarea
-            placeholder="Custom input..."
+            placeholder="Custom Input"
             variant="soft"
-            maxRows={8}
             className = {"z-0 h-36 boxShadow: 5px 5px 0px 0px rgba(255,255,255)"}
             style = {{color:"white",height:'100%'}}
+            height="100%"
             sx={{
                 '--Textarea-focusedThickness': '0rem',
                 '--Textarea-focusedHighlight': 'white',

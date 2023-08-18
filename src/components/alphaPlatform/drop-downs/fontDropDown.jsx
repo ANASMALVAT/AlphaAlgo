@@ -1,18 +1,17 @@
 import React from 'react';
 import  Select  from 'react-select';
 import { customStyles } from '../styles/customCss';
-import { languageOptions } from '../../../data/codingLanguages';
 
-const LanguageDropDown = ({onSelectChange}) => {
+const FontDropDown = ({onSelectChange, fontOptions}) => {
     return(
         <div className=' mr-1 '>
             <Select
-                options={languageOptions}
+                options={fontOptions}
                 styles={customStyles}
-                defaultValue={languageOptions[0]}
+                defaultValue={fontOptions[0]}
                 onChange={(selectedOption) => onSelectChange(selectedOption)}
             />
         </div>
     )
 }
-export default LanguageDropDown;
+export default FontDropDown;

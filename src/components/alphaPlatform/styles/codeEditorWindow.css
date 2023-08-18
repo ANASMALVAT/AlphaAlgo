@@ -7,3 +7,9 @@
   .monaco-editor {
     font-family: 'Fira Code', monospace;
   }
+
+  @media (max-width: 400px) {
+    .button-disappear {
+        display: none;
+    }
+}

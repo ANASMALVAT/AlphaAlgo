@@ -14,9 +14,9 @@ const SettingSlidingPane = ({ isOpen, onRequestClose, theme, themeOptions,handle
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       from="left"
-      width="25%"
-      minWidth="300px">
-
+      width="30%"
+      minWidth="310px"
+      >
         <EditorSetting theme={theme} themeOptions={themeOptions} handleThemeChange={handleThemeChange}/>
     </ReactSlidingPane>
   );

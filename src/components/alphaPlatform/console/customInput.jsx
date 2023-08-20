@@ -5,7 +5,7 @@ import { ClassNames } from '@emotion/react';
 const CustomInput = () => {
     
     return (
-    <div className= " w-full h-full">
+    <div className= " w-full h-full min-h-screen">
         <Textarea
             placeholder="Custom Input"
             variant="soft"

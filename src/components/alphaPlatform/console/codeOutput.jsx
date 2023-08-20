@@ -35,10 +35,10 @@ const CodeOutput = ( { outputDetail } ) =>
                 )
         }
     }
+
     return (
         <>
-            <div className='w-full h-full'>
-                {/* <h1 className= "  items-start mb-1 text-xl font-bold  text-left text-white font-mono  m-1 dark:text-white"> Code Output:</h1> */}
+            <div className= 'w-full h-full min-h-screen'>
                 <div className= " text-start w-full h-full bg-[#1c283b]  text-white font-normal text-sm rounded-sm overflow-y-auto ">
                     {outputDetail ? <> {codeOutPut()} </>: null} 
                 </div>

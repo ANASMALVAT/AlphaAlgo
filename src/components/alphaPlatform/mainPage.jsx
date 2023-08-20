@@ -8,6 +8,7 @@ import SlidingPane from "./ui/problemSlidingPane";
 import { ToastContainer,toast } from "react-toastify";
 import axios from "axios";
 import ConsoleInput from "./console/ConsoleInput";
+import "./styles/mainPage.css"
 import "react-toastify/dist/ReactToastify.css";
 
 const javascriptDefault = "";
@@ -21,24 +22,78 @@ const Landing = () => {
     const [problem,setProblem] = useState(false)
     const [customInput, setCustomInput] = useState("");
     const [output, setOutput] = useState("")
-    const toastId = useRef(null)
+    const toastId = useRef(null);
+    const[editor,setEditor] = useState(true);
+    const[isConsole,setConsole] = useState(true);
+    const[gpt,setGpt] = useState(true);
+    const[isConsoleGpt, setIsConsoleGpt] = useState(true);
+
   
     const enterPress = useKeyPress("Enter");
     const ctrlPress = useKeyPress("Control");
-  
-    const onSelectChange = (sl) => {
-      setLanguage(sl);
-    };
+    const consoleGpt = document.getElementById("console-gpt");
+
+
   
     useEffect(() => {
-      if (enterPress && ctrlPress) {
-        console.log("enterPress", enterPress);
-        console.log("ctrlPress", ctrlPress);
-        handleCompile();
-      }
-    }, [ctrlPress, enterPress]);
 
+      const handleResize = () => {
+        if (window.screen.width >= 850) {
+          setEditor(true);
+          setConsole(true);
+          setGpt(true);
+          setIsConsoleGpt(true);
+        }
+        if(window.innerWidth < 850){
 
+            if(editor && isConsoleGpt){
+              setIsConsoleGpt(false);
+            }
+
+            if(isConsoleGpt){
+
+                if(isConsole && gpt){
+                  setGpt(false);
+                }
+            }
+            
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+
+    }, []);
+
+    const showEditor = () => {
+        setEditor(edit => true);
+        setIsConsoleGpt(consGtp => false);
+        setConsole(cons => false);
+        setGpt(gpt => false);
+    }
+
+    const showConsole = () => {
+      setIsConsoleGpt(consGtp => true);
+      setConsole(cons => true);
+      setEditor(edit => false);
+      setGpt(gpt => false);
+     
+    }
+
+    const showGPT = () => {
+      setIsConsoleGpt(consGtp => true);
+      setGpt(gpt => true);
+      setEditor(edit => false);
+      setConsole(cons => false);
+      
+    }
+
+    const onSelectChange = (Language) => {
+      setLanguage(Language);
+    };
+  
     const onChange = (action, data) => {
       switch (action) {
         case "code": {
@@ -121,7 +176,6 @@ const Landing = () => {
     };
   
     function handleThemeChange(th) {
-      // We will come to the implementation later in the code
       const theme = th;
       if (["light", "vs-dark"].includes(theme.value)) {
         setTheme(theme);
@@ -132,7 +186,6 @@ const Landing = () => {
 
     useEffect(() => {
       defineTheme("oceanic-next").then((_) => {
-            console.log("here");
             setTheme({ value: "oceanic-next", label: "Oceanic Next" })
         }
       );
@@ -170,38 +223,64 @@ const Landing = () => {
       <>
         <ToastContainer/>
 
-        <div  className="flex h-[100%] overflow-scroll bg-algoblack min-w-[700px]">
+        <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
-            <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
+        <div  className="flex flex-row bg-algoblack overflow-hidden">
 
-            <div className=" w-[60%] min-h-[100%] mb-4">
-                <CodeEditorWindow
-                  code={code}
-                  onChangeData={onChange}
-                  language={language?.value}
-                  theme={theme?.value}
-                  themeOptions = {theme}
-                  onSelectChange = {onSelectChange}
-                  handleThemeChange = {handleThemeChange}
+          { editor && 
+            <div className="editor-class  mb-2 flex flex-col overflow-auto">
 
-                />
+              
+                    <CodeEditorWindow
+                        code={code}
+                        onChangeData={onChange}
+                        language={language?.value}
+                        theme={theme?.value}
+                        themeOptions = {theme}
+                        onSelectChange = {onSelectChange}
+                        handleThemeChange = {handleThemeChange}
+                    />
+                
             </div>
-            
-            <div className=" min-h-[100vh] w-[39%] flex flex-col p-2 ">
+          }
 
-              <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem}/>
+          { isConsoleGpt && 
 
-              <div className="flex flex-wrap ml-2">
-                <div className=" mr-4 mt-4" >
-                  <button className="w-32 font-mono text-lg whitespace-nowrap break-keep bg-transparent text-white font-semibold hover:text-white py-2 px-6 border border-white shadow-[4px_4px_0px_0px_rgba(255,255,255)] hover:shadow transition duration-200 rounded-sm" onClick={showProblem}> Solution </button>
+            <div id="console-gpt" className="console-gpt none-display flex flex-col">
+              {
+              isConsole &&
+                <div className="console mb-2">
+                  <ConsoleInput className ="" output={output} handleCompile={handleCompile} showProblem={showProblem}/>
                 </div>
-              </div>
+              }
+
+              { 
+              gpt && 
+
+                <div className="gpt">
+                  <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem}/>
+                </div>
+              }
 
             </div>
+
+          }
 
         </div>
 
+        <div className="show-buttons bg-algoblack justify-center h-10 p-1">
+            <button onClick={showEditor} className={` overflow-hidden w-20 mr-4 flex flex-row items-center break-keep  rounded-md px-2 py-2 font-mono text-sm font-normal justify-center border border-[#1F2937] text-white hover:border hover:border-[#07A7C3]`}>
+              Editor
+            </button>
+            <button onClick={showConsole}  className={` overflow-hidden w-20 text-center mr-4 flex flex-row items-center  rounded-md px-2 py-2 font-sans text-sm justify-center border border-[#1F2937] font-normal text-white hover:border hover:border-[#07A7C3]`}>
+              Console
+            </button>
+            <button onClick={showGPT} className={`overflow-hidden w-20 mr-2 flex flex-row items-center  rounded-md px-2 py-2 font-mono text-sm font-normal justify-center border border-[#1F2937] text-white hover:border hover:border-[#07A7C3]`}>
+              AlphaGPT
+            </button>
+        </div>
       </>
+
     );
   };
 

@@ -6,7 +6,6 @@ import "../styles/slidingPane.css";
 
 const SettingSlidingPane = ({ isOpen, onRequestClose, theme, themeOptions,handleThemeChange}) => {
   return (
-
     <ReactSlidingPane
       title="Editor's Setting"
       className="slidingPane"
@@ -14,8 +13,8 @@ const SettingSlidingPane = ({ isOpen, onRequestClose, theme, themeOptions,handle
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       from="left"
-      width="30%"
-      minWidth="310px"
+      width="20%"
+      minWidth="400px"
       >
         <EditorSetting theme={theme} themeOptions={themeOptions} handleThemeChange={handleThemeChange}/>
     </ReactSlidingPane>

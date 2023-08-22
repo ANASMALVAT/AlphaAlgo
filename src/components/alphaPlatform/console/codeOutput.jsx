@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const CodeOutput = ( { outputDetail } ) => 
 {
@@ -38,10 +38,8 @@ const CodeOutput = ( { outputDetail } ) =>
 
     return (
         <>
-            <div className= 'w-full h-full min-h-screen'>
-                <div className= " text-start w-full h-full bg-[#1c283b]  text-white font-normal text-sm rounded-sm overflow-y-auto ">
+            <div className= 'text-start w-full min-h-[275px] max-h-screen h-full bg-[#1c283b]  text-white font-normal text-sm rounded-sm overflow-y-auto'>
                     {outputDetail ? <> {codeOutPut()} </>: null} 
-                </div>
             </div>
         </>
     )

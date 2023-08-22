@@ -1,18 +1,20 @@
 import * as React from 'react';
 import { Textarea } from '@mui/joy';
-import { ClassNames } from '@emotion/react';
+
 
 const CustomInput = () => {
     
     return (
-    <div className= " w-full h-full min-h-screen">
+    <div className='h-full'>
         <Textarea
             placeholder="Custom Input"
             variant="soft"
-            className = {"z-0 h-36 boxShadow: 5px 5px 0px 0px rgba(255,255,255)"}
-            style = {{color:"white",height:'100%'}}
-            height="100%"
+            className = {"z-0 rgba(255,255,255)"}
+            style = {{color:"white"}}
             sx={{
+                height: '100%',
+                maxHeight: '100vh',
+                minHeight: '275px',
                 '--Textarea-focusedThickness': '0rem',
                 '--Textarea-focusedHighlight': 'white',
                 "borderRadius":"2px",
@@ -31,12 +33,12 @@ const CustomInput = () => {
                 'input': {
                     '&::placeholder': {
                       textOverflow: 'ellipsis !important',
-                    //   color: 'white'
                     }
                 }
             }}
         />
-        </div>   
+
+    </div>
     )
 }
 

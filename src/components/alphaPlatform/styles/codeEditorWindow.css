@@ -7,11 +7,16 @@
 .monaco-editor {
     font-family: 'Fira Code', monospace;
   }
+.margin-view-overlays{
+  opacity: 0.4;
+  border-right: 1px solid #07A7C3;
+  background-blend-mode:difference;
+}
 
-@media (max-width: 325px) {
-    .button-disappear {
-        display: none;
-  }
+@media (max-width: 385px) {
+  .buttons {
+      display: none;
+    }
 }
 
 .code-editor{
@@ -19,6 +24,11 @@
   min-height: 100vh;
   height: 100%;
 }
+
+@media (max-width: 900px) {
+ 
+}
+
 
 
 

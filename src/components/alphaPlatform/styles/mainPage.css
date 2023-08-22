@@ -16,68 +16,72 @@
     display: hidden;
 }
 
+@media (max-width: 768px) {
+    .console-gpt{
+        min-height: 100vh;
+    }
+   
+}
 
-@media (min-width: 0px) and (max-width: 850px) {
+@media (min-width: 0px) and (max-width: 900px) {
 
     .show-buttons {
       display: flex;
       flex-direction: row;
-      
     }
-
     .editor-class{
         width: 100%;
     }
 
-    .console-gpt{
-        width: 100%;
-        height: 100%;
-        min-height: 100vh;
-        min-width:100vw ;
-        overflow: hidden;
+.console-gpt{
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    align-items: center;
+    margin: auto;
+}
+
+ .console{
+    width: 80%;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
     }
 
-    .console{
-        min-width: 100vw;
-        min-height: 100vh;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .gpt{
-        min-width: 100vw;
-        min-height: 100vh;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
+.gpt{
+    width: 80%;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
 
   }
   
-@media (min-width: 850px) {
+@media (min-width: 900px) {
 
     .show-buttons {
       display: none;
       margin-bottom: 1rem;
-     
     }
-
-    .editor-class{
-        width: 65%;
-    }
-
     .console-gpt{
-        width: 35%;
+        height: 100%;
+        min-height: 100%;
+        max-height: 100%;
+        overflow: hidden;
     }
-
-    .console{
-        width: 100%;
-        height: 45%;
-    }
-
+    
+     .console{
+        height: 100%;
+        min-height: 100%;
+        max-height: 100%;
+        }
+    
     .gpt{
-        width: 100%;
-        height: 45%;
+        height: 100%;
+        min-height: 100%;
+        max-height: 100%;
     }
+
+   
 }

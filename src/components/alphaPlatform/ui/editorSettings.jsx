@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import  Select  from 'react-select';
 import 'react-dropdown/style.css';
-import { customStyles } from '../styles/customCss';
 import ThemeDropdown from "../drop-downs/themeDropDown";
 import FontDropDown from "../drop-downs/fontDropDown";
 
@@ -30,30 +28,17 @@ const EditorSetting = ({theme, themeOptions,handleThemeChange}) =>
 
     return (
         <>
-            <div className="flex flex-col w-full h-full">
+            <div className="flex flex-col w-full h-full items-center">
 
-                <div className="flex flex-row justify-between items-center text-center mb-6">
-
-                    <h1 name = "example" className="text-center items-center font-sans text-xl antialiased font-normal text-white "> 
-                        White Board 
-                    </h1>
+                <div className="flex flex-row justify-between items-center text-center mb-6 mt-6">
                     <button className="w-44 font-mono text-md whitespace-nowrap break-keep bg-transparent text-white font-normal hover:text-white py-2 px-6 border border-[#07A7C3] rounded-sm" > White Board </button>
-
                 </div>
 
                 <div className="flex flex-row justify-between items-center text-center mb-6">
-
-                    <h1 name = "example" className="text-center items-center  font-sans text-xl antialiased font-normal text-white ">
-                        Font Size 
-                    </h1>
                     <FontDropDown onSelectChange={onSelectChange} fontOptions={options}/>
                 </div>
 
                 <div className="flex flex-row justify-between items-center text-center mb-6">
-
-                    <h1 name = "example" className="text-center items-center  font-sans text-xl antialiased font-normal text-white ">
-                        Editor Theme 
-                    </h1>
                     <ThemeDropdown handleThemeChange={handleThemeChange} theme={themeOptions}/>
                     </div>
             </div>

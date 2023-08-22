@@ -79,26 +79,31 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
     <>
         < SettingSlidingPane isOpen={settingPane} onRequestClose={closePane} theme={theme} themeOptions={themeOptions} handleThemeChange={handleThemeChange}/>
 
-        <div className="code-editor flex flex-col  overflow-hidden w-full border-4 border-[#1f2937]">
+        <div className="  code-editor flex flex-col w-full border-4 border-[#1f2937]">
             
-            <div className=" flex flex-row justify-between  rounded-sm border-4 m-1 border-[#1f2937] h-14">
-                <div className=" flex  text-center align-center rounded-sm ">
+            <div className=" flex flex-row justify-between  rounded-sm border-4 m-1 border-[#1f2937] h-14 ">
+
+                <div className=" buttons flex  text-center align-center rounded-sm ">
+
                     <button onClick={handleRestore}  className={`button-disappear overflow-hidden mr-2 h-12  flex flex-row items-center border border-r border-[#07A7C3] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
                         <RestoreIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
                     </button>
 
-                    <button  onClick={openPane} className={` button-disappear overflow-hidden mr-2 flex h-12 flex-row items-center  border border-r border-[#07A7C3] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
+                    <button  onClick={openPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center  border border-r border-[#07A7C3] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
                         <SettingsIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
                     </button>
+
                 </div>
 
                 <div className=" flex flex-row right">
                     <LanguageDropDown onSelectChange={onSelectChange}/>
                 </div>
+
             </div>
-            <div className="">
+
+            <div className="h-2 w-full  flex-grow">
                 <Editor
-                    height={`100vh`}
+                    height={`100%`}
                     width={`100%`}
                     theme={theme}
                     language={language || "javascript"}
@@ -110,7 +115,7 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
                         fontSize: fontSize,
                     }}/>
             </div>
-         </div>
+        </div>
             
            
     </>

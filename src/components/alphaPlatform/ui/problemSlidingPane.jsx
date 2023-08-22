@@ -5,6 +5,7 @@ import "../styles/slidingPane.css";
 
 const SlidingPane = ({ isOpen, onRequestClose }) => {
   return (
+
     <ReactSlidingPane
       title="Problem Statement"
       className="slidingPane" // Increase the z-index and position the sliding pane absolutely
@@ -12,9 +13,8 @@ const SlidingPane = ({ isOpen, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       from="right"
-      width="40%"
-      minWidth="300px"
-    >
+      width="45%"
+      minWidth="400px" >
       <ProblemLayout/>
     </ReactSlidingPane>
   );

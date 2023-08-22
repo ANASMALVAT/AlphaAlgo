@@ -8,12 +8,11 @@ import SlidingPane from "./ui/problemSlidingPane";
 import { ToastContainer,toast } from "react-toastify";
 import axios from "axios";
 import ConsoleInput from "./console/ConsoleInput";
+import AlgoButtons from "./ui/algoButtons";
 import "./styles/mainPage.css"
 import "react-toastify/dist/ReactToastify.css";
 
 const javascriptDefault = "";
-
-
 
 const Landing = () => {
     const [code, setCode] = useState("");
@@ -23,49 +22,82 @@ const Landing = () => {
     const [customInput, setCustomInput] = useState("");
     const [output, setOutput] = useState("")
     const toastId = useRef(null);
+
     const[editor,setEditor] = useState(true);
-    const[isConsole,setConsole] = useState(true);
+    const[cons,setConsole] = useState(true);
     const[gpt,setGpt] = useState(true);
     const[isConsoleGpt, setIsConsoleGpt] = useState(true);
 
   
     const enterPress = useKeyPress("Enter");
     const ctrlPress = useKeyPress("Control");
-    const consoleGpt = document.getElementById("console-gpt");
 
-
-  
     useEffect(() => {
 
       const handleResize = () => {
-        if (window.screen.width >= 850) {
-          setEditor(true);
-          setConsole(true);
-          setGpt(true);
-          setIsConsoleGpt(true);
-        }
-        if(window.innerWidth < 850){
 
-            if(editor && isConsoleGpt){
-              setIsConsoleGpt(false);
+          if(window.innerWidth >= 900) {
+            console.log(" in  if " + editor + " " +isConsoleGpt + " " + cons + " " + gpt )
+            setEditor(cons => {
+              return true;
+            });
+            setConsole(cons => {
+              return true;
+            });
+            setGpt(cons => {
+              return true;
+            });
+            setIsConsoleGpt(cons => {
+              return true;
+            });
+            console.log(" in if " + editor + " " +isConsoleGpt + " " + cons + " " + gpt )
+
+          }
+          else {
+
+            console.log(" in the else " + editor + " " +isConsoleGpt + " " + cons + " " + gpt )
+            if(editor === false && isConsoleGpt === false){
+              setEditor(cons => {
+                return true;
+              });
             }
 
-            if(isConsoleGpt){
-
-                if(isConsole && gpt){
-                  setGpt(false);
-                }
+            else if (editor && isConsoleGpt || editor && cons || editor && gpt) {
+                setConsole(cons => {
+                  return false;
+                });
+                setGpt(cons => {
+                  return false;
+                });
+                setIsConsoleGpt(cons => {
+                  return false;
+                });
+            }   
+            else if(isConsoleGpt && cons && gpt) {
+              setGpt(cons => {
+                return false;
+              });
             }
-            
-        }
-      };
+           
+            console.log(" in the else " + editor + " " +isConsoleGpt + " " + cons + " " + gpt )
 
-      window.addEventListener('resize', handleResize);
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
+          }
+        };
 
-    }, []);
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('beforeunload', handleResize);
+
+        handleResize();
+      
+          return () => {
+
+          window.removeEventListener('resize', handleResize);
+          window.removeEventListener('beforeunload', handleResize);
+
+        };
+
+
+      },[editor, isConsoleGpt, cons, gpt]);
 
     const showEditor = () => {
         setEditor(edit => true);
@@ -118,7 +150,7 @@ const Landing = () => {
     const handleCompile = () => {
 
       toastId.current  = toast("Processing...",{
-        autoClose:15000
+        autoClose:10000
       });
 
       if(code.trim() === ""){
@@ -225,59 +257,45 @@ const Landing = () => {
 
         <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
-        <div  className="flex flex-row bg-algoblack overflow-hidden">
+        <div className="w-full h-full min-w-[275px]  max-w-screen max-h-full">
 
-          { editor && 
-            <div className="editor-class  mb-2 flex flex-col overflow-auto">
+          <div  className="flex flex-row bg-algoblack overflow-hidden min-h-screen">
 
-              
-                    <CodeEditorWindow
-                        code={code}
-                        onChangeData={onChange}
-                        language={language?.value}
-                        theme={theme?.value}
-                        themeOptions = {theme}
-                        onSelectChange = {onSelectChange}
-                        handleThemeChange = {handleThemeChange}
-                    />
-                
-            </div>
-          }
+            { 
+            editor && 
+            <div className="editor-class overflow-hidden  flex flex-col  w-[65%] h-full min-h-screen">
+                      <CodeEditorWindow
+                          code={code}
+                          onChangeData={onChange}
+                          language={language?.value}
+                          theme={theme?.value}
+                          themeOptions = {theme}
+                          onSelectChange = {onSelectChange}
+                          handleThemeChange = {handleThemeChange}
+                      />
+              </div>
+            }
 
-          { isConsoleGpt && 
-
-            <div id="console-gpt" className="console-gpt none-display flex flex-col">
-              {
-              isConsole &&
-                <div className="console mb-2">
-                  <ConsoleInput className ="" output={output} handleCompile={handleCompile} showProblem={showProblem}/>
-                </div>
-              }
-
-              { 
-              gpt && 
-
-                <div className="gpt">
-                  <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem}/>
-                </div>
-              }
-
-            </div>
-
-          }
-
-        </div>
-
-        <div className="show-buttons bg-algoblack justify-center h-10 p-1">
-            <button onClick={showEditor} className={` overflow-hidden w-20 mr-4 flex flex-row items-center break-keep  rounded-md px-2 py-2 font-mono text-sm font-normal justify-center border border-[#1F2937] text-white hover:border hover:border-[#07A7C3]`}>
-              Editor
-            </button>
-            <button onClick={showConsole}  className={` overflow-hidden w-20 text-center mr-4 flex flex-row items-center  rounded-md px-2 py-2 font-sans text-sm justify-center border border-[#1F2937] font-normal text-white hover:border hover:border-[#07A7C3]`}>
-              Console
-            </button>
-            <button onClick={showGPT} className={`overflow-hidden w-20 mr-2 flex flex-row items-center  rounded-md px-2 py-2 font-mono text-sm font-normal justify-center border border-[#1F2937] text-white hover:border hover:border-[#07A7C3]`}>
-              AlphaGPT
-            </button>
+            { isConsoleGpt && 
+              <div id="console-gpt" className="overflow-hidden console-gpt flex flex-col flex-grow h-full  max-w-screen min-h-full">
+                  { 
+                  gpt && 
+                    <div className="gpt text-center justify-center items-center h-full max-h-full">
+                      <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem}/>
+                    </div>
+                  }
+                  {
+                  cons &&
+                    <div className="console text-center justify-center items-center h-full max-h-full min-w-full">
+                      <ConsoleInput  output={output} handleCompile={handleCompile} showProblem={showProblem}/>
+                    </div>
+                  }
+              </div>
+            }
+          </div>
+          <div className="show-buttons bg-algoblack justify-center h-12 p-2">
+              <AlgoButtons methodOne={showEditor} methodTwo={showConsole} methodThree={showGPT} buttonOne={`Editor`} buttonTwo={`Console`} buttonThree={`AlphaGPT`}/>
+          </div>
         </div>
       </>
 

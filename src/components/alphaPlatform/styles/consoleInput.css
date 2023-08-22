@@ -1,0 +1,10 @@
+
+.console-algo-buttons, .console-console-buttons {
+    justify-content: start;
+}
+
+/* @media (max-width: 900px) {
+    .console-algo-buttons, .console-console-buttons{
+        justify-content: center;
+    }
+} */

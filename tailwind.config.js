@@ -1,6 +1,10 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    fontFamily:{
+      'jura' : ['Open Sans','Helvetica','Arial','sans-serif']
+    },
+
     extend: {
       colors: {
         primary: "#0B243A",

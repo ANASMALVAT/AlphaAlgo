@@ -8,7 +8,7 @@ const FontDropDown = ({onSelectChange, fontOptions}) => {
             <Select
                 options={fontOptions}
                 styles={customStyles}
-                defaultValue={fontOptions[0]}
+                defaultValue={{"font size" : 'Font Size'}}
                 onChange={(selectedOption) => onSelectChange(selectedOption)}
             />
         </div>

@@ -19,21 +19,21 @@ export const customStyles = {
       minWidth:'150px',
       maxWidth:'215px',
       width:"175px",
-      border:"1px solid #07A7C3",
+      border:"1px solid #4C5ADF",
+      borderBottom:"5px solid #4C5ADF",
+      
     ":hover": {
         boxShadow: "none",
         border:"none"
       },
-      overflow:"auto"
-      
-
-
+      overflow:"auto",
+      borderRadius:"2px",
     }),
     option: (styles) => {
       return {
         ...styles,
         color:'black',
-        fontSize: "0.8rem",
+        fontSize: "1rem",
         lineHeight:"1.3rem",
         width: "100%",
         fontweight: "bold",
@@ -46,12 +46,10 @@ export const customStyles = {
           cursor: "pointer",
           transition: "0.1s",
           color: "white",
-          fontSize: "1rem",
+          background:"#4C5ADF",
         },
-        border:"2px solid #161D26",
         overflow:"hidden",
-
-
+        borderRadius:"2px",
       };
     },
     menu: (styles) => {
@@ -61,7 +59,7 @@ export const customStyles = {
         zIndex:"100",
         // overflow:"hidden",
         border:"none",
-        borderRadius:"3px",
+        borderRadius:"5px",
         background:"transparent",
         overflow:"auto"
 

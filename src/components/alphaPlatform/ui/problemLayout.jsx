@@ -3,15 +3,15 @@ import { CodeBlock,dracula, } from "react-code-blocks";
 
 const ProblemLayout = ({ problemData }) => {
 
-    // if(!problemData){
-    //     return (
-    //         <div className="flex flex-col  text-start h-full w-full">
-    //             <h1 className="font-mono text-2xl antialiased font-bold tracking-normal landing-relaxed text-white mb-4">
-    //                 No problem selected
-    //             </h1>
-    //         </div>
-    //     );
-    // }
+    if(!problemData){
+        return (
+            <div className="flex flex-col  text-start h-full w-full">
+                <h1 className="font-mono text-2xl antialiased font-bold tracking-normal landing-relaxed text-white mb-4">
+                    No problem selected
+                </h1>
+            </div>
+        );
+    }
     return (
         <>
             <div className="flex flex-col  text-start h-full w-full">

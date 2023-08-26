@@ -1,0 +1,43 @@
+.alpha-info{
+    align-items: end;
+    padding-left: 8rem;
+}
+
+@media (max-width:1050px) 
+{
+    .alpha-window 
+    {
+        display: none;
+        padding-left: 0rem;
+    }
+
+    .alpha-info{
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+        align-items: center;
+
+    }
+    .alpha-info-detail{
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+@media (max-width:1150px) 
+{
+    .logo {
+        font-size: 4rem;
+    }
+    .logo-name {
+        font-size: 2.25rem;
+    }
+    .alpha-info-button{
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        width: 12rem;
+        font-size: large;
+    }
+}

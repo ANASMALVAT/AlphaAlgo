@@ -32,7 +32,7 @@ const ConsoleInput = ({output,handleCompile,showProblem}) =>{
 
 
     return (
-        <div className="flex flex-col h-full overflow-hidden p-2 m-2 mb-0 border-2 border-[#1F2937]  bg-algoblack">
+        <div className="flex flex-col h-full overflow-hidden p-2 m-2 mb-0 border-4 border-[#1F2937]  bg-algoblack">
 
             <div className="console-console-buttons flex flex-row items-start space-x-1  h-10 w-full  bg-algoblack">
                 <ConsoleButton setConsole={setConsole} setInput={setInput} setNote={setNote} isConsole={isConsole} isInput={isInput} isNote={isNote}/>

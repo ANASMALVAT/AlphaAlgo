@@ -7,7 +7,7 @@ import "../styles/slidingPane.css";
 const SettingSlidingPane = ({ isOpen, onRequestClose, theme, themeOptions,handleThemeChange}) => {
   return (
     <ReactSlidingPane
-      title="Editor's Setting"
+      title="Settings"
       className="slidingPane"
       overlayClassName="some-custom-overlay-class"
       isOpen={isOpen}

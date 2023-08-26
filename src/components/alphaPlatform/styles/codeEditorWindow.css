@@ -9,7 +9,7 @@
   }
 .margin-view-overlays{
   opacity: 0.4;
-  border-right: 1px solid #07A7C3;
+  border-right: 1px solid #4C5ADF;
   background-blend-mode:difference;
 }
 
@@ -26,7 +26,13 @@
 }
 
 @media (max-width: 900px) {
- 
+    .language-button{
+      margin-right: 20px;
+    }
+    .logo{
+     margin-left: 10px;
+     margin-right: 10px;
+    }
 }
 
 

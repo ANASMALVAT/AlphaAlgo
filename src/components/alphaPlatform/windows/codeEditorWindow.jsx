@@ -85,17 +85,23 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
 
                 <div className=" buttons flex  text-center align-center rounded-sm ">
 
-                    <button onClick={handleRestore}  className={`button-disappear overflow-hidden mr-2 h-12  flex flex-row items-center border border-r border-[#07A7C3] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
+                    <button onClick={handleRestore}  className={`button-disappear overflow-hidden mr-2 h-12  flex flex-row items-center   border-t-4  border-b-4 border-[#4C5ADF] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
                         <RestoreIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
                     </button>
 
-                    <button  onClick={openPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center  border border-r border-[#07A7C3] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
+                    <button  onClick={openPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center   border-b-4  border-t-4  border-[#4C5ADF] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
                         <SettingsIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
                     </button>
 
                 </div>
 
-                <div className=" flex flex-row right">
+                <div className="flex flex-row text-center overflow-hidden items-center h-full w-20 justify-center border-t-4 border-b-4 border-[#4C5ADF]">
+                            <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
+                            <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:rotate-[540deg] ">X</h1>
+                            <h1 className="font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
+                </div>
+
+                <div className="language-button flex flex-row right">
                     <LanguageDropDown onSelectChange={onSelectChange}/>
                 </div>
 

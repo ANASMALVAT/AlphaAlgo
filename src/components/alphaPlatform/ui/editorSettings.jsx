@@ -31,7 +31,7 @@ const EditorSetting = ({theme, themeOptions,handleThemeChange}) =>
             <div className="flex flex-col w-full h-full items-center">
 
                 <div className="flex flex-row justify-between items-center text-center mb-6 mt-6">
-                    <button className="w-44 font-mono text-md whitespace-nowrap break-keep bg-transparent text-white font-normal hover:text-white py-2 px-6 border border-[#07A7C3] rounded-sm" > White Board </button>
+                    <button className="w-44 font-mono text-md whitespace-nowrap break-keep bg-transparent text-white font-normal hover:text-white py-2 px-6 border border-[#4C5ADF] rounded-sm" > White Board </button>
                 </div>
 
                 <div className="flex flex-row justify-between items-center text-center mb-6">

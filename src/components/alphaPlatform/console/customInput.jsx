@@ -18,7 +18,7 @@ const CustomInput = () => {
                 '--Textarea-focusedThickness': '0rem',
                 '--Textarea-focusedHighlight': 'white',
                 "borderRadius":"2px",
-                background: "#1c283b",
+                background: "#001528",
                 '--Textarea-focused': 1,
                 '&::before': {
                 transition: 'box-shadow .10s ease-in-out',

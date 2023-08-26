@@ -1,0 +1,40 @@
+@media(min-width:881px){
+    .nav{
+        display: flex;
+    }
+    .sideNav{
+        display: none;
+    }
+}
+@media (max-width:880px){
+    .nav{
+        display: none;
+    }
+    .sideNav{
+        display: flex;
+    }
+    .logo{
+        justify-content: center;
+        align-items: center;
+    }
+    .login-ul{
+        padding: 0px;
+    }
+}
+
+.display-flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.display-flex-col{
+    display: flex;
+    flex-direction:column;
+    text-align: left;
+    align-items: start;
+
+}
+.nav-item{
+    margin: 4px;
+    /* width: 100%; */
+}

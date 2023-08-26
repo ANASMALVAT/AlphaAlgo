@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const javascriptDefault = "";
 
-const Landing = () => {
+const Landing = ({}) => {
     const [code, setCode] = useState("");
     const [theme, setTheme] = useState("cobalt");
     const [language, setLanguage] = useState(languageOptions[0]);
@@ -36,7 +36,7 @@ const Landing = () => {
 
       const handleResize = () => {
 
-          if(window.innerWidth >= 900) {
+          if(window.innerWidth >= 925) {
             console.log(" in  if " + editor + " " +isConsoleGpt + " " + cons + " " + gpt )
             setEditor(cons => {
               return true;

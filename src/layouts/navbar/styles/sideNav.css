@@ -7,7 +7,6 @@
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.5s;
     will-change: transform;
-    border-radius: 10px;
   }
   .slide-pane:focus {
     outline-style: none;
@@ -64,8 +63,7 @@
     align-items: center;
     background: #00182D;
     height: 44px;
-    border-bottom: 4px solid #4C5ADF;
-    border-radius: 20px;
+    border-bottom: 1px solid #4C5ADF;
 
   }
   .slide-pane__title-wrapper {

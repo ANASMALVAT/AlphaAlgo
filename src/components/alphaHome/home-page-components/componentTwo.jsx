@@ -57,7 +57,9 @@ const ComponentTwo = () =>
             scrollbarColor: '#4C5ADF #011627',
             fontFamily: 'monospace', // Use a monospace font
             fontSize: '14px',
-            fontColor: 'rgb(55,65,81)'
+            fontColor: 'rgb(55,65,81)',
+            boxShadow: '0 4px 8px 0 rgba(249, 248, 248, 0.1)'
+
             }}
             className="algo-screen  custom-scrollbar  hover:scale-[1.15] hover:duration-300 min-w-[500px]  w-[600px] h-[375px]  mr-6 border text-white rounded-[0.5rem] border-gray-700 bg-[#011627] text-left overflow-auto"
         >

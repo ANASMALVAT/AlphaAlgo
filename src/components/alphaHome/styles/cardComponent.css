@@ -1,0 +1,11 @@
+.card-css{
+    border: 1px solid rgb(173, 216, 230, 0.1);
+    color:#4C5ADF;
+}
+
+.card-css:hover{
+    transition: transform 0.2s;
+    transform: scale(1.1);
+    background: transparent;
+    box-shadow: 0 3px 3px 0 rgba(249, 248, 248, 0.1);
+}

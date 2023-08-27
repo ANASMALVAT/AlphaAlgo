@@ -1,21 +1,22 @@
 'use client';
 
 import { Card } from 'flowbite-react';
+import "../styles/cardComponent.css"
 
 export default function DefaultCard({features}) {
   return (
     <Card
-      className="max-w-sm"
+      className="card-css max-w-[350px] mb-8 bg-transparent  rounded-mdb  border-gray-100"
       href="#"
     >
-      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 className="text-2xl font-normal tracking-tight text-[white] dark:text-white">
         <p>
           {features.title}
         </p>
       </h5>
-      <p className="font-normal text-gray-700 dark:text-gray-400">
+      <p className="font-normal text-gray-400">
         <p>
-          Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+            {features.info}
         </p>
       </p>
     </Card>

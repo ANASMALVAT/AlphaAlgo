@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;400&family=Ubuntu:wght@300;400&display=swap');
+
+.team-name 
+{
+    font-weight: normal;
+    font-size: 34px;
+    color: #02203c;
+    font-family: Ubuntu,Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+}
+.team-position{
+    font-weight: normal;
+    font-size: 20px;
+    color: #445d6e;
+    margin-bottom: 2rem;
+}
+
+.team-img{
+    width: 250px; 
+    height: 250px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    filter: grayscale(10%);
+    box-shadow: 4px 4px 8px 4px rgb(255,255,255,1);
+}
+.team-img:hover{
+    
+    transform: scale(1.15);
+    transition-duration: 400ms;
+}

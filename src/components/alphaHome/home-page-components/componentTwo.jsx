@@ -58,8 +58,8 @@ const ComponentTwo = () =>
             fontFamily: 'monospace', // Use a monospace font
             fontSize: '14px',
             fontColor: 'rgb(55,65,81)'
-        }}
-            className="custom-scrollbar  hover:scale-125  hover:duration-300 w-[600px] h-[375px] rotate-y-[25deg] mr-12 border text-white rounded-[0.5rem] border-gray-700 bg-[#011627]  text-left overflow-auto"
+            }}
+            className="algo-screen  custom-scrollbar  hover:scale-[1.15] hover:duration-300 min-w-[500px]  w-[600px] h-[375px]  mr-6 border text-white rounded-[0.5rem] border-gray-700 bg-[#011627] text-left overflow-auto"
         >
 
                 <div className="flex flex-row m-auto  text-center overflow-hidden items-center  w-full justify-center border-b border-gray-800 mb-2">

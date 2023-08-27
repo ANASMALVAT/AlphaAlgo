@@ -257,13 +257,13 @@ const Landing = ({}) => {
 
         <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
-        <div className="w-full h-full min-w-[275px]  max-w-screen max-h-full">
+        <div className="w-full h-full min-w-[375px]  max-w-screen max-h-full">
 
           <div  className="flex flex-row bg-algoblack overflow-hidden min-h-screen">
 
             { 
             editor && 
-            <div className="editor-class overflow-hidden  flex flex-col  w-[65%] h-full min-h-screen">
+            <div className="editor-class overflow-hidden  flex flex-col  w-[65%]  h-full min-h-screen">
                       <CodeEditorWindow
                           code={code}
                           onChangeData={onChange}

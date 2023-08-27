@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Ubuntu:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;300&family=Ubuntu:wght@300;400&display=swap');
+h1 {
+    font-family: Ubuntu,Helvetica,Arial,sans-serif;
+}
+.pre{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    
+}
+
+ .h1-tag{
+    font-size: 42px;
+    font-weight: 300;
+}
+.logo-com-3{
+    font-size: 32px;
+}
+.what-button{
+    width: 12rem;
+    font-size: 22px;
+}
+.what-is-alpha{
+    margin-top: 6rem;
+}
+@media (max-width:980px){
+    .logo-com-3,.h1-tag{
+        font-size: 28px;
+    }
+    .what-button {
+        width: 8rem;
+        font-size: 18px;
+    }
+    .what-is-alpha{
+        margin-top: 3rem;
+    }
+}

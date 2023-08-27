@@ -8,14 +8,17 @@
     font-family: 'Fira Code', monospace;
   }
 .margin-view-overlays{
-  opacity: 0.4;
+  opacity: 1;
   border-right: 1px solid #4C5ADF;
-  background-blend-mode:difference;
 }
 
 @media (max-width: 385px) {
-  .buttons {
+  .editor-logo{
+    display: none;
+  }
+  .button-disappear {
       display: none;
+      width: 0px;
     }
 }
 
@@ -26,14 +29,21 @@
 }
 
 @media (max-width: 900px) {
-    .language-button{
-      margin-right: 20px;
-    }
     .logo{
      margin-left: 10px;
      margin-right: 10px;
     }
 }
+
+@media (max-width: 480px) {
+  .language-button{
+    margin-right: 10px;
+  }
+  .editor-logo{
+   display: none;
+  }
+}
+
 
 
 

@@ -27,9 +27,9 @@ const AlphaNavbar  = () => {
 
                     <div id="logo" className="logo w-[25%] min-w-[100px] justify-center align-bottom items-center h-full  overflow-hidden">
                         <div className="flex flex-row justify-center items-center">
-                            <h1 className="font-mono tracking-wide font-semibold antialiased text-[white] text-3xl">A</h1>
-                            <h1 className="font-mono tracking-wide font-semibold antialiased text-[#4C5ADF] text-6xl hover:duration-500 hover:rotate-[900deg]">X</h1>
-                            <h1 className="font-mono tracking-wide font-semibold antialiased text-[white] text-3xl">A</h1>
+                            <h1 className="tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
+                            <h1 className=" tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-500 hover:rotate-[900deg]">X</h1>
+                            <h1 className=" tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
                         </div>
                     </div>
 

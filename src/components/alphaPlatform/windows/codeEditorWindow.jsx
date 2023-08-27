@@ -79,9 +79,9 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
     <>
         < SettingSlidingPane isOpen={settingPane} onRequestClose={closePane} theme={theme} themeOptions={themeOptions} handleThemeChange={handleThemeChange}/>
 
-        <div className="  code-editor flex flex-col w-full border-4 border-[#1f2937]">
+        <div className="  code-editor  flex flex-col w-full min-w-[385px] border-4 border-[#1f2937]">
             
-            <div className=" flex flex-row justify-between  rounded-sm border-4 m-1 border-[#1f2937] h-14 ">
+            <div className=" flex flex-row justify-between min-w-[385px]  rounded-sm border-4 m-1 border-[#1f2937] h-14 ">
 
                 <div className=" buttons flex  text-center align-center rounded-sm ">
 
@@ -95,19 +95,19 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
 
                 </div>
 
-                <div className="flex flex-row text-center overflow-hidden items-center h-full w-20 justify-center border-t-4 border-b-4 border-[#4C5ADF]">
+                <div className="editor-logo flex flex-row text-center overflow-hidden items-center h-full w-20 justify-center border-t-4 border-b-4 border-[#4C5ADF]">
                             <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
                             <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:rotate-[540deg] ">X</h1>
                             <h1 className="font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
                 </div>
 
-                <div className="language-button flex flex-row right">
+                <div className="language-button ">
                     <LanguageDropDown onSelectChange={onSelectChange}/>
                 </div>
 
             </div>
 
-            <div className="h-2 w-full  flex-grow">
+            <div className="h-2 w-full flex-grow min-w-[385px]">
                 <Editor
                     height={`100%`}
                     width={`100%`}

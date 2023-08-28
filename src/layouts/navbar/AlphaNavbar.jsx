@@ -3,6 +3,7 @@ import NavLinks from "./navLinks";
 import SideNav from "./sideNav";
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from "react-router-dom";
 import "../navbar/styles/AlphaNavbar.css"
 
 const AlphaNavbar  = () => {
@@ -28,7 +29,13 @@ const AlphaNavbar  = () => {
                     <div id="logo" className="logo w-[25%] min-w-[100px] justify-center align-bottom items-center h-full  overflow-hidden">
                         <div className="flex flex-row justify-center items-center">
                             <h1 className="tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
-                            <h1 className=" tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-500 hover:rotate-[900deg]">X</h1>
+                                <Link
+                                to="/coding-platform"
+                                className="tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-500 hover:rotate-[900deg]"
+                                >
+                                X
+                                </Link> 
+                            {/* <h1 className=" ">X</h1> */}
                             <h1 className=" tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavLinks = ({flexClass}) => {
 
@@ -7,16 +8,36 @@ const NavLinks = ({flexClass}) => {
            <div className="  w-full ">
                 <ul className = {`nav flex h-full w-full ${flexClass} hover:duration-100 text-white justify-between p-2 items-center text-center`}>
                     <li class="nav-item mb-1">
-                        <a class=" font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"  href="#">Products</a>
+                        <Link
+                            to="/"
+                            className="font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"
+                        >
+                        Products
+                        </Link>
                     </li>
                     <li class="nav-item mb-1">
-                    <a class=" font-mono font-semibold   hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"  href="#">Team</a>
+                        <Link
+                            to="/team"
+                            className="font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"
+                        >
+                        Team
+                        </Link>
                     </li>
                     <li class="nav-item mb-1">
-                    <a class=" font-mono font-semibold hover:duration-200   hover:border-b-4 hover:border-[#4C5ADF]"  href="#">Udemy</a>
+                        <Link
+                            to="/team"
+                            className="font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"
+                        >
+                        Udemy
+                        </Link>
                     </li>
                     <li class="nav-item mb-1">
-                        <a class=" font-mono font-semibold  hover:duration-200  hover:border-b-4 hover:border-[#4C5ADF]"  href="#">Patreon</a>
+                        <Link
+                            to="/team"
+                            className="font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"
+                        >
+                        Patreon
+                        </Link>
                     </li>
                 </ul>
             </div>

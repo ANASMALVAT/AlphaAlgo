@@ -5,7 +5,7 @@ import "../styles/codeEditorWindow.css"
 import LanguageDropDown from "../drop-downs/languageDropDown";
 import SettingsIcon from '@mui/icons-material/Settings';
 import RestoreIcon from '@mui/icons-material/Restore';
-import SettingSlidingPane from "../ui/settingSlidingPane";
+import SettingSlidingPane from "../sliding-panel/settingSlidingPane";
 import "../styles/codeEditorWindow.css";
 
 

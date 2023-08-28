@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import CustomInput from "./customInput";
 import CodeOutput from "./codeOutput";
-import ConsoleButton from "./consoleButtons";
-import AlgoButtons from "../ui/algoButtons";
+import ConsoleButton from "../buttons/consoleButtons";
+import AlgoButtons from "../buttons/algoButtons";
 import "../styles/consoleInput.css";
 
 const ConsoleInput = ({output,handleCompile,showProblem}) =>{

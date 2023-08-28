@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import Typewriter from 'typewriter-effect';
-import Popup from 'reactjs-popup';
 import ComponentAlphaAlgo from "./componentAlphaAlgo";
-import 'reactjs-popup/dist/index.css';
 
-import "../styles/componentThree.css"
+import 'reactjs-popup/dist/index.css';
+import "../../styles/componentThree.css"
 
 const ComponentThree = () => {
 

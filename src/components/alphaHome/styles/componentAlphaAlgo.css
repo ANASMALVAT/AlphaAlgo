@@ -7,18 +7,31 @@
     font-weight: bolder;
     color:whitesmoke;
 }
+.popup-content {
+    width: 1000px;
+    max-width: 1000px;
+    min-width: 400px;
+    overflow: auto;
+    height: fit-content;
+    height: 600px;
+    max-height: 600px;
+}
 .modal {
     border-radius: 5px;
-    background: #4C5ADF;
+    background: #00182D;
+    
     
 }
 .content{
     font-family: Ubuntu,Helvetica,Arial,sans-serif;
-    color:whitesmoke;
     font-weight: 400;
     font-size: 18px;
     letter-spacing: 0.025em;
-    background: #4C5ADF;
+    background: #00182D;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    line-height: inherit;
+    font-weight: lighter;
 }
 .popup-content {
     margin: auto;
@@ -97,3 +110,24 @@
     stroke-dasharray: 30px;
     stroke-dashoffset: -54px;
   }
+
+  
+.popup-content {
+    /* For Webkit (Chrome, Safari) */
+    scrollbar-width: thin;
+    scrollbar-color: #4C5ADF #011627;
+  }
+  
+  .popup-content::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .popup-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .popup-content::-webkit-scrollbar-thumb {
+    background: #00182D;
+    border-radius: 8px;
+  }
+  

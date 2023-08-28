@@ -1,9 +1,8 @@
 import React from "react";
 import AlphaNavbar from "../../layouts/navbar/AlphaNavbar";
-import ComponentOne from "./home-page-components/componentOne";
-import ComponentThree from "./home-page-components/componentThree";
-import ComponentFour from "./home-page-components/componentFour";
-import Team from "./home-page-components/team";
+import ComponentOne from "./home-page-components/home/componentOne";
+import ComponentThree from "./home-page-components/home/componentThree";
+import ComponentFour from "./home-page-components/home/componentFour";
 
 const AlphaHomePage = () => {
     return (
@@ -13,7 +12,6 @@ const AlphaHomePage = () => {
                 <ComponentOne/>
                 <ComponentThree/>
                 <ComponentFour/>
-                <Team/>
             </div>
         </>
     )

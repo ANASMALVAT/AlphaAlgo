@@ -1,6 +1,6 @@
 import React from "react";
 import ReactSlidingPane from "react-sliding-pane";
-import ProblemLayout from "./problemLayout";
+import ProblemLayout from "../ui/problemLayout";
 import "../styles/slidingPane.css";
 
 const SlidingPane = ({ isOpen, onRequestClose }) => {

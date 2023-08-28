@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/componentOne.css"
+import "../../styles/componentOne.css"
 
 import ComponentTwo from "./componentTwo";
 const ComponentOne = () => 

@@ -1,13 +1,11 @@
-import React, { useState, useEffect ,useRef } from "react";
+import React from "react";
 import Typewriter from 'typewriter-effect';
-import "../styles/componentTwo.css"
+import "../../styles/componentTwo.css"
+
 <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 
 const ComponentTwo = () => 
 {
-    const [codeWritten, setCodeWritten] = useState("");
-
-
 
     const code = [
         'void quickSort(int arr[], int low, int high)',

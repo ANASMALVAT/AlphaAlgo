@@ -1,7 +1,7 @@
 'use client';
 
 import { Card } from 'flowbite-react';
-import "../styles/cardComponent.css"
+import "../../styles/cardComponent.css"
 
 export default function DefaultCard({features}) {
   return (

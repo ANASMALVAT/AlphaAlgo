@@ -4,17 +4,17 @@ import CodeEditorWindow from "./windows/codeEditorWindow";
 import useKeyPress from "../../hooks/useKeyPress";
 import { defineTheme } from "../../data/themeOptions";
 import { languageOptions } from "../../data/codingLanguages";
-import SlidingPane from "./ui/problemSlidingPane";
+import SlidingPane from "./sliding-panel/problemSlidingPane";
 import { ToastContainer,toast } from "react-toastify";
 import axios from "axios";
 import ConsoleInput from "./console/ConsoleInput";
-import AlgoButtons from "./ui/algoButtons";
+import AlgoButtons from "./buttons/algoButtons";
 import "./styles/mainPage.css"
 import "react-toastify/dist/ReactToastify.css";
 
 const javascriptDefault = "";
 
-const Landing = ({}) => {
+const AlphaPlatform = ({}) => {
     const [code, setCode] = useState("");
     const [theme, setTheme] = useState("cobalt");
     const [language, setLanguage] = useState(languageOptions[0]);
@@ -303,4 +303,4 @@ const Landing = ({}) => {
   };
 
 
-  export default Landing;
+  export default AlphaPlatform;

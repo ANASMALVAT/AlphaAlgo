@@ -1,6 +1,6 @@
 import React from 'react'
 import DefaultCard from './cardComponent'
-import "../styles/componentFour.css"
+import "../../styles/componentFour.css"
 
 
 

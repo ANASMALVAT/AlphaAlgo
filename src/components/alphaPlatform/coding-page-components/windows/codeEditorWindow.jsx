@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
 import Editor, {loader} from "@monaco-editor/react";
-import "../styles/codeEditorWindow.css"
 import LanguageDropDown from "../drop-downs/languageDropDown";
 import SettingsIcon from '@mui/icons-material/Settings';
 import RestoreIcon from '@mui/icons-material/Restore';
 import SettingSlidingPane from "../sliding-panel/settingSlidingPane";
-import "../styles/codeEditorWindow.css";
+
+import "../../styles/codeEditorWindow.css";
 
 
 const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, onSelectChange,handleThemeChange  }) => {

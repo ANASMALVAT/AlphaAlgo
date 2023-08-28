@@ -3,7 +3,7 @@ import CustomInput from "./customInput";
 import CodeOutput from "./codeOutput";
 import ConsoleButton from "../buttons/consoleButtons";
 import AlgoButtons from "../buttons/algoButtons";
-import "../styles/consoleInput.css";
+import "../../styles/consoleInput.css";
 
 const ConsoleInput = ({output,handleCompile,showProblem}) =>{
 

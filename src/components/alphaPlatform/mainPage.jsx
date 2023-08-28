@@ -1,14 +1,15 @@
 import React from "react";
 import { useState,useEffect,useRef } from "react";
-import CodeEditorWindow from "./windows/codeEditorWindow";
+import { ToastContainer,toast } from "react-toastify";
+import axios from "axios";
+import CodeEditorWindow from "./coding-page-components/windows/codeEditorWindow";
 import useKeyPress from "../../hooks/useKeyPress";
 import { defineTheme } from "../../data/themeOptions";
 import { languageOptions } from "../../data/codingLanguages";
-import SlidingPane from "./sliding-panel/problemSlidingPane";
-import { ToastContainer,toast } from "react-toastify";
-import axios from "axios";
-import ConsoleInput from "./console/ConsoleInput";
-import AlgoButtons from "./buttons/algoButtons";
+import SlidingPane from "./coding-page-components/sliding-panel/problemSlidingPane";
+import AlgoButtons from "./coding-page-components/buttons/algoButtons";
+import ConsoleInput from "./coding-page-components/console/ConsoleInput";
+
 import "./styles/mainPage.css"
 import "react-toastify/dist/ReactToastify.css";
 

@@ -4,10 +4,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Team from './components/alphaHome/home-page-components/team/team';
+import Team from "./components/alphaHome/home-page-components/team/team";
 import AlphaHomePage from './components/alphaHome/alphaHome';
 import AlphaPlatform from "./components/alphaPlatform/mainPage";
-import AlphaGPTWindow from "./components/alphaPlatform/windows/alphaGptWindow";
+import AlphaGPTWindow from "./components/alphaPlatform/coding-page-components/windows/alphaGptWindow";
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
       <React.StrictMode>
           <RouterProvider router={router}/>
       </React.StrictMode>
-      
+
     </div>
   );
 }

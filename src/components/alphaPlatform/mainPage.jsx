@@ -30,15 +30,13 @@ const AlphaPlatform = ({}) => {
     const[isConsoleGpt, setIsConsoleGpt] = useState(true);
 
   
-    const enterPress = useKeyPress("Enter");
-    const ctrlPress = useKeyPress("Control");
 
     useEffect(() => {
 
       const handleResize = () => {
 
-          if(window.innerWidth >= 925) {
-            console.log(" in  if " + editor + " " +isConsoleGpt + " " + cons + " " + gpt )
+          if(window.innerWidth > 950) {
+
             setEditor(cons => {
               return true;
             });
@@ -51,12 +49,10 @@ const AlphaPlatform = ({}) => {
             setIsConsoleGpt(cons => {
               return true;
             });
-            console.log(" in if " + editor + " " +isConsoleGpt + " " + cons + " " + gpt )
 
           }
           else {
 
-            console.log(" in the else " + editor + " " +isConsoleGpt + " " + cons + " " + gpt )
             if(editor === false && isConsoleGpt === false){
               setEditor(cons => {
                 return true;
@@ -80,8 +76,6 @@ const AlphaPlatform = ({}) => {
               });
             }
            
-            console.log(" in the else " + editor + " " +isConsoleGpt + " " + cons + " " + gpt )
-
           }
         };
 
@@ -101,6 +95,8 @@ const AlphaPlatform = ({}) => {
       },[editor, isConsoleGpt, cons, gpt]);
 
     const showEditor = () => {
+      console.log("here editor")
+
         setEditor(edit => true);
         setIsConsoleGpt(consGtp => false);
         setConsole(cons => false);
@@ -108,6 +104,8 @@ const AlphaPlatform = ({}) => {
     }
 
     const showConsole = () => {
+      
+      console.log("here console")
       setIsConsoleGpt(consGtp => true);
       setConsole(cons => true);
       setEditor(edit => false);
@@ -116,6 +114,7 @@ const AlphaPlatform = ({}) => {
     }
 
     const showGPT = () => {
+      console.log("here gpt")
       setIsConsoleGpt(consGtp => true);
       setGpt(gpt => true);
       setEditor(edit => false);
@@ -264,7 +263,7 @@ const AlphaPlatform = ({}) => {
 
             { 
             editor && 
-            <div className="editor-class overflow-hidden  flex flex-col  w-[65%]  h-full min-h-screen">
+            <div className="editor-class overflow-hidden  flex flex-col  w-[60%]  h-full max-h-[screen] min-h-[full]">
                       <CodeEditorWindow
                           code={code}
                           onChangeData={onChange}
@@ -273,6 +272,9 @@ const AlphaPlatform = ({}) => {
                           themeOptions = {theme}
                           onSelectChange = {onSelectChange}
                           handleThemeChange = {handleThemeChange}
+                          openEditor={showEditor}
+                          openConsole={showConsole}
+                          openAlphaGPT={showGPT}
                       />
               </div>
             }
@@ -291,11 +293,13 @@ const AlphaPlatform = ({}) => {
                       <ConsoleInput  output={output} handleCompile={handleCompile} showProblem={showProblem}/>
                     </div>
                   }
+                   <div className="show-buttons bg-algoblack justify-center h-12 p-2">
+                    <AlgoButtons methodOne={showEditor} methodTwo={showConsole} methodThree={showGPT} buttonOne={`Editor`} buttonTwo={`Console`} buttonThree={`AlphaGPT`}/>
+                  </div>
               </div>
             }
-          </div>
-          <div className="show-buttons bg-algoblack justify-center h-12 p-2">
-              <AlgoButtons methodOne={showEditor} methodTwo={showConsole} methodThree={showGPT} buttonOne={`Editor`} buttonTwo={`Console`} buttonThree={`AlphaGPT`}/>
+           
+          
           </div>
         </div>
       </>

@@ -14,7 +14,9 @@ module.exports = {
         vesuvius: "#000020",
         algoblack:"#00182D",
         algoprob:"#1B3B6F",
-        algocodeOutput: "#1E293B"
+        algocodeOutput: "#1E293B",
+        algoXcolor:"#4C5ADF",
+        
       }
     },
     minWidth:{

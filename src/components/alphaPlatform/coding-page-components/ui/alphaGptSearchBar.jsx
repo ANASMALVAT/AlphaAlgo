@@ -1,29 +1,48 @@
-import * as React from 'react';
+import React from 'react';
+import { useState} from 'react';
 import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import SendIcon from '@mui/icons-material/Send';
-import DirectionsIcon from '@mui/icons-material/Directions';
+import CircularProgress from '@mui/material/CircularProgress';
 
-export default function AlphaGPTSearchBar({sendRequest,handleInputChange}) {
+
+import "../../styles/alphaGptSearchBar.css"
+
+export default function AlphaGPTSearchBar({sendRequest, loading}) {
+
+  const [userInput, setUserInput] = useState(``);
+
+  const handleUserInput = (value) => 
+  {
+    setUserInput(value);
+    console.log(userInput);
+  }
+
   return (
-    <Paper
-      component="form"
-      sx={{ p: '2px 4px', display: 'flex', background:'transparent',border:'1px solid #5867EA', alignItems: 'center', height:"80%", width: '100%' }}
-    >
-      <InputBase
-        sx={{ ml: 1, flex: 1, color:'white', fontWeight:'normal',fontFamily:'monospace'}}
-        placeholder="AlphaGPT"
-        inputProps={{ }}
-        onChange={handleInputChange}
 
-      />
-      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={sendRequest}>
-        <SendIcon  sx={{color:"#5867EA"}} />
-      </IconButton>
-    </Paper>
+      <Paper
+          component="form"
+          sx={{ display: 'flex', background:'transparent', borderRight:'1px solid white', alignItems: 'center', height:"80%", width: '100%' }}
+        >
+
+        <textarea 
+        className=' text-area bg-transparent w-full rounded-[0.25rem] h-full border border-gray-50 text-white' 
+        placeholder='AlphaGPT' 
+        onChange={(event) => {handleUserInput(event.target.value)}}
+        value={userInput}
+        >
+        </textarea>
+        
+        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+
+        <IconButton disabled = {loading} color="primary" sx={{ p: '10px',}} aria-label="directions" onClick={ () => { sendRequest(userInput); setUserInput(""); } }>
+          { 
+          loading ? <CircularProgress x={{color:"white", fontWeight:"bold",fontSize:"30px"}} disableShrink color="secondary"/>
+                  : <SendIcon  sx={{color:"white", fontWeight:"bold",fontSize:"30px"}} />
+          }
+        </IconButton>
+
+      </Paper>
   );
 }

@@ -35,7 +35,6 @@ const AlphaNavbar  = () => {
                                 >
                                 X
                                 </Link> 
-                            {/* <h1 className=" ">X</h1> */}
                             <h1 className=" tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
                         </div>
                     </div>

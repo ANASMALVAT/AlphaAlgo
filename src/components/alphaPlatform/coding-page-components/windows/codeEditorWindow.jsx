@@ -1,32 +1,51 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
-import Editor, {loader} from "@monaco-editor/react";
+import Editor from "@monaco-editor/react";
 import LanguageDropDown from "../drop-downs/languageDropDown";
 import SettingsIcon from '@mui/icons-material/Settings';
 import RestoreIcon from '@mui/icons-material/Restore';
 import SettingSlidingPane from "../sliding-panel/settingSlidingPane";
+import ConsoleSlidingPane from "../sliding-panel/consoleSlidingPane";
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 import "../../styles/codeEditorWindow.css";
 
 
-const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, onSelectChange,handleThemeChange  }) => {
+const CodeEditorWindow = ({
+    onChangeData,
+    language,
+    code,
+    theme, 
+    themeOptions, 
+    onSelectChange,
+    handleThemeChange,
+    openEditor,
+    openConsole,
+    openAlphaGPT }) => {
 
     const [value,setValue] = useState(code || "");
     const [initialValue, setInitialValue] = useState(code || ""); // New state variable
-    // const [whiteBoard,setBoard] = useState("");
     const [fontSize,setFontSize] = useState("18px");
     const [settingPane,setSettingPane] = useState(false);
+    const [consolePane,setConsolePane] = useState(false);
     
 
 
     const editorRef = useRef(null);
 
-    const closePane = () => {
+    const closeSettingPane = () => {
         setSettingPane(false);
     }
+    const closeConsolePane = () => {
+        setConsolePane(false);
+    }
 
-    const openPane = () => {
+    const openSettingPane = () => {
         setSettingPane(true);
+    }
+    const openConsolePane = () => {
+        setConsolePane(true);
     }
 
     function handleEditorDidMount(editor, monaco) {
@@ -59,13 +78,9 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
             callback(entries, observer);
             });
         };
-
-        // Create an instance of the original ResizeObserver
-        // with the wrapped callback
         return new OriginalResizeObserver(wrappedCallback);
         };
 
-        // Copy over static methods, if any
         for (let staticMethod in OriginalResizeObserver) {
             if (OriginalResizeObserver.hasOwnProperty(staticMethod)) {
                 window.ResizeObserver[staticMethod] = OriginalResizeObserver[staticMethod];
@@ -77,8 +92,8 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
 
     return(
     <>
-        < SettingSlidingPane isOpen={settingPane} onRequestClose={closePane} theme={theme} themeOptions={themeOptions} handleThemeChange={handleThemeChange}/>
-
+        < SettingSlidingPane isOpen={settingPane} onRequestClose={closeSettingPane} theme={theme} themeOptions={themeOptions} handleThemeChange={handleThemeChange}/>
+        < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} openEditor={openEditor} openConsole={openConsole} openAlphaGPT={openAlphaGPT} />
         <div className="  code-editor  flex flex-col w-full min-w-[385px] border-4 border-[#1f2937]">
             
             <div className=" flex flex-row justify-between min-w-[385px]  rounded-sm border-4 m-1 border-[#1f2937] h-14 ">
@@ -89,7 +104,7 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
                         <RestoreIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
                     </button>
 
-                    <button  onClick={openPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center   border-b-4  border-t-4  border-[#4C5ADF] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
+                    <button  onClick={openSettingPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center   border-b-4  border-t-4  border-[#4C5ADF] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
                         <SettingsIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
                     </button>
 
@@ -103,6 +118,11 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
 
                 <div className="language-button ">
                     <LanguageDropDown onSelectChange={onSelectChange}/>
+                </div>
+                <div className="side-menu flex  min-w-[100px] text-white ml-8 items-center justify-center p-2">
+                    <button  onClick={openConsolePane} >
+                        <MenuIcon sx={{fontSize:'28px'}}/>
+                    </button>
                 </div>
 
             </div>
@@ -122,8 +142,7 @@ const CodeEditorWindow = ({ onChangeData, language, code, theme, themeOptions, o
                     }}/>
             </div>
         </div>
-            
-           
+
     </>
     );
 

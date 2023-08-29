@@ -1,17 +1,15 @@
-{
-    
-}
 
 .gpt-output-console::-webkit-scrollbar {
     width: 8px;
   }
   
   .gpt-output-console::-webkit-scrollbar-track {
-    background: transparent;
+    background: white;
+    border-radius: 8px;
+    margin:5px;
   }
   
   .gpt-output-console::-webkit-scrollbar-thumb {
-    background: #00182D;
+    background: #5867EA;
     border-radius: 8px;
   }
-  

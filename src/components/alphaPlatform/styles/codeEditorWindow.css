@@ -27,18 +27,24 @@
   min-height: 100vh;
   height: 100%;
 }
+.side-menu{
+    display:none;
+}
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
     .logo{
      margin-left: 10px;
      margin-right: 10px;
     }
+    .language-button{
+      display: none;
+    }
+    .side-menu{
+      display: flex;
+    }
 }
 
 @media (max-width: 480px) {
-  .language-button{
-    margin-right: 10px;
-  }
   .editor-logo{
    display: none;
   }

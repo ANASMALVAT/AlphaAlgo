@@ -10,8 +10,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {useSelector} from "react-redux"
 import "./styles/codeEditorWindow.css";
 
-
-
 const CodeEditorWindow = ({
     onChangeData,
     code,
@@ -30,7 +28,7 @@ const CodeEditorWindow = ({
     useEffect(() => {
         setFontSize(dropdownValue.fontSize);
         setCurrentLanguagae(dropdownValue.language);
-        setcurrentTheme(dropdownValue.theme);
+        setcurrentTheme(currentTheme => dropdownValue.theme);
     }, [dropdownValue.fontSize,dropdownValue.language,dropdownValue.theme]);
 
     const editorRef = useRef(null);

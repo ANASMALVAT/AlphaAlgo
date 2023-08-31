@@ -1,0 +1,24 @@
+
+
+
+.scroll-bar {
+    scrollbar-width: thin;
+    scrollbar-color: #4C5ADF #011627;
+    padding: 1rem;
+  }
+
+  .problem-layout::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .problem-layout::-webkit-scrollbar-track {
+    background: #1B3B6F;
+    border-radius: 8px;
+
+  }
+  
+  .problem-layout::-webkit-scrollbar-thumb {
+    background: #4C5ADF;
+    border-radius: 8px;
+  } 
+  

@@ -11,7 +11,7 @@ import SlidingPane from "./coding-page-components/sliding-panel/problemSlidingPa
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/ConsoleInput";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
-
+import VerticalHorizontalButtons from "./coding-page-components/buttons/verticalHorizontalButtons";
 
 import "./styles/mainPage.css"
 import "react-toastify/dist/ReactToastify.css";
@@ -21,7 +21,8 @@ const AlphaPlatform = ({}) => {
   
     const alphaPlatformComponents = useSelector((state) =>  state.alphaPlatform.value);
     const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
-    console.log(dropdownValue.theme);
+    const layoutValue = useSelector((state) => state.layoutValue);
+    console.log(layoutValue)
     const dispatch = useDispatch();
     const [code, setCode] = useState("");
     const [theme, setTheme] = useState("oceanic-next");
@@ -29,12 +30,22 @@ const AlphaPlatform = ({}) => {
     const [problem,setProblem] = useState(false)
     const [customInput, setCustomInput] = useState("");
     const [output, setOutput] = useState("")
+    const [windowWidth,setwindowWidth] = useState(layoutValue.width);
+    const [toggelWindow,setToggelWindow] =useState(layoutValue.swapWindow);
     const toastId = useRef(null);
 
-
+    
     useEffect(() => {
       setLanguage(dropdownValue.language);
     },[dropdownValue.language]);
+
+    useEffect(() => {
+      setwindowWidth(layoutValue.width);
+    },[layoutValue.width]);
+
+    useEffect(() => {
+      setToggelWindow(layoutValue.swapWindow);
+    },[layoutValue.swapWindow]);
 
     useEffect(() => {
 
@@ -202,7 +213,6 @@ const AlphaPlatform = ({}) => {
         <ToastContainer/>
 
         <SlidingPane isOpen={problem} onRequestClose={closePane}/>
-
         <div className="main-class min-w-[350px] w-full h-full flex flex-row min-h-[100vh]  min-w-screen max-h-full bg-algoblack">
         
             {
@@ -214,7 +224,7 @@ const AlphaPlatform = ({}) => {
 
             { 
               alphaPlatformComponents.editor && 
-                <div className="editor-class overflow-hidden  flex flex-col  w-[60%]  h-full max-h-[screen] min-h-[full]">
+                <div className={`editor-class overflow-hidden  flex flex-col ${windowWidth ? 'w-[60%]' : 'w-[40%]'}  h-full max-h-[screen] min-h-[full] transition-all duration-700 ease-in-out`}>
                     <CodeEditorWindow
                       code={code}
                       onChangeData={onChange}
@@ -226,15 +236,33 @@ const AlphaPlatform = ({}) => {
             { 
               alphaPlatformComponents.isConsoleGpt && 
 
-                <div className="console-gpt ">
-                    {
-                    alphaPlatformComponents.console &&
-                      <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem} />
-                    }
-                    { 
-                    alphaPlatformComponents.gpt && 
-                      <AlphaGPTWindow/>
-                    }
+                <div className={`console-gpt ${windowWidth ? 'w-[40%]' : 'w-[60%]'} ${toggelWindow ? 'alpha-first' : 'console-first'} transition-all duration-700 ease-in-out `}>
+                  {
+                    toggelWindow ?
+                    (
+                      <>
+                        {
+                        alphaPlatformComponents.console &&
+                          <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem} />
+                        }
+                        { 
+                        alphaPlatformComponents.gpt && 
+                          <AlphaGPTWindow/>
+                        }
+                      </>
+                    ):(
+                      <>
+                        { 
+                        alphaPlatformComponents.gpt && 
+                          <AlphaGPTWindow/>
+                        }
+                        {
+                        alphaPlatformComponents.console &&
+                          <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem} />
+                        }
+                      </>
+                    )
+                  }
                 </div>
               }
 

@@ -3,13 +3,25 @@ import AlphaGPTSearchBar from './alphaGptSearchBar';
 import AlphaGptWindowText from './alphaGptWindowText';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import {useSelector} from "react-redux"
 
 import './styles/alphaGptWindow.css';
 
 const AlphaGPTWindow = () => {
+
+  const layoutValue = useSelector((state) => state.layoutValue);
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
   const [chats, setChats] = useState([]);
+  const [windowHeight, setWindowHeight] = useState(layoutValue.toggelHeight);
+ 
+  
+  useEffect(() => {
+    setWindowHeight(layoutValue.toggelHeight);
+
+  },[layoutValue.toggelHeight])
+
+
   const smartMessage = ` Keep the explanation concise and brief, and give a simple example.`;
 
   const askGPT = async (userInput) => {
@@ -68,7 +80,7 @@ const AlphaGPTWindow = () => {
 
       <ToastContainer />
 
-      <div className='gpt-output-console flex-grow w-full p-2 border border-gray-600 mb-2 rounded-md overflow-auto h-[100%]'>
+      <div className={`gpt-output-console ${windowHeight === 0 ? 'h-[100px]' :windowHeight === 1 ? 'h-[250px]' : 'h-[425px]'} transition-all duration-700 ease-in-out flex-grow w-full p-2 border border-gray-600 mb-2 rounded-md overflow-auto h-[100%]`}>
         {messages.map((message, index) => (
           <AlphaGptWindowText
             key={index}

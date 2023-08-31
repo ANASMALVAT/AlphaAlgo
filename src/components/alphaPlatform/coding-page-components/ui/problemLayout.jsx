@@ -1,20 +1,21 @@
 import React from "react";
 import { CodeBlock } from "react-code-blocks";
+import "./styles/problemLayout.css";
 
 const ProblemLayout = ({ problemData }) => {
 
-    if(!problemData){
-        return (
-            <div className="flex flex-col  text-start h-full w-full">
-                <h1 className="font-mono text-2xl antialiased font-bold tracking-normal landing-relaxed text-white mb-4">
-                    No problem selected
-                </h1>
-            </div>
-        );
-    }
+    // if(!problemData){
+    //     return (
+    //         <div className="flex flex-col  text-start h-full w-full">
+    //             <h1 className="font-mono text-2xl antialiased font-bold tracking-normal landing-relaxed text-white mb-4">
+    //                 No problem selected
+    //             </h1>
+    //         </div>
+    //     );
+    // }
     return (
         <>
-            <div className="flex flex-col  text-start h-full w-full">
+            <div className=" problem-layout max-h-full overflow-y-auto flex flex-col text-start h-full w-full overflow-hidden flex-grow ">
 
                 <div className=" mb-5">
                     <h1 name = "prob name" className="font-mono text-2xl antialiased  font-bold tracking-normal landing-relaxed text-white mb-4">Problem Question {problemData?.name} </h1>

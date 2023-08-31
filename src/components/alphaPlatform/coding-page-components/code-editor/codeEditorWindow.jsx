@@ -7,28 +7,31 @@ import RestoreIcon from '@mui/icons-material/Restore';
 import SettingSlidingPane from "../sliding-panel/settingSlidingPane";
 import ConsoleSlidingPane from "../sliding-panel/consoleSlidingPane";
 import MenuIcon from '@mui/icons-material/Menu';
-
+import {useSelector} from "react-redux"
 import "./styles/codeEditorWindow.css";
 
 
+
 const CodeEditorWindow = ({
-
     onChangeData,
-    language,
     code,
-    theme, 
-    themeOptions, 
-    onSelectChange,
-    handleThemeChange
+    
     }) => {
-
+    const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
     const [value,setValue] = useState(code || "");
     const [initialValue, setInitialValue] = useState(code || ""); // New state variable
-    const [fontSize,setFontSize] = useState("18px");
+    const [currentFontSize,setFontSize] = useState("16px");
     const [settingPane,setSettingPane] = useState(false);
     const [consolePane,setConsolePane] = useState(false);
-    
+    const [currentLanguage,setCurrentLanguagae] = useState(dropdownValue.language);
+    const [currentTheme,setcurrentTheme] = useState(dropdownValue.theme);
 
+
+    useEffect(() => {
+        setFontSize(dropdownValue.fontSize);
+        setCurrentLanguagae(dropdownValue.language);
+        setcurrentTheme(dropdownValue.theme);
+    }, [dropdownValue.fontSize,dropdownValue.language,dropdownValue.theme]);
 
     const editorRef = useRef(null);
 
@@ -60,34 +63,37 @@ const CodeEditorWindow = ({
         onChangeData("code",value);
     };
 
+
     const handleRestore = () => {
         setValue(initialValue); 
         onChangeData("code",value);
         editorRef.current.setValue(initialValue); // Also update the editor content
     };
 
-        // Resize  observer issue of Code Editor
-        const OriginalResizeObserver = window.ResizeObserver;
+    // Resize  observer issue of Code Editor
+    const OriginalResizeObserver = window.ResizeObserver;
 
-        // Create a new ResizeObserver constructor
-        window.ResizeObserver = function (callback) {
+    // Create a new ResizeObserver constructor
+    window.ResizeObserver = function (callback) {
+
         const wrappedCallback = (entries, observer) => {
             window.requestAnimationFrame(() => {
             callback(entries, observer);
             });
         };
-        return new OriginalResizeObserver(wrappedCallback);
-        };
 
-        for (let staticMethod in OriginalResizeObserver) {
-            if (OriginalResizeObserver.hasOwnProperty(staticMethod)) {
-                window.ResizeObserver[staticMethod] = OriginalResizeObserver[staticMethod];
-            }
+        return new OriginalResizeObserver(wrappedCallback);
+    };
+
+    for (let staticMethod in OriginalResizeObserver) {
+        if (OriginalResizeObserver.hasOwnProperty(staticMethod)) {
+            window.ResizeObserver[staticMethod] = OriginalResizeObserver[staticMethod];
         }
+    }
 
     return(
     <>
-        < SettingSlidingPane isOpen={settingPane} onRequestClose={closeSettingPane} theme={theme} themeOptions={themeOptions} handleThemeChange={handleThemeChange}/>
+        < SettingSlidingPane isOpen={settingPane} onRequestClose={closeSettingPane} />
         < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} />
 
         <div className="  code-editor  flex flex-col w-full min-w-[385px] border-4 border-[#1f2937]">
@@ -106,15 +112,16 @@ const CodeEditorWindow = ({
 
                 </div>
 
-                <div className="editor-logo flex flex-row text-center overflow-hidden items-center h-full w-20 justify-center border-t-4 border-b-4 border-[#4C5ADF]">
+                <div className="editor-logo flex flex-row text-center overflow-hidden items-center h-full w-20 justify-center  border-4 border-[#4C5ADF]">
                     <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
                     <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:rotate-[540deg] ">X</h1>
                     <h1 className="font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
                 </div>
 
                 <div className="language-button ">
-                    <LanguageDropDown onSelectChange={onSelectChange}/>
+                    <LanguageDropDown />
                 </div>
+
                 <div className="side-menu flex  min-w-[100px] text-white ml-8 items-center justify-center p-2">
                     <button  onClick={openConsolePane} >
                         <MenuIcon sx={{fontSize:'28px'}}/>
@@ -127,15 +134,14 @@ const CodeEditorWindow = ({
                 <Editor
                     height={`100%`}
                     width={`100%`}
-                    theme={theme}
-                    language={language || "javascript"}
+                    theme={currentTheme}
+                    language={currentLanguage.value || "javascript"}
                     defaultValue="// Code Here"
                     onMount={handleEditorDidMount}
                     value={value}
                     onChange={editorChange}
-                    options={{
-                        fontSize: fontSize,
-                    }}/>
+                    options={{fontSize: currentFontSize}}
+                />
             </div>
         </div>
 

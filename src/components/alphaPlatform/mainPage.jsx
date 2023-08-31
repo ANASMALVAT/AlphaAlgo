@@ -3,31 +3,38 @@ import axios from "axios";
 import { useState,useEffect,useRef } from "react";
 import { ToastContainer,toast } from "react-toastify";
 import { defineTheme } from "../../data/themeOptions";
-import { languageOptions } from "../../data/codingLanguages";
 import {useSelector} from 'react-redux'
 import { useDispatch } from "react-redux";
-import { setDifferentEditor,setGPT,setConsole,setDefault} from "../../redux/slices/alphaPlatformSlice"
+import { setDifferentEditor,setConsole,setDefault} from "../../redux/slices/alphaPlatformSlice"
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
 import SlidingPane from "./coding-page-components/sliding-panel/problemSlidingPane";
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/ConsoleInput";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
+
+
 import "./styles/mainPage.css"
 import "react-toastify/dist/ReactToastify.css";
 
-const javascriptDefault = "";
 
 const AlphaPlatform = ({}) => {
-
+  
+    const alphaPlatformComponents = useSelector((state) =>  state.alphaPlatform.value);
+    const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
+    console.log(dropdownValue.theme);
+    const dispatch = useDispatch();
     const [code, setCode] = useState("");
-    const [theme, setTheme] = useState("cobalt");
-    const [language, setLanguage] = useState(languageOptions[0]);
+    const [theme, setTheme] = useState("oceanic-next");
+    const [language, setLanguage] = useState(dropdownValue.language);
     const [problem,setProblem] = useState(false)
     const [customInput, setCustomInput] = useState("");
     const [output, setOutput] = useState("")
     const toastId = useRef(null);
-    const dispatch = useDispatch();
-    const alphaPlatformComponents = useSelector((state) =>  state.alphaPlatform.value);
+
+
+    useEffect(() => {
+      setLanguage(dropdownValue.language);
+    },[dropdownValue.language]);
 
     useEffect(() => {
 
@@ -65,12 +72,13 @@ const AlphaPlatform = ({}) => {
             window.removeEventListener('beforeunload', handleResize);
         };
 
-      },[]);
+      },
+      [alphaPlatformComponents.console,
+        alphaPlatformComponents.gpt, 
+        alphaPlatformComponents.editor,
+        alphaPlatformComponents.isConsoleGpt
+      ]);
 
-    const onSelectChange = (Language) => {
-      setLanguage(Language);
-    };
-  
     const onChange = (action, data) => {
       switch (action) {
         case "code": {
@@ -84,16 +92,15 @@ const AlphaPlatform = ({}) => {
     };
 
     const showProblem = () => {
-      if(problem.visible === false){ setProblem({visible:true}) }
-      else{ setProblem({visible:false}) };
+      
+      setProblem(problem => !problem);
     }
 
     const closePane = () => {
-       setProblem({visible:false});
+       setProblem(problem => !problem);
     }
 
     const handleCompile = () => {
-
       toastId.current  = toast("Processing...",{
         autoClose:10000
       });
@@ -112,7 +119,6 @@ const AlphaPlatform = ({}) => {
 
       axios.post('http://localhost:5000/api/compile',requestData)
            .then((response) => {
-              console.log(response);
               checkStatus(response.data.token);
            })
 
@@ -152,21 +158,16 @@ const AlphaPlatform = ({}) => {
       }
     };
   
-    function handleThemeChange(th) {
-      const theme = th;
-      if (["light", "vs-dark"].includes(theme.value)) {
-        setTheme(theme);
-      } else {
-        defineTheme(theme.value).then((_) => setTheme(theme));
-      }
-    }
-
     useEffect(() => {
-      defineTheme("oceanic-next").then((_) => {
-            setTheme({ value: "oceanic-next", label: "Oceanic Next" })
+        if (["light", "vs-dark"].includes(dropdownValue.theme)) {
+          setTheme(dropdownValue.theme);
+        } 
+        else 
+        {
+          defineTheme(dropdownValue.theme).then((_) => setTheme(dropdownValue.theme));
         }
-      );
-    }, []);
+      
+    },[dropdownValue.theme])
 
     const showError = (notification) =>{
 
@@ -200,9 +201,9 @@ const AlphaPlatform = ({}) => {
       <>
         <ToastContainer/>
 
-        <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
+        <SlidingPane isOpen={problem} onRequestClose={closePane}/>
 
-        <div className="main-class w-full h-full flex flex-row min-h-[100vh]  min-w-screen max-h-full bg-algoblack">
+        <div className="main-class min-w-[350px] w-full h-full flex flex-row min-h-[100vh]  min-w-screen max-h-full bg-algoblack">
         
             {
               alphaPlatformComponents.isConsoleGpt &&
@@ -217,11 +218,7 @@ const AlphaPlatform = ({}) => {
                     <CodeEditorWindow
                       code={code}
                       onChangeData={onChange}
-                      language={language?.value}
-                      theme={theme?.value}
-                      themeOptions = {theme}
-                      onSelectChange = {onSelectChange}
-                      handleThemeChange = {handleThemeChange}
+                      theme={theme}
                     />
                 </div>
             }
@@ -232,7 +229,7 @@ const AlphaPlatform = ({}) => {
                 <div className="console-gpt ">
                     {
                     alphaPlatformComponents.console &&
-                          <ConsoleInput/>
+                      <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem} />
                     }
                     { 
                     alphaPlatformComponents.gpt && 

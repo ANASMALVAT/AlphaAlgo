@@ -20,7 +20,6 @@ export const alphaPlatformSlice = createSlice({
         setDefault :(state,action) => {
             state.value = action.payload;
         }
-
     },
 });
 

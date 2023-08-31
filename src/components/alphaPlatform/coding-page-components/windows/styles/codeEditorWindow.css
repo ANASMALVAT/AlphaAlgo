@@ -7,33 +7,33 @@
 .monaco-editor {
     font-family: 'Fira Code', monospace;
   }
+  
 .margin-view-overlays{
+
   opacity: 1;
   border-right: 1px solid #4C5ADF;
 }
 
-.code-editor {
-  min-width: 400px;
-  min-height: 100vh;
-  height: 100%;
-}
-
-.side-menu{
-    display:none;
-}
-
 @media (max-width: 385px) {
-  
+
   .editor-logo{
     display: none;
   }
+
   .button-disappear {
       display: none;
       width: 0px;
     }
 }
 
-
+.code-editor{
+  min-width: 400px;
+  min-height: 100vh;
+  height: 100%;
+}
+.side-menu{
+    display:none;
+}
 
 @media (max-width: 1000px) {
     .logo{

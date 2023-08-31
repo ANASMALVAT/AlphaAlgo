@@ -10,12 +10,13 @@ const AlphaGPTWindow = () => {
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
   const [chats, setChats] = useState([]);
+  const smartMessage = ` Keep the explanation concise and brief, and give a simple example.`;
 
   const askGPT = async (userInput) => {
     if (userInput.trim() !== '') {
       setLoading(true);
       let currentChats = chats;
-      currentChats.push({ role: 'user', content: userInput });
+      currentChats.push({ role: 'user', content: userInput + smartMessage });
       setChats(currentChats);
       setMessages((prevMessages) => [
         ...prevMessages,
@@ -61,11 +62,6 @@ const AlphaGPTWindow = () => {
         }
     );
   };
-
-  useEffect(() => {
-    console.log('useEffect!');
-    console.log(chats);
-  }, []);
 
   return (
     <div className='h-full flex flex-col flex-1 w-full bg-algoblack p-2 rounded-md border border-gray-600'>

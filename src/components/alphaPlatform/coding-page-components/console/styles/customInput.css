@@ -1,0 +1,31 @@
+textarea {
+    width: 100%;
+    height: 100%;
+    padding: 0.5em;
+    font-size: 1.5em;
+    text-align: left;
+    resize: none;
+  }
+  
+  .boxSizing-borderBox {
+    box-sizing: border-box;
+  }
+
+   .scroll-bar {
+    scrollbar-width: thin;
+    scrollbar-color: #4C5ADF #011627;
+  }
+
+  .scroll-bar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .scroll-bar::-webkit-scrollbar-track {
+    background: #011627;
+  }
+  
+  .scroll-bar::-webkit-scrollbar-thumb {
+    background: #4C5ADF;
+    border-radius: 8px;
+  } 
+  

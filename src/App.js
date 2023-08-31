@@ -7,7 +7,7 @@ import {
 import Team from "./components/alphaHome/home-page-components/team/team";
 import AlphaHomePage from './components/alphaHome/alphaHome';
 import AlphaPlatform from "./components/alphaPlatform/mainPage";
-import AlphaGPTWindow from "./components/alphaPlatform/coding-page-components/windows/alphaGptWindow";
+import AlphaGPTWindow from "./components/alphaPlatform/coding-page-components/alpha-gpt/alphaGptWindow";
 
 function App() {
 

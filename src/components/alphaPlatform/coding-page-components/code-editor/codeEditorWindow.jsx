@@ -8,21 +8,19 @@ import SettingSlidingPane from "../sliding-panel/settingSlidingPane";
 import ConsoleSlidingPane from "../sliding-panel/consoleSlidingPane";
 import MenuIcon from '@mui/icons-material/Menu';
 
-
-import "../../styles/codeEditorWindow.css";
+import "./styles/codeEditorWindow.css";
 
 
 const CodeEditorWindow = ({
+
     onChangeData,
     language,
     code,
     theme, 
     themeOptions, 
     onSelectChange,
-    handleThemeChange,
-    openEditor,
-    openConsole,
-    openAlphaGPT }) => {
+    handleThemeChange
+    }) => {
 
     const [value,setValue] = useState(code || "");
     const [initialValue, setInitialValue] = useState(code || ""); // New state variable
@@ -87,13 +85,11 @@ const CodeEditorWindow = ({
             }
         }
 
-
-
-
     return(
     <>
         < SettingSlidingPane isOpen={settingPane} onRequestClose={closeSettingPane} theme={theme} themeOptions={themeOptions} handleThemeChange={handleThemeChange}/>
-        < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} openEditor={openEditor} openConsole={openConsole} openAlphaGPT={openAlphaGPT} />
+        < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} />
+
         <div className="  code-editor  flex flex-col w-full min-w-[385px] border-4 border-[#1f2937]">
             
             <div className=" flex flex-row justify-between min-w-[385px]  rounded-sm border-4 m-1 border-[#1f2937] h-14 ">
@@ -111,9 +107,9 @@ const CodeEditorWindow = ({
                 </div>
 
                 <div className="editor-logo flex flex-row text-center overflow-hidden items-center h-full w-20 justify-center border-t-4 border-b-4 border-[#4C5ADF]">
-                            <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
-                            <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:rotate-[540deg] ">X</h1>
-                            <h1 className="font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
+                    <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
+                    <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:rotate-[540deg] ">X</h1>
+                    <h1 className="font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
                 </div>
 
                 <div className="language-button ">

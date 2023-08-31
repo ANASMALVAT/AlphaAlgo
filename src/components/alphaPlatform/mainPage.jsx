@@ -1,21 +1,24 @@
 import React from "react";
+import axios from "axios";
 import { useState,useEffect,useRef } from "react";
 import { ToastContainer,toast } from "react-toastify";
-import axios from "axios";
-import CodeEditorWindow from "./coding-page-components/windows/codeEditorWindow";
-import useKeyPress from "../../hooks/useKeyPress";
 import { defineTheme } from "../../data/themeOptions";
 import { languageOptions } from "../../data/codingLanguages";
+import {useSelector} from 'react-redux'
+import { useDispatch } from "react-redux";
+import { setDifferentEditor,setGPT,setConsole,setDefault} from "../../redux/slices/alphaPlatformSlice"
+import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
 import SlidingPane from "./coding-page-components/sliding-panel/problemSlidingPane";
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/ConsoleInput";
-
+import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
 import "./styles/mainPage.css"
 import "react-toastify/dist/ReactToastify.css";
 
 const javascriptDefault = "";
 
 const AlphaPlatform = ({}) => {
+
     const [code, setCode] = useState("");
     const [theme, setTheme] = useState("cobalt");
     const [language, setLanguage] = useState(languageOptions[0]);
@@ -23,60 +26,33 @@ const AlphaPlatform = ({}) => {
     const [customInput, setCustomInput] = useState("");
     const [output, setOutput] = useState("")
     const toastId = useRef(null);
-
-    const[editor,setEditor] = useState(true);
-    const[cons,setConsole] = useState(true);
-    const[gpt,setGpt] = useState(true);
-    const[isConsoleGpt, setIsConsoleGpt] = useState(true);
-
-  
+    const dispatch = useDispatch();
+    const alphaPlatformComponents = useSelector((state) =>  state.alphaPlatform.value);
 
     useEffect(() => {
 
       const handleResize = () => {
 
-          if(window.innerWidth > 950) {
-
-            setEditor(cons => {
-              return true;
-            });
-            setConsole(cons => {
-              return true;
-            });
-            setGpt(cons => {
-              return true;
-            });
-            setIsConsoleGpt(cons => {
-              return true;
-            });
-
+          if(window.innerWidth > 1000) {
+            dispatch(setDefault({editor:true,console:true,gpt:true,isConsoleGpt:true}));
           }
+
           else {
 
-            if(editor === false && isConsoleGpt === false){
-              setEditor(cons => {
-                return true;
-              });
+            if(alphaPlatformComponents.editor === true && alphaPlatformComponents.isConsoleGpt === true){
+              dispatch(setDifferentEditor({ editor: true, console: false, gpt: false, isConsoleGpt: false}))
             }
 
-            else if (editor && isConsoleGpt || editor && cons || editor && gpt) {
-                setConsole(cons => {
-                  return false;
-                });
-                setGpt(cons => {
-                  return false;
-                });
-                setIsConsoleGpt(cons => {
-                  return false;
-                });
-            }   
-            else if(isConsoleGpt && cons && gpt) {
-              setGpt(cons => {
-                return false;
-              });
+            else if (alphaPlatformComponents.editor === true && alphaPlatformComponents.isConsoleGpt === true || alphaPlatformComponents.editor === true && alphaPlatformComponents.console === true || alphaPlatformComponents.editor === true && alphaPlatformComponents.gpt === true) {
+              dispatch(setDifferentEditor({ editor: true, console: false, gpt: false, isConsoleGpt: false}))
             }
-           
+
+            else if(alphaPlatformComponents.isConsoleGpt === true && alphaPlatformComponents.console === true && alphaPlatformComponents.gpt === true) {
+              dispatch(setConsole({ editor: false, console: true, gpt: false, isConsoleGpt: true}))
+            }
+
           }
+
         };
 
         window.addEventListener('resize', handleResize);
@@ -85,42 +61,11 @@ const AlphaPlatform = ({}) => {
         handleResize();
       
           return () => {
-
-          window.removeEventListener('resize', handleResize);
-          window.removeEventListener('beforeunload', handleResize);
-
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('beforeunload', handleResize);
         };
 
-
-      },[editor, isConsoleGpt, cons, gpt]);
-
-    const showEditor = () => {
-      console.log("here editor")
-
-        setEditor(edit => true);
-        setIsConsoleGpt(consGtp => false);
-        setConsole(cons => false);
-        setGpt(gpt => false);
-    }
-
-    const showConsole = () => {
-      
-      console.log("here console")
-      setIsConsoleGpt(consGtp => true);
-      setConsole(cons => true);
-      setEditor(edit => false);
-      setGpt(gpt => false);
-     
-    }
-
-    const showGPT = () => {
-      console.log("here gpt")
-      setIsConsoleGpt(consGtp => true);
-      setGpt(gpt => true);
-      setEditor(edit => false);
-      setConsole(cons => false);
-      
-    }
+      },[]);
 
     const onSelectChange = (Language) => {
       setLanguage(Language);
@@ -257,53 +202,47 @@ const AlphaPlatform = ({}) => {
 
         <SlidingPane isOpen={problem.visible} onRequestClose={closePane}/>
 
-        <div className="w-full h-full min-w-[375px]  max-w-screen max-h-full">
-
-          <div  className="flex flex-row bg-algoblack overflow-hidden min-h-screen">
+        <div className="main-class w-full h-full flex flex-row min-h-[100vh]  min-w-screen max-h-full bg-algoblack">
+        
+            {
+              alphaPlatformComponents.isConsoleGpt &&
+                <div className="show-buttons bg-algoblack justify-center h-14 p-2  border-1 w-[100%] border-[#1F2937]">
+                  <AlgoButtons buttonOne={`Editor`} buttonTwo={`Console`} buttonThree={`AlphaGPT`}/>
+                </div>
+            }
 
             { 
-            editor && 
-            <div className="editor-class overflow-hidden  flex flex-col  w-[60%]  h-full max-h-[screen] min-h-[full]">
-                      <CodeEditorWindow
-                          code={code}
-                          onChangeData={onChange}
-                          language={language?.value}
-                          theme={theme?.value}
-                          themeOptions = {theme}
-                          onSelectChange = {onSelectChange}
-                          handleThemeChange = {handleThemeChange}
-                          openEditor={showEditor}
-                          openConsole={showConsole}
-                          openAlphaGPT={showGPT}
-                      />
-              </div>
+              alphaPlatformComponents.editor && 
+                <div className="editor-class overflow-hidden  flex flex-col  w-[60%]  h-full max-h-[screen] min-h-[full]">
+                    <CodeEditorWindow
+                      code={code}
+                      onChangeData={onChange}
+                      language={language?.value}
+                      theme={theme?.value}
+                      themeOptions = {theme}
+                      onSelectChange = {onSelectChange}
+                      handleThemeChange = {handleThemeChange}
+                    />
+                </div>
             }
 
-            { isConsoleGpt && 
-              <div id="console-gpt" className="overflow-hidden console-gpt flex flex-col flex-grow h-full  max-w-screen min-h-full">
-                  { 
-                  gpt && 
-                    <div className="gpt text-center justify-center items-center h-full max-h-full">
-                      <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem}/>
-                    </div>
-                  }
-                  {
-                  cons &&
-                    <div className="console text-center justify-center items-center h-full max-h-full min-w-full">
-                      <ConsoleInput  output={output} handleCompile={handleCompile} showProblem={showProblem}/>
-                    </div>
-                  }
-                   <div className="show-buttons bg-algoblack justify-center h-12 p-2">
-                    <AlgoButtons methodOne={showEditor} methodTwo={showConsole} methodThree={showGPT} buttonOne={`Editor`} buttonTwo={`Console`} buttonThree={`AlphaGPT`}/>
-                  </div>
-              </div>
-            }
-           
-          
+            { 
+              alphaPlatformComponents.isConsoleGpt && 
+
+                <div className="console-gpt ">
+                    {
+                    alphaPlatformComponents.console &&
+                          <ConsoleInput/>
+                    }
+                    { 
+                    alphaPlatformComponents.gpt && 
+                      <AlphaGPTWindow/>
+                    }
+                </div>
+              }
+
           </div>
-        </div>
       </>
-
     );
   };
 

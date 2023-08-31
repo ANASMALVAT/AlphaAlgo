@@ -1,5 +1,5 @@
 import React from "react";
-import { CodeBlock,dracula, } from "react-code-blocks";
+import { CodeBlock } from "react-code-blocks";
 
 const ProblemLayout = ({ problemData }) => {
 

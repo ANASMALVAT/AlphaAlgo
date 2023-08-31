@@ -1,8 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import { customStyles } from "../../styles/customCss";
-// import monacoThemes from "monaco-themes/themes/themelist";
-
+import { customStyles } from "./styles/customCss";
 
 const ThemeDropdown = ({ handleThemeChange, theme }) => {
   const scrollRef = React.useRef(null);

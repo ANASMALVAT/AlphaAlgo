@@ -38,7 +38,7 @@ const CodeOutput = ( { outputDetail } ) =>
 
     return (
         <>
-            <div className= 'text-start w-full min-h-[275px] max-h-screen h-full border border-[#6c7af4] bg-[#001528]  text-white font-normal text-sm rounded-sm overflow-y-auto'>
+            <div className= 'text-start w-full  max-h-screen h-full bg-transparent  text-white font-normal text-sm rounded-sm'>
                     {outputDetail ? <> {codeOutPut()} </>: null} 
             </div>
         </>

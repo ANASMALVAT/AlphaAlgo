@@ -5,9 +5,8 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import SendIcon from '@mui/icons-material/Send';
 import CircularProgress from '@mui/material/CircularProgress';
+import "./styles/alphaGptSearchBar.css";
 
-
-import "../../styles/alphaGptSearchBar.css"
 
 export default function AlphaGPTSearchBar({sendRequest, loading}) {
 
@@ -23,26 +22,24 @@ export default function AlphaGPTSearchBar({sendRequest, loading}) {
 
       <Paper
           component="form"
-          sx={{ display: 'flex', background:'transparent', borderRight:'1px solid white', alignItems: 'center', height:"80%", width: '100%' }}
+          sx={{ display: 'flex', background:'transparent', borderRight:'1px solid white', alignItems: 'center', height:"60px", width: '100%' }}
         >
-
         <textarea 
-        className=' text-area bg-transparent w-full rounded-[0.25rem] h-full border border-gray-50 text-white' 
-        placeholder='AlphaGPT' 
-        onChange={(event) => {handleUserInput(event.target.value)}}
-        value={userInput}
+          className=' text-area bg-transparent w-full rounded-[0.25rem] h-14  border border-gray-50 text-white' 
+          placeholder='AlphaGPT' 
+          onChange={(event) => {handleUserInput(event.target.value)}}
+          value={userInput}
         >
         </textarea>
         
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
 
-        <IconButton disabled = {loading} color="primary" sx={{ p: '10px',}} aria-label="directions" onClick={ () => { sendRequest(userInput); setUserInput(""); } }>
+        <IconButton disabled = {loading} color="primary" sx={{ p: '5px',}} aria-label="directions" onClick={ () => { sendRequest(userInput); setUserInput(""); } }>
           { 
           loading ? <CircularProgress x={{color:"white", fontWeight:"bold",fontSize:"30px"}} disableShrink color="secondary"/>
                   : <SendIcon  sx={{color:"white", fontWeight:"bold",fontSize:"30px"}} />
           }
         </IconButton>
-
       </Paper>
   );
 }

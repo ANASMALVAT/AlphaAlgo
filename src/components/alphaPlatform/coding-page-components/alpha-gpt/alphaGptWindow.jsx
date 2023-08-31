@@ -1,49 +1,92 @@
-// import React, { useState } from "react";
-// =
+import React, { useEffect, useState } from 'react';
+import AlphaGPTSearchBar from './alphaGptSearchBar';
+import AlphaGptWindowText from './alphaGptWindowText';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
-// const ConsoleInput = ({output,handleCompile,showProblem}) =>{
+import './styles/alphaGptWindow.css';
 
-//     const [isConsole, setIsConsole] = useState(true);
-//     const [isInput, setIsInput] = useState(false);
-//     const [isNote, setIsNote] = useState(false);
+const AlphaGPTWindow = () => {
+  const [loading, setLoading] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [chats, setChats] = useState([]);
 
+  const askGPT = async (userInput) => {
+    if (userInput.trim() !== '') {
+      setLoading(true);
+      let currentChats = chats;
+      currentChats.push({ role: 'user', content: userInput });
+      setChats(currentChats);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { type: 'User', text: userInput },
+      ]);
+      try {
+        const response = await axios.post('http://localhost:5000/api/alpha-gpt', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          currentChats,
+        });
 
-//     const setConsole = () => {
-//         setIsConsole(currentIsConsole => true);
-//         setIsInput(currentIsInput => false);
-//         setIsNote(currentIsNote => false);
-//       };
-      
-//       const setInput = () => {
-//         setIsInput(currentIsInput => true);
-//         setIsConsole(currentIsConsole => false);
-//         setIsNote(currentIsNote => false);
-//       }
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { type: 'Bot', text: response.data.content },
+        ]);
 
-//       const setNote = () => {
-//         setIsNote(currentIsNote => true);
-//         setIsConsole(currentIsConsole => false);
-//         setIsInput(currentIsInput => false);
-//       };
+        currentChats.push({ role: 'assistant', content: response.data.content });
+        setChats(currentChats);
+      } catch (error) {
+        showError('Under Maintenance!');
+      }
 
+      setLoading(false);
+    }
+  };
 
-//     return (
-//         <div className="flex flex-col h-full overflow-hidden p-2 m-2 mb-0 border-4 border-[#1F2937]  bg-algoblack">
+  const showError = (notification) => {
+    toast.error(
+      notification
+        ? notification
+        : 'Something Went Wrong, Please Try Again!',
+        {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        }
+    );
+  };
 
-//             <div className="console-console-buttons flex flex-row items-start space-x-1  h-10 w-full  bg-algoblack">
-//                 <ConsoleButton setConsole={setConsole} setInput={setInput} setNote={setNote} isConsole={isConsole} isInput={isInput} isNote={isNote}/>
-//             </div>
+  useEffect(() => {
+    console.log('useEffect!');
+    console.log(chats);
+  }, []);
 
-//             <div className="overflow-hidden h-full mt-2 mb-2 ">
-//                 {isInput   &&  <CustomInput/> }
-//                 {isConsole &&  <CodeOutput outputDetail={output}/> }
-//             </div>
+  return (
+    <div className='h-full flex flex-col flex-1 w-full bg-algoblack p-2 rounded-md border border-gray-600'>
 
-//             <div className="console-algo-buttons overflow-hidden flex flex-row h-10 ">
-//                 <AlgoButtons methodOne={showProblem} methodTwo={handleCompile} methodThree={handleCompile} buttonOne={`Problem`} buttonTwo={`Run`} buttonThree={`Submit`}></AlgoButtons>
-//             </div>
-//         </div>
-//     );
-// }
+      <ToastContainer />
 
-// export default ConsoleInput;
+      <div className='gpt-output-console flex-grow w-full p-2 border border-gray-600 mb-2 rounded-md overflow-auto h-[100%]'>
+        {messages.map((message, index) => (
+          <AlphaGptWindowText
+            key={index}
+            data={message.text}
+            type={message.type}
+          />
+        ))}
+
+      </div>
+
+        <AlphaGPTSearchBar sendRequest={askGPT} loading={loading} />
+
+    </div>
+  );
+};
+
+export default AlphaGPTWindow;

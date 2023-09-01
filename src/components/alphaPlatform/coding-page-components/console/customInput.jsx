@@ -1,24 +1,41 @@
-import * as React from 'react';
-import { Textarea } from '@mui/joy';
-import { TextareaAutosize } from '@mui/base';
-import "./styles/customInput.css"
+import React, { useState } from 'react';
+import EdiText  from 'react-editext';
+import './styles/customInput.css';
 
-const CustomInput = () => {
+const CustomInput = ({ testCases }) => {
+  const [editing, setEditing] = useState(false);
+
+  const onSave = (value) => {
+    console.log('New cases:', value);
+    setEditing(false);
+  };
+  console.log(testCases);
   return (
-    <div className='h-full w-full flex-grow'>
-      <TextareaAutosize className=" boxSizing-borderBox scroll-bar" 
-      style=
-        {{
-        width:'100%',
-        height:'95%', 
-        scrollbarWidth: '4px', 
-        scrollbarColor : '#4C5ADF #011627',
-        border:"none", color:"white",
-        background:'transparent'}} 
-        placeholder="Custom Input"
-      />
-    </div>
+    <div className="custom-input flex flex-col gap-4 h-full w-full whitespace-pre  overflow-auto rounded-md">
+      <pre className='text-red-600'>
+        <EdiText
+          value={testCases[0]}
+          onSave={onSave}
+          canEdit={true}
+          editButtonProps={{ style: { borderRadius: 3, padding: "5px", width: "100%", background: "#15314B", color:"green" } }}
+          viewProps={{ className: 'text-lg', style: { fontWeight: 'bold',borderRadius: 3, padding: "10px", width: "100%", background: "#15314B", color:"green", whiteSpace: "pre-wrap" } }}
+          editProps={{ style: { borderRadius: 3, padding: "5px", width: "100%", background: "#15314B", whiteSpace: "pre-wrap" } }}
+          inputProps={{ style: { whiteSpace: "pre-wrap" } }} // Add this line to ensure text wrapping
+        />
+      </pre>
+      {
+        testCases.slice(1).map((data, index) => (
+          <pre
+            key={index}
+            className='rounded-[0.25rem] text-red-600 whitespace-pre w-full bg-[#15314B] p-2 font-normal'
+            style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}
+          >
+            {data}
+          </pre>
+        ))
+      }
+</div>
   );
-}
+};
 
 export default CustomInput;

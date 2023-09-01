@@ -6,6 +6,7 @@ module.exports = {
 
   theme: {
     fontFamily:{
+      // sans:['Roboto','sans-serif']
     },
 
     extend: {
@@ -23,5 +24,6 @@ module.exports = {
       '3/4':'75%'
     }
   },
-  plugins: [require('flowbite/plugin')],
+  plugins: [require('flowbite/plugin')]
+  ,
 };

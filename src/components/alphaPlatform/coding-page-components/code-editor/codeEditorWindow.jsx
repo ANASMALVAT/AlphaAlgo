@@ -7,13 +7,12 @@ import RestoreIcon from '@mui/icons-material/Restore';
 import SettingSlidingPane from "../sliding-panel/settingSlidingPane";
 import ConsoleSlidingPane from "../sliding-panel/consoleSlidingPane";
 import MenuIcon from '@mui/icons-material/Menu';
-import {useSelector} from "react-redux"
+import {useSelector} from "react-redux";
 import "./styles/codeEditorWindow.css";
 
 const CodeEditorWindow = ({
     onChangeData,
     code,
-    
     }) => {
     const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
     const [value,setValue] = useState(code || "");
@@ -22,7 +21,7 @@ const CodeEditorWindow = ({
     const [settingPane,setSettingPane] = useState(false);
     const [consolePane,setConsolePane] = useState(false);
     const [currentLanguage,setCurrentLanguagae] = useState(dropdownValue.language);
-    const [currentTheme,setcurrentTheme] = useState(dropdownValue.theme);
+    const [currentTheme,setcurrentTheme] = useState("blackboard");
 
 
     useEffect(() => {
@@ -52,7 +51,7 @@ const CodeEditorWindow = ({
     }
 
     useEffect(() => {
-        setInitialValue(code); // Update initial value when prop 'code' 
+        setInitialValue(code); 
     }, []);
 
 
@@ -65,13 +64,11 @@ const CodeEditorWindow = ({
     const handleRestore = () => {
         setValue(initialValue); 
         onChangeData("code",value);
-        editorRef.current.setValue(initialValue); // Also update the editor content
+        editorRef.current.setValue(initialValue);
     };
 
-    // Resize  observer issue of Code Editor
     const OriginalResizeObserver = window.ResizeObserver;
 
-    // Create a new ResizeObserver constructor
     window.ResizeObserver = function (callback) {
 
         const wrappedCallback = (entries, observer) => {
@@ -79,7 +76,6 @@ const CodeEditorWindow = ({
             callback(entries, observer);
             });
         };
-
         return new OriginalResizeObserver(wrappedCallback);
     };
 
@@ -127,7 +123,7 @@ const CodeEditorWindow = ({
                 </div>
 
             </div>
-
+            
             <div className="h-2 w-full flex-grow min-w-[385px]">
                 <Editor
                     height={`100%`}

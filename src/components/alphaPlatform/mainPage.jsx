@@ -22,10 +22,9 @@ const AlphaPlatform = ({}) => {
     const alphaPlatformComponents = useSelector((state) =>  state.alphaPlatform.value);
     const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
     const layoutValue = useSelector((state) => state.layoutValue);
-    console.log(layoutValue)
     const dispatch = useDispatch();
     const [code, setCode] = useState("");
-    const [theme, setTheme] = useState("oceanic-next");
+    const [theme, setTheme] = useState(dropdownValue.theme);
     const [language, setLanguage] = useState(dropdownValue.language);
     const [problem,setProblem] = useState(false)
     const [customInput, setCustomInput] = useState("");
@@ -120,6 +119,12 @@ const AlphaPlatform = ({}) => {
           toast.update(toastId.current, {autoClose:1})
           showError("No Code Is Written!");
           return;
+      }
+
+      if(language.value === 'text'){
+        toast.update(toastId.current, {autoClose:1})
+        showError("White Board Is Enabled!");
+        return;
       }
 
       const requestData = {
@@ -228,7 +233,6 @@ const AlphaPlatform = ({}) => {
                     <CodeEditorWindow
                       code={code}
                       onChangeData={onChange}
-                      theme={theme}
                     />
                 </div>
             }
@@ -236,7 +240,7 @@ const AlphaPlatform = ({}) => {
             { 
               alphaPlatformComponents.isConsoleGpt && 
 
-                <div className={`console-gpt ${windowWidth ? 'w-[40%]' : 'w-[60%]'} ${toggelWindow ? 'alpha-first' : 'console-first'} transition-all duration-700 ease-in-out `}>
+                <div className={`console-gpt ${windowWidth ? 'w-[40%]' : 'w-[60%]'} ${toggelWindow ? 'alpha-first' : 'console-first'} transition-all duration-700 ease-in-out max-h-[100vh] `}>
                   {
                     toggelWindow ?
                     (

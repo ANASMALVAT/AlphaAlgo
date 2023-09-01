@@ -4,7 +4,6 @@ import AlphaGptWindowText from './alphaGptWindowText';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import {useSelector} from "react-redux"
-
 import './styles/alphaGptWindow.css';
 
 const AlphaGPTWindow = () => {
@@ -80,7 +79,7 @@ const AlphaGPTWindow = () => {
 
       <ToastContainer />
 
-      <div className={`gpt-output-console ${windowHeight === 0 ? 'h-[100px]' :windowHeight === 1 ? 'h-[250px]' : 'h-[425px]'} transition-all duration-700 ease-in-out flex-grow w-full p-2 border border-gray-600 mb-2 rounded-md overflow-auto h-[100%]`}>
+      <div className={`gpt-output-console h- ${windowHeight === 0 ? 'h-[125px]' :windowHeight === 1 ? 'h-[250px]' : 'h-[450px]'} transition-all duration-700 ease-in-out flex-grow w-full p-2 border border-gray-600 mb-2 rounded-md overflow-auto h-[100%]`}>
         {messages.map((message, index) => (
           <AlphaGptWindowText
             key={index}

@@ -16,16 +16,32 @@ textarea {
     scrollbar-color: #4C5ADF #011627;
   }
 
-  .scroll-bar::-webkit-scrollbar {
+  .custom-input::-webkit-scrollbar {
     width: 4px;
   }
   
-  .scroll-bar::-webkit-scrollbar-track {
+  .custom-input::-webkit-scrollbar-track {
     background: #011627;
   }
   
-  .scroll-bar::-webkit-scrollbar-thumb {
+  .custom-input::-webkit-scrollbar-thumb {
     background: #4C5ADF;
     border-radius: 8px;
   } 
   
+.edit-text{
+  font-family: Open Sans,Helvetica,Arial,sans-serif;
+}
+
+.styles-module_Editext__input__2-M50{
+  border-radius: 5px;
+  background: transparent;
+}
+
+.styles-module_Editext__button__sxYQX {
+  border-radius: 5px;
+  font-weight: bolder;
+  border:none;
+  font-size: 22px;
+}
+

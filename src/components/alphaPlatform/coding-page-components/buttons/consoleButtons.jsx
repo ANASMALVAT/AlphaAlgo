@@ -11,7 +11,7 @@ const ConsoleButton = ({setConsole,isConsole, setInput, isInput, setNote, isNote
 
                 <button onClick={setInput} className={`  border  border-[#1F2937] overflow-hidden flex flex-row items-center  rounded-[4px] px-2 py-2 font-mono text-sm font-normal text-white ${isInput ? 'bg-[#3e49b4]' : 'bg-[#5867ea]'} `}>
                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-white " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                    Input
+                        Test Case
                 </button>
 
                 <button onClick={setNote} className={`  border  border-[#1F2937] overflow-hidden flex flex-row items-center  rounded-[4px] px-2 py-2 font-mono text-sm font-normal text-white ${isNote ? 'bg-[#3e49b4]' : 'bg-[#5867ea]'}`}>

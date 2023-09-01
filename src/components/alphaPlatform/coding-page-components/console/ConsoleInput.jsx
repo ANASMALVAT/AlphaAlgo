@@ -34,17 +34,25 @@ const ConsoleInput = ({output,handleCompile,showProblem}) =>{
         setIsInput(currentIsInput => false);
       };
 
+      const testcases = [
+        "[1,2,3,4,5,6]",
+        "[1,6,7,8,9,0,1]",
+        "[1,2,3,4,5,6]",
+        "[1,6,7,8,9,0,1]",
+        "[1,2,3,4,5,6]",
+        "[1,6,7,8,9,0,1,1,2,3,3,4,5,5,6,7,8,8,9,9,0,3,1,3,4,2,1,34,5,123,12,124,2,123,123]",
+      ];
 
     return (
-        <div className="main-console h-full overflow-hidden  p-2  border border-gray-600 bg-algoblack rounded-md">
+        <div className="main-console flex-grow overflow-hidden  p-2  border border-gray-600 bg-algoblack rounded-md">
 
             <div className="console-console-buttons flex flex-row items-start space-x-1  h-12 w-full  bg-algoblack">
                 <ConsoleButton setConsole={setConsole} setInput={setInput} setNote={setNote} isConsole={isConsole} isInput={isInput} isNote={isNote}/>
                 <VerticalHorizontalButtons/>
             </div>
 
-            <div className="output-input flex-grow h-full mt-2 mb-2 border border-gray-600 rounded-md overflow-hidden p-4 ">
-                {isInput   &&  <CustomInput/> }
+            <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md overflow-hidden p-4 ">
+                {isInput   &&  <CustomInput testCases={testcases} /> }
                 {isConsole &&  <CodeOutput outputDetail={output}/> }
             </div>
 

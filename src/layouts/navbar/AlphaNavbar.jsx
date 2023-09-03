@@ -39,7 +39,7 @@ const AlphaNavbar  = () => {
                         </div>
                     </div>
 
-                    <div id="nav" className="nav w-[45%]  max-w-[325px] h-full"> 
+                    <div id="nav" className="nav w-[45%]  max-w-[400px] h-full"> 
                         <NavLinks/>
                     </div>
 

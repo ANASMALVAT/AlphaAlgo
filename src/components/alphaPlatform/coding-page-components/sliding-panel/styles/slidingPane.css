@@ -64,8 +64,8 @@
     align-items: center;
     background: #00182D;
     height: 40px;
-    border-bottom: 4px solid #4C5ADF;
-    border-radius: 20px;
+    border-bottom: 2px solid #4C5ADF;
+    border-radius: 10px;
     justify-content: center;
 
   }
@@ -87,6 +87,8 @@
     margin: 0;
     padding: 0;
     color: white;
+    font-weight: lighter;
+    font-family:monospace;
     
   }
   .slide-pane__close {

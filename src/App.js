@@ -7,11 +7,11 @@ import {
 import Team from "./components/alphaHome/home-page-components/team/team";
 import AlphaHomePage from './components/alphaHome/alphaHome';
 import AlphaPlatform from "./components/alphaPlatform/mainPage";
-import AlphaGPTWindow from "./components/alphaPlatform/coding-page-components/alpha-gpt/alphaGptWindow";
-
+import CodingProblems from "./components/alphaHome/home-page-components/problems/codingProblemsMainPage";
 function App() {
 
-  const router = createBrowserRouter([
+  const router = createBrowserRouter
+  ([
     {
       path: "/",
       element: <AlphaHomePage/>
@@ -25,8 +25,8 @@ function App() {
       element:<AlphaPlatform/>
     },
     {
-      path: "/gpt",
-      element:<AlphaGPTWindow/>
+      path:"/problems",
+      element:<CodingProblems/>
     }
   ]);
   

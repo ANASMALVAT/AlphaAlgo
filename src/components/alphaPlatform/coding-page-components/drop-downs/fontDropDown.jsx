@@ -2,6 +2,7 @@ import React , {useEffect, useState} from 'react';
 import  Select  from 'react-select';
 import { fontOptions } from '../../../../data/fontSizes';
 import { customStyles } from './styles/customCss';
+import './styles/dropdown.css';
 import { setFont } from '../../../../redux/slices/dropDownSlice';
 import { useDispatch } from 'react-redux';
 import {useSelector} from "react-redux"

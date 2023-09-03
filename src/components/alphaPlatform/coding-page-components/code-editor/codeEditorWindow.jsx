@@ -116,7 +116,7 @@ const CodeEditorWindow = ({
                     <LanguageDropDown />
                 </div>
 
-                <div className="side-menu flex  min-w-[100px] text-white ml-8 items-center justify-center p-2">
+                <div className="side-menu flex  min-w-[125px] text-white ml-8 items-center justify-left p-2">
                     <button  onClick={openConsolePane} >
                         <MenuIcon sx={{fontSize:'28px'}}/>
                     </button>
@@ -124,7 +124,7 @@ const CodeEditorWindow = ({
 
             </div>
             
-            <div className="h-2 w-full flex-grow min-w-[385px]">
+            <div className="h-2 w-full flex-grow min-h-[200px] min-w-[385px]">
                 <Editor
                     height={`100%`}
                     width={`100%`}

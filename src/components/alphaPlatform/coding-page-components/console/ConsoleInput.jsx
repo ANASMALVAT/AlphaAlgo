@@ -44,9 +44,9 @@ const ConsoleInput = ({output,handleCompile,showProblem}) =>{
       ];
 
     return (
-        <div className="main-console flex-grow overflow-hidden  p-2  border border-gray-600 bg-algoblack rounded-md">
+        <div className="main-console flex-grow overflow-hidden  p-2  border border-gray-600 min-h-[150px] bg-algoblack rounded-md">
 
-            <div className="console-console-buttons flex flex-row items-start space-x-1  h-12 w-full  bg-algoblack">
+            <div className="console-console-buttons flex flex-row items-start space-x-1  h-12 min-h-[10] w-full bg-algoblack">
                 <ConsoleButton setConsole={setConsole} setInput={setInput} setNote={setNote} isConsole={isConsole} isInput={isInput} isNote={isNote}/>
                 <VerticalHorizontalButtons/>
             </div>

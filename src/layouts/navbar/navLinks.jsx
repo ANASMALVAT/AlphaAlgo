@@ -36,7 +36,15 @@ const NavLinks = ({flexClass}) => {
                             to="/team"
                             className="font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"
                         >
-                        Patreon
+                        Purchase
+                        </Link>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <Link
+                            to="/team"
+                            className="font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"
+                        >
+                        Donate
                         </Link>
                     </li>
                 </ul>

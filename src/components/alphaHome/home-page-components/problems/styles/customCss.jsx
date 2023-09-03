@@ -2,8 +2,8 @@ export const customStyles = {
 
     singleValue:(styles) => ({
       ...styles,
-      color:'#fff',
-      
+      color:'white',
+      background:'#4C5ADF', 
     }),
 
     control: (styles) => ({
@@ -14,20 +14,19 @@ export const customStyles = {
       borderRadius: "3px",
       fontSize: "0.9rem",
       lineHeight: "2rem",
-      background:"transparent",
+      background:'#4C5ADF',
       cursor: "pointer",
       minWidth:'150px',
       maxWidth:'215px',
       width:"175px",
       border:"1px solid #4C5ADF",
       borderBottom:"5px solid #4C5ADF",
-      
     ":hover": {
         boxShadow: "none",
         border:"none"
       },
       overflow:"auto",
-      borderRadius:"2px",
+      borderRadius:"5px",
     }),
     option: (styles) => {
       return {
@@ -40,16 +39,18 @@ export const customStyles = {
         opacity: "1",
         textAlign: "left",
         whiteSpace: "nowrap",
-        background:"#1c283b",
-        color:"white",
+        background:"white",
+        color:"#4C5ADF",
         ":hover": {
           cursor: "pointer",
           transition: "0.1s",
           color: "white",
           background:"#4C5ADF",
+          border:"none"
+
         },
         overflow:"hidden",
-        borderRadius:"2px",
+        borderRadius:"5px",
       };
     },
     menu: (styles) => {
@@ -57,7 +58,6 @@ export const customStyles = {
         ...styles,
         maxWidth: "12rem",
         zIndex:"100",
-        // overflow:"hidden",
         border:"none",
         borderRadius:"5px",
         background:"transparent",

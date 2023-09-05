@@ -9,17 +9,17 @@
   }
 
   .output-input::-webkit-scrollbar {
-    width: 4px;
+    width: 8px;
   }
   
   .output-input::-webkit-scrollbar-track {
     background: white;
-    border-radius: 4px;
+    border-radius: 8px;
   }
 
   .output-input::-webkit-scrollbar-thumb {
     background: #4C5ADF;
-    border-radius: 4px;
+    border-radius: 8px;
   } 
 
 

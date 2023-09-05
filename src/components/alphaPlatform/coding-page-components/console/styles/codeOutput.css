@@ -1,19 +1,19 @@
-.gpt-output-console{
+.code-output{
   width: 100%;
   flex-grow: 1;
 }
 
-.gpt-output-console::-webkit-scrollbar {
+.code-output::-webkit-scrollbar {
     width: 8px;
   }
   
-.gpt-output-console::-webkit-scrollbar-track {
+  .code-output::-webkit-scrollbar-track {
     background: white;
     border-radius: 8px;
     margin:5px;
   }
   
-.gpt-output-console::-webkit-scrollbar-thumb {
+  .code-output::-webkit-scrollbar-thumb {
     background: #5867EA;
     border-radius: 8px;
   }

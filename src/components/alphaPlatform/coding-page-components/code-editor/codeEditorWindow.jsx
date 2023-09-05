@@ -10,10 +10,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {useSelector} from "react-redux";
 import "./styles/codeEditorWindow.css";
 
-const CodeEditorWindow = ({
-    onChangeData,
-    code,
-    }) => {
+const CodeEditorWindow = ({onChangeData,code }) =>
+ {
     const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
     const [value,setValue] = useState(code || "");
     const [initialValue, setInitialValue] = useState(code || ""); // New state variable

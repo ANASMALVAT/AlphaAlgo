@@ -11,8 +11,6 @@ import SlidingPane from "./coding-page-components/sliding-panel/problemSlidingPa
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/ConsoleInput";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
-import VerticalHorizontalButtons from "./coding-page-components/buttons/verticalHorizontalButtons";
-
 import "./styles/mainPage.css"
 import "react-toastify/dist/ReactToastify.css";
 
@@ -216,7 +214,6 @@ const AlphaPlatform = ({}) => {
     return (
       <>
         <ToastContainer/>
-
         <SlidingPane isOpen={problem} onRequestClose={closePane}/>
         <div className="main-class min-w-[350px] w-full h-full flex flex-row min-h-[100vh]  min-w-screen max-h-full bg-algoblack">
         

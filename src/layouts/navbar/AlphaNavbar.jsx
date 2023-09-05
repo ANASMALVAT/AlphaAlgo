@@ -30,7 +30,7 @@ const AlphaNavbar  = () => {
                         <div className="flex flex-row justify-center items-center">
                             <h1 className="tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
                                 <Link
-                                to="/coding-platform"
+                                to="/"
                                 className="tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-500 hover:rotate-[900deg]"
                                 >
                                 X
@@ -45,7 +45,7 @@ const AlphaNavbar  = () => {
 
                     <div id="login" className=" w-[25%] min-w-[30px] h-full justify-center align-bottom text-center">
                             <ul class="login-ul flex h-full w-full flex-row  hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
-                                <a class=" font-mono font-semibold  italic text-xl hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"  href="#"> Login </a>
+                                <a class=" font-mono font-semibold  italic text-xl hover:duration-100 p-1 rounded-md hover:border-2 border-[#4C5ADF]"  href="#"> Login </a>
                             </ul>
                     </div>
 

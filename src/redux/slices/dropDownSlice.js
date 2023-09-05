@@ -4,14 +4,14 @@ import {createSlice} from "@reduxjs/toolkit";
 export const dropdownSlice = createSlice({
 
     name: "dropdownValues",
-
-    initialState: { 
+    initialState: {
         dropdownValue : 
         { 
             fontSize : "22px", 
             theme: "oceanic-next",
             language: { id: 63, name: "JavaScript", label: "JavaScript", value: "javascript" }
         }
+
     },
     reducers :{
         setFont : (state,action) => {

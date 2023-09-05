@@ -4,7 +4,7 @@ import CodeOutput from "./codeOutput";
 import ConsoleButton from "../buttons/consoleButtons";
 import ConsoleRunButtons from "../buttons/consoleRunButtons";
 import VerticalHorizontalButtons from "../buttons/verticalHorizontalButtons";
-import ProblemLayout from "../ui/problemLayout";
+import CodeSolution from "./codeSolution";
 
 import "./styles/consoleInput.css";
 
@@ -44,7 +44,7 @@ const ConsoleInput = ({output,handleCompile,showProblem}) =>{
       ];
 
     return (
-        <div className="main-console flex-grow overflow-hidden  p-2  border border-gray-600 min-h-[150px] bg-algoblack rounded-md">
+        <div className="main-console flex-grow overflow-hidden  p-2  border border-gray-700 min-h-[150px] bg-algoblack rounded-md">
 
             <div className="console-console-buttons flex flex-row items-start space-x-1  h-12 min-h-[10] w-full bg-algoblack">
                 <ConsoleButton setConsole={setConsole} setInput={setInput} setNote={setNote} isConsole={isConsole} isInput={isInput} isNote={isNote}/>
@@ -54,6 +54,7 @@ const ConsoleInput = ({output,handleCompile,showProblem}) =>{
             <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md overflow-hidden p-4 ">
                 {isInput   &&  <CustomInput testCases={testcases} /> }
                 {isConsole &&  <CodeOutput outputDetail={output}/> }
+                {isNote && <CodeSolution />}
             </div>
 
             <ConsoleRunButtons methodOne={showProblem} methodTwo={handleCompile} methodThree={handleCompile} buttonOne={`Problem`} buttonTwo={`Run`} buttonThree={`Submit`} />

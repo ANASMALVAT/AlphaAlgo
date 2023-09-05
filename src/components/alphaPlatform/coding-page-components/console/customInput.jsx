@@ -23,24 +23,24 @@ const CustomInput = ({ testCases }) => {
     setCheckboxStates(newCheckboxStates);
   };
 
-  console.log(checkboxStates);
+  
 
   return (
-    <div className="custom-input flex flex-col gap-4 h-full w-full whitespace-pre  overflow-auto rounded-md">
+    <div className="custom-input p-4 flex flex-col gap-4 h-full w-full whitespace-pre  overflow-auto rounded-md border border-gray-700">
       <pre className='text-red-600'>
         { testCases[0] ?
-          <div className='flex flex-1'>
-            <Checkbox required disabled={checkboxStates[0]} sx={{ color:'white', '& .MuiSvgIcon-root': { fontSize: 32 }, '&.Mui-disabled': {color: 'white'}}} color="success" />
-              <EdiText
-                value={testCases[0]}
-                onSave={onSave}
-                canEdit={true}
-                editButtonProps={{ style: { borderRadius: 3, padding: "5px", width: "100%", background: "#15314B", color:"green" } }}
-                viewProps={{ className: 'text-lg', style: { fontWeight: 'bold',borderRadius: 3, padding: "10px", width: "100%", background: "#15314B", color:"green", whiteSpace: "pre-wrap" } }}
-                editProps={{ style: { borderRadius: 3, padding: "5px", width: "100%", background: "#15314B", whiteSpace: "pre-wrap" } }}
-                inputProps={{ style: { whiteSpace: "pre-wrap" } }} // Add this line to ensure text wrapping
-              /> 
-          </div>
+            <div className='flex flex-1'>
+              <Checkbox required disabled={checkboxStates[0]} sx={{ color:'white', '& .MuiSvgIcon-root': { fontSize: 32 }, '&.Mui-disabled': {color: 'white'}}} color="success" />
+                <EdiText
+                  value={testCases[0]}
+                  onSave={onSave}
+                  canEdit={true}
+                  editButtonProps={{ style: { borderRadius: 3, padding: "5px", width: "100%", background: "#15314B", color:"green" } }}
+                  viewProps={{ className: 'text-lg', style: { fontWeight: 'bold',borderRadius: 3, padding: "10px", width: "100%", background: "#15314B", color:"green", whiteSpace: "pre-wrap" } }}
+                  editProps={{ style: { borderRadius: 3, padding: "5px", width: "100%", background: "#15314B", whiteSpace: "pre-wrap" } }}
+                  inputProps={{ style: { whiteSpace: "pre-wrap" } }} // Add this line to ensure text wrapping
+                /> 
+            </div>
           : <></> 
         } 
       </pre>

@@ -2,67 +2,72 @@ export const customStyles = {
 
     singleValue:(styles) => ({
       ...styles,
-      color:'white',
-      background:'#4C5ADF', 
+      background:"#4C5ADF",
+      fontweight:"bold",
+      fontSize:"19px",
+      fontFamily: "Ubuntu,Helvetica,Arial,sans-serif",
+      color: "white",
+      "input:focus":{
+        border:"none"
+      }
     }),
 
     control: (styles) => ({
       ...styles,
       width: "100%",
-      maxWidth: "14rem",
-      minWidth: "12rem",
+      maxWidth: "16rem",
+      minWidth: "14rem",
+      height:"55px",
       borderRadius: "3px",
-      fontSize: "0.9rem",
-      lineHeight: "2rem",
+      fontSize: "19px",
+      fontweight:"bold",
+      color: "white",
+      lineHeight: "1.75rem",
       background:'#4C5ADF',
       cursor: "pointer",
-      minWidth:'150px',
-      maxWidth:'215px',
       width:"175px",
-      border:"1px solid #4C5ADF",
-      borderBottom:"5px solid #4C5ADF",
+      borderBottom:"5px solid #2D33CA",
     ":hover": {
-        boxShadow: "none",
-        border:"none"
       },
       overflow:"auto",
       borderRadius:"5px",
     }),
+
     option: (styles) => {
       return {
         ...styles,
-        color:'black',
+        color:"white",
         fontSize: "1rem",
-        lineHeight:"1.3rem",
+        lineHeight:"1.5rem",
         width: "100%",
         fontweight: "bold",
-        opacity: "1",
         textAlign: "left",
         whiteSpace: "nowrap",
         background:"white",
-        color:"#4C5ADF",
+        color:"black",
+        fontSize: "19px",
+        fontFamily: "Ubuntu,Helvetica,Arial,sans-serif",
+        fontweight:"bold",
+        background:"#F5F5F5",
         ":hover": {
           cursor: "pointer",
-          transition: "0.1s",
+          transition: "0.2s",
           color: "white",
           background:"#4C5ADF",
-          border:"none"
-
         },
-        overflow:"hidden",
-        borderRadius:"5px",
+        borderRadius:"3px",
       };
     },
+
     menu: (styles) => {
       return {
         ...styles,
-        maxWidth: "12rem",
+        maxWidth: "14rem",
         zIndex:"100",
         border:"none",
         borderRadius:"5px",
         background:"transparent",
         overflow:"auto"
-
     };
     },
     placeholder: (defaultStyles) => {
@@ -71,8 +76,6 @@ export const customStyles = {
         color: "#fff",
         fontSize: "0.8rem",
         lineHeight: "1.75rem",
-        border:"none"
-
       };
     },
   };

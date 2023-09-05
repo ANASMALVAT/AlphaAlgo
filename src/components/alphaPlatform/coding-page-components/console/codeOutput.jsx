@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import "./styles/codeOutput.css";
 
 const CodeOutput = ( { outputDetail } ) => 
 {
@@ -38,7 +39,7 @@ const CodeOutput = ( { outputDetail } ) =>
 
     return (
         <>
-            <div className= 'text-start w-full  max-h-screen h-full bg-transparent  text-white font-normal text-sm rounded-sm'>
+            <div className= 'code-output text-start w-full overflow-auto max-h-screen h-full bg-transparent flex flex-1  text-white font-normal text-sm border border-gray-700 rounded-md'>
                     {outputDetail ? <> {codeOutPut()} </>: null} 
             </div>
         </>

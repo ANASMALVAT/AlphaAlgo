@@ -8,6 +8,8 @@ import Team from "./components/alphaHome/home-page-components/team/team";
 import AlphaHomePage from './components/alphaHome/alphaHome';
 import AlphaPlatform from "./components/alphaPlatform/mainPage";
 import CodingProblems from "./components/alphaHome/home-page-components/problems/codingProblemsMainPage";
+import UserLogin from './components/alphaLogin/login-components/userLogin';
+
 function App() {
 
   const router = createBrowserRouter
@@ -27,6 +29,10 @@ function App() {
     {
       path:"/problems",
       element:<CodingProblems/>
+    },
+    {
+      path:"/login",
+      element:<UserLogin/>
     }
   ]);
   

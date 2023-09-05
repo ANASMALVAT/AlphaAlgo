@@ -26,7 +26,6 @@ const ThemeDropdown = ({}) => {
   }
 
   useEffect(()=>{
-    console.log(dropdownValue.theme);
     setCurrentTheme(dropdownValue.theme);
   },[dropdownValue.theme])
 

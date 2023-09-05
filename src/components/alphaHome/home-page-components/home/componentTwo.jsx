@@ -1,6 +1,6 @@
 import React from "react";
 import Typewriter from 'typewriter-effect';
-import "../../styles/componentTwo.css"
+import "./styles/componentTwo.css"
 
 <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 

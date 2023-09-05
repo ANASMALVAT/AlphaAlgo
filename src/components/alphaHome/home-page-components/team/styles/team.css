@@ -1,0 +1,55 @@
+/* Base styles */
+.team-member {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .team-img {
+    max-width: 150px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 50%;
+    margin-bottom:10px;
+  }
+  .team-img:hover {
+    scale: 1.2;
+    transition: all 0.2s;
+    
+    border: 8px solid #4C5ADF;
+  }
+  
+  .team-details {
+    flex: 1;
+  }
+
+  .team-name {
+    font-size: 2rem;
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+    margin: 0px;
+  }
+  
+  .team-position {
+    font-size: 20px;
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+  }
+  
+  .team-info {
+    font-size: 1rem;
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+ }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) 
+    {
+        .team-member {
+        flex-direction: column;
+        align-items: center;
+    }
+    .team-img {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  

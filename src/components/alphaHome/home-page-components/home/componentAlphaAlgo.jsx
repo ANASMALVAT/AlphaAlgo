@@ -1,6 +1,6 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
-import "../../styles/componentAlphaAlgo.css";
+import "./styles/componentAlphaAlgo.css";
 import 'reactjs-popup/dist/index.css';
 
 const ComponentAlphaAlgo =  ({isOpen}) => (

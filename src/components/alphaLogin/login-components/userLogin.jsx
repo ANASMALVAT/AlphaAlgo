@@ -1,30 +1,54 @@
-import React, { Component } from 'react';
+import React , {useEffect}  from 'react';
 import Popup from 'reactjs-popup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { toggelLogin } from '../../../redux/slices/userComponentSlice';
+import GoogleButton from 'react-google-button'
+import "../styles/userLogin.css"
 
 const UserLogin = () => {
 
     const loginButton = useSelector((state) => state.userLoginComponent.showLogin);
+    const dispatch = useDispatch();
+    const handleClose = () => {
+        dispatch(toggelLogin());
+    };
+
     return (
-        <div className=' h-96 w-60'>
-             <Popup
-                trigger = {
-                    <button className={`what-button overflow-hidden mt-6 mb-8 flex flex-row items-center text-center align-middle  rounded-sm px-6  font-mono font-normal justify-center text-white border bg-[#4C5ADF] hover:duration-300 border-b-8 border-[#4C5ADF]`}>
-                        Explore 
-                        <h1 className="ml-2 logo-com-3 font-bold antialiased text-[#2D33CA] hover:duration-300 hover:scale-125"> X </h1>
-                    </button>
-                }
-                closeOnDocumentClick
-                modal
-                >
-                {
-                    close => (
-                    )}
-            </Popup>
-        <div>
-    </div>
-    </div>
-  
+        <Popup
+            // modal
+            closeOnDocumentClick
+            open={loginButton}
+            onClose={handleClose}
+            className='popup-content-main'
+        >
+            {
+            close => (
+            <div className="modal">
+                <div className="header">
+                    <div>
+                        <button className="close" onClick={close} style={{color:"red",fontSize:"40px",marginRight:"20px",fontWeight:"bolder"}}>
+                            &times;
+                        </button>
+                    </div> 
+                </div>
+                <div className="content max-h-[400px] max-w-[400px]">
+                    <div>
+                        <div className="plex-sans flex flex-row items-center justify-center ">
+                            <div className="sign-name  tracking-wide font-normal  antialiased text-[black] ">Sign in to</div>
+                        </div>
+                        <div className="plex-sans flex flex-row items-center mb-12 mt-2">
+                            <div className="sign-logo-name  tracking-wide font-normal antialiased text-[#4C5ADF] ">AlphaAlgo</div>
+                        </div>
+                    </div>
+                    <GoogleButton
+                        style={{borderRadius:"2px",fontWeight:"bold" ,width:"225px",fontSize:"18px",fontFamily:"monospace",'.&hover':'translateY(20px)'}}
+                        label='Google'
+                     />
+
+                </div>
+            </div>
+            )}
+        </Popup>
     )
 }
 

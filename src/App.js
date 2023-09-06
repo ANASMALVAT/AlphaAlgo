@@ -30,10 +30,10 @@ function App() {
       path:"/problems",
       element:<CodingProblems/>
     },
-    {
-      path:"/login",
-      element:<UserLogin/>
-    }
+    // {
+    //   path:"/login",
+    //   element:<UserLogin/>
+    // }
   ]);
   
 

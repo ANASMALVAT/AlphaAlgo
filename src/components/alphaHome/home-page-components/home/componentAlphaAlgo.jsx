@@ -1,7 +1,6 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 import "./styles/componentAlphaAlgo.css";
-import 'reactjs-popup/dist/index.css';
 
 const ComponentAlphaAlgo =  ({isOpen}) => (
 
@@ -12,16 +11,14 @@ const ComponentAlphaAlgo =  ({isOpen}) => (
             <h1 className="ml-2 logo-com-3 font-bold antialiased text-[#2D33CA] hover:duration-300 hover:scale-125"> X </h1>
         </button>
     }
-    modal
-    nested >
-        
+    className='pop-up-component-main'
+    >
     {close => (
-      <div className=" custom-scrollbar modal p-6 justify-center flex flex-col">
+      <div className=" custom-scrollbar modal-main p-6 justify-center flex flex-col">
         <button className="close" onClick={close}>
           &times;
         </button>
-        <div className=" header"></div>
- 
+        <div className=" header-main"></div>
                 <div className="overflow-auto content w-[100%] text-[12px] text-white font-mono text-justify">
                     I'm Anas, 24 years old software Engineer and from early on I understood that to do well in these interviews, I needed to be great at solving coding problems. So I started practicing and learning how to solve coding problems. It was hard because I was doing it on my own with just the internet to help me.
                     <br/><br/>

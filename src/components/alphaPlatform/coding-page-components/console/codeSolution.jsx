@@ -2,7 +2,7 @@ import React from "react";
 import { CodeBlock, dracula } from "react-code-blocks";
 import "./styles/codeSolution.css";
 
-const CodeSolution = ({ problemData }) => {
+const CodeProblem = ({ problemData }) => {
 
     return (
         <>
@@ -89,4 +89,4 @@ const CodeSolution = ({ problemData }) => {
     )
 }
 
-export default CodeSolution;
+export default CodeProblem;

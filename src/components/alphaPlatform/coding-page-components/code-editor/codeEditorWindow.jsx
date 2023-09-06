@@ -88,7 +88,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
         < SettingSlidingPane isOpen={settingPane} onRequestClose={closeSettingPane} />
         < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} />
 
-        <div className="  code-editor  flex flex-col w-full min-w-[385px] border-4 border-[#1f2937]">
+        <div className="  code-editor  flex flex-col w-full min-w-[385px] border-4 min-h-screen border-[#1f2937]">
             
             <div className=" flex flex-row justify-between min-w-[385px]  rounded-sm border-4 m-1 border-[#1f2937] h-14 ">
 

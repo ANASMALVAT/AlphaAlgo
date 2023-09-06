@@ -16,8 +16,7 @@
   .team-img:hover {
     scale: 1.2;
     transition: all 0.2s;
-    
-    border: 8px solid #4C5ADF;
+    border: 5px solid #4C5ADF;
   }
   
   .team-details {

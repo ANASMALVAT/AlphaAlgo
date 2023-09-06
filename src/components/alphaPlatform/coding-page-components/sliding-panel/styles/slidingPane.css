@@ -73,26 +73,26 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    margin-left: 32px;
     min-width: 0;
+    
+
 
   }
   .slide-pane .slide-pane__title {
     font-size: 24px;
     font-weight: normal;
-    max-width: 80%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    align-items: start;
     margin: 0;
     padding: 0;
-    color: white;
-    font-weight: lighter;
-    font-family:monospace;
+    /* color: white; */
+    font-family: 'Ubuntu',Helvetica,Arial,sans-serif;
+    color:"#5867EA";
     
   }
   .slide-pane__close {
-    margin-left: 24px;
     padding: 16px;
     opacity: 0.7;
     cursor: pointer;

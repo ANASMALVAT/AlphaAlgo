@@ -8,7 +8,7 @@ import CodeSolution from "./codeSolution";
 
 import "./styles/consoleInput.css";
 
-const ConsoleInput = ({output,handleCompile,showProblem}) =>{
+const ConsoleInput = ({output,handleCompile,showSolution}) =>{
 
     const [isConsole, setIsConsole] = useState(true);
     const [isInput, setIsInput] = useState(false);
@@ -57,7 +57,7 @@ const ConsoleInput = ({output,handleCompile,showProblem}) =>{
                 {isNote && <CodeSolution />}
             </div>
 
-            <ConsoleRunButtons methodOne={showProblem} methodTwo={handleCompile} methodThree={handleCompile} buttonOne={`Problem`} buttonTwo={`Run`} buttonThree={`Submit`} />
+            <ConsoleRunButtons methodOne={handleCompile} methodTwo={handleCompile} methodThree={showSolution} buttonOne={`Run`} buttonTwo={`Submit`} buttonThree={`Solution`} />
 
         </div>
     );

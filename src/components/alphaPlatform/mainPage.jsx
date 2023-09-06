@@ -24,7 +24,7 @@ const AlphaPlatform = ({}) => {
     const [code, setCode] = useState("");
     const [theme, setTheme] = useState(dropdownValue.theme);
     const [language, setLanguage] = useState(dropdownValue.language);
-    const [problem,setProblem] = useState(false)
+    const [solution,setSolution] = useState(false)
     const [customInput, setCustomInput] = useState("");
     const [output, setOutput] = useState("")
     const [windowWidth,setwindowWidth] = useState(layoutValue.width);
@@ -99,13 +99,13 @@ const AlphaPlatform = ({}) => {
       }
     };
 
-    const showProblem = () => {
+    const showSolution = () => {
       
-      setProblem(problem => !problem);
+      setSolution(solution => !solution);
     }
 
     const closePane = () => {
-       setProblem(problem => !problem);
+      setSolution(solution => !solution);
     }
 
     const handleCompile = () => {
@@ -214,8 +214,8 @@ const AlphaPlatform = ({}) => {
     return (
       <>
         <ToastContainer/>
-        <SlidingPane isOpen={problem} onRequestClose={closePane}/>
-        <div className="main-class min-w-[350px] w-full h-full flex flex-row min-h-[100vh]  min-w-screen max-h-full bg-algoblack">
+        <SlidingPane isOpen={solution} onRequestClose={closePane}/>
+        <div className="main-class min-w-[350px] w-full h-full flex flex-row flex-grow  min-w-screen max-h-screen bg-algoblack overflow-auto">
         
             {
               alphaPlatformComponents.isConsoleGpt &&
@@ -226,7 +226,7 @@ const AlphaPlatform = ({}) => {
 
             { 
               alphaPlatformComponents.editor && 
-                <div className={`editor-class overflow-hidden  flex flex-col ${windowWidth ? 'w-[60%]' : 'w-[40%]'}  h-full max-h-[screen] min-h-[full] transition-all duration-700 ease-in-out`}>
+                <div className={`editor-class overflow-hidden flex flex-col grow-1  ${windowWidth ? 'w-[60%]' : 'w-[40%]'}  h-[100vh]  min-h-[screen] transition-all duration-700 ease-in-out`}>
                     <CodeEditorWindow
                       code={code}
                       onChangeData={onChange}
@@ -244,7 +244,7 @@ const AlphaPlatform = ({}) => {
                       <>
                         {
                         alphaPlatformComponents.console &&
-                          <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem} />
+                          <ConsoleInput output={output} handleCompile={handleCompile} showSolution={showSolution} />
                         }
                         { 
                         alphaPlatformComponents.gpt && 
@@ -259,7 +259,7 @@ const AlphaPlatform = ({}) => {
                         }
                         {
                         alphaPlatformComponents.console &&
-                          <ConsoleInput output={output} handleCompile={handleCompile} showProblem={showProblem} />
+                          <ConsoleInput output={output} handleCompile={handleCompile} showSolution={showSolution} />
                         }
                       </>
                     )

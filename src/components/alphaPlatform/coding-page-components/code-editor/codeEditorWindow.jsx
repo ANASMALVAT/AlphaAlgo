@@ -8,7 +8,9 @@ import SettingSlidingPane from "../sliding-panel/settingSlidingPane";
 import ConsoleSlidingPane from "../sliding-panel/consoleSlidingPane";
 import MenuIcon from '@mui/icons-material/Menu';
 import {useSelector} from "react-redux";
+import { defineTheme } from "../../../../data/themeOptions";
 import "./styles/codeEditorWindow.css";
+import ThemeDropdown from "../drop-downs/themeDropDown";
 
 const CodeEditorWindow = ({onChangeData,code }) =>
  {
@@ -19,7 +21,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
     const [settingPane,setSettingPane] = useState(false);
     const [consolePane,setConsolePane] = useState(false);
     const [currentLanguage,setCurrentLanguagae] = useState(dropdownValue.language);
-    const [currentTheme,setcurrentTheme] = useState("blackboard");
+    const [currentTheme,setcurrentTheme] = useState("cobalt");
 
 
     useEffect(() => {
@@ -76,6 +78,12 @@ const CodeEditorWindow = ({onChangeData,code }) =>
         };
         return new OriginalResizeObserver(wrappedCallback);
     };
+
+    useEffect(() => {
+        console.log(dropdownValue.theme);
+        defineTheme(dropdownValue.theme).then((_) =>
+            setcurrentTheme(dropdownValue.theme));
+      }, [dropdownValue.theme]);
 
     for (let staticMethod in OriginalResizeObserver) {
         if (OriginalResizeObserver.hasOwnProperty(staticMethod)) {

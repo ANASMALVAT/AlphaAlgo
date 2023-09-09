@@ -1,6 +1,6 @@
 import React from "react";
 
-const ConsoleButton = ({setConsole,isConsole, setInput, isInput, setNote, isNote}) => {
+const ConsoleButton = ({setConsole,isConsole, setInput, isInput, setProblem, isProblem}) => {
     return (
         <>
                 <button
@@ -44,9 +44,9 @@ const ConsoleButton = ({setConsole,isConsole, setInput, isInput, setNote, isNote
                 </button>
 
                 <button
-                    onClick={setNote}
+                    onClick={setProblem}
                     className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-2 h-full font-mono text-sm font-normal text-white
-                        ${isNote ? 'bg-[#3e49b4]' : 'bg-[#5867ea]'}
+                        ${isProblem ? 'bg-[#3e49b4]' : 'bg-[#5867ea]'}
                            sm:text-sm lg:text-md xl:text-md`}
                     >
                     <svg

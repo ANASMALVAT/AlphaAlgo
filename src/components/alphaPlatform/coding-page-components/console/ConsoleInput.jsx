@@ -12,24 +12,24 @@ const ConsoleInput = ({output,handleCompile,showSolution}) =>{
 
     const [isConsole, setIsConsole] = useState(true);
     const [isInput, setIsInput] = useState(false);
-    const [isNote, setIsNote] = useState(false);
+    const [isProblem, setIsProblem] = useState(false);
     const outputInputRef = useRef();
 
 
     const setConsole = () => {
         setIsConsole(currentIsConsole => true);
         setIsInput(currentIsInput => false);
-        setIsNote(currentIsNote => false);
+        setIsProblem(problem => false);
       };
       
       const setInput = () => {
         setIsInput(currentIsInput => true);
         setIsConsole(currentIsConsole => false);
-        setIsNote(currentIsNote => false);
+        setIsProblem(problem => false);
       }
 
-      const setNote = () => {
-        setIsNote(currentIsNote => true);
+      const setProblem = () => {
+        setIsProblem(problem => true);
         setIsConsole(currentIsConsole => false);
         setIsInput(currentIsInput => false);
       };
@@ -47,14 +47,14 @@ const ConsoleInput = ({output,handleCompile,showSolution}) =>{
         <div className="main-console flex-grow overflow-hidden  p-2  border border-gray-700 min-h-[150px] bg-algoblack rounded-md">
 
             <div className="console-console-buttons flex flex-row items-start space-x-1  h-12 min-h-[10] w-full bg-algoblack">
-                <ConsoleButton setConsole={setConsole} setInput={setInput} setNote={setNote} isConsole={isConsole} isInput={isInput} isNote={isNote}/>
+                <ConsoleButton setConsole={setConsole} setProblem={setProblem} setInput={setInput} isConsole={isConsole} isInput={isInput} isProblem={isProblem}/>
                 <VerticalHorizontalButtons/>
             </div>
 
             <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md overflow-hidden p-4 ">
                 {isInput   &&  <CustomInput testCases={testcases} /> }
                 {isConsole &&  <CodeOutput outputDetail={output}/> }
-                {isNote && <CodeSolution />}
+                {isProblem && <CodeSolution />}
             </div>
 
             <ConsoleRunButtons methodOne={handleCompile} methodTwo={handleCompile} methodThree={showSolution} buttonOne={`Run`} buttonTwo={`Submit`} buttonThree={`Solution`} />

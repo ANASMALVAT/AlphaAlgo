@@ -11,6 +11,8 @@ import SlidingPane from "./coding-page-components/sliding-panel/problemSlidingPa
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/ConsoleInput";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
+
+
 import "./styles/mainPage.css"
 import "react-toastify/dist/ReactToastify.css";
 
@@ -29,8 +31,11 @@ const AlphaPlatform = ({}) => {
     const [output, setOutput] = useState("")
     const [windowWidth,setwindowWidth] = useState(layoutValue.width);
     const [toggelWindow,setToggelWindow] =useState(layoutValue.swapWindow);
-    const toastId = useRef(null);
+   
+    const CODE_COMPILE_URL = process.env.REACT_APP_CODE_COMPILE_URL;
+    const CODE_STATUS_URL = process.env.REACT_APP_CODE_STATUS_URL;
 
+    const toastId = useRef(null);
     
     useEffect(() => {
       setLanguage(dropdownValue.language);
@@ -131,11 +136,10 @@ const AlphaPlatform = ({}) => {
         stdin: btoa(customInput)
       }
 
-      axios.post('http://localhost:5000/api/compile',requestData)
+      axios.post(CODE_COMPILE_URL,requestData)
            .then((response) => {
               checkStatus(response.data.token);
            })
-
            .catch((error) => {
               if (error.response && error.response.status === 429)
               {
@@ -153,7 +157,7 @@ const AlphaPlatform = ({}) => {
     const checkStatus = async (token) => 
     {
       try{
-          const response = await axios.get(`http://localhost:5000/api/status/${token}`);
+          const response = await axios.get(`${CODE_STATUS_URL}${token}`);
           if (response.data.status?.id === 1 || response.data.status?.id === 2)
             {
               setTimeout(() => {
@@ -172,7 +176,8 @@ const AlphaPlatform = ({}) => {
       }
     };
   
-    useEffect(() => {
+    useEffect(() => 
+    {
         if (["light", "vs-dark"].includes(dropdownValue.theme)) {
           setTheme(dropdownValue.theme);
         } 
@@ -180,7 +185,6 @@ const AlphaPlatform = ({}) => {
         {
           defineTheme(dropdownValue.theme).then((_) => setTheme(dropdownValue.theme));
         }
-      
     },[dropdownValue.theme])
 
     const showError = (notification) =>{
@@ -237,7 +241,7 @@ const AlphaPlatform = ({}) => {
             { 
               alphaPlatformComponents.isConsoleGpt && 
 
-                <div className={`console-gpt ${windowWidth ? 'w-[40%]' : 'w-[60%]'} ${toggelWindow ? 'alpha-first' : 'console-first'} transition-all duration-700 ease-in-out max-h-[100vh] `}>
+                <div className={`console-gpt ${windowWidth ? 'w-[45%]' : 'w-[55%]'} ${toggelWindow ? 'alpha-first' : 'console-first'} transition-all duration-700 ease-in-out max-h-[100vh] `}>
                   {
                     toggelWindow ?
                     (

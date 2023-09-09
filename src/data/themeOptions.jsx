@@ -1,12 +1,9 @@
 import { loader } from "@monaco-editor/react";
 
-const monacoThemes = {
+export const monacoThemes = {
   active4d: "Active4D",
   "all-hallows-eve": "All Hallows Eve",
   amy: "Amy",
-  blackboard: "Blackboard",
-  "brilliance-black": "Brilliance Black",
-  "brilliance-dull": "Brilliance Dull",
   "oceanic-next": "Oceanic Next",
 };
 

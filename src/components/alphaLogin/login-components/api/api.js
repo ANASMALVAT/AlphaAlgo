@@ -1,32 +1,32 @@
 import axios from "axios";
+import { toggelUserLoginTrue } from '../../../../redux/slices/userAuthentication';
+import { useSelector,useDispatch } from 'react-redux';
 
 
 const AUTHENTICATION_URL = process.env.REACT_APP_AUTHENTICATION_URL;
+const ACCESS_TOKEN_URL = process.env.REACT_APP_ACCESS_TOKEN_URL;
 
 export const retrieveToken = async () => {
   try {
-      const response = await axios.get('http://localhost:5000/user/token',{withCredentials:true});
-      console.log(response);
-      if (response.status === 200) {
-        const token = response.data;
-        localStorage.setItem('accessToken', token);
-      } 
-      else {
-        console.error('Unexpected status code:', response.status);
+      console.log("calling retrieve token method!");
+
+      const response = await axios.get(ACCESS_TOKEN_URL, { withCredentials: true });
+
+      if (response && response.data) {
+          console.log("User : ", response.data);
+          return response.data; // Return the data if successful
+      } else {
+          throw new Error('No response data');
       }
-  } 
-  catch (error) {
-        if (error.response && error.response.status === 401) {
-            console.error('User is not authorized:', error);
-        } 
-        else{
-            console.error('Error retrieving token:', error);
-        }
-    }
+  } catch (error) {
+      if (error.response && error.response.status === 401) {
+          console.error('User is not authorized:', error);
+      } else {
+          console.error('Error retrieving token:', error);
+      }
+      throw error; // Re-throw the error for the caller to handle if needed
+  }
 };
 
-export const redirectGoogleSSO = async () => {
 
-    const newWindow = window.open(AUTHENTICATION_URL, '_blank', 'width=600,height=600');
-    retrieveToken();
-}
+

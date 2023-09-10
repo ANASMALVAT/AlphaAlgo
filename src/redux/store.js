@@ -3,7 +3,8 @@ import alphaPlatformReducer from "./slices/alphaPlatformSlice"
 import dropdownSliceReducer from "./slices/dropDownSlice"
 import windowWidthReducer from "./slices/layoutSlice"
 import problemTopic from "./slices/problemTopicSlice"
-import userLoginComponent from "./slices/userComponentSlice"
+import userLoginWindow from "./slices/userComponentSlice"
+import userLogin from "./slices/userAuthentication"
 
 const store = configureStore({
     reducer:{
@@ -11,7 +12,10 @@ const store = configureStore({
       dropdownValues:dropdownSliceReducer,
       layoutValue:windowWidthReducer,
       problemTopic:problemTopic,
-      userLoginComponent:userLoginComponent
+      userLoginWindow:userLoginWindow,
+      userLogin:userLogin
+
+  
     },
   });
 

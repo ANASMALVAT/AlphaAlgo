@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Ubuntu:wght@300;400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Ubuntu:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Ubuntu:wght@300;400&display=swap');
 
 
@@ -113,7 +113,6 @@
 
   
 .popup-content {
-    /* For Webkit (Chrome, Safari) */
     scrollbar-width: thin;
     scrollbar-color: #4C5ADF #011627;
   }
@@ -130,4 +129,4 @@
     background: #00182D;
     border-radius: 8px;
   }
-  
+   */

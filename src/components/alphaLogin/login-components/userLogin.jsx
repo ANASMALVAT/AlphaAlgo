@@ -1,26 +1,55 @@
-import React , {useEffect}  from 'react';
+import React , {useEffect, useState}  from 'react';
+import axios from "axios";
 import Popup from 'reactjs-popup';
 import { useSelector,useDispatch } from 'react-redux';
-import { toggelLogin } from '../../../redux/slices/userComponentSlice';
-import { redirectGoogleSSO } from "./api/api"
+import { toggelLoginWindow } from '../../../redux/slices/userComponentSlice';
+import { retrieveToken} from "./api/api"
+import { toggelUserLoginFalse, toggelUserLoginTrue } from '../../../redux/slices/userAuthentication';
 import GoogleButton from 'react-google-button'
+
 
 import "../styles/userLogin.css"
 
 const UserLogin = () => {
 
-    const loginButton = useSelector((state) => state.userLoginComponent.showLogin);
-  
-    
+    const AUTHENTICATION_URL = process.env.REACT_APP_AUTHENTICATION_URL;
+    const TOKEN_URL = process.env.REACT_APP_TOKEN_URL;
+    const LoginButton = useSelector((state) => state.userLoginWindow.showLoginWindow);
     const dispatch = useDispatch();
+
     const handleClose = () => {
-        dispatch(toggelLogin());
+        dispatch(toggelLoginWindow());
     };
+
+    const fetchAuthUser = async () => {
+        const response = await axios.get(TOKEN_URL, {withCredentials : true})
+
+        .catch((err) => {
+            dispatch(toggelUserLoginFalse());
+        })
+
+        if(response && response.data){
+            console.log(response.data);
+        }
+
+    }
+    
+    const redirectGoogleSSO = async () => {
+        const newWindow = window.open(AUTHENTICATION_URL, '_blank', 'width=600,height=600');
+        let timer = null;
+        timer = setInterval(() => {
+            if(newWindow.closed){
+                dispatch(toggelUserLoginTrue());
+                fetchAuthUser();
+                if(timer) clearInterval(timer);
+            }
+        },500);
+    }
 
     return (
             <Popup
                 closeOnDocumentClick
-                open={loginButton}
+                open={LoginButton}
                 onClose={handleClose}
                 className='popup-content-main'
             >

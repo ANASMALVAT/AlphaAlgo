@@ -4,10 +4,14 @@ export const userWindowSlice = createSlice({
     name:'userLoginWindow',
     initialState:{showLoginWindow:false},
     reducers:{
-        toggelLoginWindow : (state) =>{
-            state.showLoginWindow = !state.showLoginWindow;
+        toggelLoginWindowTrue : (state) =>{
+            state.showLoginWindow = true;
+        },
+        toggelLoginWindowFalse: (state) => {
+            state.showLoginWindow = false;
         }
+
     }
 })
-export  const { toggelLoginWindow } = userWindowSlice.actions;
+export  const { toggelLoginWindowTrue, toggelLoginWindowFalse } = userWindowSlice.actions;
 export default userWindowSlice.reducer;

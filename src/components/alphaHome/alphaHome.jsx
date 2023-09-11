@@ -3,6 +3,8 @@ import AlphaNavbar from "../../layouts/navbar/AlphaNavbar";
 import ComponentOne from "./home-page-components/home/componentOne";
 import ComponentThree from "./home-page-components/home/componentThree";
 import ComponentFour from "./home-page-components/home/componentFour";
+import LanguageComponent from "./home-page-components/language/languageComponent";
+import QuestionComponent from "./home-page-components/questions/questionComponent";
 
 const AlphaHomePage = () => {
     return (
@@ -12,6 +14,9 @@ const AlphaHomePage = () => {
                 <ComponentOne/>
                 <ComponentThree/>
                 <ComponentFour/>
+                <QuestionComponent/>
+                <LanguageComponent/>
+ 
             </div>
         </>
     )

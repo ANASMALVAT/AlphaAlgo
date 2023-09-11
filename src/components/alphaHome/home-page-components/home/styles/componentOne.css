@@ -12,6 +12,9 @@ p
     align-items: end;
     padding-left: 8rem;
 }
+.alpha-info-button{
+    border-radius: 4px;
+}
 
 @media (max-width:1100px) 
 {
@@ -36,7 +39,24 @@ p
     }
 }
 
+
 @media (max-width:1100px) 
+{
+    .logo {
+        font-size: 8rem;
+    }
+    .logo-name {
+        font-size: 3.25rem;
+    }
+    .alpha-info-button{
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        width: 12rem;
+        font-size: large;
+    }
+}
+
+@media (max-width:600px) 
 {
     .logo {
         font-size: 4rem;

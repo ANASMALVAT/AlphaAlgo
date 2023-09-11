@@ -2,7 +2,7 @@ import React , {useEffect, useState}  from 'react';
 import axios from "axios";
 import Popup from 'reactjs-popup';
 import { useSelector,useDispatch } from 'react-redux';
-import { toggelLoginWindow } from '../../../redux/slices/userComponentSlice';
+import { toggelLoginWindowFalse } from "../../../redux/slices/userComponentSlice";
 import { retrieveToken} from "./api/api"
 import { toggelUserLoginFalse, toggelUserLoginTrue } from '../../../redux/slices/userAuthentication';
 import GoogleButton from 'react-google-button'
@@ -18,7 +18,7 @@ const UserLogin = () => {
     const dispatch = useDispatch();
 
     const handleClose = () => {
-        dispatch(toggelLoginWindow());
+        dispatch(toggelLoginWindowFalse());
     };
 
     const fetchAuthUser = async () => {
@@ -29,9 +29,10 @@ const UserLogin = () => {
         })
 
         if(response && response.data){
-            console.log(response.data);
+            localStorage.setItem('jwt-token',response.data);
+            dispatch(toggelUserLoginTrue());
+            handleClose();
         }
-
     }
     
     const redirectGoogleSSO = async () => {
@@ -39,7 +40,6 @@ const UserLogin = () => {
         let timer = null;
         timer = setInterval(() => {
             if(newWindow.closed){
-                dispatch(toggelUserLoginTrue());
                 fetchAuthUser();
                 if(timer) clearInterval(timer);
             }

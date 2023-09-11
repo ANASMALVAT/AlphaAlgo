@@ -4,6 +4,7 @@ import AlphaGptWindowText from './alphaGptWindowText';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import {useSelector} from "react-redux"
+import { askAlpha } from '../../api/askAlpha';
 import './styles/alphaGptWindow.css';
 
 const AlphaGPTWindow = () => {
@@ -17,45 +18,14 @@ const AlphaGPTWindow = () => {
   
   useEffect(() => {
     setWindowHeight(layoutValue.toggelHeight);
-
   },[layoutValue.toggelHeight])
 
 
-  const smartMessage = ` Keep the explanation concise and brief, and give a simple example.`;
 
-  const askGPT = async (userInput) => {
-    if (userInput.trim() !== '') {
-      setLoading(true);
-      let currentChats = chats;
-      currentChats.push({ role: 'user', content: userInput + smartMessage });
-      setChats(currentChats);
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { type: 'User', text: userInput },
-      ]);
-      try {
-        const response = await axios.post('http://localhost:5000/api/alpha-gpt', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          currentChats,
-        });
-
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { type: 'Bot', text: response.data.content },
-        ]);
-
-        currentChats.push({ role: 'assistant', content: response.data.content });
-        setChats(currentChats);
-      } catch (error) {
-        showError('Under Maintenance!');
-      }
-
-      setLoading(false);
-    }
+  const handleAskGPT = async (userInput) => {
+    await askAlpha(userInput, chats, setChats, setMessages, setLoading, showError);
   };
+
 
   const showError = (notification) => {
     toast.error(
@@ -90,7 +60,7 @@ const AlphaGPTWindow = () => {
 
       </div>
 
-        <AlphaGPTSearchBar sendRequest={askGPT} loading={loading} />
+        <AlphaGPTSearchBar sendRequest={handleAskGPT} loading={loading} />
 
     </div>
   );

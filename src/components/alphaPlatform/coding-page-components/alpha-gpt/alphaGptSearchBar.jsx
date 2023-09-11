@@ -15,7 +15,6 @@ export default function AlphaGPTSearchBar({sendRequest, loading}) {
   const handleUserInput = (value) => 
   {
     setUserInput(value);
-    console.log(userInput);
   }
 
   return (

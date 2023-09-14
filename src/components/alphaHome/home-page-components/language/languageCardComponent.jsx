@@ -10,7 +10,7 @@ const LanguageCardComponent = ({language}) => {
             </div>
             <div className="flex">
                 <h1 className="language-name ">{language.language}</h1>
-                <p className="language-description text-gray-400" >{language.description}</p>
+                <p className="language-description text-gray-300" >{language.description}</p>
             </div>
         </div>
     )

@@ -3,7 +3,6 @@ import axios from "axios";
 import Popup from 'reactjs-popup';
 import { useSelector,useDispatch } from 'react-redux';
 import { toggelLoginWindowFalse } from "../../../redux/slices/userComponentSlice";
-import { retrieveToken} from "./api/api"
 import { toggelUserLoginFalse, toggelUserLoginTrue } from '../../../redux/slices/userAuthentication';
 import GoogleButton from 'react-google-button'
 
@@ -22,8 +21,8 @@ const UserLogin = () => {
     };
 
     const fetchAuthUser = async () => {
-        const response = await axios.get(TOKEN_URL, {withCredentials : true})
 
+        const response = await axios.get(TOKEN_URL, {withCredentials : true})
         .catch((err) => {
             dispatch(toggelUserLoginFalse());
         })
@@ -51,7 +50,7 @@ const UserLogin = () => {
                 closeOnDocumentClick
                 open={LoginButton}
                 onClose={handleClose}
-                className='popup-content-main'
+                className=' my-popup'
             >
             {
             close => (

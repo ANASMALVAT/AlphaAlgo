@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 import { useState, useEffect, useRef } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { defineTheme } from "../../data/themeOptions";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -31,16 +30,13 @@ const AlphaPlatform = ({}) => {
   const layoutValue = useSelector((state) => state.layoutValue);
   const dispatch = useDispatch();
   const [code, setCode] = useState("");
-  const [theme, setTheme] = useState(dropdownValue.theme);
   const [language, setLanguage] = useState(dropdownValue.language);
   const [solution, setSolution] = useState(false);
   const [customInput, setCustomInput] = useState("");
   const [output, setOutput] = useState("");
   const [windowWidth, setwindowWidth] = useState(layoutValue.width);
   const [toggelWindow, setToggelWindow] = useState(layoutValue.swapWindow);
-  const CODE_STATUS_URL = process.env.REACT_APP_CODE_STATUS_URL;
-  const CODE_COMPILE_URL = process.env.REACT_APP_CODE_COMPILE_URL;
-
+ 
   const toastId = useRef(null);
 
   useEffect(() => {
@@ -156,10 +152,12 @@ const AlphaPlatform = ({}) => {
         toast.update(toastId.current, { autoClose: 1 });
         setOutput(codeStatusResponse.code_output);
         showSuccess(codeStatusResponse.message);
-      } else {
+      }
+      else {
         toast.update(toastId.current, { autoClose: 1 });
         showError(codeStatusResponse.error);
       }
+
     } catch (error) {
       console.error(error);
     }
@@ -180,11 +178,9 @@ const AlphaPlatform = ({}) => {
 
   useEffect(() => {
     if (["light", "vs-dark"].includes(dropdownValue.theme)) {
-      setTheme(dropdownValue.theme);
+      defineTheme(dropdownValue.theme);
     } else {
-      defineTheme(dropdownValue.theme).then((_) =>
-        setTheme(dropdownValue.theme)
-      );
+      defineTheme(dropdownValue.theme);
     }
   }, [dropdownValue.theme]);
 
@@ -196,9 +192,10 @@ const AlphaPlatform = ({}) => {
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
         draggable: true,
-        progress: undefined,
+        progress: true,
+        theme:"dark"
       }
     );
   };
@@ -209,15 +206,15 @@ const AlphaPlatform = ({}) => {
       autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
-      progress: undefined,
+      progress: true,
+      theme:"dark"
     });
   };
 
   return (
     <>
-      <ToastContainer />
       <SlidingPane isOpen={solution} onRequestClose={closePane} />
       <div className="main-class min-w-[350px] w-full h-full flex flex-row flex-grow  min-w-screen max-h-screen bg-algoblack overflow-auto">
         {alphaPlatformComponents.isConsoleGpt && (
@@ -229,20 +226,23 @@ const AlphaPlatform = ({}) => {
             />
           </div>
         )}
+      
 
         {alphaPlatformComponents.editor && (
           <div
             className={`editor-class overflow-hidden flex flex-col grow-1  ${
               windowWidth ? "w-[60%]" : "w-[40%]"
-            }  h-[100vh]  min-h-[screen] transition-all duration-700 ease-in-out`}
+            }  h-[100vh]  min-h-[375px]  flex-grow transition-all duration-700 ease-in-out`}
           >
             <CodeEditorWindow code={code} onChangeData={onChange} />
           </div>
         )}
 
+        {alphaPlatformComponents.isConsoleGpt && alphaPlatformComponents.editor && <div className=" ml-2 mr-1 w-1 bg-gray-700 h-full min-h-[98vh] rounded-md m-auto flex-grow"></div> }
+        
         {alphaPlatformComponents.isConsoleGpt && (
           <div
-            className={`console-gpt ${windowWidth ? "w-[45%]" : "w-[55%]"} ${
+            className={`console-gpt ${windowWidth ? "w-[40%]" : "w-[60%]"} ${
               toggelWindow ? "alpha-first" : "console-first"
             } transition-all duration-700 ease-in-out max-h-[100vh] `}
           >
@@ -254,12 +254,19 @@ const AlphaPlatform = ({}) => {
                     handleCompile={compileCode}
                     showSolution={showSolution}
                   />
-                )}
+                )
+                }
+
+                { alphaPlatformComponents.console && alphaPlatformComponents.gpt && <div className=" w-full bg-gray-700 h-2 min-h-2 rounded-md"></div>}
+                
                 {alphaPlatformComponents.gpt && <AlphaGPTWindow />}
               </>
             ) : (
               <>
                 {alphaPlatformComponents.gpt && <AlphaGPTWindow />}
+
+                <div className="w-full bg-gray-700 h-2 min-h-2 rounded-md "></div>
+
                 {alphaPlatformComponents.console && (
                   <ConsoleInput
                     output={output}

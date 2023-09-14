@@ -10,7 +10,7 @@ const QuestionCardComponent = ({topic}) => {
                 <CheckIcon style={{fontWeight:"bold"}} color="success"/>
             </div>
             <div className="question-description">
-                <p className="text-gray-200" >{topic.description}</p>
+                <p className="text-gray-300" >{topic.description}</p>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const alphaNotification = createSlice({
+export const alphaNotificationSlice = createSlice({
     name:'alphaNotification',
     initialState:{Notification : ""},
     reducers  : {
@@ -10,6 +10,6 @@ export const alphaNotification = createSlice({
     }
 })
 
-export const {setDifferentEditor,setGPT,setConsole,setDefault} = alphaPlatformSlice.actions;
+export const {showNotification} = alphaNotificationSlice.actions;
 
-export default alphaPlatformSlice.reducer; 
+export default alphaNotificationSlice.reducer; 

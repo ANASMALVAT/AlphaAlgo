@@ -14,11 +14,11 @@ export async function verifyToken() {
           return { success: true, message: 'Token verification successful' };
         }
         else {
-          return { success: false, message: 'Token verification failed' };
+          return { success: false, message: 'Session Expired, Please Login Again!' };
         }
       }
       catch (err) {
-        return { success: false, message: 'Error verifying token' };
+        return { success: false, message: 'Error verifying token,Please Try Again Later!' };
       }
 
 }

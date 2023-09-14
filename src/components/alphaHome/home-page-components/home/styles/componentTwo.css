@@ -3,7 +3,20 @@
 h1{
     font-family: 'IBM Plex Sans', sans-serif;
 }
+.algo-screen{
+  transition: transform 1s ease;
+  animation: fadeIn;
+  animation-duration: 4s;
+}
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .custom-scrollbar {
     /* For Webkit (Chrome, Safari) */

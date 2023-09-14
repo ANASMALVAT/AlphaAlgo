@@ -3,32 +3,32 @@
     font-weight: 300;
     width: 100%;
     color: white;
-    
 }
 .language-text{
     font-size: 18px;
+
 }
-.div-text{
-    width: fit-content;
-    white-space:pre-line;
+
+.common-margin{
     margin-left: 20%;
 }
+
 .languages{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    width: 45%;
+    width: 50%;
 }
 .animation{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45%;
+    width: 40%;
 }
 .coding-gif{
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     border-radius: 5px;
 }
 
@@ -36,11 +36,26 @@
     .animation{
         display: none;
     }
-    .div-text{
-        margin:0px
-    }
     .languages{
-        width: 70%;
+        width: 60%;
+        align-items: center;
+        gap: 2rem;
+    }
+    .language-header{
+        justify-content: center;
+        text-align: center;
+    }
+    .language-text{
+        text-align: center;
+    }
+    .common-margin{
+        margin: auto;
+    }
+    .language-header{
+        font-size: 32px;
+    }
+    .language-text{
+        font-size: 18px;
     }
 }
 

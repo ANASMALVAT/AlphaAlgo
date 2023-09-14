@@ -7,13 +7,13 @@
     width: 8px;
   }
   
-  .code-output::-webkit-scrollbar-track {
-    background: white;
-    border-radius: 8px;
-    margin:5px;
-  }
-  
-  .code-output::-webkit-scrollbar-thumb {
-    background: #5867EA;
-    border-radius: 8px;
-  }
+.code-output::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 8px;
+  margin:5px;
+}
+
+.code-output::-webkit-scrollbar-thumb {
+  background: #5867EA;
+  border-radius: 8px;
+}

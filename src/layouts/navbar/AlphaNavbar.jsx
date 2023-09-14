@@ -2,14 +2,15 @@ import React from "react";
 import NavLinks from "./navLinks";
 import SideNav from "./sideNav";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
+import { ToastContainer,toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggelLoginWindowTrue } from "../../redux/slices/userComponentSlice";
 import { toggelUserLoginFalse } from "../../redux/slices/userAuthentication";
 import UserLogin from "../../components/alphaLogin/login-components/userLogin";
-
+import { showNotification } from "../../redux/slices/alphaNotification";
 
 import "../navbar/styles/AlphaNavbar.css"
 
@@ -20,6 +21,19 @@ const AlphaNavbar  = () => {
     const dispatch = useDispatch();
     const IsUserLoggedIn = useSelector((state) => state.userLogin.userLogin);
     const USER_LOGOUT_URL = process.env.REACT_APP_USER_LOGOUT;
+    const AlphaNotification = useSelector((state) => state.alphaNotification);
+    
+    useEffect(()=>{
+      if(AlphaNotification.Notification != ""){
+
+        toast(AlphaNotification.Notification);
+
+        setTimeout(() => {
+            dispatch(showNotification({ Notification: "" }));
+          }, 3000);
+      }
+    },[AlphaNotification.Notification]);
+
 
     setTimeout(() => {
         setShowLoginButton(true);

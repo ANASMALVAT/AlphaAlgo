@@ -25,15 +25,7 @@ const NavLinks = ({flexClass}) => {
                     </li>
                     <li class="nav-item mb-1">
                         <Link
-                            to="/team"
-                            className="font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"
-                        >
-                        Udemy
-                        </Link>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <Link
-                            to="/team"
+                            to="/purchase"
                             className="font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"
                         >
                         Purchase

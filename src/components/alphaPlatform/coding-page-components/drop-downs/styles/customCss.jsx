@@ -20,11 +20,12 @@ export const customStyles = {
       maxWidth:'215px',
       width:"175px",
       border:"1px solid #4C5ADF",
-      borderBottom:"5px solid #4C5ADF",
+      borderBottom:"3px solid #4C5ADF",
       
     ":hover": {
         boxShadow: "none",
-        border:"none"
+        border:"1px solid #4C5ADF",
+        borderBottom:"5px solid #4C5ADF",
       },
       overflow:"auto",
       borderRadius:"2px",

@@ -1,44 +1,101 @@
-.question-header{
-    font-size: 32px;
-    width: 100%;
-    font-weight: 300;
-    color: white;
-    
-}
-.question-text{
-    font-size: 18px;
-}
-.div-question{
-    width: fit-content;
-    white-space:pre-line;
-    margin-left: 15%;
-    align-items: start;
-    justify-content: flex-start;
-    justify-content: space-evenly;
-}
+
 .question{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    width: 45%;
+    width: 50%;
 }
+
+.question-header{
+    font-size: 32px;
+    width: 100%;
+    font-weight: 300;
+    color: white;
+    margin-left: 20%;
+}
+
+.question-text{
+    font-size: 18px;
+    margin-left: 20%;
+}
+.div-question{
+    width: fit-content;
+    white-space:pre-line;
+    align-items: start;
+    justify-content: flex-start;
+    justify-content: space-evenly;
+    margin-left: 17%;
+}
+
 .question-grid{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45%;
+    width: 40%;
+}
+
+.question-gif{
+    height: 475px;
+    width: 475px;
+}
+
+@media (max-width:1300px){
+    .question-gif{
+        height: 375px;
+        width: 375px;
+    }
+    .question-header{
+        margin-left: 15%;
+        text-align: center;
+    }
+    .question-text{
+        margin-left: 15%;
+    }
+    .div-question{
+        margin-left: 12%;
+    }
+    .question-grid{
+        width: 30%;
+    }
+    .question{
+        width: 60%;
+        margin-top: 2rem;
+        gap: 2rem;
+    }
+}
+
+@media (max-width:1200px){
+    .question-gif{
+        height: 325px;
+        width: 325px;
+    }
 }
 
 @media (max-width:1000px) {
     .question-grid{
         display: none;
     }
-    .div-question{
-        margin:0px
-    }
     .question{
         width: 70%;
+        height: 500px;
+    }
+    .question-header{
+        justify-content: center;
+        margin: auto;
+    }
+    .question-text{
+        justify-content: center;
+        margin: auto;
+        text-align: center;
+    }
+    .div-question{
+        justify-content: center;
+        
+        margin: auto;
+    }
+    .header-text{
+        justify-content: center;
     }
 }
 

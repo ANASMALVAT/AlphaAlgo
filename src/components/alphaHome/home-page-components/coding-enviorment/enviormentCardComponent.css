@@ -1,0 +1,23 @@
+.enviorment-block{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.enviorment-description{
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+.check-icon{
+    font-weight: 900;
+}
+
+.enviorment-block{
+    padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+}
+.enviorment-block:hover{
+    border: 1px solid #4C5ADF;
+}

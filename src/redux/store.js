@@ -5,6 +5,7 @@ import windowWidthReducer from "./slices/layoutSlice"
 import problemTopic from "./slices/problemTopicSlice"
 import userLoginWindow from "./slices/userComponentSlice"
 import userLogin from "./slices/userAuthentication"
+import alphaNotification from "./slices/alphaNotification"
 
 const store = configureStore({
     reducer:{
@@ -13,7 +14,9 @@ const store = configureStore({
       layoutValue:windowWidthReducer,
       problemTopic:problemTopic,
       userLoginWindow:userLoginWindow,
-      userLogin:userLogin
+      userLogin:userLogin,
+      alphaNotification:alphaNotification,
+
 
   
     },

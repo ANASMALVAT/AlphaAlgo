@@ -112,7 +112,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
 
                 </div>
 
-                <div className="editor-logo flex flex-row text-center overflow-hidden items-center h-full w-20 justify-center  border-4 border-[#4C5ADF]">
+                <div className="editor-logo flex flex-row text-center overflow-hidden items-center h-full w-20 justify-center   border-[#4C5ADF]">
                     <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
                     <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:rotate-[540deg] ">X</h1>
                     <h1 className="font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>

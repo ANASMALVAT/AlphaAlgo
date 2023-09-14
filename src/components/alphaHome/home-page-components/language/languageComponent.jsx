@@ -10,15 +10,15 @@ const LanguageComponent = () => {
     return (
         <div className="flex flex-row min-h-[600px] bg-algoblack mt-12 justify-evenly pt-8 ">
             <div className="languages"> 
-                <div className=" language-header mb-4">
-                    <h1 className="div-text">Type In Seven Syntax</h1>
+                <div className=" common-margin language-header mb-4">
+                    <h1>Type In Seven Syntax</h1>
                 </div>
-                <div className=" language-text mb-10 text-gray-600">
-                    <p className="div-text text-gray-300">
+                <div className=" language-text common-margin mb-10 text-gray-600">
+                    <p className="text-gray-300">
                         Diverse selection of seven programming languages. Whether you're a seasoned developer or just starting your coding journey, our comprehensive language offerings have got you covered.
                     </p>    
                 </div>
-                <div className="div-text">
+                <div className="language-grid common-margin">
                     {
                         languages.map((language) =>{
                             return <LanguageCardComponent language={language} />

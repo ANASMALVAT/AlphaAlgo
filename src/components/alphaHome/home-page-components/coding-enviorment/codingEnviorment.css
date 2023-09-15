@@ -4,6 +4,10 @@
     justify-content: space-evenly;
     width: 100%;
 }
+.common-margin{
+    margin-left: 20%
+}
+
 
 .enviorment-header{
     font-size: 32px;
@@ -16,10 +20,7 @@
     font-size: 18px;
 
 }
-.common-margin{
-    margin-left: 20%;
 
-}
 
 .div-enviorment{
     display: flex;
@@ -74,17 +75,34 @@
         display: none;
     }
     .div-enviorment{
-        margin:0px
+        margin:0px;
+        width: 80%;
+        text-align: center;
+        gap: 2rem;
+    }
+    .enviorment-header{
+        text-align: center;
+        margin: auto;
     }
     .enviorment{
-        width: 70%;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        align-items: center;
+        height: 850px;
+    }
+    .enviorment-text{
+        margin: auto;
+    }
+    .enviorment-cards{
+        margin: auto;
     }
 }
 
 @media (max-width:500px) {
-
-    .languages{
+    .div-enviorment{
         width: 90%;
+
     }
     .enviorment-header{
         font-size: 28px;

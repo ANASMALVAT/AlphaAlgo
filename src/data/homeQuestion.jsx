@@ -3,6 +3,9 @@ export const questionCategory = [
         description:"Dynamic Programming"
     },
     {
+        description:"Bit Manipulation"
+    },
+    {
         description:"Recursion"
     },
 
@@ -10,9 +13,7 @@ export const questionCategory = [
         description:"Graph & Matrix"
     },
 
-    {
-        description:"Bit Manipulation"
-    },
+  
     {
         description:"Shortest Path"
     },

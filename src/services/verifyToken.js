@@ -14,10 +14,12 @@ export async function verifyToken() {
           return { success: true, message: 'Token verification successful' };
         }
         else {
+          localStorage.clear();
           return { success: false, message: 'Session Expired, Please Login Again!' };
         }
       }
       catch (err) {
+        localStorage.clear();
         return { success: false, message: 'Error verifying token,Please Try Again Later!' };
       }
 

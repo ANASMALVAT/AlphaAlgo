@@ -9,7 +9,7 @@ const ComponentOne = () =>
         <>
             <div className=" h-[450px] w-full  min-w-screen flex flex-row flex-grow  bg-[#00182D] justify-center text-center ">
 
-                <div className=" alpha-info h-90 flex flex-col flex-grow  w-5/12 overflow-hidden text-left  ">
+                <div className=" alpha-info h-90 flex flex-col flex-grow  w-6/12 overflow-hidden text-left  ">
 
                     <div className=" alpha-info-detail flex flex-col text-start flex-grow pt-20 w-full max-w-[1400px] p-2">
 
@@ -34,7 +34,7 @@ const ComponentOne = () =>
                     </div>
 
                 </div>
-                    <div className="alpha-window w-7/12 h-60 m-auto flex justify-center align-middle overflow-visible">
+                    <div className="alpha-window w-6/12 h-60 m-auto flex justify-center align-middle overflow-visible">
                         <ComponentTwo/>
                     </div>
             </div>

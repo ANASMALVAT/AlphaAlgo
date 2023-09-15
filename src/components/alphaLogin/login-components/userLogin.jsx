@@ -3,7 +3,7 @@ import axios from "axios";
 import Popup from 'reactjs-popup';
 import { useSelector,useDispatch } from 'react-redux';
 import { toggelLoginWindowFalse } from "../../../redux/slices/userComponentSlice";
-import { toggelUserLoginFalse, toggelUserLoginTrue } from '../../../redux/slices/userAuthentication';
+import { toggelUserLoginTrue } from '../../../redux/slices/userAuthentication';
 import GoogleButton from 'react-google-button'
 
 
@@ -12,7 +12,6 @@ import "../styles/userLogin.css"
 const UserLogin = () => {
 
     const AUTHENTICATION_URL = process.env.REACT_APP_AUTHENTICATION_URL;
-    const TOKEN_URL = process.env.REACT_APP_TOKEN_URL;
     const LoginButton = useSelector((state) => state.userLoginWindow.showLoginWindow);
     const dispatch = useDispatch();
 
@@ -22,27 +21,21 @@ const UserLogin = () => {
 
     const fetchAuthUser = async () => {
 
-        const response = await axios.get(TOKEN_URL, {withCredentials : true})
-        .catch((err) => {
-            dispatch(toggelUserLoginFalse());
-        })
+        console.log(localStorage.getItem('jwt-token'));
+        dispatch(toggelUserLoginTrue());
+        dispatch(toggelLoginWindowFalse());
 
-        if(response && response.data){
-            localStorage.setItem('jwt-token',response.data);
-            dispatch(toggelUserLoginTrue());
-            handleClose();
-        }
     }
     
     const redirectGoogleSSO = async () => {
-        const newWindow = window.open(AUTHENTICATION_URL, '_blank', 'width=600,height=600');
-        let timer = null;
-        timer = setInterval(() => {
-            if(newWindow.closed){
+        const response = await axios.get(AUTHENTICATION_URL);
+        const newWindow = window.open(response.data, '_blank', 'width=600,height=600');
+        const checkClosedInterval = setInterval(() => {
+            if (newWindow && newWindow.closed) {
+                clearInterval(checkClosedInterval);
                 fetchAuthUser();
-                if(timer) clearInterval(timer);
             }
-        },500);
+        }, 500); 
     }
 
     return (

@@ -1,3 +1,7 @@
+.common-margin-language{
+    margin-left: 20%;
+}
+
 .language-header{
     font-size: 38px;
     font-weight: 300;
@@ -9,10 +13,6 @@
 
 }
 
-.common-margin{
-    margin-left: 20%;
-}
-
 .languages{
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@
     align-items: start;
     width: 50%;
 }
-.animation{
+.language-animation{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,29 +33,40 @@
 }
 
 @media (max-width:1000px) {
-    .animation{
-        display: none;
+
+
+    .common-margin-language{
+        margin:0px;
     }
+
+    .common-margin{
+        margin: 0;
+        margin-left: 0px;
+    }
+
     .languages{
-        width: 60%;
+        width: 80%;
+        justify-content: center;
         align-items: center;
         gap: 2rem;
     }
+
     .language-header{
         justify-content: center;
         text-align: center;
-    }
-    .language-text{
-        text-align: center;
-    }
-    .common-margin{
-        margin: auto;
-    }
-    .language-header{
         font-size: 32px;
     }
-    .language-text{
+
+    .language-text {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: fit-content;
+        margin: auto;
         font-size: 18px;
+    }
+    .language-animation{
+        display: none;
     }
 }
 

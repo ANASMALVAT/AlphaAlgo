@@ -20,7 +20,6 @@ const AlphaNavbar  = () => {
 
     const dispatch = useDispatch();
     const IsUserLoggedIn = useSelector((state) => state.userLogin.userLogin);
-    const USER_LOGOUT_URL = process.env.REACT_APP_USER_LOGOUT;
     const AlphaNotification = useSelector((state) => state.alphaNotification);
     
     useEffect(()=>{
@@ -37,7 +36,7 @@ const AlphaNavbar  = () => {
 
     setTimeout(() => {
         setShowLoginButton(true);
-      }, 500);
+      }, 1000);
 
     const openNav = () => {
         setSideNav(true);
@@ -51,13 +50,8 @@ const AlphaNavbar  = () => {
     }
 
     const logout = async () => {
-        try {
-            await axios.get(USER_LOGOUT_URL);
-            localStorage.clear();
-            dispatch(toggelUserLoginFalse());
-          } catch (error) {
-            
-        }
+        localStorage.clear();
+        dispatch(toggelUserLoginFalse());
     }
 
     return (

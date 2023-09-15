@@ -12,3 +12,14 @@
     background: transparent;
     box-shadow: 0 3px 3px 0 rgba(249, 248, 248, 0.1);
 }
+
+@media (max-width:500px){
+    .card-css{
+        width: 310px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .text-2xl{
+        font-size: 22px;
+    }
+}

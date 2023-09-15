@@ -2,9 +2,8 @@
     display: flex;
     align-items: center;
     margin: auto;
-    margin-bottom: 10px;
-    justify-content: space-evenly;
     border: 1px transparent;
+    width: fit-content;
 }
 
 .question-block:hover{
@@ -28,6 +27,12 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+}
+@media (max-width:1000px) {
+    .question-block{
+        margin: auto;
+    }
+
 }
 
 @media (max-width:500px) {

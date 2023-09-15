@@ -7,6 +7,7 @@
 .enviorment-description{
     font-size: 22px;
     margin-left: 10px;
+    text-align: left;
 }
 
 .check-icon{
@@ -15,9 +16,29 @@
 
 .enviorment-block{
     padding: 5px;
+    padding-left: 0px;
     width: fit-content;
     border-radius: 5px;
 }
 .enviorment-block:hover{
     border: 1px solid #4C5ADF;
+}
+
+@media (max-width:1000px) {
+    .enviorment-block{
+        margin-left: 50px;
+    }
+    .enviorment-description{
+        font-size: 20px;
+    }
+}
+
+
+@media (max-width:500px) {
+    .enviorment-block{
+       margin: auto;
+    }
+    .enviorment-description{
+        font-size: 18px;
+    }
 }

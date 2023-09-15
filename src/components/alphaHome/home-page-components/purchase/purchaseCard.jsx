@@ -38,9 +38,11 @@ export default function PricingCard() {
     }
 
     try {
+      console.log(process.env.REACT_APP_PURCHASE_URL);
       const response = await axios.post(process.env.REACT_APP_PURCHASE_URL, {}, {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `${localStorage.getItem('jwt-token')}`, 
         }
       });
       if (response.data && response.data.url) {

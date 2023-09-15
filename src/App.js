@@ -3,7 +3,7 @@ import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import Team from "./components/alphaHome/home-page-components/team/team";
 import AlphaHomePage from './components/alphaHome/alphaHome';
 import AlphaPlatform from "./components/alphaPlatform/mainPage";
-import CodingProblems from "./components/alphaHome/home-page-components/problems/codingProblemsMainPage";
+import CodingProblems from "./components/alphaProblem/codingProblemsMainPage";
 import { LoginSuccess } from "./components/alphaLogin/login-components/loginSuccess";
 import { toggelUserLoginFalse, toggelUserLoginTrue } from "./redux/slices/userAuthentication";
 import { verifyToken } from "./services/verifyToken";
@@ -57,7 +57,7 @@ function App() {
       element:<CodingProblems/>
     },
     {
-      path:"/user/success",
+      path:"/user/success/:token",
       element:<LoginSuccess />
     }
     ,
@@ -72,6 +72,9 @@ function App() {
     {
       path:"/payment-unsuccessful",
       element:<div>Failure</div>
+    },
+    {
+      
     }
   ]);
   

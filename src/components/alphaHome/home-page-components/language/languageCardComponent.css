@@ -5,7 +5,6 @@
     margin: auto;
     justify-content: flex-start;
     margin-bottom: 20px;
-
 }
 .language-img{
     display: flex;
@@ -34,6 +33,10 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+}
+@media (max-width:1000px) {
+    .language-block{
+    }
 }
 
 @media (max-width:500px) {

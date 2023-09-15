@@ -14,7 +14,7 @@ export default function DefaultCard({features}) {
           {features.title}
         </p>
       </h5>
-      <p className="font-normal text-gray-300">
+      <p className=" font-normal text-gray-300">
         <p>
             {features.info}
         </p>

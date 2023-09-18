@@ -20,9 +20,9 @@ const Grid = ({problemInfo}) => {
                 <LockOpenIcon  sx={{color:"#4C5ADF",marginLeft:"10px",marginRight:"25px"}}/>
             }
         
-            <div className={`${ problemInfo?.question_difficulty === 'easy' ? 'bg-green-400': problemInfo?.question_difficulty === 'medium' ? 'bg-blue-600':'bg-red-700'} items-end w-12 h-full  `}>
+           <div className={`${ problemInfo?.question_difficulty === 'easy' ? 'bg-green-300' : problemInfo?.question_difficulty === 'medium' ? 'bg-blue-300' : problemInfo?.question_difficulty === 'hard' ? 'bg-red-300' : 'bg-purple-100'} items-end w-12 h-full`}>
             </div>
-            <div className={`${ problemInfo?.question_difficulty === 'easy' ? 'bg-green-700': problemInfo?.question_difficulty === 'medium' ? 'bg-blue-700':'bg-red-900'} items-end w-2 h-full rounded-r-md  `}>
+            <div className={`${ problemInfo?.question_difficulty === 'easy' ? 'bg-green-400' : problemInfo?.question_difficulty === 'medium' ? 'bg-blue-400' : problemInfo?.question_difficulty === 'hard' ? 'bg-red-400' : 'bg-purple-100' } items-end w-2 h-full rounded-r-md`}>
             </div>
         </div>
     </Link>

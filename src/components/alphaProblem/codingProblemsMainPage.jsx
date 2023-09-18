@@ -33,7 +33,12 @@ const CodingProblems = () => {
             <div className=' flex flex-col justify-center items-center h-80 mt-12 w-full text-center '>
                <ProblemInformation/>
             </div>
-            { loading && <LinearProgress color="secondary" /> }
+            { 
+              loading && 
+              <div className='h-40 w-40 mb-4'>
+                <img className='animate-spin ' style={{ animationDuration: '2.5s' }} src='https://www.svgrepo.com//show/408307/cog-wheel-settings.svg'></img>
+              </div>
+            }
 
             {!loading  &&
             <div className='flex flex-col  flex-1 w-full h-2 flex-grow bg-white '>

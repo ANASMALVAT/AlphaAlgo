@@ -1,0 +1,27 @@
+import React from 'react'
+
+const RestrictUnauthorized = () => {
+
+    return (
+        <div className='flex h-full w-full min-h-screen min-w-screen bg-[#00182D]'>
+            <div className='flex flex-col m-auto justify-center text-center items-center'>
+                <div className='h-40 w-40 mb-4'>
+                <img src='https://www.svgrepo.com/show/408465/lock-security-open.svg'></img>
+                </div>
+                <div className='text-center'>
+                    <h5 className=" flex text-2xl font-normal tracking-tight text-white">
+                        <p>
+                            Get
+                        </p>
+                        <h5 className=" font-mono font-bold  text-[#4C5ADF] text-[32px] hover:duration-500 hover:scale-150 ml-2 mr-2"> X </h5>
+                        <p>
+                            to access this question
+                        </p>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default RestrictUnauthorized;

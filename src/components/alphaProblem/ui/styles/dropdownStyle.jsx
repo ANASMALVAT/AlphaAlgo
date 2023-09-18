@@ -2,29 +2,29 @@ export const customStyles = {
 
   singleValue:(styles) => ({
     ...styles,
-    color:'#fff',
+    color:'#000000',
     
   }),
 
   control: (styles) => ({
     ...styles,
     borderRadius: "3px",
-    fontSize: "1.3rem",
+    fontSize: "1.5rem",
+    fontweight:"bold",
     lineHeight: "2rem",
-    background:"#00182D",
+    background:"#F5F5F5",
     cursor: "pointer",
     maxWidth: "18rem",
     minWidth: "16rem",
     height:"4rem",
     width:"175px",
-    borderBottom:"8px solid #4C5ADF",
   ":hover": {
       boxShadow: "none",
     },
     overflow:"auto",
     borderRadius:"5px",
-    textAlign:"center"
-
+    textAlign:"center",
+    color:'#2D33CA',
   }),
 
   option: (styles) => {
@@ -40,6 +40,7 @@ export const customStyles = {
       background:"#00182D",
       color:"white",
       border:"none",
+      
       ":hover": {
         cursor: "pointer",
         transition: "0.1s",

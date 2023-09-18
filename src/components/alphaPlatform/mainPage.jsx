@@ -1,5 +1,4 @@
 import React, { useLayoutEffect } from "react";
-import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { defineTheme } from "../../data/themeOptions";
@@ -11,9 +10,10 @@ import SlidingPane from "./coding-page-components/sliding-panel/problemSlidingPa
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/ConsoleInput";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
+import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
+import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";
 import { codeCompile } from "./api/codeCompile";
 import { codeStatus } from "./api/codeCompileStatus";
-import { verifyToken } from "../../services/verifyToken";
 import { authorizedUser } from "../../services/authorizedUser";
 
 import "./styles/mainPage.css";
@@ -38,19 +38,42 @@ const AlphaPlatform = ({}) => {
   const [toggelWindow, setToggelWindow] = useState(layoutValue.swapWindow);
   const {problemId} = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoggedIn,setIsLoggedIn] = useState(false);
+  const [isQuestion,setIsQuestion] = useState(false);
+  const [isServer,setIsServer] = useState(false);
   const [isAuthorised, setIsAuthorised] = useState(false);
-  const [authorizedMessage, setAuthorizedMessage] = useState("");
 
 
-  useEffect (() => {
+  useLayoutEffect (() => {
      async function fetchData() {
       if (localStorage.getItem('jwt-token') == null) {
         setIsLoading(false);
-        setAuthorizedMessage("Please Login To Alpha Algo");
+        setIsLoggedIn(false);
       }
       const response = await authorizedUser(problemId);
       console.log(response);
-      setIsLoading(false);
+      if(response?.status === 401){
+        toast("Session Expired, Please Login To Continue!",{autoClose:3000});
+        setIsLoggedIn(false);
+      }
+      else if(response?.status === 402){
+        toast(response?.message);
+        setIsLoggedIn(true);
+        setIsQuestion(false);
+      }
+      else if(response?.status === 403){
+        isLoggedIn(true);
+        setIsQuestion(true);
+        setIsAuthorised(false);
+      }
+      else if(response?.status === 500){
+        isLoggedIn(true);
+        setIsQuestion(true);
+        setIsAuthorised(true);
+        setIsServer(false);
+
+      }
+
     }
 
     fetchData();
@@ -223,6 +246,27 @@ const AlphaPlatform = ({}) => {
     });
   };
 
+    if(isLoading)
+    {
+      return (
+        <div className='flex h-full w-full min-h-screen min-w-screen bg-[#00182D]'>
+            <div className='flex flex-col m-auto justify-center text-center items-center'>
+                <div className='h-40 w-40 mb-4'>
+                    <img className='animate-spin ' style={{ animationDuration: '2.5s' }} src='https://www.svgrepo.com//show/408307/cog-wheel-settings.svg'></img>
+                </div>
+            </div>
+        </div>
+        )
+    }
+
+    if(!isLoggedIn){
+      return <RestrictLogin/>
+    }
+
+    if(!isAuthorised){
+      return <RestrictUnauthorized/>
+    }
+
   return (
     <>
       <SlidingPane isOpen={solution} onRequestClose={closePane} />
@@ -236,7 +280,6 @@ const AlphaPlatform = ({}) => {
             />
           </div>
         )}
-      
 
         {alphaPlatformComponents.editor && (
           <div

@@ -1,0 +1,10 @@
+
+h2{
+    font-family: Ubuntu,Helvetica,Arial,sans-serif;
+    font-size: 28px;
+    text-align: center; 
+}
+.fade-in {
+    opacity: 1; /* Start with opacity 0 (invisible) */
+    transition: opacity 0.5s ease-in-out; /* Transition opacity with a duration of 0.5 seconds */
+  }

@@ -1,7 +1,7 @@
 export const codingTopics = 
 [
-    { value: "all", label: 'All' },
-    { value: "graph", label: 'Graph' },
-    { value: "binary tree", label: 'Binary Tree' },
+    { value: "All", label: 'All' },
+    { value: "BFS", label: 'BFS' },
+    { value: "DFS", label: 'DFS' },
     // { value: "Queues", label: 'string' },
 ]

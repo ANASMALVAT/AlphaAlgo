@@ -39,13 +39,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 20px;
     font-weight: normal;
     color: white;
     background-color: #4c5adf;
-    border-bottom: 8px solid #2d33ca;
-    border-radius: 5px;
+    border-bottom: 5px solid #2d33ca;
+    border-radius: 2px;
   }
   
   @media screen and (max-width: 768px) {

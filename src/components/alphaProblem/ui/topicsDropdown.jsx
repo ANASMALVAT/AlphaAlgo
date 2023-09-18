@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import  Select  from 'react-select';
-import { customStyles } from '../styles/dropdownStyle';
+import { customStyles } from './styles/dropdownStyle';
 import {codingTopics} from "../../../data/codingTopics"
 import { changeTopic } from '../../../redux/slices/problemTopicSlice';
 import { useDispatch,useSelector } from 'react-redux';

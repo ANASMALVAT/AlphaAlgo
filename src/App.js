@@ -49,7 +49,7 @@ function App() {
       element: <Team/>,
     },
     {
-      path: "coding-platform",
+      path: "problems/:problemId",
       element:<AlphaPlatform/>
     },
     {

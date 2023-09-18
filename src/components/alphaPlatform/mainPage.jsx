@@ -1,14 +1,11 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
+import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { defineTheme } from "../../data/themeOptions";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {
-  setDifferentEditor,
-  setConsole,
-  setDefault,
-} from "../../redux/slices/alphaPlatformSlice";
+import {setDifferentEditor, setConsole, setDefault,} from "../../redux/slices/alphaPlatformSlice";
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
 import SlidingPane from "./coding-page-components/sliding-panel/problemSlidingPane";
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
@@ -16,9 +13,12 @@ import ConsoleInput from "./coding-page-components/console/ConsoleInput";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
 import { codeCompile } from "./api/codeCompile";
 import { codeStatus } from "./api/codeCompileStatus";
+import { verifyToken } from "../../services/verifyToken";
+import { authorizedUser } from "../../services/authorizedUser";
 
 import "./styles/mainPage.css";
 import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router-dom";
 
 const AlphaPlatform = ({}) => {
   const alphaPlatformComponents = useSelector(
@@ -36,6 +36,26 @@ const AlphaPlatform = ({}) => {
   const [output, setOutput] = useState("");
   const [windowWidth, setwindowWidth] = useState(layoutValue.width);
   const [toggelWindow, setToggelWindow] = useState(layoutValue.swapWindow);
+  const {problemId} = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthorised, setIsAuthorised] = useState(false);
+  const [authorizedMessage, setAuthorizedMessage] = useState("");
+
+
+  useEffect (() => {
+     async function fetchData() {
+      if (localStorage.getItem('jwt-token') == null) {
+        setIsLoading(false);
+        setAuthorizedMessage("Please Login To Alpha Algo");
+      }
+      const response = await authorizedUser(problemId);
+      console.log(response);
+      setIsLoading(false);
+    }
+
+    fetchData();
+  },[])
+ 
  
   const toastId = useRef(null);
 
@@ -190,11 +210,6 @@ const AlphaPlatform = ({}) => {
       {
         position: "top-right",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: true,
         theme:"dark"
       }
     );
@@ -204,11 +219,6 @@ const AlphaPlatform = ({}) => {
     toast.success(notification ? notification : `Compiled Successfully!`, {
       position: "top-right",
       autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: true,
       theme:"dark"
     });
   };

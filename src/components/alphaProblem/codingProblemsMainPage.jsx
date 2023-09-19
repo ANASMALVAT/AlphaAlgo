@@ -4,9 +4,7 @@ import TopicDropdown from './ui/topicsDropdown';
 import ProblemGrid from './grid/problemGrid';
 import ProblemInformation from './ui/problemInformation';
 import { fetchQuestionList } from '../../services/fetchQuestionList';
-import LinearProgress from '@mui/material/LinearProgress';
 
-import { useScrollTrigger } from '@mui/material';
 
 const CodingProblems = () => {
 
@@ -24,7 +22,6 @@ const CodingProblems = () => {
         .catch(error=> {setError("Please try again in some time!")})
       },[])
 
-      console.log(questions);
     return (
         <>
         <AlphaNavbar/>
@@ -35,16 +32,16 @@ const CodingProblems = () => {
             </div>
             { 
               loading && 
-              <div className='h-40 w-40 mb-4'>
-                <img className='animate-spin ' style={{ animationDuration: '2.5s' }} src='https://www.svgrepo.com//show/408307/cog-wheel-settings.svg'></img>
+              <div className='h-60 w-60 ml-auto mr-auto'>
+                <img className='animate-spin ' style={{ animationDuration: '3s' }} src='https://www.svgrepo.com//show/408307/cog-wheel-settings.svg'></img>
               </div>
             }
 
             {!loading  &&
-            <div className='flex flex-col  flex-1 w-full h-2 flex-grow bg-white '>
-                <TopicDropdown/>
-                <ProblemGrid  problemList = {questions}/>
-            </div>
+              <div className='flex flex-col  flex-1 w-full h-2 flex-grow bg-white '>
+                  <TopicDropdown/>
+                  <ProblemGrid  problemList = {questions}/>
+              </div>
             }
         </div>
         </>

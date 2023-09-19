@@ -61,12 +61,11 @@
   .slide-pane__header {
     display: flex;
     flex: 0 0 64px;
-    align-items: center;
-    background: #00182D;
+    align-items: left;
+    background: #4C5ADF;
     height: 40px;
-    border-bottom: 2px solid #4C5ADF;
-    border-radius: 10px;
-    justify-content: center;
+    background-color: "#4C5ADF";
+
 
   }
   .slide-pane__title-wrapper {
@@ -74,12 +73,12 @@
     flex: 1;
     flex-direction: column;
     min-width: 0;
-    
+    margin: 0;
 
 
   }
   .slide-pane .slide-pane__title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: normal;
     white-space: nowrap;
     overflow: hidden;
@@ -87,8 +86,9 @@
     align-items: start;
     margin: 0;
     padding: 0;
+    font-family: Ubuntu,Helvetica,Arial,sans-serif;
+    letter-spacing: 0.25px;
     /* color: white; */
-    font-family: 'Ubuntu',Helvetica,Arial,sans-serif;
     color:"#5867EA";
     
   }

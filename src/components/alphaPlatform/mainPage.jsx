@@ -6,81 +6,151 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {setDifferentEditor, setConsole, setDefault,} from "../../redux/slices/alphaPlatformSlice";
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
-import SlidingPane from "./coding-page-components/sliding-panel/problemSlidingPane";
+import SlidingPane from "./coding-page-components/sliding-panel/solutionSlidingPane";
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/ConsoleInput";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
-import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
-import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";
+
 import { codeCompile } from "./api/codeCompile";
 import { codeStatus } from "./api/codeCompileStatus";
 import { authorizedUser } from "../../services/authorizedUser";
+import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
+import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";
+import RestrictQuestion from "./coding-page-components/alpha-restrictions/restrictQuestion";
 
 import "./styles/mainPage.css";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
+import RestrictServerSide from "./coding-page-components/alpha-restrictions/restrictServerSide";
 
 const AlphaPlatform = ({}) => {
+ 
+
   const alphaPlatformComponents = useSelector(
     (state) => state.alphaPlatform.value
   );
+
   const dropdownValue = useSelector(
     (state) => state.dropdownValues.dropdownValue
   );
+
   const layoutValue = useSelector((state) => state.layoutValue);
-  const dispatch = useDispatch();
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState(dropdownValue.language);
   const [solution, setSolution] = useState(false);
-  const [customInput, setCustomInput] = useState("");
   const [output, setOutput] = useState("");
   const [windowWidth, setwindowWidth] = useState(layoutValue.width);
   const [toggelWindow, setToggelWindow] = useState(layoutValue.swapWindow);
+  const toastId = useRef(null);
+  const dispatch = useDispatch();
+
+  const [problemData,setProblemData] = useState();
+  const [problemSolution,setProblemSolution] = useState();
+  const [problemTestCases, setProblemTestCases] = useState();
+  const [problemCode,setProblemCode] = useState();
+
+
   const {problemId} = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn,setIsLoggedIn] = useState(false);
   const [isQuestion,setIsQuestion] = useState(false);
   const [isServer,setIsServer] = useState(false);
   const [isAuthorised, setIsAuthorised] = useState(false);
+  
 
+  useLayoutEffect (() => 
+  {
+    async function fetchData() {
+      try {
+        if (localStorage.getItem('jwt-token') == null) {
+          setIsLoading(false);
+          setIsLoggedIn(false);
+          return;
+        }
+  
+        const getQuestionDetail = await authorizedUser(problemId);
+        if (getQuestionDetail) {
+          handleSuccess(getQuestionDetail.data);
+        } else {
+          handleServerFailure();
+        }
+      } catch (error) {
+        console.log(error);
+        // handleResponse(error.response.status);
+      }
 
-  useLayoutEffect (() => {
-     async function fetchData() {
-      if (localStorage.getItem('jwt-token') == null) {
+      function handleResponse(status) {
+        switch (status) {
+          case 401:
+            handleSessionExpired();
+            break;
+          case 402:
+            handleAuthorizedButNotQuestion();
+            break;
+          case 403:
+            handleUnauthorizedAccess();
+            break;
+          case 500:
+            handleServerFailure();
+            break;
+          case 200:
+            handleSuccess();
+            break;
+          default:
+            handleServerFailure();
+            break;
+        }
+      }
+
+      function handleSessionExpired() {
         setIsLoading(false);
+        toast("Session Expired, Please Login To Continue!", { autoClose: 3000 });
         setIsLoggedIn(false);
       }
-      const response = await authorizedUser(problemId);
-      console.log(response);
-      if(response?.status === 401){
-        toast("Session Expired, Please Login To Continue!",{autoClose:3000});
-        setIsLoggedIn(false);
-      }
-      else if(response?.status === 402){
-        toast(response?.message);
+
+      function handleUnauthorizedAccess() {
+        setIsLoading(false);
+        toast("Unauthorized Access");
         setIsLoggedIn(true);
-        setIsQuestion(false);
-      }
-      else if(response?.status === 403){
-        isLoggedIn(true);
         setIsQuestion(true);
         setIsAuthorised(false);
       }
-      else if(response?.status === 500){
-        isLoggedIn(true);
+    
+      function handleAuthorizedButNotQuestion() {
+        setIsLoading(false);
+        setIsLoggedIn(true);
+        setIsQuestion(false);
+        setIsAuthorised(true);
+      }
+    
+      function handleServerFailure() {
+        setIsLoading(false);
+        setIsLoggedIn(true);
         setIsQuestion(true);
         setIsAuthorised(true);
         setIsServer(false);
-
       }
-
+    
+      function handleSuccess(questionDetail) {
+        setIsLoading(false);
+        setIsLoggedIn(true);
+        setIsQuestion(true);
+        setIsAuthorised(true);
+        setIsServer(true);
+        setProblemData(questionDetail?.question_detail);
+        setProblemSolution(questionDetail?.question_solution);
+        setProblemTestCases(questionDetail?.test_cases.SS);
+        localStorage.setItem('problemData',JSON.stringify(questionDetail?.question_detail));
+        localStorage.setItem('problemSolution',JSON.stringify(questionDetail?.question_solution));
+        localStorage.setItem('problemTestCases',JSON.stringify(questionDetail?.test_cases.SS));
+        // setCode(questionDetail.driver_code);
+      }
     }
 
     fetchData();
-  },[])
- 
- 
-  const toastId = useRef(null);
+
+  },[]);
+
 
   useEffect(() => {
     setLanguage(dropdownValue.language);
@@ -93,6 +163,14 @@ const AlphaPlatform = ({}) => {
   useEffect(() => {
     setToggelWindow(layoutValue.swapWindow);
   }, [layoutValue.swapWindow]);
+
+  useEffect(() => {
+    if (["light", "vs-dark"].includes(dropdownValue.theme)) {
+      defineTheme(dropdownValue.theme);
+    } else {
+      defineTheme(dropdownValue.theme);
+    }
+  }, [dropdownValue.theme]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -166,6 +244,8 @@ const AlphaPlatform = ({}) => {
     alphaPlatformComponents.editor,
     alphaPlatformComponents.isConsoleGpt,
   ]);
+ 
+ 
 
   const onChange = (action, data) => {
     switch (action) {
@@ -219,14 +299,6 @@ const AlphaPlatform = ({}) => {
     }
   }
 
-  useEffect(() => {
-    if (["light", "vs-dark"].includes(dropdownValue.theme)) {
-      defineTheme(dropdownValue.theme);
-    } else {
-      defineTheme(dropdownValue.theme);
-    }
-  }, [dropdownValue.theme]);
-
   const showError = (notification) => {
     toast.error(
       notification ? notification : `Something Went Wrong, Please Try Again!`,
@@ -246,7 +318,7 @@ const AlphaPlatform = ({}) => {
     });
   };
 
-    if(isLoading)
+  if(isLoading)
     {
       return (
         <div className='flex h-full w-full min-h-screen min-w-screen bg-[#00182D]'>
@@ -259,13 +331,18 @@ const AlphaPlatform = ({}) => {
         )
     }
 
-    if(!isLoggedIn){
+  if(!isLoggedIn){
       return <RestrictLogin/>
     }
-
-    if(!isAuthorised){
+  if(!isQuestion){
+    return <RestrictQuestion/>
+  }
+  if(!isAuthorised){
       return <RestrictUnauthorized/>
-    }
+  }
+  if(!isServer){
+    return <RestrictServerSide/>
+  }
 
   return (
     <>
@@ -306,6 +383,8 @@ const AlphaPlatform = ({}) => {
                     output={output}
                     handleCompile={compileCode}
                     showSolution={showSolution}
+                    problemData={problemData}
+                    problemTestCases={problemTestCases}
                   />
                 )
                 }

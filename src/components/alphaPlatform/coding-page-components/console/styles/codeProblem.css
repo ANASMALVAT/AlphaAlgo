@@ -35,15 +35,13 @@
   }
   
   .problem-example{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Ubuntu,Helvetica,Arial,sans-serif;
+    
   }
 
   .problem-question{
     font-family: Ubuntu,Helvetica,Arial,sans-serif;
   }
- 
-  
-  
   
   .h-16 {
     height: 4rem;

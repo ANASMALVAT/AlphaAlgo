@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const RestrictLogin = () => {
 
@@ -9,11 +10,13 @@ const RestrictLogin = () => {
                 <img src='https://www.svgrepo.com/show/408465/lock-security-open.svg'></img>
                 </div>
                 <div className='text-center'>
-                    <h5 className=" flex text-4xl font-normal tracking-tight text-white">
+                    <h5 className=" flex text-3xl font-normal tracking-tight text-white">
                         <p>
                             Login to
                         </p>
-                        <h5 className=" font-mono font-bold  text-[#4C5ADF] text-[46px] hover:duration-500 hover:scale-150 ml-2 mr-1"> X </h5>
+                        <Link to = "/">
+                            <h5 className=" font-mono font-bold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:scale-150 ml-1 mr-1"> X </h5>
+                        </Link>
                     </h5>
                 </div>
             </div>

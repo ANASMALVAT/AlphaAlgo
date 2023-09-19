@@ -10,11 +10,8 @@ export async function authorizedUser(question_id) {
             question_id: question_id
           }
         }
-        try{
-          const response = await axios.get(AUTHORIZED_USER_URL,config);
-          return response;
-        }
-        catch(error) {
-          return {success:false, error: "Server is under maintainence!"}
-        }
+     
+        const response = await axios.get(AUTHORIZED_USER_URL,config);
+        return response;
+       
 };

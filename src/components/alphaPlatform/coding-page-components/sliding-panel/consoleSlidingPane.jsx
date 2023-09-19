@@ -6,13 +6,7 @@ import ConsoleSlidingPaneOptions from "../ui/consoleSlidingPaneOptions";
 const ConsoleSlidingPane = ({ isOpen, onRequestClose}) => {
   return (
     <ReactSlidingPane
-      title={
-        <div className="flex flex-row items-center ">
-                <h1 className="logo-name font-mono tracking-wide font-semibold antialiased text-white text-md">A</h1>
-                <h1 className="logo font-mono tracking-wide font-semibold antialiased text-[#4C5ADF] text-xl hover:duration-300 hover:scale-125">X</h1>
-                <h1 className="logo-name font-mono tracking-wide font-semibold antialiased text-white text-md">A</h1>
-        </div>
-      }
+      title={`Editor Panel`}
       className="slidingPane"
       overlayClassName="some-custom-overlay-class"
       isOpen={isOpen}
@@ -21,9 +15,7 @@ const ConsoleSlidingPane = ({ isOpen, onRequestClose}) => {
       width="20%"
       minWidth="400px"
       >
-
         <ConsoleSlidingPaneOptions/>
-
     </ReactSlidingPane>
   );
 };

@@ -30,27 +30,37 @@ const ProblemGrid = ({ problemList }) => {
 
   return (
     <div className='flex justify-evenly mt-12 mb-12 flex-wrap gap-8'>
+
+    { categorizedProblems.easy.length  != 0 &&
+
       <div>
-        <h2 className='h2'>Easy</h2>
+        <h2 className='h2 mb-2'>Easy</h2>
         <div className='grid gap-2 mt-2 fade-in'>
           {categorizedProblems.easy.map((problem) => (<Grid   className="fade-in" problemInfo={problem} key={problem?.id} />))}
         </div>
       </div>
+    }
 
+
+    { categorizedProblems.medium.length != 0 &&
       <div>
         <h2>Medium</h2>
         <div className='grid gap-2 mt-2 fade-in'>
           {categorizedProblems.medium.map((problem) => (<Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))}
         </div>
       </div>
+    }
 
+    { categorizedProblems.hard.length  != 0 &&
       <div>
         <h2>Hard</h2>
         <div className='grid gap-2 mt-2 fade-in'>
           {categorizedProblems.hard.map((problem) => ( <Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))}
         </div>
       </div>
+    }
 
+    { categorizedProblems.special.length != 0 &&
       <div>
         <div className='flex text-center justify-center align-middle' >
             <div className=' flex text-center text-algoXcolor justify-center align-middle font-semibold mr-1'>
@@ -66,7 +76,10 @@ const ProblemGrid = ({ problemList }) => {
           }
         </div>
       </div>
+    }
+
     </div>
+    
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactSlidingPane from "react-sliding-pane";
-import ProblemLayout from "../ui/problemLayout";
+import SolutionLayout from "../ui/solutionLayout";
 import "./styles/slidingPane.css";
 
 const SlidingPane = ({ isOpen, onRequestClose }) => {
@@ -15,7 +15,7 @@ const SlidingPane = ({ isOpen, onRequestClose }) => {
       from="right"
       width="45%"
       minWidth="450px" >
-      <ProblemLayout/>
+      <SolutionLayout/>
     </ReactSlidingPane>
   );
 };

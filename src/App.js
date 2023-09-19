@@ -56,6 +56,10 @@ function App() {
       element:<AlphaPlatform/>
     },
     {
+      path: "/coding-platform",
+      element:<AlphaPlatform/>
+    },
+    {
       path:"/problems",
       element:<CodingProblems/>
     },

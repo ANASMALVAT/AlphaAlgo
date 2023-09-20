@@ -10,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {useSelector} from "react-redux";
 import { defineTheme } from "../../../../data/themeOptions";
 import "./styles/codeEditorWindow.css";
-import ThemeDropdown from "../drop-downs/themeDropDown";
+import { Link } from "react-router-dom";
 
 const CodeEditorWindow = ({onChangeData,code }) =>
  {
@@ -21,13 +21,10 @@ const CodeEditorWindow = ({onChangeData,code }) =>
     const [settingPane,setSettingPane] = useState(false);
     const [consolePane,setConsolePane] = useState(false);
     const [currentLanguage,setCurrentLanguagae] = useState(dropdownValue.language);
-    const [currentTheme,setcurrentTheme] = useState("cobalt");
-
 
     useEffect(() => {
         setFontSize(dropdownValue.fontSize);
         setCurrentLanguagae(dropdownValue.language);
-        setcurrentTheme(currentTheme => dropdownValue.theme);
     }, [dropdownValue.fontSize,dropdownValue.language,dropdownValue.theme]);
 
     const editorRef = useRef(null);
@@ -54,6 +51,13 @@ const CodeEditorWindow = ({onChangeData,code }) =>
         setInitialValue(code); 
     }, []);
 
+    useEffect(()=>{
+        let loadThemes = ["brilliance-black","oceanic-next","active4d","blackboard","amy"];
+        for(let i in loadThemes){
+            defineTheme(loadThemes[i]);
+        }
+    },[])
+
 
     const editorChange = (value) => {
         setValue(value)
@@ -79,11 +83,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
         return new OriginalResizeObserver(wrappedCallback);
     };
 
-    useEffect(() => {
-        console.log(dropdownValue.theme);
-        defineTheme(dropdownValue.theme).then((_) =>
-            setcurrentTheme(dropdownValue.theme));
-      }, [dropdownValue.theme]);
+    useEffect(() => { defineTheme(dropdownValue.theme); }, [dropdownValue.theme]);
 
     for (let staticMethod in OriginalResizeObserver) {
         if (OriginalResizeObserver.hasOwnProperty(staticMethod)) {
@@ -113,9 +113,9 @@ const CodeEditorWindow = ({onChangeData,code }) =>
                 </div>
 
                 <div className="editor-logo flex flex-row text-center overflow-hidden items-center h-full w-20 justify-center   border-[#4C5ADF]">
-                    <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
+                    <Link to="/">
                     <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:rotate-[540deg] ">X</h1>
-                    <h1 className="font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
+                    </Link>
                 </div>
 
                 <div className="language-button ">
@@ -134,7 +134,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
                 <Editor
                     height={`100%`}
                     width={`100%`}
-                    theme={currentTheme}
+                    theme={ dropdownValue.theme}
                     language={currentLanguage.value || "javascript"}
                     defaultValue="// Code Here"
                     onMount={handleEditorDidMount}

@@ -10,10 +10,10 @@ import SlidingPane from "./coding-page-components/sliding-panel/solutionSlidingP
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/ConsoleInput";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
-
+import Draggable from 'react-draggable';
 import { codeCompile } from "./api/codeCompile";
 import { codeStatus } from "./api/codeCompileStatus";
-import { authorizedUser } from "../../services/authorizedUser";
+import { authorizedUser } from "./api/authorizedUser";
 import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
 import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";
 import RestrictQuestion from "./coding-page-components/alpha-restrictions/restrictQuestion";
@@ -26,13 +26,8 @@ import RestrictServerSide from "./coding-page-components/alpha-restrictions/rest
 const AlphaPlatform = ({}) => {
  
 
-  const alphaPlatformComponents = useSelector(
-    (state) => state.alphaPlatform.value
-  );
-
-  const dropdownValue = useSelector(
-    (state) => state.dropdownValues.dropdownValue
-  );
+  const alphaPlatformComponents = useSelector((state) => state.alphaPlatform.value);
+  const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
 
   const layoutValue = useSelector((state) => state.layoutValue);
   const [code, setCode] = useState("");
@@ -44,10 +39,7 @@ const AlphaPlatform = ({}) => {
   const toastId = useRef(null);
   const dispatch = useDispatch();
 
-  const [problemData,setProblemData] = useState();
-  const [problemSolution,setProblemSolution] = useState();
-  const [problemTestCases, setProblemTestCases] = useState();
-  const [problemCode,setProblemCode] = useState();
+
 
 
   const {problemId} = useParams();
@@ -57,6 +49,7 @@ const AlphaPlatform = ({}) => {
   const [isServer,setIsServer] = useState(false);
   const [isAuthorised, setIsAuthorised] = useState(false);
   
+
 
   useLayoutEffect (() => 
   {
@@ -75,8 +68,7 @@ const AlphaPlatform = ({}) => {
           handleServerFailure();
         }
       } catch (error) {
-        console.log(error);
-        // handleResponse(error.response.status);
+        handleResponse(error.response.status);
       }
 
       function handleResponse(status) {
@@ -110,7 +102,6 @@ const AlphaPlatform = ({}) => {
 
       function handleUnauthorizedAccess() {
         setIsLoading(false);
-        toast("Unauthorized Access");
         setIsLoggedIn(true);
         setIsQuestion(true);
         setIsAuthorised(false);
@@ -137,12 +128,10 @@ const AlphaPlatform = ({}) => {
         setIsQuestion(true);
         setIsAuthorised(true);
         setIsServer(true);
-        setProblemData(questionDetail?.question_detail);
-        setProblemSolution(questionDetail?.question_solution);
-        setProblemTestCases(questionDetail?.test_cases.SS);
-        localStorage.setItem('problemData',JSON.stringify(questionDetail?.question_detail));
-        localStorage.setItem('problemSolution',JSON.stringify(questionDetail?.question_solution));
-        localStorage.setItem('problemTestCases',JSON.stringify(questionDetail?.test_cases.SS));
+       
+        sessionStorage.setItem(`problemData`,JSON.stringify(questionDetail?.question_detail));
+        sessionStorage.setItem('problemSolution',JSON.stringify(questionDetail?.question_solution));
+        sessionStorage.setItem('problemTestCases',JSON.stringify(questionDetail?.test_cases.SS));
         // setCode(questionDetail.driver_code);
       }
     }
@@ -157,6 +146,13 @@ const AlphaPlatform = ({}) => {
   }, [dropdownValue.language]);
 
   useEffect(() => {
+    let storedCode = sessionStorage.getItem(`user-code-${problemId}`);
+    if(storedCode){
+      setCode(storedCode);
+    }
+  },[problemId])
+
+  useEffect(() => {
     setwindowWidth(layoutValue.width);
   }, [layoutValue.width]);
 
@@ -165,16 +161,8 @@ const AlphaPlatform = ({}) => {
   }, [layoutValue.swapWindow]);
 
   useEffect(() => {
-    if (["light", "vs-dark"].includes(dropdownValue.theme)) {
-      defineTheme(dropdownValue.theme);
-    } else {
-      defineTheme(dropdownValue.theme);
-    }
-  }, [dropdownValue.theme]);
-
-  useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1000) {
+      if (window.innerWidth > 1100) {
         dispatch(
           setDefault({
             editor: true,
@@ -251,6 +239,7 @@ const AlphaPlatform = ({}) => {
     switch (action) {
       case "code": {
         setCode(data);
+        sessionStorage.setItem(`user-code-${problemId}`,code);
         break;
       }
       default: {
@@ -295,7 +284,6 @@ const AlphaPlatform = ({}) => {
     } else {
       toast.update(toastId.current, { autoClose: 1 });
       showError(codeCompileResponse.error);
-      console.log(codeCompileResponse.error);
     }
   }
 
@@ -305,7 +293,7 @@ const AlphaPlatform = ({}) => {
       {
         position: "top-right",
         autoClose: 3000,
-        theme:"dark"
+        theme:"light"
       }
     );
   };
@@ -314,7 +302,7 @@ const AlphaPlatform = ({}) => {
     toast.success(notification ? notification : `Compiled Successfully!`, {
       position: "top-right",
       autoClose: 3000,
-      theme:"dark"
+      theme:"light"
     });
   };
 
@@ -347,16 +335,14 @@ const AlphaPlatform = ({}) => {
   return (
     <>
       <SlidingPane isOpen={solution} onRequestClose={closePane} />
-      <div className="main-class min-w-[350px] w-full h-full flex flex-row flex-grow  min-w-screen max-h-screen bg-algoblack overflow-auto">
+      <div className="main-class min-w-[350px] min-h-[450px] w-full h-full flex flex-grow flex-row-reverse  min-w-screen max-h-screen bg-algoblack overflow-auto">
+        
         {alphaPlatformComponents.isConsoleGpt && (
           <div className="show-buttons bg-algoblack justify-center h-14 p-2  border-1 w-[100%] border-[#1F2937]">
-            <AlgoButtons
-              buttonOne={`Editor`}
-              buttonTwo={`Console`}
-              buttonThree={`AlphaGPT`}
-            />
+            <AlgoButtons buttonOne={`Editor`} buttonTwo={`Console`} buttonThree={`AlphaGPT`} />
           </div>
         )}
+      
 
         {alphaPlatformComponents.editor && (
           <div
@@ -368,8 +354,8 @@ const AlphaPlatform = ({}) => {
           </div>
         )}
 
-        {alphaPlatformComponents.isConsoleGpt && alphaPlatformComponents.editor && <div className=" ml-2 mr-1 w-1 bg-gray-700 h-full min-h-[98vh] rounded-md m-auto flex-grow"></div> }
-        
+          {alphaPlatformComponents.isConsoleGpt && alphaPlatformComponents.editor && <div className=" vertical-divider ml-1 w-2 bg-gray-700 h-full min-h-[98vh] rounded-md m-auto flex-grow"></div> }
+      
         {alphaPlatformComponents.isConsoleGpt && (
           <div
             className={`console-gpt ${windowWidth ? "w-[40%]" : "w-[60%]"} ${
@@ -383,8 +369,6 @@ const AlphaPlatform = ({}) => {
                     output={output}
                     handleCompile={compileCode}
                     showSolution={showSolution}
-                    problemData={problemData}
-                    problemTestCases={problemTestCases}
                   />
                 )
                 }
@@ -392,6 +376,7 @@ const AlphaPlatform = ({}) => {
                 { alphaPlatformComponents.console && alphaPlatformComponents.gpt && <div className=" w-full bg-gray-700 h-2 min-h-2 rounded-md"></div>}
                 
                 {alphaPlatformComponents.gpt && <AlphaGPTWindow />}
+
               </>
             ) : (
               <>

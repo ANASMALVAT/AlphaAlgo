@@ -31,6 +31,7 @@ const FontDropDown = () =>
                 onChange={(selectedOption) => changeFont(selectedOption)}
                 value={{label:fontValue}}
                 defaultValue={"16px"}
+                isSearchable={false}
             />
 
         </div>

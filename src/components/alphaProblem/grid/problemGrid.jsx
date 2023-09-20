@@ -35,7 +35,7 @@ const ProblemGrid = ({ problemList }) => {
 
       <div>
         <h2 className='h2 mb-2'>Easy</h2>
-        <div className='grid gap-2 mt-2 fade-in'>
+        <div className='grid gap-2 mt-4 fade-in'>
           {categorizedProblems.easy.map((problem) => (<Grid   className="fade-in" problemInfo={problem} key={problem?.id} />))}
         </div>
       </div>
@@ -45,7 +45,7 @@ const ProblemGrid = ({ problemList }) => {
     { categorizedProblems.medium.length != 0 &&
       <div>
         <h2>Medium</h2>
-        <div className='grid gap-2 mt-2 fade-in'>
+        <div className='grid gap-2 mt-4 fade-in'>
           {categorizedProblems.medium.map((problem) => (<Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))}
         </div>
       </div>
@@ -54,7 +54,7 @@ const ProblemGrid = ({ problemList }) => {
     { categorizedProblems.hard.length  != 0 &&
       <div>
         <h2>Hard</h2>
-        <div className='grid gap-2 mt-2 fade-in'>
+        <div className='grid gap-2 mt-4 fade-in'>
           {categorizedProblems.hard.map((problem) => ( <Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))}
         </div>
       </div>
@@ -70,7 +70,7 @@ const ProblemGrid = ({ problemList }) => {
               <h2 className=' h-full'>special</h2>
             </div>
         </div>
-        <div className='grid gap-2 mt-2 fade-in'>
+        <div className='grid gap-2 mt-4 fade-in'>
           {
             categorizedProblems.special.map((problem) => (  <Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))
           }

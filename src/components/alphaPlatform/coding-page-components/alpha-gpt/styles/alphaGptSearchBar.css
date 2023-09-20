@@ -13,3 +13,8 @@
     background: #5867EA;
     border-radius: 8px;
   }
+
+  textarea{
+    font-family: monospace;
+    font-size: 18px;
+  }

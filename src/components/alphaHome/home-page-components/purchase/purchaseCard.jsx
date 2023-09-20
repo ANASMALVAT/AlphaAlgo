@@ -75,23 +75,23 @@ export default function PricingCard() {
         </Typography>
         <Divider inset="none" />
         <List size="sm" sx={{ mx: 'calc(-1 * var(--ListItem-paddingX))' }}>
-          <ListItem>
+          <ListItem sx={{fontFamily:"monospace",fontWeight:"600",fontSize:"16px"}}>
             <ListItemDecorator>
               <Check color='success'/>
             </ListItemDecorator>
             Access To All Questions.
           </ListItem>
-          <ListItem >
+          <ListItem sx={{fontFamily:"monospace",fontWeight:"600",fontSize:"16px"}}>
             <ListItemDecorator>
               <Check color='success' />
             </ListItemDecorator>
             Access To AlphaGPT
           </ListItem>
-          <ListItem>
+          <ListItem sx={{fontFamily:"monospace",fontWeight:"600",fontSize:"16px"}}>
             <ListItemDecorator>
               <Check color='success' />
             </ListItemDecorator>
-            Discount Voucher For Future Udemy course
+            Voucher For Future Udemy course
           </ListItem>
         </List>
         <Divider inset="none" />

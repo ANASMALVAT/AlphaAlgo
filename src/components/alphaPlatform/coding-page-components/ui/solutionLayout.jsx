@@ -6,7 +6,7 @@ const SolutionLayout = () => {
   const [problemSolution, setProblemSolution] = useState(null);
 
   useEffect(() => {
-    const storedProblemSolution = localStorage.getItem("problemSolution");
+    const storedProblemSolution = sessionStorage.getItem("problemSolution");
     if (storedProblemSolution) {
       try {
         const parsedData = JSON.parse(storedProblemSolution);
@@ -17,8 +17,8 @@ const SolutionLayout = () => {
     }
   }, []);
 
-  const solutionCode = problemSolution?.M?.solution_code?.S || null;
-  const solutionExplanation = problemSolution?.M?.solution_explanation?.S || null;
+  const solutionCode = problemSolution?.M?.solution_code?.S || "";
+  const solutionExplanation = problemSolution?.M?.solution_explanation?.S || "";
   const relevantExplanation = problemSolution?.M?.relevant_links?.SS || [];
 
   return (
@@ -34,7 +34,7 @@ const SolutionLayout = () => {
         {
             relevantExplanation.map((link, index) => 
                 (
-                <div className="relevant_links w-[95%] h-48 ml-auto mr-auto mb-4 rounded-md bg-[#4C5ADF]">
+                <div className="relevant_links w-[95%] h-48cd a ml-auto mr-auto mb-4 rounded-md bg-[#4C5ADF]">
                 </div>
                 ))
         }

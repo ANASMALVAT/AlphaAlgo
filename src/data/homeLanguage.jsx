@@ -11,14 +11,14 @@ import SchoolIcon from '@mui/icons-material/School';
 export const languages = [
     {
         img:<TerminalIcon fontSize='46px' />,
-        language:"C/C++,",
+        language:"C++,",
         description:"For Old-School People"
     },
-    {
-        img:<DataObjectIcon fontSize='46px' />,
-        language:"TypeScript,",
-        description:"For Strict People"
-    },
+    // {
+    //     img:<DataObjectIcon fontSize='46px' />,
+    //     language:"TypeScript,",
+    //     description:"For Strict People"
+    // },
     {
         img:<GamepadIcon fontSize='50px' />,
         language:"JavaScript,",

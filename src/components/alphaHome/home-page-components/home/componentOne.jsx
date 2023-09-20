@@ -19,11 +19,11 @@ const ComponentOne = () =>
                             <h1 className="logo-name  tracking-wide font-normal antialiased text-white text-5xl">Algo</h1>
                         </div>
 
-                        <p className="tracking-wide mt-1 text-white text-md font-normal selection:">
+                        <p className=" mt-1 text-white text-md font-normal ">
                             Your Definitive Guide For Cracking Coding Interviews.
                         </p>
 
-                        <p className="tracking-wide text-white text-md mt-1 font-normal ">
+                        <p className=" text-white text-md mt-1 font-normal ">
                             20,000 Hours Devoted to Perfect Problem Solving for Coding Interviews.
                         </p>
                         <Link to="/problems">

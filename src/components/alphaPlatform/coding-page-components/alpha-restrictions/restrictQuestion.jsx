@@ -13,9 +13,9 @@ const RestrictQuestion = () => {
                     </h5>
                 </div>
                 <Link to="/problems">
-                            <button  className={`alpha-info-button overflow-hidden mt-8 w-60  mr-2 flex flex-row items-center rounded-sm px-6 py-4 font-mono font-normal justify-center hover:duration-100 text-xl text-white bg-[#4C5ADF] border-b-8 border-[#2d33ca]`}>
-                                Explore Problems
-                            </button>
+                    <button  className={`alpha-info-button overflow-hidden mt-8 w-60  mr-2 flex flex-row items-center rounded-sm px-6 py-4 font-mono font-normal justify-center hover:duration-100 text-xl text-white bg-[#4C5ADF] border-b-8 border-[#2d33ca]`}>
+                        Explore Problems
+                    </button>
                 </Link>
             </div>
         </div>

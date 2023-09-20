@@ -36,7 +36,7 @@ const NavLinks = ({flexClass}) => {
                             to="/team"
                             className="font-mono font-semibold hover:duration-200 hover:border-b-4 hover:border-[#4C5ADF]"
                         >
-                        Donate
+                        Future goals
                         </Link>
                     </li>
                 </ul>

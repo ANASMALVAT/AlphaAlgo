@@ -17,6 +17,7 @@ const SubmissionDropDown = () => {
                 // onChange={(selectedOption) => callApi(selectedOption)}
                 value={`Submission's`}
                 placeholder={`submissions`}
+                isSearchable={false}
             />
         </div>
     )

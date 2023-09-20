@@ -36,7 +36,7 @@ const ConsoleInput = ({output,handleCompile,showSolution,}) =>{
 
 
     return (
-        <div className="main-console flex-grow overflow-hidden  p-2  border border-gray-700 min-h-[150px] bg-algoblack rounded-md">
+        <div className="main-console flex-grow overflow-hidden  p-2  border border-gray-500 min-h-[150px] bg-algoblack rounded-md">
 
             <div className="console-console-buttons flex flex-row items-start space-x-1  h-12 min-h-[10] w-full bg-algoblack">
                 <ConsoleButton setConsole={setConsole} setProblem={setProblem} setInput={setInput} isConsole={isConsole} isInput={isInput} isProblem={isProblem}/>

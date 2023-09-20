@@ -27,6 +27,7 @@ const LanguageDropDown = () => {
                 styles={customStyles}
                 onChange={(selectedOption) => setDropdowmLanguage(selectedOption)}
                 value={languageValue}
+                isSearchable={false}
             />
         </div>
     )

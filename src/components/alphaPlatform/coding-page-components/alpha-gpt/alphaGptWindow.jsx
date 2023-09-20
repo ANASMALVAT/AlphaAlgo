@@ -20,10 +20,16 @@ const AlphaGPTWindow = () => {
     setWindowHeight(layoutValue.toggelHeight);
   },[layoutValue.toggelHeight])
 
-
+  useEffect(()=>{
+    let storedMessages = sessionStorage.getItem('stored-messages',messages);
+    if(storedMessages){
+      let parsedMessages = JSON.parse(storedMessages);
+      setMessages(parsedMessages);
+    }
+  },[])
 
   const handleAskGPT = async (userInput) => {
-    await askAlpha(userInput, chats, setChats, setMessages, setLoading, showError);
+    await askAlpha(userInput, chats, setChats, setMessages, messages,setLoading, showError);
   };
 
 
@@ -57,13 +63,9 @@ const AlphaGPTWindow = () => {
             />
           ))
         }
-        {loading && <CircularProgress x={{color:"white", fontWeight:"bold",fontSize:"50px",margin:"auto"}} disableShrink color="secondary"/>}
-
 
       </div>
-
         <AlphaGPTSearchBar sendRequest={handleAskGPT} loading={loading} />
-
     </div>
   );
 };

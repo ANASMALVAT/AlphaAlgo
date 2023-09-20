@@ -11,11 +11,6 @@ import { ToastContainer,toast } from "react-toastify";
 import { useDispatch,useSelector } from "react-redux";
 import Purchase from "./components/alphaHome/home-page-components/purchase/purchase";
 import SuccessfulPurchase from "./components/alphaHome/home-page-components/purchase/purchaseSuccess";
-import { showNotification } from "./redux/slices/alphaNotification";
-import RestrictLogin from "./components/alphaPlatform/coding-page-components/alpha-restrictions/restrictLogin";
-import RestrictUnauthorized from "./components/alphaPlatform/coding-page-components/alpha-restrictions/restrictUnauthorized";
-import RestrictQuestion from "./components/alphaPlatform/coding-page-components/alpha-restrictions/restrictQuestion";
-import RestrictServerSide from "./components/alphaPlatform/coding-page-components/alpha-restrictions/restrictServerSide";
 function App() {
 
   const dispatch = useDispatch();
@@ -79,10 +74,6 @@ function App() {
     {
       path:"/payment-unsuccessful",
       element:<div>Failure</div>
-    },
-    {
-     path:"/check",
-     element:<RestrictQuestion/> 
     }
   ]);
   
@@ -94,7 +85,7 @@ function App() {
         pauseOnHover={false}
         draggable={true}
         closeOnClick={true}
-        theme="dark"
+        theme="light"
       />
       <React.StrictMode>
           <RouterProvider router={router}/>

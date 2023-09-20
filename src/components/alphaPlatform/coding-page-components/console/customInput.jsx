@@ -1,32 +1,33 @@
 import React, { useState,useEffect } from 'react';
 import EdiText from 'react-editext';
 import Checkbox from '@mui/material/Checkbox';
-
 import './styles/customInput.css';
 
 const CustomInput = () => {
  
-
   const [editing, setEditing] = useState(false);
   const [testCases, setTestCases] = useState([]);
+  const [checkboxStates, setCheckboxStates] = useState([]);
+
 
   useEffect(() => {
-    const storedTestCases = JSON.parse(localStorage.getItem('problemTestCases'));
+    const storedTestCases = JSON.parse(sessionStorage.getItem('problemTestCases'));
     if (storedTestCases) {
       setTestCases(storedTestCases);
     }
   }, []);
 
   const onSave = (value) => {
-    console.log('New cases:', value);
     setEditing(false);
   };
+  
+  // useEffect(()=>{
+  //   if(testCases && testCases.length > 0){
+  //     setCheckboxStates(new Array(testCases.length).fill(false));
+  //   }
+  // },[testCases]);
 
-  const [checkboxStates, setCheckboxStates] = useState(
-    testCases && testCases.length > 0
-      ? new Array(testCases.length).fill(true)
-      : []
-  );
+  console.log(checkboxStates);
 
   const handleCheckboxChange = (index) => {
     const newCheckboxStates = [...checkboxStates];
@@ -40,7 +41,7 @@ const CustomInput = () => {
   }
 
   return (
-    <div className="custom-input p-4 flex flex-col gap-4 h-full w-full whitespace-pre overflow-auto rounded-md border border-gray-700">
+    <div className="custom-input pt-4 flex flex-col gap-4 h-full w-full whitespace-pre overflow-auto rounded-md">
       {testCases[0] ? (
         <div className="flex">
           <Checkbox
@@ -70,13 +71,14 @@ const CustomInput = () => {
             viewProps={{
               className: 'text-md',
               style: {
-                fontWeight: 'normal',
+                fontWeight: 'bold',
                 borderRadius: 3,
                 padding: '10px',
                 width: '100%',
                 background: '#15314B',
                 color: 'green',
                 whiteSpace: 'pre',
+                letterSpacing:"0px"
               },
             }}
             editProps={{
@@ -86,9 +88,10 @@ const CustomInput = () => {
                 width: '100%',
                 background: '#15314B',
                 whiteSpace: 'pre-wrap',
+            
               },
             }}
-            inputProps={{ style: { whiteSpace: 'pre-wrap' } }}
+            inputProps={{ style: { whiteSpace: 'pre-wrap', color:'white',} }}
           />
         </pre>
         </div>
@@ -108,12 +111,9 @@ const CustomInput = () => {
             }}
             color="success"
           />
-          {data ? (
-            <pre
-              key={index}
-              className="rounded-[0.25rem] text-red-600 whitespace-pre w-full bg-[#15314B] p-2 font-normal"
-              style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}
-            >
+          {
+            data ? (
+            <pre key={index} className="flex rounded-[0.25rem] items-center   text-red-600 whitespace-pre w-full bg-[#15314B] p-2 font-normal" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }} >
               {data}
             </pre>
           ) : (

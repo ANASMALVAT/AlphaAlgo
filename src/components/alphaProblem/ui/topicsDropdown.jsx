@@ -5,6 +5,8 @@ import {codingTopics} from "../../../data/codingTopics"
 import { changeTopic } from '../../../redux/slices/problemTopicSlice';
 import { useDispatch,useSelector } from 'react-redux';
 
+import "./styles/topicDropdown.css"
+
 const TopicDropdown = () => {
     const problemTopic = useSelector((state) => state.problemTopic.topic);
     const [currentTopic,setCurrentTopic] = useState(problemTopic);
@@ -20,12 +22,13 @@ const TopicDropdown = () => {
     },[problemTopic])
     
     return(
-        <div className = 'flex justify-center mt-10 '>
+        <div className = ' topic-dropdown flex justify-center mt-10'>
             <Select
                 options={codingTopics}
                 styles={customStyles}
                 onChange={(selectedOption) => setTopic(selectedOption)}
                 value={{label:currentTopic}}
+                isSearchable={false}
             />
         </div>
     )

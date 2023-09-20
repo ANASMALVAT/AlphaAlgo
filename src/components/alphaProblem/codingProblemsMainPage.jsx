@@ -39,7 +39,7 @@ const CodingProblems = () => {
 
             {!loading  &&
               <div className='flex flex-col  flex-1 w-full h-2 flex-grow bg-white '>
-                  <TopicDropdown/>
+                  <TopicDropdown />
                   <ProblemGrid  problemList = {questions}/>
               </div>
             }

@@ -10,8 +10,6 @@ export async function authorizedUser(question_id) {
             question_id: question_id
           }
         }
-     
         const response = await axios.get(AUTHORIZED_USER_URL,config);
         return response;
-       
 };

@@ -14,6 +14,9 @@ const ThemeDropdown = ({}) => {
   const setDropdownTheme = (theme) => {
     dispatch(setTheme(theme.value));
   }
+  const camelCase = (str) => {
+    return str.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  }
 
   return (
     <div className="mr-2 ">
@@ -24,9 +27,10 @@ const ThemeDropdown = ({}) => {
           value: themeId,
           key: themeId,
         }))}
-        value={{label:dropdownValue.theme}}
+        value={{label:camelCase(dropdownValue.theme)}}
         styles={customStyles}
         onChange={(theme) => setDropdownTheme(theme)}
+        isSearchable={false}
       />
     </div>
   );

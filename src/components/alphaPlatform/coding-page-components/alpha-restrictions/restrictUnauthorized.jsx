@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const RestrictUnauthorized = () => {
 
@@ -11,11 +12,13 @@ const RestrictUnauthorized = () => {
                 <div className='text-center'>
                     <h5 className=" flex text-2xl font-normal tracking-tight text-white">
                         <p>
-                            Get
+                            Purchase
                         </p>
-                        <h5 className=" font-mono font-bold  text-[#4C5ADF] text-[32px] hover:duration-500 hover:scale-150 ml-2 mr-2"> X </h5>
+                        <Link to="/purchase">
+                            <h5 className=" font-mono font-bold  text-[#4C5ADF] text-[32px] hover:duration-500 hover:scale-150 ml-2 mr-2"> X </h5>
+                        </Link>
                         <p>
-                            to access this question
+                            to access the question
                         </p>
                     </h5>
                 </div>

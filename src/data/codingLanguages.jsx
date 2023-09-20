@@ -5,13 +5,6 @@ export const languageOptions = [
     label: "JavaScript",
     value: "javascript",
   },
-  
-  {
-    id: 74,
-    name: "TypeScript ",
-    label: "TypeScript ",
-    value: "typescript",
-  },
   {
     id: 71,
     name: "Python ",
@@ -35,11 +28,5 @@ export const languageOptions = [
     name: "C# ",
     label: "C# ",
     value: "csharp",
-  },
-  {
-    id: 50,
-    name: "C ",
-    label: "C",
-    value: "c",
   },
 ];

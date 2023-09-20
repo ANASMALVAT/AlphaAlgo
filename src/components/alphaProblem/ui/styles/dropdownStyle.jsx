@@ -9,20 +9,21 @@ export const customStyles = {
   control: (styles) => ({
     ...styles,
     borderRadius: "3px",
-    fontSize: "1.5rem",
+    fontSize: "1.3rem",
     fontweight:"bold",
     lineHeight: "2rem",
     background:"#F5F5F5",
     cursor: "pointer",
-    maxWidth: "18rem",
-    minWidth: "16rem",
-    height:"4rem",
+    maxWidth: "14rem",
+    minWidth: "14rem",
+    height:"3rem",
     width:"175px",
+    // boxShadow:"0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
   ":hover": {
-      boxShadow: "none",
+    boxShadow:"0 4px 4px -1px rgb(0 0 0 / 0.1), 0 4px 4px -2px rgb(0 0 0 / 0.1)",
     },
     overflow:"auto",
-    borderRadius:"5px",
+    borderRadius:"3px",
     textAlign:"center",
     color:'#2D33CA',
   }),
@@ -57,8 +58,8 @@ export const customStyles = {
       zIndex:"100",
       border:"none",
       background:"#00182D",
-      overflow:"auto"
-
+      overflow:"auto",
+      border:"none",
   };
   },
   placeholder: (defaultStyles) => {
@@ -67,6 +68,7 @@ export const customStyles = {
       color: "#fff",
       fontSize: "0.8rem",
       lineHeight: "1.75rem",
+      border:"none",
       border:"none"
 
     };

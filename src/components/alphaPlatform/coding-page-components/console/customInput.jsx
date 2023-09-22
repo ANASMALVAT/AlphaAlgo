@@ -6,28 +6,30 @@ import './styles/customInput.css';
 const CustomInput = () => {
  
   const [editing, setEditing] = useState(false);
-  const [testCases, setTestCases] = useState([]);
+  const [testCases, setTestCases] = useState(JSON.parse(sessionStorage.getItem('problemTestCases')));
   const [checkboxStates, setCheckboxStates] = useState([]);
 
 
   useEffect(() => {
     const storedTestCases = JSON.parse(sessionStorage.getItem('problemTestCases'));
+    console.log(storedTestCases);
     if (storedTestCases) {
       setTestCases(storedTestCases);
+      sessionStorage.setItem('custom_testcase',storedTestCases[0]);
+      setCheckboxStates(new Array(testCases.length).fill(false));
     }
   }, []);
 
   const onSave = (value) => {
+    sessionStorage.setItem('custom_testcase',value);
     setEditing(false);
   };
   
-  // useEffect(()=>{
-  //   if(testCases && testCases.length > 0){
-  //     setCheckboxStates(new Array(testCases.length).fill(false));
-  //   }
-  // },[testCases]);
-
-  console.log(checkboxStates);
+  useEffect(()=>{
+    if(testCases && testCases.length > 0){
+      setCheckboxStates(new Array(testCases.length).fill(false));
+    }
+  },[testCases]);
 
   const handleCheckboxChange = (index) => {
     const newCheckboxStates = [...checkboxStates];
@@ -35,14 +37,14 @@ const CustomInput = () => {
     setCheckboxStates(newCheckboxStates);
   };
 
-
   if (!testCases || testCases.length === 0) {
     return <></>
   }
 
   return (
     <div className="custom-input pt-4 flex flex-col gap-4 h-full w-full whitespace-pre overflow-auto rounded-md">
-      {testCases[0] ? (
+      {testCases[0] ? 
+      (
         <div className="flex">
           <Checkbox
             required
@@ -88,7 +90,6 @@ const CustomInput = () => {
                 width: '100%',
                 background: '#15314B',
                 whiteSpace: 'pre-wrap',
-            
               },
             }}
             inputProps={{ style: { whiteSpace: 'pre-wrap', color:'white',} }}
@@ -113,7 +114,7 @@ const CustomInput = () => {
           />
           {
             data ? (
-            <pre key={index} className="flex rounded-[0.25rem] items-center   text-red-600 whitespace-pre w-full bg-[#15314B] p-2 font-normal" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }} >
+            <pre key={index} className="flex rounded-[0.25rem] items-center text-red-600 whitespace-pre w-full bg-[#15314B] p-2 font-normal" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }} >
               {data}
             </pre>
           ) : (

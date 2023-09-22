@@ -8,13 +8,13 @@ const TeamMember = ({memberInfo}) => {
                     
                     <img  className='team-img ' src={require(`../../../../assets/` + memberInfo.img)}></img>
 
-                    {/* <h2 className='team-name font-normal' >
-                            {memberInfo.name}
-                    </h2> */}
+                    <h2 className='team-name font-normal' >
+                            {memberInfo.position}
+                    </h2>
                     
-                    <h4 className='team-position text-algoXcolor font-semibold'>
+                    {/* <h4 className='team-position text-algoXcolor font-semibold'>
                         {memberInfo.position}
-                    </h4>
+                    </h4> */}
 
                     <p className='team-info flex mb-2 text-gray-700 p-4 text-justify' style={{ maxWidth: '100%' }}>
                         {/* <pre className=" whitespace-pre-line text-gray-800" style={{ wordWrap: 'break-word' }}> */}

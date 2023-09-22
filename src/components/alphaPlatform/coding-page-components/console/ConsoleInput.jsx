@@ -8,7 +8,7 @@ import CodeProblem from "./codeProblem";
 
 import "./styles/consoleInput.css";
 
-const ConsoleInput = ({output,handleCompile,showSolution,}) =>{
+const ConsoleInput = ({output,handleCompile,handleRun,showSolution,}) =>{
 
     const [isConsole, setIsConsole] = useState(true);
     const [isInput, setIsInput] = useState(false);
@@ -49,7 +49,7 @@ const ConsoleInput = ({output,handleCompile,showSolution,}) =>{
                 {isProblem && <CodeProblem />}
             </div>
 
-            <ConsoleRunButtons methodOne={handleCompile} methodTwo={handleCompile} methodThree={showSolution} buttonOne={`Run`} buttonTwo={`Submit`} buttonThree={`Solution`} />
+            <ConsoleRunButtons methodOne={handleRun} methodTwo={handleCompile} methodThree={showSolution} buttonOne={`Run`} buttonTwo={`Submit`} buttonThree={`Solution`} />
 
         </div>
     );

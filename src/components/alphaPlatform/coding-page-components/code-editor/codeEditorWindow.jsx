@@ -15,8 +15,7 @@ import { Link } from "react-router-dom";
 const CodeEditorWindow = ({onChangeData,code }) =>
  {
     const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
-    const [value,setValue] = useState(code || "");
-    const [initialValue, setInitialValue] = useState(code || ""); // New state variable
+    const [initialValue, setInitialValue] = useState(code); // New state variable
     const [currentFontSize,setFontSize] = useState("16px");
     const [settingPane,setSettingPane] = useState(false);
     const [consolePane,setConsolePane] = useState(false);
@@ -47,10 +46,6 @@ const CodeEditorWindow = ({onChangeData,code }) =>
         editorRef.current = editor;
     }
 
-    useEffect(() => {
-        setInitialValue(code); 
-    }, []);
-
     useEffect(()=>{
         let loadThemes = ["brilliance-black","oceanic-next","active4d","blackboard","amy"];
         for(let i in loadThemes){
@@ -59,16 +54,24 @@ const CodeEditorWindow = ({onChangeData,code }) =>
     },[])
 
 
-    const editorChange = (value) => {
-        setValue(value)
-        onChangeData("code",value);
+    const editorChange = (code) => {
+        onChangeData("code",code);
     };
 
 
+
     const handleRestore = () => {
-        setValue(initialValue); 
-        onChangeData("code",value);
-        editorRef.current.setValue(initialValue);
+        const currentDropdownLanguage = dropdownValue.language?.value;
+        const presentDriverCode = sessionStorage.getItem('driverCode');
+
+        if(presentDriverCode){
+          const parsedDriverCode = JSON.parse(presentDriverCode);
+          console.log(parsedDriverCode);
+          const currentLanguageDriverCode = parsedDriverCode[currentDropdownLanguage]?.M;
+          sessionStorage.setItem('user_code',currentLanguageDriverCode.user_code.S);
+          onChangeData("code",currentLanguageDriverCode.user_code.S);
+        }
+        
     };
 
     const OriginalResizeObserver = window.ResizeObserver;
@@ -136,9 +139,8 @@ const CodeEditorWindow = ({onChangeData,code }) =>
                     width={`100%`}
                     theme={ dropdownValue.theme}
                     language={currentLanguage.value || "javascript"}
-                    defaultValue="// Code Here"
                     onMount={handleEditorDidMount}
-                    value={value}
+                    value={code}
                     onChange={editorChange}
                     options={{fontSize: currentFontSize}}
                 />

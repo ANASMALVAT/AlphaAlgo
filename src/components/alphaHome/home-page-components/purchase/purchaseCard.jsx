@@ -66,7 +66,7 @@ export default function PricingCard() {
     >
       <Card size="lg" >
         <Typography level="h2">
-            <div className="flex flex-row justify-center items-center">
+            <div className="flex flex-row justify-center items-center ">
                 <div className="tracking-wide font-semibold antialiased text-[#4C5ADF] text-6xl hover:duration-500 hover:rotate-[900deg]">
                     X
                 </div> 
@@ -75,19 +75,19 @@ export default function PricingCard() {
         </Typography>
         <Divider inset="none" />
         <List size="sm" sx={{ mx: 'calc(-1 * var(--ListItem-paddingX))' }}>
-          <ListItem sx={{fontFamily:"monospace",fontWeight:"600",fontSize:"16px"}}>
+          <ListItem sx={{fontFamily:"sans-serif",fontWeight:"600",fontSize:"16px"}}>
             <ListItemDecorator>
               <Check color='success'/>
             </ListItemDecorator>
             Access To All Questions.
           </ListItem>
-          <ListItem sx={{fontFamily:"monospace",fontWeight:"600",fontSize:"16px"}}>
+          <ListItem sx={{fontFamily:"sans-serif",fontWeight:"600",fontSize:"16px"}}>
             <ListItemDecorator>
               <Check color='success' />
             </ListItemDecorator>
             Access To AlphaGPT
           </ListItem>
-          <ListItem sx={{fontFamily:"monospace",fontWeight:"600",fontSize:"16px"}}>
+          <ListItem sx={{fontFamily:"sans-serif",fontWeight:"600",fontSize:"16px"}}>
             <ListItemDecorator>
               <Check color='success' />
             </ListItemDecorator>

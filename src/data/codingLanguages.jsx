@@ -22,11 +22,5 @@ export const languageOptions = [
     name: "C++ ",
     label: "C++",
     value: "cpp",
-  },
-  {
-    id: 51,
-    name: "C# ",
-    label: "C# ",
-    value: "csharp",
-  },
+  }
 ];

@@ -8,7 +8,7 @@ export const dropdownSlice = createSlice({
         dropdownValue : 
         { 
             fontSize : "22px", 
-            theme: "blackboard",
+            theme: "amy",
             language: { id: 63, name: "JavaScript", label: "JavaScript", value: "javascript" }
         }
 

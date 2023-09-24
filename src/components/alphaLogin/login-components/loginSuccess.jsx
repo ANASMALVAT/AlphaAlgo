@@ -9,11 +9,12 @@ export function LoginSuccess() {
     useEffect(() => {
         const parentWindow = window.opener;
         if (parentWindow) {
-            parentWindow.localStorage.setItem('jwt-token', token);
+            console.log(token);
+            parentWindow.localStorage.setItem('csrf-token', token);
         }
         setTimeout(() => {
             window.close();
-        }, 200); 
+        }, 500); 
     }, [token]);
 
     return (<></>);

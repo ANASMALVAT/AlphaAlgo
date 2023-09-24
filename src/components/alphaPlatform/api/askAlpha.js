@@ -30,7 +30,7 @@ export async function askAlpha (userInput, chats, setChats, setMessages, message
       setMessages((prevMessages) => [...prevMessages,{ type: 'Bot', text: response.data.content }]);
       currentChats.push({ role: 'assistant', content: response.data.content });
       setChats(currentChats);
-      sessionStorage.setItem('stored-messages',JSON.stringify(messages));
+      localStorage.setItem('stored-messages',JSON.stringify([...messages]));
 
     } 
     catch (error) {

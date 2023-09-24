@@ -1,6 +1,7 @@
 import React , {useEffect, useState}  from 'react';
 import axios from "axios";
 import Popup from 'reactjs-popup';
+import { toast } from 'react-toastify';
 import { useSelector,useDispatch } from 'react-redux';
 import { toggelLoginWindowFalse } from "../../../redux/slices/userComponentSlice";
 import { toggelUserLoginTrue } from '../../../redux/slices/userAuthentication';
@@ -28,6 +29,7 @@ const UserLogin = () => {
     }
     
     const redirectGoogleSSO = async () => {
+        try{
         const response = await axios.get(AUTHENTICATION_URL);
         const newWindow = window.open(response.data, '_blank', 'width=600,height=600');
         const checkClosedInterval = setInterval(() => {
@@ -36,6 +38,10 @@ const UserLogin = () => {
                 fetchAuthUser();
             }
         }, 500); 
+        }
+        catch(err){
+            toast("AlphaAlgo is under maintainence!");
+        }
     }
 
     return (

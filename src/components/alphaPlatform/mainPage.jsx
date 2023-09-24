@@ -61,7 +61,7 @@ const AlphaPlatform = ({}) => {
   {
     async function fetchData() {
       try {
-        if (localStorage.getItem('jwt-token') == null) {
+        if (localStorage.getItem('csrf-token') == null) {
           setIsLoading(false);
           setIsLoggedIn(false);
           return;
@@ -74,18 +74,24 @@ const AlphaPlatform = ({}) => {
           handleServerFailure();
         }
       } catch (error) {
-        handleResponse(error.response.status);
+        if(error?.response?.status != 'undefined'){
+          handleResponse(error.response.status);
+        }
+        else{
+          handleServerFailure();
+        }
+        
       }
 
   async function handleResponse(status) {
     switch (status) {
-      case 401:
+      case 440:
         handleSessionExpired();
         break;
-      case 402:
+      case 404:
         handleAuthorizedButNotQuestion();
         break;
-      case 403:
+      case 401:
         handleUnauthorizedAccess();
         break;
       case 500:

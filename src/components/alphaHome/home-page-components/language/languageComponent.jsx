@@ -11,10 +11,10 @@ const LanguageComponent = () => {
         <div className="flex flex-row min-h-[600px] bg-algoblack mt-12 justify-evenly pt-8 ">
             <div className="languages"> 
                 <div className=" common-margin-language language-header mb-4">
-                    <h1>Type In Five Syntax</h1>
+                    <h1>Type In Four Syntax</h1>
                 </div>
                 <div className=" language-text common-margin-language mb-10 text-gray-300">
-                        Diverse selection of Five programming languages. Whether you're a seasoned developer or just starting your coding journey, our comprehensive language offerings have got you covered.
+                        Diverse selection of Four programming languages. Whether you're a seasoned developer or just starting your coding journey, our comprehensive language offerings have got you covered.
                 </div>
                 <div className="language-grid common-margin-language">
                     {

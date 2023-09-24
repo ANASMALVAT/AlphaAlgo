@@ -66,12 +66,11 @@ const CodeEditorWindow = ({onChangeData,code }) =>
 
         if(presentDriverCode){
           const parsedDriverCode = JSON.parse(presentDriverCode);
-          console.log(parsedDriverCode);
           const currentLanguageDriverCode = parsedDriverCode[currentDropdownLanguage]?.M;
           sessionStorage.setItem('user_code',currentLanguageDriverCode.user_code.S);
           onChangeData("code",currentLanguageDriverCode.user_code.S);
         }
-        
+
     };
 
     const OriginalResizeObserver = window.ResizeObserver;

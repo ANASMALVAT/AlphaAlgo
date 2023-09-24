@@ -21,7 +21,7 @@ const AlphaGPTWindow = () => {
   },[layoutValue.toggelHeight])
 
   useEffect(()=>{
-    let storedMessages = sessionStorage.getItem('stored-messages',messages);
+    let storedMessages = localStorage.getItem('stored-messages',messages);
     if(storedMessages){
       let parsedMessages = JSON.parse(storedMessages);
       setMessages(parsedMessages);

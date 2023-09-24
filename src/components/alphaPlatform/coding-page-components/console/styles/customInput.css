@@ -45,3 +45,17 @@ textarea {
   font-size: 22px;
 }
 
+.styles-module_Editext__button__sxYQX {
+  font-weight: bolder;
+  font-size: 24px;
+  padding: 0px;
+  margin-left: 5px;
+}
+.styles-module_Editext__button__sxYQX:hover {
+  background: transparent;
+  scale: 1.15;
+  transition-duration: 200ms;
+  background-color: #200020;
+  
+
+}

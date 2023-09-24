@@ -12,10 +12,11 @@ const CustomInput = () => {
 
   useEffect(() => {
     const storedTestCases = JSON.parse(sessionStorage.getItem('problemTestCases'));
-    console.log(storedTestCases);
     if (storedTestCases) {
       setTestCases(storedTestCases);
-      sessionStorage.setItem('custom_testcase',storedTestCases[0]);
+      if(!sessionStorage.getItem('custom_testcase')){
+        sessionStorage.setItem('custom_testcase',storedTestCases[0]);
+      }
       setCheckboxStates(new Array(testCases.length).fill(false));
     }
   }, []);
@@ -58,7 +59,7 @@ const CustomInput = () => {
           />
         <pre>
           <EdiText
-            value={testCases[0]}
+            value={sessionStorage.getItem('custom_testcase') || ""}
             onSave={onSave}
             canEdit={true}
             editButtonProps={{

@@ -1,4 +1,77 @@
 .topic-dropdown{
-    font-family: monospace;
+    font-family: Ubuntu,Helvetica,Arial,sans-serif;
     font-weight: 400;
+    font-size: 22px;
+}
+.dropdown-container{
+    height: 50px;
+    border-radius: 0px !important;
+
+
+}
+.dropdown-heading{
+    border-radius: 0px !important;
+    font-weight:normal ;
+    font-size: 18px;
+    font-family: Ubuntu,Helvetica,Arial,sans-serif;
+}
+.rmsc{
+    border: 2px solid #000000;
+    box-shadow: 5px 5px 0px 0px #000000;
+    border-radius: 0px !important;
+    width: 500px;
+    margin: auto;
+    --rmsc-main: #000;
+    
+}
+.rmsc :focus{
+    border: none !important;
+    outline: none;
+
+}
+.dropdown-content{
+    margin-top: 0.5rem;
+    border: 2px solid #000000;
+    box-shadow: 5px 5px 1px 1px #000000;
+
+    
+}
+.dropdown-content,.panel-content,.select-panel{
+    border-radius: 0px !important;
+}
+.options{
+    background-color: #f5f5f5 !important;
+}
+.dropdown-container:focus{
+    border-color: inherit none !important;
+    outline: none !important;
+}
+.search{
+    font-size: 18px;
+    background-color: #f5f5f5 !important;
+    font-family: Ubuntu,Helvetica,Arial,sans-serif;
+
+}
+.search input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.search input:focus-within{
+    outline: none !important;
+    border: none !important;
+    background-color: white !important;
+
+}
+.search input:focus{
+    border: none !important;
+    outline: none;
+    --tw-ring-color:"#fff" !important;
+    /* background-color: transparent !important; */
+}
+.select-item  span{
+    color: #111827;
+    font-family: Ubuntu,Helvetica,Arial,sans-serif;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: normal !important;
 }

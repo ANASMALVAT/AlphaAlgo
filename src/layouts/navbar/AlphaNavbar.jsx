@@ -1,10 +1,9 @@
 import React from "react";
 import NavLinks from "./navLinks";
 import SideNav from "./sideNav";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
-import { ToastContainer,toast } from "react-toastify";
+import {toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggelLoginWindowTrue } from "../../redux/slices/userComponentSlice";

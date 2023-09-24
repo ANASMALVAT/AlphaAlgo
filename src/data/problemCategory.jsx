@@ -1,6 +1,5 @@
-export const codingTopics = 
+export const problemCategories = 
 [
-    { value: "All", label: 'All' },
     { value: "BFS", label: 'BFS' },
     { value: "DFS", label: 'DFS' },
     // { value: "Queues", label: 'string' },

@@ -10,19 +10,14 @@ import SchoolIcon from '@mui/icons-material/School';
 
 export const languages = [
     {
+        img:<DataObjectIcon fontSize='50px' />,
+        language:"JavaScript,",
+        description:"For Cool People"
+    },
+    {
         img:<TerminalIcon fontSize='46px' />,
         language:"C++,",
         description:"For Old-School People"
-    },
-    // {
-    //     img:<DataObjectIcon fontSize='46px' />,
-    //     language:"TypeScript,",
-    //     description:"For Strict People"
-    // },
-    {
-        img:<GamepadIcon fontSize='50px' />,
-        language:"JavaScript,",
-        description:"For Cool People"
     },
     {
         img:<CodeIcon fontSize='46px' />,
@@ -33,11 +28,6 @@ export const languages = [
         img:<SchoolIcon fontSize='46px' />,
         language:"Java,",
         description:"For Smart Headed"
-    },
-    {
-        img:<WindowIcon fontSize='46px' />,
-        language:"C#,",
-        description:"For Game Devs"
     },
 
 ]

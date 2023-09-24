@@ -4,9 +4,7 @@ import "./styles/problemLayout.css";
 
 const SolutionLayout = () => {
   const [problemSolution, setProblemSolution] = useState(null);
-  var testCase = ' // Test case for variable ';
-  var templatetestcase = eval('`' + testCase + '`');
-  console.log(typeof templatetestcase);
+ 
   
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState,useLayoutEffect } from 'react'
 import AlphaNavbar from '../../layouts/navbar/AlphaNavbar';
 import TopicDropdown from './ui/topicsDropdown';
 import ProblemGrid from './grid/problemGrid';
+import TopicFilterDropdown from './ui/topicFilterDropdown';
 import ProblemInformation from './ui/problemInformation';
 import { fetchQuestionList } from '../../services/fetchQuestionList';
 
@@ -38,10 +39,16 @@ const CodingProblems = () => {
             }
 
             {!loading  &&
-              <div className='flex flex-col  flex-1 w-full h-2 flex-grow bg-white '>
-                  <TopicDropdown />
-                  <ProblemGrid  problemList = {questions}/>
-              </div>
+              (
+                <div className='flex flex-col  flex-1 w-full h-2 flex-grow bg-white '>
+                  <div className='topic-dropdown mt-8 '>
+                    <TopicFilterDropdown />
+                  </div>
+                  <div className='  '>
+                      <ProblemGrid  problemList = {questions}/>
+                  </div>
+                </div>
+              )
             }
         </div>
         </>

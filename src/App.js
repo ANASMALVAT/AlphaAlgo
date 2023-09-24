@@ -14,19 +14,17 @@ import SuccessfulPurchase from "./components/alphaHome/home-page-components/purc
 function App() {
 
   const dispatch = useDispatch();
-
+  
   useLayoutEffect(async () => {
 
-      if(localStorage.getItem('jwt-token')){
+      if(localStorage.getItem('csrf-token')){
 
         const verifyResult = await verifyToken();
 
         if(!verifyResult.success){
-          
-          dispatch(toggelUserLoginFalse());
-          toast("Session Expired, Please Login To Continue!",{autoClose:5000});
-          localStorage.clear();
 
+          dispatch(toggelUserLoginFalse());
+          localStorage.clear();
         }else{
           dispatch(toggelUserLoginTrue());
         }
@@ -34,6 +32,7 @@ function App() {
       else{
         dispatch(toggelUserLoginFalse());
       }
+      
   },[])
 
   const router = createBrowserRouter
@@ -90,7 +89,6 @@ function App() {
       <React.StrictMode>
           <RouterProvider router={router}/>
       </React.StrictMode>
-
     </div>
   );
 }

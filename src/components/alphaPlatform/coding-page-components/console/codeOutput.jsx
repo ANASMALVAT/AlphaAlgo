@@ -10,27 +10,27 @@ const CodeOutput = ( { outputDetail } ) =>
         {
             case 3:
                 return  (
-                    <pre className='px-2 py-1 font-normal text-xs text-red-500'>
+                    <pre className='px-2 py-1 font-normal text-lg text-green-500'>
                         {atob(outputDetail?.stdout)}
                     </pre>
                 );
       
             case 5:
                 return (
-                    <pre className='px-2 py-1 font-normal text-xs text-red-500'>
+                    <pre className='px-2 py-1 font-normal text-lg text-red-500'>
                         {`Time Limit Exceed`}
                     </pre>
                 )
             
             case 6:
                 return(
-                    <pre className='px-2 py-1 font-normal text-xs text-red-500'>
+                    <pre className='px-2 py-1 font-normal text-lg text-red-500'>
                         {atob(outputDetail?.compile_output)}
                     </pre>
                 )
             default:
                 return (
-                    <pre className='px-2 py-1 font-normal text-xs text-red-500'>
+                    <pre className='px-2 py-1 font-normal text-lg text-red-500'>
                         {atob(outputDetail?.stderr)}
                     </pre>
                 )
@@ -39,7 +39,7 @@ const CodeOutput = ( { outputDetail } ) =>
 
     return (
         <>
-            <div className= 'code-output text-start w-full overflow-auto max-h-screen h-full bg-transparent flex flex-1  text-white font-normal text-xl border border-gray-700 rounded-md'>
+            <div className= 'code-output text-start p-2 w-full overflow-auto max-h-screen h-full bg-transparent flex flex-1  text-white font-normal text-2xl border border-gray-700 rounded-md'>
                     {outputDetail ? <> {codeOutPut()} </>: null} 
             </div>
         </>

@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
-import "./styles/alphaGptWindowText.css"
-import { CodeBlock, dracula } from "react-code-blocks";
-
+import React from 'react'
+import "./styles/alphaGptWindowText.css";
 
 const AlphaGptWindowText = ({data,type}) =>{
-
-    const  formatedData = data.replace(/```/g, '');
-
+    let formatedData;
+    if(data){
+        formatedData = data.replace(/```/g, '');
+    }
     return (
         <div className={` gpt-window-text flex-1 rounded-md flex flex-row mb-4 bg-transparent  w-[full] font-mono ${type === 'User' ? 'text-right'  : 'text-left'} border-b border-t border-gray-600  items-center `}>
             <div className=' h-full m-1 w-10  rounded-sm  justify-start  align-top  text-center '>
@@ -21,6 +20,7 @@ const AlphaGptWindowText = ({data,type}) =>{
             {
             type === 'Bot' 
                     ?
+                    
                     <pre className='text-gray-300 font-mono' style={{whiteSpace:"pre-wrap" ,textAlign:"left"}}>
                         {formatedData}
                     </pre>

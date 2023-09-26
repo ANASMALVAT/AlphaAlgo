@@ -17,7 +17,7 @@ const CodingEnviorment = () => {
                         After tirelessly mastering problem solving by dedicating more than 20000 hours and consulting with coding interview experts, we've meticulously curated the ultimate collection of challenges for you.
                     </p>    
                 </div>
-                <div className=" enviorment-cards common-margin flex flex-col gap-2">
+                <div className=" enviorment-cards  mt-10 common-margin flex flex-col gap-2">
                     {
                       enviormentFeatures.map((feature) => {
                         return <EnviormentCardComponent enviorment={feature} />

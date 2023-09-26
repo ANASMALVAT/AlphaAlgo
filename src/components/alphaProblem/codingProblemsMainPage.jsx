@@ -1,6 +1,5 @@
 import React, { Component, useEffect, useState,useLayoutEffect } from 'react'
 import AlphaNavbar from '../../layouts/navbar/AlphaNavbar';
-import TopicDropdown from './ui/topicsDropdown';
 import ProblemGrid from './grid/problemGrid';
 import TopicFilterDropdown from './ui/topicFilterDropdown';
 import ProblemInformation from './ui/problemInformation';

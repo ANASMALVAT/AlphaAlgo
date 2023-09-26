@@ -4,6 +4,7 @@ import Team from "./components/alphaHome/home-page-components/team/team";
 import AlphaHomePage from './components/alphaHome/alphaHome';
 import AlphaPlatform from "./components/alphaPlatform/mainPage";
 import CodingProblems from "./components/alphaProblem/codingProblemsMainPage";
+import AlphaGPT from "./components/alphaHome/home-page-components/alpha-gpt/alphaGPT";
 import { LoginSuccess } from "./components/alphaLogin/login-components/loginSuccess";
 import { toggelUserLoginFalse, toggelUserLoginTrue } from "./redux/slices/userAuthentication";
 import { verifyToken } from "./services/verifyToken";
@@ -71,8 +72,8 @@ function App() {
       element:<SuccessfulPurchase/>
     },
     {
-      path:"/payment-unsuccessful",
-      element:<div>Failure</div>
+      path:"/dev",
+      element:<AlphaGPT/>
     }
   ]);
   

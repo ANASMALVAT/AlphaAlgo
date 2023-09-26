@@ -1,0 +1,8 @@
+.product-item:hover{
+    color: whitesmoke !important;
+    background: #4C5ADF;
+    transition-duration: 200ms;
+}
+.product-item.text-p:hover{
+    color: whitesmoke ;
+}

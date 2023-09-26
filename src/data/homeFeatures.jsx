@@ -1,6 +1,6 @@
 export const features = [
     {
-        title:"200 Hand Picked Questions",
+        title:"The Choosen Ones",
         info:"20000 Hours of Pure Dedication and the World is ours, we meticulously curated a collection of problems after solving 1500 problems and seeking guidance from coding interview experts, We have crafted this selection.",
     },
     {
@@ -8,8 +8,8 @@ export const features = [
         info: "An upcoming Udemy course will comprehensively explain solutions to all problems featured on Alpha Algo. Experience a strategic approach to explanations that is truly unprecedented.",
     },
     {
-        title: "Write Code in 7 Languages",
-        info: "At Alpha Algo, you can express your solutions in seven globally acclaimed programming languages.",
+        title: "Write Code in 4 Languages",
+        info: "At Alpha Algo, you can express your solutions in seven globally acclaimed programming languages.Whether you're a seasoned developer or starting your coding journey, we have got you covered.",
     },
     {
         title: "Rich Coding Environment",

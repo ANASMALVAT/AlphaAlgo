@@ -15,7 +15,7 @@ const QuestionComponent = () => {
                 </div>
                 <div className=" question-text common-margin-question mb-6 text-gray-300">
                     <p className="text-gray-300">
-                        After tirelessly mastering problem solving by dedicating more than 20000 hours and consulting with coding interview experts, we've meticulously curated the ultimate collection of challenges for you.
+                        After mastering problem solving by dedicating more than 20000 hours and consulting with coding interview experts, we've meticulously curated the ultimate collection for you.
                     </p>    
                 </div>
                 <div className=" question-grid  mb-4 text-gray-300">
@@ -27,7 +27,7 @@ const QuestionComponent = () => {
                 </div>
             </div>
             <div className="question-animation">
-                <img className="question-gif" src="https://cdn-icons-png.flaticon.com/512/4053/4053023.png" ></img>
+                <img className="question-gif" src="https://www.pngmart.com/files/22/Programmer-PNG-Photos.png" ></img>
             </div>
         </div>
     )

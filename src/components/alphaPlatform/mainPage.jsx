@@ -4,21 +4,24 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {setDifferentEditor, setConsole, setDefault,} from "../../redux/slices/alphaPlatformSlice";
+import { alphaRunning,alphaStopRunning } from "../../redux/slices/alphaRunning";
+import { codeCompile } from "./api/codeCompile";
+import { codeStatus } from "./api/codeCompileStatus";
+import { authorizedUser } from "./api/authorizedUser";
+import { useParams } from "react-router-dom";
+
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
 import SlidingPane from "./coding-page-components/sliding-panel/solutionSlidingPane";
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/ConsoleInput";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
-import { codeCompile } from "./api/codeCompile";
-import { codeStatus } from "./api/codeCompileStatus";
-import { authorizedUser } from "./api/authorizedUser";
 import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
 import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";
 import RestrictQuestion from "./coding-page-components/alpha-restrictions/restrictQuestion";
+import RestrictServerSide from "./coding-page-components/alpha-restrictions/restrictServerSide";
+
 import "./styles/mainPage.css";
 import "react-toastify/dist/ReactToastify.css";
-import { useParams } from "react-router-dom";
-import RestrictServerSide from "./coding-page-components/alpha-restrictions/restrictServerSide";
 
 const AlphaPlatform = ({}) => {
 
@@ -57,7 +60,7 @@ const AlphaPlatform = ({}) => {
     }
   }
 
-  useEffect (() => 
+  useLayoutEffect (() => 
   {
     async function fetchData() {
       try {
@@ -80,7 +83,6 @@ const AlphaPlatform = ({}) => {
         else{
           handleServerFailure();
         }
-        
       }
 
   async function handleResponse(status) {

@@ -28,14 +28,17 @@
 }
 
 .common-margin-question{
-    margin-left: 20%;
+    margin-left: 15%;
 }
 
 .question-animation{
-    width: 40%;
+    width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.question-gif{
+    width: 90%;
 }
 
 

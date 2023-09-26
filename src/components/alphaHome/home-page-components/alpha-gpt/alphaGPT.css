@@ -1,45 +1,43 @@
-.enviorment{
+.alpha{
     display: flex;
     align-items: start;
     justify-content: space-evenly;
     width: 100%;
 }
+
 .common-margin{
     margin-left: 20%
 }
 
-
-.enviorment-header{
+.alpha-header{
     font-size: 32px;
     font-weight: 300;
     color: white;
+    font-family: IBM Plex Sans,sans-serif;
 
 }
 
-.enviorment-text{
+.alpha-text{
     font-size: 18px;
-
 }
 
-
-.div-enviorment{
+.div-alpha{
     display: flex;
     justify-content: center;
     margin: auto;
-    width: 50%;
-
+    width: 45%;
 }
 
-.enviorment-grid{    
+.alpha-grid{
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     min-height: 600px;
     height: 100%;
-    width: 40%;
+    width: 50%;
 }
 
-.enviorment-img{
+.alpha-img{
     width: 650px;
     height: 350px;
     transition: transform 2s ease;
@@ -47,9 +45,9 @@
     transform: scale(1.5) translateX(20%);
 }
 
-.enviorment-img:hover{
+.alpha-img:hover{
     transform: scale(2) translateX(-30%);
-    transition: 0.7s all;
+    transition: 1s all;
 }
 
 @keyframes fadeIn {
@@ -71,43 +69,43 @@
   }
 
 @media (max-width:1000px) {
-    .enviorment-grid{
+    .alpha-grid{
         display: none;
     }
-    .div-enviorment{
+    .div-alpha{
         margin:0px;
         width: 80%;
         text-align: center;
         gap: 2rem;
     }
-    .enviorment-header{
+    .alpha-header{
         text-align: center;
         margin: auto;
     }
-    .enviorment{
+    .alpha{
         width: 100%;
         margin: auto;
         text-align: center;
         align-items: center;
         height: 850px;
     }
-    .enviorment-text{
+    .alpha-text{
         margin: auto;
     }
-    .enviorment-cards{
+    .alpha-cards{
         margin: auto;
     }
 }
 
 @media (max-width:500px) {
-    .div-enviorment{
+    .div-alpha{
         width: 90%;
 
     }
-    .enviorment-header{
+    .alpha-header{
         font-size: 28px;
     }
-    .enviorment-text{
+    .alpha-text{
         font-size: 16px;
     }
 }

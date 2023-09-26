@@ -8,7 +8,13 @@ import LanguageCardComponent from "./languageCardComponent";
 const LanguageComponent = () => {
 
     return (
+        
         <div className="flex flex-row min-h-[600px] bg-algoblack mt-12 justify-evenly pt-8 ">
+
+            <div className="language-animation">
+                <img className="coding-gif" src="https://media2.giphy.com/media/juua9i2c2fA0AIp2iq/giphy.gif" allowFullScreen></img>
+            </div>
+
             <div className="languages"> 
                 <div className=" common-margin-language language-header mb-4">
                     <h1>Type In Four Syntax</h1>
@@ -24,9 +30,7 @@ const LanguageComponent = () => {
                     }
                 </div>
             </div>
-            <div className="language-animation">
-                <img className="coding-gif" src="https://media2.giphy.com/media/juua9i2c2fA0AIp2iq/giphy.gif" allowFullScreen></img>
-            </div>
+           
         </div>
     )
 

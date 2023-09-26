@@ -6,6 +6,7 @@ import problemCategories from "./slices/problemCategorySlice"
 import userLoginWindow from "./slices/userComponentSlice"
 import userLogin from "./slices/userAuthentication"
 import alphaNotification from "./slices/alphaNotification"
+import alphaRunning from "./slices/alphaRunning"
 
 const store = configureStore({
     reducer:{
@@ -16,9 +17,7 @@ const store = configureStore({
       userLoginWindow:userLoginWindow,
       userLogin:userLogin,
       alphaNotification:alphaNotification,
-
-
-  
+      alphaRunning:alphaRunning
     },
   });
 

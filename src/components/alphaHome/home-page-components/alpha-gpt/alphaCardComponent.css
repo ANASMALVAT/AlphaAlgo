@@ -1,10 +1,10 @@
-.enviorment-block{
+.alpha-block{
     display: flex;
     justify-content: start;
     align-items: center;
 }
 
-.enviorment-description{
+.alpha-description{
     font-size: 22px;
     margin-left: 10px;
     text-align: left;
@@ -14,32 +14,33 @@
     font-weight: 900;
 }
 
-.enviorment-block{
+.alpha-block{
     padding: 5px;
     padding-left: 0px;
     width: fit-content;
     border-radius: 5px;
 }
-.enviorment-block:hover{
+
+.alpha-block:hover{
     scale: 1.15;
-    transition-duration: 200ms;
+    transition-duration: 300ms;
 }
 
 @media (max-width:1000px) {
-    .enviorment-block{
+    .alpha-block{
         margin-left: 50px;
     }
-    .enviorment-description{
+    .alpha-description{
         font-size: 20px;
     }
 }
 
 
 @media (max-width:500px) {
-    .enviorment-block{
+    .alpha-block{
        margin: auto;
     }
-    .enviorment-description{
+    .alpha-description{
         font-size: 18px;
     }
 }

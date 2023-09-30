@@ -1,26 +1,11 @@
 /* Base styles */
 .team-member {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
-    font-size:2rem;
-    line-height:1.2;
-    display: block;
-    font-size: 2em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    line-height: 1.2;
-    word-break: break-word;
-    font-weight: 800;
-    color: black;
-    font-family: IBM Plex Sans,sans-serif;
+
   }
   
   .team-img {
     max-width: 175px;
     height: auto;
-    margin-right: 20px;
     border-radius: 50%;
     margin-bottom:10px;
   }
@@ -34,29 +19,38 @@
   }
 
   .team-name {
-    font-size: 2rem;
+    font-size: 35px;
     margin: 0px;
     font-family: Ubuntu,Helvetica,Arial,sans-serif;
     letter-spacing: 0px;
+    font-weight: 400;
+    text-align: center;
+    margin-block-start: 0.1em;
+    margin-block-end: 0.1em;
   }
   
   .team-position {
     font-size: 20px;
     font-family: Ubuntu,Helvetica,Arial,sans-serif;
+    margin-bottom: 1rem;
   }
   
   .team-info {
-    font-size: 1.1rem;
-    line-height: 1.2;
-    font-weight: 300;
-    font-family: Ubuntu,Helvetica,Arial,sans-serif;
+    margin-top: 1rem;
+    /* line-height: 1.4; */
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Open Sans,Helvetica,Arial,sans-serif;
+    text-align: justify;
+    box-sizing: border-box;
+    color: rgb(15, 14, 14);
  }
   
   /* Responsive styles */
   @media (max-width: 768px) 
     {
       .team-name{
-        font-size: 1.5rem;
+        font-size: 30px;
       }
       .team-info{
         font-size: 16px;
@@ -76,7 +70,7 @@
   @media (max-width: 500px) 
   {
     .team-name{
-      font-size: 1.25rem;
+      font-size: 28px;
     }
     .team-info{
       font-size: 14px;

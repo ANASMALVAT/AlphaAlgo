@@ -10,7 +10,7 @@ export async function verifyToken() {
           Authorization: `${localStorage.getItem('csrf-token')}`, 
         },
         withCredentials:true,
-      };
+      }; 
     try {
         const response = await axios.get(VERIFY_TOKEN, config);
         if (response.status === 200) {
@@ -18,7 +18,7 @@ export async function verifyToken() {
           return { success: true, message: 'Token verification successful' };
         }
         else {
-          localStorage.clear();
+          // localStorage.clear();
           return { success: false, message: 'Session Expired, Please Login Again!' };
         }
       }

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import {setDifferentEditor, setConsole, setDefault,} from "../../redux/slices/alphaPlatformSlice";
 import { alphaRunning,alphaStopRunning } from "../../redux/slices/alphaRunning";
 import { codeCompile } from "./api/codeCompile";
+import { codeSubmit } from "./api/codeSubmission";
 import { codeStatus } from "./api/codeCompileStatus";
 import { authorizedUser } from "./api/authorizedUser";
 import { useParams } from "react-router-dom";
@@ -27,6 +28,7 @@ const AlphaPlatform = ({}) => {
 
   const alphaPlatformComponents = useSelector((state) => state.alphaPlatform.value);
   const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
+  const isRunning = useSelector((state) => state.alphaRunning.isRunning);
   const layoutValue = useSelector((state) => state.layoutValue);
   const [code, setCode] = useState("");
   const [driverCode,setDriverCode] = useState("");
@@ -49,6 +51,7 @@ const AlphaPlatform = ({}) => {
 
     const currentDropdownLanguage = dropdownValue.language?.value;
     const presentDriverCode = sessionStorage.getItem('driverCode');
+    
     if (presentDriverCode) {
       const parsedDriverCode = JSON.parse(presentDriverCode);
       const currentLanguageDriverCode = parsedDriverCode[currentDropdownLanguage]?.M;
@@ -266,26 +269,47 @@ useEffect(() => {
 
   async function checkCodeStatus(token) {
     try {
+
       const codeStatusResponse = await codeStatus(token);
 
       if (codeStatusResponse.success) {
         toast.update(toastId.current, { autoClose: 1 });
+        console.log(codeStatusResponse);
         setOutput(codeStatusResponse.code_output);
         showSuccess(codeStatusResponse.message);
+        dispatch(alphaStopRunning());
       }
+
       else {
         toast.update(toastId.current, { autoClose: 1 });
         showError(codeStatusResponse.error);
+        dispatch(alphaStopRunning());
       }
 
     } catch (error) {
-      console.error(error);
+      dispatch(alphaStopRunning());
+      toast.update(toastId.current, { autoClose: 1 });
+      toast("AlphaX is under maintainence!");
+      
     }
   }
 
   async function runCode(){
     toastId.current = toast("Processing...", { autoClose: 10000 });
+    if(code.trim === ""){
+      toast.update(toastId.current, { autoClose: 1 });
+      toast("Please write code to compile");
+    }
+    if(isRunning) {
+      toast.update(toastId.current, { autoClose: 1 });
+      toast("Code is in execution");
+      return;
+    }
+
+    dispatch(alphaRunning());
+
     let codeCompileResponse;
+
     if(language.value === 'java'){
       const custom_testcase = sessionStorage.getItem('custom_testcase');
       const user_code = code;
@@ -294,38 +318,56 @@ useEffect(() => {
     }
     else{
       const custom_testcase = sessionStorage.getItem('custom_testcase');
-      const runCode = eval('`' + driverRunCode + '`');;
+      const runCode = eval('`' + driverRunCode + '`');
       codeCompileResponse = await codeCompile(code + runCode,  language);
     }
+
     if (codeCompileResponse.success) {
       const token = codeCompileResponse.token;
       checkCodeStatus(token);
     } else {
       toast.update(toastId.current, { autoClose: 1 });
       showError(codeCompileResponse.error);
+      dispatch(alphaStopRunning());
     }
   }
 
   async function compileCode() {
     toastId.current = toast("Processing...", { autoClose: 10000 });
-
+    if(code.trim === ""){
+      toast.update(toastId.current, { autoClose: 1 });
+      toast("Please write code to compile");
+    }
+    if(isRunning) {
+      toast.update(toastId.current, { autoClose: 1 });
+      toast("Code is in execution");
+      return;
+    }
+    dispatch(alphaRunning());
+    
     let codeCompileResponse= null;
-
+    
     if(language.value === 'java'){
       const user_code = code;
       const javaDriverCode = eval('`' + driverCode + '`');
-      codeCompileResponse = await codeCompile(javaDriverCode,language);
+      codeCompileResponse = await codeCompile(javaDriverCode);
     }
     else{
-      codeCompileResponse = await codeCompile(code + driverCode,  language);
+      codeCompileResponse = await codeCompile(code + driverCode);
     }
-    
+    console.log("code Compile response");
+    console.log(codeCompileResponse);
     if (codeCompileResponse.success) {
       const token = codeCompileResponse.token;
-      checkCodeStatus(token);
+      await checkCodeStatus(token);
+      // code submission!
+      // await codeSubmit(code,problemId);
+
+     
     } else {
       toast.update(toastId.current, { autoClose: 1 });
       showError(codeCompileResponse.error);
+      dispatch(alphaStopRunning());
     }
   }
 
@@ -385,7 +427,6 @@ useEffect(() => {
             <AlgoButtons buttonOne={`Editor`} buttonTwo={`Console`} buttonThree={`AlphaGPT`} />
           </div>
         )}
-      
 
         {alphaPlatformComponents.editor && (
           <div

@@ -1,8 +1,19 @@
+.product-item{
+    border: none;
+}
 .product-item:hover{
     color: whitesmoke !important;
-    background: #4C5ADF;
+    /* background: #BB20DD; */
+    background:#890023;
     transition-duration: 200ms;
 }
-.product-item.text-p:hover{
-    color: whitesmoke ;
+.product-xblogs:hover{
+    color: whitesmoke !important;
+    background: #890023;
+    transition-duration: 200ms;
 }
+/* .product-item.text-p:hover{
+    color: whitesmoke ;
+} */
+
+/*  */

@@ -19,8 +19,9 @@ export const customStyles = {
       minWidth:'150px',
       maxWidth:'215px',
       width:"175px",
-      border:"1px solid #4C5ADF",
-      borderBottom:"3px solid #4C5ADF",
+      border:"1px solid gray",
+      borderBottom:"4px solid #4C5ADF",
+      
       
     ":hover": {
         boxShadow: "none",

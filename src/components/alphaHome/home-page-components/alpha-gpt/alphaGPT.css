@@ -35,19 +35,23 @@
     min-height: 600px;
     height: 100%;
     width: 50%;
+    /* margin-left: 20%; */
+    
 }
 
+
 .alpha-img{
-    width: 650px;
+    width: 500px;
     height: 350px;
     transition: transform 2s ease;
     background: linear-gradient(60deg,rgba(225,225,225,.25),hsla(25,50%,100%,.25));
-    transform: scale(1.5) translateX(20%);
 }
 
 .alpha-img:hover{
-    transform: scale(2) translateX(-30%);
+    transform: scale(2) translateX(-50%);
     transition: 1s all;
+}
+.alpha-screen{
 }
 
 @keyframes fadeIn {

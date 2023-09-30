@@ -11,7 +11,7 @@ const AlphaGPT = () => {
         <div className="enviorment flex min-h-[700px] flex-1 bg-algoblack justify-evenly pt-4 overflow-visible ">
             
             
-            <div className="alpha-grid w-[40%] flex overflow-visisble ">
+            <div className="alpha-grid flex overflow-visisble ">
                 <AlphaGptWindow className=" alpha-img justify-center rounded-md  p-2 opacity-90" style={{ maxWidth: '100%', height: 'auto' }} />
             </div>
 

@@ -3,8 +3,10 @@ import axios from "axios";
 const CODE_STATUS_URL = process.env.REACT_APP_CODE_STATUS_URL;
 
 export async function codeStatus(token) {
+
   try {
     const response = await axios.get(`${CODE_STATUS_URL}/${token}`);
+    
     if (response.data.status?.id === 1 || response.data.status?.id === 2) {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       return codeStatus(token);

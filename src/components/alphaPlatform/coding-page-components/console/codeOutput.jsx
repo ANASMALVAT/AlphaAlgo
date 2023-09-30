@@ -39,7 +39,7 @@ const CodeOutput = ( { outputDetail } ) =>
 
     return (
         <>
-            <div className= 'code-output text-start p-2 w-full overflow-auto max-h-screen h-full bg-transparent flex flex-1  text-white font-normal text-2xl border border-gray-700 rounded-md'>
+            <div className= 'code-output text-start  w-full overflow-auto max-h-screen h-full bg-transparent flex flex-1  text-white font-normal text-2xl rounded-md'>
                     {outputDetail ? <> {codeOutPut()} </>: null} 
             </div>
         </>

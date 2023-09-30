@@ -45,13 +45,22 @@
 }
 
 
-@media (min-width: 0px) and (max-width: 1000px) 
+
+@media (min-width: 0px) and (max-width: 1100px) 
 {
     .show-buttons {
       display: flex;
       flex-direction: row;
     }
-
+    .vertical-button {
+      display: none;
+    }
+    .console-run-button {
+      margin: auto;
+    }
+    .console-button{
+      /* margin: auto; */
+    }
     .main-console{
         width: 100%;
         height: 100%;

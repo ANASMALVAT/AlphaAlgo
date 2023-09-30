@@ -13,7 +13,9 @@ import "../styles/userLogin.css"
 const UserLogin = () => {
 
     const AUTHENTICATION_URL = process.env.REACT_APP_AUTHENTICATION_URL;
+    
     const LoginButton = useSelector((state) => state.userLoginWindow.showLoginWindow);
+
     const dispatch = useDispatch();
 
     const handleClose = () => {
@@ -22,7 +24,6 @@ const UserLogin = () => {
 
     const fetchAuthUser = async () => {
 
-        console.log(localStorage.getItem('jwt-token'));
         dispatch(toggelUserLoginTrue());
         dispatch(toggelLoginWindowFalse());
 
@@ -35,7 +36,9 @@ const UserLogin = () => {
         const checkClosedInterval = setInterval(() => {
             if (newWindow && newWindow.closed) {
                 clearInterval(checkClosedInterval);
-                fetchAuthUser();
+                if(localStorage.getItem('csrf-token')){
+                    fetchAuthUser();
+                }
             }
         }, 500); 
         }

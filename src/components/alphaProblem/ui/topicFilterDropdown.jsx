@@ -27,8 +27,8 @@ const TopicFilterDropdown = () => {
         options={problemCategories}
         value={selected}
         onChange={setSelected}
-        className="multi-select shadow-sm"
-        labelledBy="Category"
+        className="multi-select shadow-md"
+        
       />
     </div>
   );

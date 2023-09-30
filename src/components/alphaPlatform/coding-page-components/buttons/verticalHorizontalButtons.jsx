@@ -21,7 +21,7 @@ const VerticalHorizontalButtons = () => {
     }
 
     return (
-        <>
+        <>  
                 <button onClick={changeHeight} className={` bg-[#5867EA] overflow-hidden flex flex-row  w-16  justify-center rounded-[4px] px-2  h-full items-center  font-sans  font-normal text-white`}>
                     <HeightIcon sx={{color:"white" ,borderRadius:"50%",":hover": { transform: "scale(1.5)", transition: 'transform 0.3s, background-color 0.3s'}}}  />
                 </button>

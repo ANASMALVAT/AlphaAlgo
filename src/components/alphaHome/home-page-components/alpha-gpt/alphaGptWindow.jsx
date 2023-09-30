@@ -17,7 +17,7 @@ const AlphaGptWindow = () =>
     return (
         <>
         <div style={{  whiteSpace: 'pre', scrollbarWidth: 'thin', scrollbarColor: '#4C5ADF #011627', fontFamily: 'monospace',  fontSize: '14px',fontColor: 'rgb(55,65,81)'}}
-            className="alpha-screen mt-10  custom-scrollbar  hover:scale-[1.15] hover:duration-300 min-w-[500px]  w-[700px] h-[400px] p-2 mr-6 border text-white rounded-[0.25rem] border-gray-700 bg-[#011627] text-left overflow-auto">
+            className="alpha-screen mt-10  custom-scrollbar  hover:scale-[1.15] hover:duration-300 min-w-[500px]  w-[600px] h-[400px] p-2 mr-6 border text-white rounded-[0.25rem] border-gray-700 bg-[#011627] text-left overflow-auto">
 
                 <div className=" h-[80%] border border-gray-700 rounded-md p-1">
                     <pre className="m-auto text-[white] whitespace-pre-wrap  w-[full] pl-3 pr-3 border-gray-800 ml-auto mr-auto mt-4">

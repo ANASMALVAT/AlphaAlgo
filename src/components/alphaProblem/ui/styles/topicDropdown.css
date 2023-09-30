@@ -45,6 +45,7 @@
 
 .dropdown-content,.panel-content,.select-panel{
     border-radius: 0px !important;
+    border-radius: 3px;
 }
 
 .options{
@@ -53,6 +54,7 @@
 
 .dropdown-container{
     background:#F5F5F5 !important;
+    border-radius: 4px;
 }
 
 .dropdown-container:focus{
@@ -85,7 +87,7 @@
 }
 
 .select-item span{
-    color: #2D33CA;
+    color: #445d6e;
     /* font-family: Ubuntu,Helvetica,Arial,sans-serif; */
     font-family: 'IBM Plex Sans', sans-serif;
     margin-left: 10px;

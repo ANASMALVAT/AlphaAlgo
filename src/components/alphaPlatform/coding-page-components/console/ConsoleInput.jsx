@@ -13,8 +13,6 @@ const ConsoleInput = ({output,handleCompile,handleRun,showSolution,}) =>{
     const [isConsole, setIsConsole] = useState(true);
     const [isInput, setIsInput] = useState(false);
     const [isProblem, setIsProblem] = useState(false);
-    const outputInputRef = useRef();
-
 
     const setConsole = () => {
         setIsConsole(currentIsConsole => true);
@@ -39,8 +37,12 @@ const ConsoleInput = ({output,handleCompile,handleRun,showSolution,}) =>{
         <div className="main-console flex-grow overflow-hidden  p-2  border border-gray-500 min-h-[150px] bg-algoblack rounded-md">
 
             <div className="console-console-buttons flex flex-row items-start space-x-1  h-12 min-h-[10] w-full bg-algoblack">
-                <ConsoleButton setConsole={setConsole} setProblem={setProblem} setInput={setInput} isConsole={isConsole} isInput={isInput} isProblem={isProblem}/>
-                <VerticalHorizontalButtons/>
+                <div className="console-button flex h-full gap-1">
+                  <ConsoleButton setConsole={setConsole} setProblem={setProblem} setInput={setInput} isConsole={isConsole} isInput={isInput} isProblem={isProblem}/>
+                </div>
+                <div className="vertical-button flex h-full gap-1">
+                  <VerticalHorizontalButtons />
+                </div>
             </div>
 
             <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md overflow-hidden p-4 ">
@@ -49,8 +51,9 @@ const ConsoleInput = ({output,handleCompile,handleRun,showSolution,}) =>{
                 {isProblem && <CodeProblem />}
             </div>
 
-            <ConsoleRunButtons methodOne={handleRun} methodTwo={handleCompile} methodThree={showSolution} buttonOne={`Run`} buttonTwo={`Submit`} buttonThree={`Solution`} />
-
+            <div className="console-run-button flex gap-1">
+              <ConsoleRunButtons methodOne={handleRun} methodTwo={handleCompile} methodThree={showSolution} buttonOne={`Run`} buttonTwo={`Submit`} buttonThree={`Solution`} />
+            </div>
         </div>
     );
 }

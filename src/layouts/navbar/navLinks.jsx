@@ -19,7 +19,7 @@ const NavLinks = ({flexClass}) => {
                         }
                         on={['hover', 'focus']}
                         position={'bottom center'}
-                        contentStyle={{minWidth:"450px", width:"450px",height:"250px", borderRadius:"4px",background:"transparent",border:"none"}}
+                        contentStyle={{minWidth:"300px", width:"300px",height:"300px", borderRadius:"4px",background:"transparent",border:"0px solid white"}}
                     >   
                         <ToolTip />
                     </Popup>

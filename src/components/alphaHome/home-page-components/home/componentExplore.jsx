@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import ComponentAlphaAlgo from "./componentAlphaAlgo";
+import ComponentExploreDetail from "./componentExploreDetail";
 
 import 'reactjs-popup/dist/index.css';
 import "./styles/componentThree.css"
 
-const ComponentThree = () => {
+const ComponentExplore = () => {
 
     const [aboutAlpha, setAboutAlpha] = useState(false);
 
@@ -20,7 +20,7 @@ const ComponentThree = () => {
                     <h1 className="h1-tag text-white ">What is Alpha Algo?</h1>
                 </div>
                 <div>
-                    <ComponentAlphaAlgo/>
+                    <ComponentExploreDetail/>
                 </div>
         </div>
         </>
@@ -28,4 +28,4 @@ const ComponentThree = () => {
 
 }
 
-export default ComponentThree;
+export default ComponentExplore;

@@ -9,7 +9,6 @@ export function LoginSuccess() {
     useEffect(() => {
         const parentWindow = window.opener;
         if (parentWindow) {
-            console.log(token);
             parentWindow.localStorage.setItem('csrf-token', token);
         }
         setTimeout(() => {

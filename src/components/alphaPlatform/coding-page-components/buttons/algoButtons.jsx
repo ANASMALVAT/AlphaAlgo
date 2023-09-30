@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { setDifferentEditor,setGPT,setConsole } from "../../../../redux/slices/alphaPlatformSlice";
 
 
-const AlgoButtons = ({methodOne, methodTwo,methodThree,buttonOne,buttonTwo,buttonThree }) => {
+const AlgoButtons = ({buttonOne,buttonTwo,buttonThree }) => {
 
 
   const dispatch = useDispatch();

@@ -4,9 +4,8 @@ import "./styles/componentTwo.css"
 
 <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 
-const ComponentTwo = () => 
+const componentTypeWriter = () => 
 {
-
     const code = [
         'void quickSort(int arr[], int low, int high)',
         '{',
@@ -43,8 +42,8 @@ const ComponentTwo = () =>
         '    return j;',
         '}'
     ];
-    
-    const formattedCode = code.join('\n'); // Join the array elements with newline characters
+
+    const formattedCode = code.join('\n');
  
     return (
         <>
@@ -84,4 +83,4 @@ const ComponentTwo = () =>
     )
 }
 
-export default ComponentTwo;
+export default componentTypeWriter;

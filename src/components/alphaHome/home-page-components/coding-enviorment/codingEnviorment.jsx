@@ -9,15 +9,16 @@ const CodingEnviorment = () => {
         <div className="enviorment flex min-h-[700px] flex-1 bg-algoblack justify-evenly pt-4 overflow-visible ">
 
             <div className="div-enviorment  flex flex-col"> 
+                <div className="enviorment-header common-margin-enviorment mb-4">
+                    <h1 className="enviorment-header-text">Rich Coding Enviorment</h1>
+                </div>
 
-                <h1 className=" enviorment-header common-margin mb-4">Rich Coding Enviorment</h1>
-
-                <div className=" enviorment-text common-margin mb-10 text-gray-600">
+                <div className=" enviorment-text common-margin-enviorment mb-10 text-gray-600">
                     <p className="text-gray-300">
                         After tirelessly mastering problem solving by dedicating more than 20000 hours and consulting with coding interview experts, we've meticulously curated the ultimate collection of challenges for you.
                     </p>    
                 </div>
-                <div className=" enviorment-cards  mt-10 common-margin flex flex-col gap-2">
+                <div className=" enviorment-cards  mt-10 common-margin-enviorment flex flex-col gap-2">
                     {
                       enviormentFeatures.map((feature) => {
                         return <EnviormentCardComponent enviorment={feature} />

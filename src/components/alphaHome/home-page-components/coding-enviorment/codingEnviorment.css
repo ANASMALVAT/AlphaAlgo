@@ -4,7 +4,7 @@
     justify-content: space-evenly;
     width: 100%;
 }
-.common-margin{
+.common-margin-enviorment{
     margin-left: 20%
 }
 
@@ -71,8 +71,19 @@
   }
 
 @media (max-width:1000px) {
+    .common-margin-enviorment{
+        margin: 0px;
+    }
     .enviorment-grid{
         display: none;
+    }
+
+    .enviorment{
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        align-items: center;
+        height: 850px;
     }
     .div-enviorment{
         margin:0px;
@@ -81,18 +92,16 @@
         gap: 2rem;
     }
     .enviorment-header{
-        text-align: center;
         margin: auto;
     }
-    .enviorment{
-        width: 100%;
+    .enviorment-header-text{
         margin: auto;
-        text-align: center;
-        align-items: center;
-        height: 850px;
     }
+
     .enviorment-text{
         margin: auto;
+        text-align: center;
+        width: 80%;
     }
     .enviorment-cards{
         margin: auto;

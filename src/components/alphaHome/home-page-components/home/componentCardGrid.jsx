@@ -5,7 +5,7 @@ import "./styles/componentFour.css"
 
 
 
-const ComponentFour = () => {
+const ComponentCardGrid = () => {
 
 
     return (
@@ -24,4 +24,4 @@ const ComponentFour = () => {
     )
 }
 
-export default ComponentFour;
+export default ComponentCardGrid;

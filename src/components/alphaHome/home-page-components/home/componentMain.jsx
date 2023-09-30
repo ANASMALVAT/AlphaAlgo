@@ -1,9 +1,9 @@
 import React from "react";
-import "./styles/componentOne.css"
+import ComponentTypeWriter from "./componentTypeWriter";
 import { Link } from "react-router-dom";
+import "./styles/componentOne.css"
 
-import ComponentTwo from "./componentTwo";
-const ComponentOne = () => 
+const ComponentMain = () => 
 {
     return (
         <>
@@ -19,12 +19,12 @@ const ComponentOne = () =>
                             <h1 className="logo-name  tracking-wide font-normal antialiased text-white text-5xl">Algo</h1>
                         </div>
 
-                        <p className=" mt-1 text-white text-md font-normal ">
-                            Your Definitive Guide For Cracking Coding Interviews.
+                        <p className=" mt-1 font-normal text-lg text-gray-300">
+                            Your definitive guide for cracking coding interviews.
                         </p>
 
-                        <p className=" text-white text-md mt-1 font-normal ">
-                            20,000 Hours Devoted to Perfect Problem Solving for Coding Interviews.
+                        <p className="mt-1 font-normal text-lg text-gray-300">
+                            20,000 Hours devoted to perfect problem solving for coding interviews.
                         </p>
                         <Link to="/purchase">
                             <button className={`what-button overflow-hidden mt-8 mb-4 flex flex-row items-center text-center align-middle  rounded-sm px-6  font-mono font-normal justify-center text-white border bg-[#4C5ADF] hover:duration-300 border-b-8 border-[#4C5ADF]`}>
@@ -36,11 +36,11 @@ const ComponentOne = () =>
 
                 </div>
                     <div className="alpha-window w-6/12 h-60 m-auto flex justify-center align-middle overflow-visible">
-                        <ComponentTwo/>
+                        <ComponentTypeWriter/>
                     </div>
             </div>
         </>
     )
 }
 
-export default ComponentOne;
+export default ComponentMain;

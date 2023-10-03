@@ -10,7 +10,7 @@ const CodeOutput = ( { outputDetail } ) =>
         {
             case 3:
                 return  (
-                    <pre className='px-2 py-1 font-normal text-lg text-green-500'>
+                    <pre className='px-2 py-1 font-normal text-lg text-white'>
                         {atob(outputDetail?.stdout)}
                     </pre>
                 );

@@ -12,7 +12,13 @@ export async function verifyToken() {
         withCredentials:true,
       }; 
     try {
-        const response = await axios.get(VERIFY_TOKEN, config);
+
+      const response = await axios.get(VERIFY_TOKEN, {
+          headers: {
+              Authorization: `${localStorage.getItem('csrf-token')}`,
+          },
+          withCredentials: true,
+        });
         if (response.status === 200) {
           localStorage.setItem('csrf-token', response.data.csrfToken);
           return { success: true, message: 'Token verification successful' };

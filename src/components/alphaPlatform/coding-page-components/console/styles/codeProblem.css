@@ -1,13 +1,36 @@
+.problem-question{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.8285714em;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.problem-statement{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.2px;
+}
+
+.blurred {
+  filter: blur(5px);
+}
+
 .code-problem{
     width: 100%;
     flex-grow: 1;
     padding: 2rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: white;
   }
   
 .code-problem::-webkit-scrollbar {
     width: 8px;
 }
 
+.hint:hover{
+  cursor: pointer;
+}
 .code-problem::-webkit-scrollbar-track {
     background: white;
     border-radius: 8px;
@@ -34,14 +57,6 @@
     padding: 1rem;
   }
   
-  .problem-example{
-    font-family: Ubuntu,Helvetica,Arial,sans-serif;
-    
-  }
-
-  .problem-question{
-    font-family: Ubuntu,Helvetica,Arial,sans-serif;
-  }
   
   .h-16 {
     height: 4rem;

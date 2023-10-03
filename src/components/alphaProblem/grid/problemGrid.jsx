@@ -8,7 +8,7 @@ const ProblemGrid = ({ problemList }) => {
   
   const [categorizedProblems, setCategorizedProblems] = useState({ easy: [], medium: [], hard: [], special:[]});
   const problemCategories = useSelector((state) => state.problemCategories.category);
-
+  
   useEffect(() => {
     const updatedCategorizedProblems = { easy: [], medium: [], hard: [], special :[]};
     for (let i = 0; i < problemList.length; i++) {

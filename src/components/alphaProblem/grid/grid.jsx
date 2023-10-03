@@ -1,14 +1,12 @@
 import React  from 'react'
-import Form from "react-bootstrap/Form"
 import Popup from 'reactjs-popup';
 import { Link } from 'react-router-dom';
-
 import "./styles/grid.css"
-import Radio from '@mui/material/Radio';
+
 
 const Grid = ({problemInfo}) => {
     return(
-    <Link to="/coding-platform">
+    <Link to={`/problems/${problemInfo?.question_id}`}>
         <div className=' problem-grid flex flex-row items-center h-12 shadow-md rounded-sm bg-[#F5F5F5]'>
             
             <Popup

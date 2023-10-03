@@ -14,9 +14,6 @@ const CustomInput = () => {
     const storedTestCases = JSON.parse(sessionStorage.getItem('problemTestCases'));
     if (storedTestCases) {
       setTestCases(storedTestCases);
-      if(!sessionStorage.getItem('custom_testcase')){
-        sessionStorage.setItem('custom_testcase',storedTestCases[0]);
-      }
       setCheckboxStates(new Array(testCases.length).fill(false));
     }
   }, []);
@@ -44,7 +41,7 @@ const CustomInput = () => {
 
   return (
     <div className="custom-input pt-4 flex flex-col gap-4 h-full w-full whitespace-pre overflow-auto rounded-md">
-      {testCases[0] ? 
+      {sessionStorage.getItem('custom_testcase')  ? 
       (
         <div className="flex">
           <Checkbox
@@ -62,6 +59,10 @@ const CustomInput = () => {
             value={sessionStorage.getItem('custom_testcase') || ""}
             onSave={onSave}
             canEdit={true}
+            type='textarea'
+            containerProps={{
+              width:"100%"
+            }}
             editButtonProps={{
               style: {
                 borderRadius: 3,
@@ -74,26 +75,32 @@ const CustomInput = () => {
             viewProps={{
               className: 'text-md',
               style: {
+                display:"flex",
+                flexGrow:1,
                 fontWeight: 'bold',
                 borderRadius: 3,
                 padding: '10px',
-                width: '100%',
+                minWidth: '100%',
                 background: '#15314B',
                 color: 'green',
                 whiteSpace: 'pre',
-                letterSpacing:"0px"
+                letterSpacing:"0px",
+                // minWidth:"400px"
               },
             }}
             editProps={{
               style: {
+                display:"flex",
+                flexGrow:1,
                 borderRadius: 3,
                 padding: '5px',
                 width: '100%',
                 background: '#15314B',
                 whiteSpace: 'pre-wrap',
+                minWidth:"400px"
               },
             }}
-            inputProps={{ style: { whiteSpace: 'pre-wrap', color:'white',} }}
+            inputProps={{ style: { whiteSpace: 'pre-wrap', color:'white',minWidth:"400px"} }}
           />
         </pre>
         </div>
@@ -101,7 +108,7 @@ const CustomInput = () => {
         <></>
       )}
 
-      {testCases.slice(1).map((data, index) => (
+      {testCases.map((data, index) => (
         <div className="flex" key={index}>
           <Checkbox
             required

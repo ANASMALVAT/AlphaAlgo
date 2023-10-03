@@ -33,6 +33,7 @@ const AlphaPlatform = ({}) => {
   const [code, setCode] = useState("");
   const [driverCode,setDriverCode] = useState("");
   const [driverRunCode,setDriverRunCode] = useState("");
+  const [driverRunSolution, setDriverRunSolution] = useState("");
   const [language, setLanguage] = useState(dropdownValue.language);
   const [solution, setSolution] = useState(false);
   const [output, setOutput] = useState("");
@@ -51,16 +52,14 @@ const AlphaPlatform = ({}) => {
 
     const currentDropdownLanguage = dropdownValue.language?.value;
     const presentDriverCode = sessionStorage.getItem('driverCode');
-    
-    if (presentDriverCode) {
-      const parsedDriverCode = JSON.parse(presentDriverCode);
-      const currentLanguageDriverCode = parsedDriverCode[currentDropdownLanguage]?.M;
-      sessionStorage.setItem('user_code', currentLanguageDriverCode.user_code.S);
-      setCode(currentLanguageDriverCode.user_code.S);
-      setDriverCode(currentLanguageDriverCode.driver_code.S);
-      setDriverRunCode(currentLanguageDriverCode.driver_run_code.S);
+    const parsedDriverCode = JSON.parse(presentDriverCode);
+    const currentLanguageDriverCode = parsedDriverCode[currentDropdownLanguage]?.M;
+    sessionStorage.setItem('user_code', currentLanguageDriverCode.user_code.S);
+    setCode(currentLanguageDriverCode?.user_code.S);
+    setDriverCode(currentLanguageDriverCode?.driver_code.S);
+    setDriverRunCode(currentLanguageDriverCode?.driver_run_code.S);
+    setDriverRunSolution(currentLanguageDriverCode?.driver_run_solution?.S);
 
-    }
   }
 
   useLayoutEffect (() => 
@@ -145,11 +144,12 @@ const AlphaPlatform = ({}) => {
     setIsQuestion(true);
     setIsAuthorised(true);
     setIsServer(true);
+    console.log(questionDetail);
     sessionStorage.setItem(`problemData`,JSON.stringify(questionDetail?.question_detail));
     sessionStorage.setItem('problemSolution',JSON.stringify(questionDetail?.question_solution));
     sessionStorage.setItem('problemTestCases',JSON.stringify(questionDetail?.test_cases.SS));
     sessionStorage.setItem('driverCode',JSON.stringify(questionDetail.driver_codes.M));
-    sessionStorage.setItem('custom_testcase',questionDetail?.test_cases.SS[0]);
+    sessionStorage.setItem('custom_testcase',questionDetail?.custom_test_case.S);
     updateCodeAndDriverCode();
   }
 }
@@ -274,7 +274,6 @@ useEffect(() => {
 
       if (codeStatusResponse.success) {
         toast.update(toastId.current, { autoClose: 1 });
-        console.log(codeStatusResponse);
         setOutput(codeStatusResponse.code_output);
         showSuccess(codeStatusResponse.message);
         dispatch(alphaStopRunning());
@@ -294,55 +293,47 @@ useEffect(() => {
     }
   }
 
-  async function runCode(){
-    toastId.current = toast("Processing...", { autoClose: 10000 });
-    if(code.trim === ""){
-      toast.update(toastId.current, { autoClose: 1 });
-      toast("Please write code to compile");
-    }
-    if(isRunning) {
-      toast.update(toastId.current, { autoClose: 1 });
-      toast("Code is in execution");
-      return;
-    }
+  async function runCode() {
+    try{
+      toastId.current = toast("Processing...", { autoClose: 10000 });
 
-    dispatch(alphaRunning());
+      dispatch(alphaRunning());
 
-    let codeCompileResponse;
+      let codeCompileResponse;
 
-    if(language.value === 'java'){
-      const custom_testcase = sessionStorage.getItem('custom_testcase');
-      const user_code = code;
-      const javaDriverRunCode = eval('`' + driverRunCode + '`');;  
-      codeCompileResponse = await codeCompile(javaDriverRunCode,language);
+      if(language.value === 'java'){
+
+        const custom_testcase = JSON.stringify(sessionStorage.getItem('custom_testcase'));
+        const driver_run_solution = driverRunSolution;
+        const user_code = code;
+        const javaDriverRunCode = eval('`' + driverRunCode + '`');
+        codeCompileResponse = await codeCompile(javaDriverRunCode,language);
+
+      }else{
+        const custom_testcase = JSON.stringify(sessionStorage.getItem('custom_testcase'));
+        const runCode = eval('`' + driverRunCode + '`');
+        console.log(code + driverRunSolution + runCode);
+        codeCompileResponse = await codeCompile(code + driverRunSolution + runCode ,  language);
+      }
+
+      if (codeCompileResponse.success) {
+        const token = codeCompileResponse.token;
+        checkCodeStatus(token);
+      } else {
+        toast.update(toastId.current, { autoClose: 1 });
+        showError(codeCompileResponse.error);
+        dispatch(alphaStopRunning());
+      }
     }
-    else{
-      const custom_testcase = sessionStorage.getItem('custom_testcase');
-      const runCode = eval('`' + driverRunCode + '`');
-      codeCompileResponse = await codeCompile(code + runCode,  language);
-    }
-
-    if (codeCompileResponse.success) {
-      const token = codeCompileResponse.token;
-      checkCodeStatus(token);
-    } else {
-      toast.update(toastId.current, { autoClose: 1 });
-      showError(codeCompileResponse.error);
+    catch(error){
       dispatch(alphaStopRunning());
     }
   }
 
   async function compileCode() {
+
     toastId.current = toast("Processing...", { autoClose: 10000 });
-    if(code.trim === ""){
-      toast.update(toastId.current, { autoClose: 1 });
-      toast("Please write code to compile");
-    }
-    if(isRunning) {
-      toast.update(toastId.current, { autoClose: 1 });
-      toast("Code is in execution");
-      return;
-    }
+
     dispatch(alphaRunning());
     
     let codeCompileResponse= null;
@@ -350,13 +341,13 @@ useEffect(() => {
     if(language.value === 'java'){
       const user_code = code;
       const javaDriverCode = eval('`' + driverCode + '`');
-      codeCompileResponse = await codeCompile(javaDriverCode);
+      console.log(javaDriverCode);
+      codeCompileResponse = await codeCompile(javaDriverCode,language);
     }
     else{
-      codeCompileResponse = await codeCompile(code + driverCode);
+      codeCompileResponse = await codeCompile(code + driverCode,language);
     }
-    console.log("code Compile response");
-    console.log(codeCompileResponse);
+
     if (codeCompileResponse.success) {
       const token = codeCompileResponse.token;
       await checkCodeStatus(token);

@@ -7,7 +7,6 @@ import {setDifferentEditor, setConsole, setDefault,} from "../../redux/slices/al
 import { alphaRunning,alphaStopRunning } from "../../redux/slices/alphaRunning";
 import { codeCompile } from "./api/codeCompile";
 import { codeSubmit } from "./api/codeSubmission";
-import { codeStatus } from "./api/codeCompileStatus";
 import { authorizedUser } from "./api/authorizedUser";
 import { useParams } from "react-router-dom";
 
@@ -28,12 +27,8 @@ const AlphaPlatform = ({}) => {
 
   const alphaPlatformComponents = useSelector((state) => state.alphaPlatform.value);
   const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
-  const isRunning = useSelector((state) => state.alphaRunning.isRunning);
   const layoutValue = useSelector((state) => state.layoutValue);
   const [code, setCode] = useState("");
-  const [driverCode,setDriverCode] = useState("");
-  const [driverRunCode,setDriverRunCode] = useState("");
-  const [driverRunSolution, setDriverRunSolution] = useState("");
   const [language, setLanguage] = useState(dropdownValue.language);
   const [solution, setSolution] = useState(false);
   const [output, setOutput] = useState("");
@@ -51,15 +46,13 @@ const AlphaPlatform = ({}) => {
   function updateCodeAndDriverCode() {
 
     const currentDropdownLanguage = dropdownValue.language?.value;
-    const presentDriverCode = sessionStorage.getItem('driverCode');
-    const parsedDriverCode = JSON.parse(presentDriverCode);
-    const currentLanguageDriverCode = parsedDriverCode[currentDropdownLanguage]?.M;
-    sessionStorage.setItem('user_code', currentLanguageDriverCode.user_code.S);
-    setCode(currentLanguageDriverCode?.user_code.S);
-    setDriverCode(currentLanguageDriverCode?.driver_code.S);
-    setDriverRunCode(currentLanguageDriverCode?.driver_run_code.S);
-    setDriverRunSolution(currentLanguageDriverCode?.driver_run_solution?.S);
-
+    if(sessionStorage.getItem('driverCode')){
+      const presentDriverCode = sessionStorage.getItem('driverCode');
+      const parsedDriverCode = JSON.parse(presentDriverCode);
+      const currentLanguageDriverCode = parsedDriverCode[currentDropdownLanguage]?.M;
+      sessionStorage.setItem('user_code', currentLanguageDriverCode?.user_code?.S || "");
+      setCode(currentLanguageDriverCode?.user_code.S);
+    }
   }
 
   useLayoutEffect (() => 
@@ -151,21 +144,22 @@ const AlphaPlatform = ({}) => {
     sessionStorage.setItem('driverCode',JSON.stringify(questionDetail.driver_codes.M));
     sessionStorage.setItem('custom_testcase',questionDetail?.custom_test_case.S);
     updateCodeAndDriverCode();
+    
   }
 }
 fetchData();
+
 },[]);
+
+useEffect(() => {
+  setLanguage(dropdownValue.language);
+  updateCodeAndDriverCode();
+}, [dropdownValue.language]);
 
 useEffect(() => {
   setwindowWidth(layoutValue.width);
 }, [layoutValue.width]);
 
-  useEffect(() => {
-    setLanguage(dropdownValue.language);
-    updateCodeAndDriverCode();
-  }, [dropdownValue.language]);
-
- 
   useEffect(() => {
     setToggelWindow(layoutValue.swapWindow);
   }, [layoutValue.swapWindow]);
@@ -267,100 +261,40 @@ useEffect(() => {
     setSolution((solution) => !solution);
   };
 
-  async function checkCodeStatus(token) {
-    try {
-
-      const codeStatusResponse = await codeStatus(token);
-
-      if (codeStatusResponse.success) {
-        toast.update(toastId.current, { autoClose: 1 });
-        setOutput(codeStatusResponse.code_output);
-        showSuccess(codeStatusResponse.message);
-        dispatch(alphaStopRunning());
-      }
-
-      else {
-        toast.update(toastId.current, { autoClose: 1 });
-        showError(codeStatusResponse.error);
-        dispatch(alphaStopRunning());
-      }
-
-    } catch (error) {
-      dispatch(alphaStopRunning());
-      toast.update(toastId.current, { autoClose: 1 });
-      toast("AlphaX is under maintainence!");
-      
-    }
-  }
-
-  async function runCode() {
+  async function runCode(runOrSubmitCode) {
     try{
+      console.log(runOrSubmitCode);
       toastId.current = toast("Processing...", { autoClose: 10000 });
-
       dispatch(alphaRunning());
 
       let codeCompileResponse;
 
       if(language.value === 'java'){
-
-        const custom_testcase = JSON.stringify(sessionStorage.getItem('custom_testcase'));
-        const driver_run_solution = driverRunSolution;
-        const user_code = code;
-        const javaDriverRunCode = eval('`' + driverRunCode + '`');
-        codeCompileResponse = await codeCompile(javaDriverRunCode,language);
-
+        codeCompileResponse = await codeCompile(code,language,problemId,runOrSubmitCode);
       }else{
-        const custom_testcase = JSON.stringify(sessionStorage.getItem('custom_testcase'));
-        const runCode = eval('`' + driverRunCode + '`');
-        console.log(code + driverRunSolution + runCode);
-        codeCompileResponse = await codeCompile(code + driverRunSolution + runCode ,  language);
+        codeCompileResponse = await codeCompile(code,language,problemId,runOrSubmitCode);
       }
 
-      if (codeCompileResponse.success) {
-        const token = codeCompileResponse.token;
-        checkCodeStatus(token);
-      } else {
+      if(codeCompileResponse.success){
         toast.update(toastId.current, { autoClose: 1 });
-        showError(codeCompileResponse.error);
+        setOutput(codeCompileResponse.data);
+        showSuccess("Code compiled successfully!");
+        dispatch(alphaStopRunning());
+      }
+      else{
+        toast.update(toastId.current, { autoClose: 1 });
+        showSuccess("Error compiling code!");
         dispatch(alphaStopRunning());
       }
     }
     catch(error){
       dispatch(alphaStopRunning());
-    }
-  }
-
-  async function compileCode() {
-
-    toastId.current = toast("Processing...", { autoClose: 10000 });
-
-    dispatch(alphaRunning());
-    
-    let codeCompileResponse= null;
-    
-    if(language.value === 'java'){
-      const user_code = code;
-      const javaDriverCode = eval('`' + driverCode + '`');
-      console.log(javaDriverCode);
-      codeCompileResponse = await codeCompile(javaDriverCode,language);
-    }
-    else{
-      codeCompileResponse = await codeCompile(code + driverCode,language);
-    }
-
-    if (codeCompileResponse.success) {
-      const token = codeCompileResponse.token;
-      await checkCodeStatus(token);
-      // code submission!
-      // await codeSubmit(code,problemId);
-
-     
-    } else {
       toast.update(toastId.current, { autoClose: 1 });
-      showError(codeCompileResponse.error);
-      dispatch(alphaStopRunning());
+      toast("Error compiling code!");
     }
   }
+
+  
 
   const showError = (notification) => {
     toast.error(
@@ -442,9 +376,8 @@ useEffect(() => {
                 {alphaPlatformComponents.console && (
                   <ConsoleInput
                     output={output}
-                    handleCompile={compileCode}
                     showSolution={showSolution}
-                    handleRun={runCode}
+                    runCode={runCode}
                   />
                 )
                 }
@@ -457,12 +390,11 @@ useEffect(() => {
               <>
                 {alphaPlatformComponents.gpt && <AlphaGPTWindow />}
 
-
                 {alphaPlatformComponents.console && (
                   <ConsoleInput
-                    output={output}
-                    handleCompile={compileCode}
-                    showSolution={showSolution}
+                  output={output}
+                  showSolution={showSolution}
+                  runCode={runCode}
                   />
                 )}
               </>

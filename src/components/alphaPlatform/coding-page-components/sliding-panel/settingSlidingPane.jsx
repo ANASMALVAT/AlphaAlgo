@@ -3,7 +3,7 @@ import ReactSlidingPane from "react-sliding-pane";
 import EditorSetting from "../ui/editorSettings";
 import "./styles/slidingPane.css";
 
-const SettingSlidingPane = ({ isOpen, onRequestClose, theme, themeOptions,handleThemeChange}) => {
+const SettingSlidingPane = ({ isOpen, onRequestClose}) => {
   
   return (
 

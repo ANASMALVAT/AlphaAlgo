@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState } from "react";
 import CustomInput from "./customInput";
 import CodeOutput from "./codeOutput";
 import ConsoleButton from "../buttons/consoleButtons";
@@ -8,7 +8,7 @@ import CodeProblem from "./codeProblem";
 
 import "./styles/consoleInput.css";
 
-const ConsoleInput = ({output,handleCompile,handleRun,showSolution,}) =>{
+const ConsoleInput = ({output,runCode,showSolution,}) =>{
 
     const [isConsole, setIsConsole] = useState(true);
     const [isInput, setIsInput] = useState(false);
@@ -52,7 +52,7 @@ const ConsoleInput = ({output,handleCompile,handleRun,showSolution,}) =>{
             </div>
 
             <div className="console-run-button flex gap-1">
-              <ConsoleRunButtons methodOne={handleRun} methodTwo={handleCompile} methodThree={showSolution} buttonOne={`Run`} buttonTwo={`Submit`} buttonThree={`Solution`} />
+              <ConsoleRunButtons runCode={runCode} showSolution={showSolution} />
             </div>
         </div>
     );

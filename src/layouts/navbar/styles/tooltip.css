@@ -1,7 +1,14 @@
-.product-item{
-    border: none;
+
+.product-item-problems-link:focus-visible{
+    outline: none;
 }
-.product-item:hover{
+.product-xblogs-link:focus-visible{
+    outline: none;
+}
+.product-item-problems:focus{
+    outline: 0;
+}
+.product-item-problems:hover{
     color: whitesmoke !important;
     /* background: #BB20DD; */
     background:#890023;
@@ -12,8 +19,3 @@
     background: #890023;
     transition-duration: 200ms;
 }
-/* .product-item.text-p:hover{
-    color: whitesmoke ;
-} */
-
-/*  */

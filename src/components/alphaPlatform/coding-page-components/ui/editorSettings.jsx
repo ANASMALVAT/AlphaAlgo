@@ -6,9 +6,6 @@ import FontDropDown from "../drop-downs/fontDropDown";
 import SubmissionDropDown from "../drop-downs/submissionDropDown";
 import {useDispatch} from  "react-redux"
 import { Link } from "react-router-dom";
-
-import MenuIcon from '@mui/icons-material/Menu';
-import KeyboardIcon from '@mui/icons-material/Keyboard';
 import "./styles/editorSettings.css"
 
 
@@ -16,6 +13,7 @@ import "./styles/editorSettings.css"
 const EditorSetting = ({}) => 
 {
     const dispatch = useDispatch();
+
     const setWhiteBoard = () => {
         dispatch(setLanguage({ id: 1, name: "text", label: "White Board", value: "text" }));
     }

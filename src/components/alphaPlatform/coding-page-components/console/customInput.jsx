@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from 'react';
 import EdiText from 'react-editext';
-import Checkbox from '@mui/material/Checkbox';
 import './styles/customInput.css';
 
 const CustomInput = () => {
@@ -44,16 +43,7 @@ const CustomInput = () => {
       {sessionStorage.getItem('custom_testcase')  ? 
       (
         <div className="flex">
-          <Checkbox
-            required
-            disabled={checkboxStates[0]}
-            sx={{
-              color: 'white',
-              '& .MuiSvgIcon-root': { fontSize: 32 },
-              '&.Mui-disabled': { color: 'white' },
-            }}
-            color="success"
-          />
+        <div className='flex items-center text-green-500 font-semibold mr-2 bg-[#15314B] p-2 rounded-[0.25rem]'><pre>Custom Case</pre></div>
         <pre>
           <EdiText
             value={sessionStorage.getItem('custom_testcase') || ""}
@@ -70,6 +60,7 @@ const CustomInput = () => {
                 width: '100%',
                 background: '#15314B',
                 color: 'green',
+                height:"100%"
               },
             }}
             viewProps={{
@@ -85,7 +76,6 @@ const CustomInput = () => {
                 color: 'green',
                 whiteSpace: 'pre',
                 letterSpacing:"0px",
-                // minWidth:"400px"
               },
             }}
             editProps={{
@@ -110,16 +100,7 @@ const CustomInput = () => {
 
       {testCases.map((data, index) => (
         <div className="flex" key={index}>
-          <Checkbox
-            required
-            disabled={checkboxStates[index]}
-            sx={{
-              color: 'white',
-              '& .MuiSvgIcon-root': { fontSize: 32 },
-              '&.Mui-disabled': { color: 'white' },
-            }}
-            color="success"
-          />
+          <div className='flex  items-center text-red-600 font-normal mr-2 bg-[#15314B] p-2 rounded-[0.25rem]'><pre>Test Case {index + 1}</pre></div>
           {
             data ? (
             <pre key={index} className="flex rounded-[0.25rem] items-center text-red-600 whitespace-pre w-full bg-[#15314B] p-2 font-normal" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }} >

@@ -11,7 +11,7 @@ const ConsoleButton = ({setConsole,isConsole, setInput, isInput, setProblem, isP
                     ${isConsole ? 'bg-[#3e49b4]' : 'bg-[#5867ea]'}
                     sm:text-sm lg:text-md xl:text-md`}
                     >
-                   {/* <TerminalIcon className="mr-1"/> */}
+                    <TerminalIcon className="mr-1"/>
                     <pre className="font-normal font-resize">Console</pre>
                 </button>
 

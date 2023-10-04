@@ -34,9 +34,8 @@ export async function askAlpha (userInput, chats, setChats, setMessages, message
 
     } 
     catch (error) {
-      showError('Under Maintenance!');
+      showError(' AlphaGPT is under maintenance!');
     }
-
     setLoading(false);
   }
 }

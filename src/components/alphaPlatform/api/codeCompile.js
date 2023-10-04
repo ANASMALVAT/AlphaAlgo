@@ -2,9 +2,8 @@ import axios from "axios";
 
 const CODE_COMPILE_URL = process.env.REACT_APP_CODE_COMPILE_URL;
 
-export const codeCompile = async (code,language) => 
+export const codeCompile = async (code,language,problemId,isRunning) => 
 {
-    console.log(CODE_COMPILE_URL);
 
     if(code.trim() === ""){
         return {success: false, error: "No Code Is Written!" };
@@ -12,24 +11,23 @@ export const codeCompile = async (code,language) =>
 
     if(language.value === 'text'){
       return {success: false, error: "White Board Is Enabled!" };
-
     }
 
+    const custom_testcase = JSON.stringify(sessionStorage.getItem('custom_testcase'));
+
     const requestData = {
-      language_id: language.id,
-      source_code: btoa(code),
+      language_id: language,
+      source_code: code,
+      custom_testcase,custom_testcase,
+      problemId:problemId,
+      isRunning:isRunning,
     }
 
     try{
-        const response = await axios.post(CODE_COMPILE_URL, requestData);
-        return { success: true, token: response.data.token };
-      } 
+      const response = await axios.post(CODE_COMPILE_URL, requestData);
+      return {success : true, data : response.data.code_output};
+    } 
     catch (error) {
-        if (error.response && error.response.status === 429) {
-            return { success: false, error: "Quota of 100 requests exceeded for the Day!" };
-        } 
-        else {
-            return { success: false, error: "An error occurred during compilation." };
-        }
-      }
+      return { success: false, error: "Quota of 100 requests exceeded for the Day!" };
+    }
   }

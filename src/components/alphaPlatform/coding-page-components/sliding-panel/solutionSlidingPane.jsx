@@ -8,14 +8,16 @@ const SlidingPane = ({ isOpen, onRequestClose }) => {
 
     <ReactSlidingPane
       title="Solution"
-      className="slidingPane" // Increase the z-index and position the sliding pane absolutely
+      className="slidingPane"
       overlayClassName="some-custom-overlay-class"
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       from="right"
-      width="45%"
-      minWidth="450px" >
+      width="100%"
+      >
+
       <SolutionLayout/>
+      
     </ReactSlidingPane>
   );
 };

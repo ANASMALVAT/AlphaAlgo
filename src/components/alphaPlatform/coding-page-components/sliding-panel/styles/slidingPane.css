@@ -62,10 +62,8 @@
     display: flex;
     flex: 0 0 64px;
     align-items: left;
-    background: #4C5ADF;
+    background: #002451;
     height: 40px;
-    background-color: "#4C5ADF";
-
 
   }
   .slide-pane__title-wrapper {

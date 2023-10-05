@@ -1,6 +1,7 @@
 import React, { useEffect,useState} from "react";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import "./styles/codeProblem.css"
 
 const CodeProblem = () => {
 

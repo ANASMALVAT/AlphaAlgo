@@ -14,7 +14,7 @@ export const codeCompile = async (code,language,problemId,isRunning) =>
     }
 
     const custom_testcase = JSON.stringify(sessionStorage.getItem('custom_testcase'));
-
+    
     const requestData = {
       language_id: language,
       source_code: code,
@@ -28,6 +28,6 @@ export const codeCompile = async (code,language,problemId,isRunning) =>
       return {success : true, data : response.data.code_output};
     } 
     catch (error) {
-      return { success: false, error: "Quota of 100 requests exceeded for the Day!" };
+      return { success: false, error: "Error compiling code!"};
     }
   }

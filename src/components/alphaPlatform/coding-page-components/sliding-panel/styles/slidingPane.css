@@ -7,7 +7,6 @@
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.5s;
     will-change: transform;
-    border-radius: 10px;
   }
   .slide-pane:focus {
     outline-style: none;
@@ -61,36 +60,35 @@
   .slide-pane__header {
     display: flex;
     flex: 0 0 64px;
-    align-items: left;
+    align-items: center;
     background: #002451;
-    height: 40px;
+    height: 44px;
 
   }
   .slide-pane__title-wrapper {
     display: flex;
     flex: 1;
     flex-direction: column;
+    margin-left: 32px;
     min-width: 0;
-    margin: 0;
-
 
   }
   .slide-pane .slide-pane__title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: normal;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    align-items: start;
     margin: 0;
     padding: 0;
-    font-family: Ubuntu,Helvetica,Arial,sans-serif;
-    letter-spacing: 0.25px;
-    /* color: white; */
-    color:"#5867EA";
-    
+    color: white;
+    display: flex;
+    align-items: start;
+    width: 98%;
+    margin: auto;
   }
   .slide-pane__close {
+    margin-left: 24px;
     padding: 16px;
     opacity: 0.7;
     cursor: pointer;

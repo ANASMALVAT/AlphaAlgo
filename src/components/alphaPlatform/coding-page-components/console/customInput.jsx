@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import EdiText from 'react-editext';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import './styles/customInput.css';
 
 const CustomInput = () => {
@@ -42,8 +44,7 @@ const CustomInput = () => {
     <div className="custom-input pt-4 flex flex-col gap-4 h-full w-full whitespace-pre overflow-auto rounded-md">
       {sessionStorage.getItem('custom_testcase')  ? 
       (
-        <div className="flex">
-        <div className='flex items-center text-green-500 font-semibold mr-2 bg-[#15314B] p-2 rounded-[0.25rem]'><pre>Custom Case</pre></div>
+        <div className="flex items-center">
         <pre>
           <EdiText
             value={sessionStorage.getItem('custom_testcase') || ""}
@@ -99,13 +100,12 @@ const CustomInput = () => {
       )}
 
       {testCases.map((data, index) => (
-        <div className="flex" key={index}>
-          <div className='flex  items-center text-red-600 font-normal mr-2 bg-[#15314B] p-2 rounded-[0.25rem]'><pre>Test Case {index + 1}</pre></div>
+        <div className="flex items-center" key={index}>
           {
             data ? (
-            <pre key={index} className="flex rounded-[0.25rem] items-center text-red-600 whitespace-pre w-full bg-[#15314B] p-2 font-normal" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }} >
+            <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px",width:"100%",paddingLeft:"10px"}} style={tomorrowNightBlue}>
               {data}
-            </pre>
+            </SyntaxHighlighter>
           ) : (
             <></>
           )}

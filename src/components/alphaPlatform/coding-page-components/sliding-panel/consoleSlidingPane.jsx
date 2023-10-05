@@ -1,7 +1,7 @@
 import React from "react";
 import ReactSlidingPane from "react-sliding-pane";
-import "./styles/slidingPane.css";
 import ConsoleSlidingPaneOptions from "../ui/consoleSlidingPaneOptions";
+import "./styles/slidingPane.css";
 
 const ConsoleSlidingPane = ({ isOpen, onRequestClose}) => {
   return (

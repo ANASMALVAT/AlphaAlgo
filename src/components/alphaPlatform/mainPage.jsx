@@ -46,6 +46,7 @@ const AlphaPlatform = ({}) => {
   function updateCodeAndDriverCode() {
 
     const currentDropdownLanguage = dropdownValue.language?.value;
+
     if(sessionStorage.getItem('driverCode')){
       const presentDriverCode = sessionStorage.getItem('driverCode');
       const parsedDriverCode = JSON.parse(presentDriverCode);
@@ -144,7 +145,6 @@ const AlphaPlatform = ({}) => {
     sessionStorage.setItem('driverCode',JSON.stringify(questionDetail.driver_codes.M));
     sessionStorage.setItem('custom_testcase',questionDetail?.custom_test_case.S);
     updateCodeAndDriverCode();
-    
   }
 }
 fetchData();
@@ -283,7 +283,7 @@ useEffect(() => {
       }
       else{
         toast.update(toastId.current, { autoClose: 1 });
-        showSuccess("Error compiling code!");
+        showError("Error compiling code!");
         dispatch(alphaStopRunning());
       }
     }

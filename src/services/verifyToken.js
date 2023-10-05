@@ -24,7 +24,7 @@ export async function verifyToken() {
           return { success: true, message: 'Token verification successful' };
         }
         else {
-          // localStorage.clear();
+          localStorage.removeItem('csrf-token');
           return { success: false, message: 'Session Expired, Please Login Again!' };
         }
       }
@@ -38,6 +38,7 @@ export async function verifyToken() {
         else{
           toast("Please login again");
         }
+        localStorage.removeItem('csrf-token');
         return { success: false, message: 'Error verifying token,Please Try Again Later!' };
       }
 

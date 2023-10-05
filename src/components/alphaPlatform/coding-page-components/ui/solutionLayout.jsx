@@ -34,7 +34,6 @@ const SolutionLayout = () => {
       <div className=" problem-layout max-h-full overflow-auto flex flex-col text-start h-full w-full  flex-grow ">
 
         <div name="code-solution " className=" mt-1 mb-4 w-[90%] m-auto">
-          <h1 className=" text-white text-2xl m-2">Code Solution</h1>
           <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",padding:"15px"}} style={tomorrowNightBlue}>
             {solutionCode}
           </SyntaxHighlighter>

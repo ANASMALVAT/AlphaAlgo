@@ -24,7 +24,6 @@ function App() {
         const verifyResult = await verifyToken();
 
         if(!verifyResult.success){
-
           dispatch(toggelUserLoginFalse());
           localStorage.clear();
         }else{

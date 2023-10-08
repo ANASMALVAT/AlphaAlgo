@@ -1,0 +1,76 @@
+
+.icon-hover:hover{
+  scale: 1.33;
+  transition: 300ms;
+  color: red;
+}
+
+.scroll-bar {
+    scrollbar-width: thin;
+    scrollbar-color: #4C5ADF #011627;
+    padding: 1rem;
+  }
+
+  .solution-layout::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .solution-layout::-webkit-scrollbar-track {
+    background: #1B3B6F;
+    border-radius: 8px;
+
+  }
+  
+  .solution-layout::-webkit-scrollbar-thumb {
+    background: #4C5ADF;
+    border-radius: 8px;
+  } 
+  .solution-layout{
+    min-width: 80%;
+    max-width: 80%;
+  }
+
+  .solution-code{
+    min-width: 45%;
+    max-width: 45%;
+  }
+  .solution-explanation{
+    min-width: 50%;
+    max-width: 50%;
+  }
+  .relevant-links{
+    min-width: 300px;
+    max-width: 300px;
+  }
+  @media screen and (max-width: 1450px) {
+    .solution-code{
+      max-width: 40%;
+    }
+    .solution-explanation{
+      max-width: 45%;
+    }
+  }
+  @media screen and (max-width: 1350px) {
+    .solution-code{
+      max-width: 45%;
+    }
+    .solution-explanation{
+      max-width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 1300px) {
+    .solution-layout{
+      min-width: 95%;
+    } 
+    .solution-code{
+      min-width: 100%;
+    }
+    .solution-explanation{
+      min-width: 100%;
+    }
+    .relevant-links{
+      min-width: 250px;
+      max-width: 250px;
+    }
+  }

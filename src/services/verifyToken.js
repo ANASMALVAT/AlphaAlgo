@@ -36,7 +36,7 @@ export async function verifyToken() {
           toast("Session expired, please login to continue");
         }
         else{
-          toast("Please login again");
+          toast("Please login again");  
         }
         localStorage.removeItem('csrf-token');
         return { success: false, message: 'Error verifying token,Please Try Again Later!' };

@@ -7,7 +7,7 @@ const AlphaGptWindowText = ({data,type}) =>{
         formatedData = data.replace(/```/g, '');
     }
     return (
-        <div className={` gpt-window-text flex-1 rounded-md flex flex-row mb-4 bg-transparent  w-[full] font-mono ${type === 'User' ? 'text-right'  : 'text-left'} border-b border-t border-gray-600  items-center `}>
+        <div className={` gpt-window-text flex-1 rounded-md flex flex-row mb-4 bg-transparent  w-[full] font-mono ${type === 'User' ? 'text-right'  : 'text-left'}  border-b border-t border-gray-600  items-center `}>
             <div className=' h-full m-1 w-10  rounded-sm  justify-start  align-top  text-center '>
                 {type === 'Bot' 
                     ? <h1 className=" tracking-wide font-bold antialiased text-[#853055] text-4xl hover:duration-300 hover:scale-125">X</h1>

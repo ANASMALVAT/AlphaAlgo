@@ -1,4 +1,6 @@
 import React from "react";
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { a11yLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import "./styles/team.css"
 
 const TeamMember = ({memberInfo}) => {
@@ -6,9 +8,9 @@ const TeamMember = ({memberInfo}) => {
         <>
         <div className='flex  flex-col  max-h-[full] h-[600px] justify-center items-center max-w-[800px] w-[600px] p-2 rounded-md '>
 
-                     <h2 className='team-name' >
+                    <h1 className='team-name' >
                         {memberInfo.name}
-                    </h2>
+                    </h1>
 
                     <h2 className="team-position">
                         {memberInfo.position}
@@ -16,10 +18,9 @@ const TeamMember = ({memberInfo}) => {
 
                      <img  className='team-img ' src={require(`../../../../assets/` + memberInfo.img)}></img>
 
-                    
-                    <span className='team-info flex mb-2 p-2 pt-4 text-black' style={{ maxWidth: '100%' }}>
+                     <SyntaxHighlighter language="elixir" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent",overflow:"hidden",overFlowY:"hidden",textAlign:"justify"}} style={a11yLight}>
                         {memberInfo.description}
-                    </span>
+                    </SyntaxHighlighter>
             </div>
         </>
     )

@@ -7,7 +7,6 @@ const SlidingPane = ({ isOpen, onRequestClose }) => {
   return (
 
     <ReactSlidingPane
-      title="Solution"
       className="slidingPane"
       overlayClassName="some-custom-overlay-class"
       isOpen={isOpen}

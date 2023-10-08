@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-
-import "./styles/problemLayout.css";
+import "./styles/solutionLayout.css";
 
 const SolutionLayout = () => {
   const [problemSolution, setProblemSolution] = useState(null);
@@ -31,35 +30,66 @@ const SolutionLayout = () => {
 
   return (
     <>
-      <div className=" problem-layout max-h-full overflow-auto flex flex-col text-start h-full w-full  flex-grow ">
+      <div className=" solution-layout max-h-full overflow-auto flex flex-col text-start h-full m-auto flex-grow  ">
 
-        <div name="code-solution " className=" mt-1 mb-4 w-[90%] m-auto">
-          <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",padding:"15px"}} style={tomorrowNightBlue}>
-            {solutionCode}
-          </SyntaxHighlighter>
-        </div>
+        <h1 className=" text-white text-4xl mt-4">{problemSolution?.M?.problem_name}</h1>
+        <p className="mt-4 text-gray-400">{problemSolution?.M?.problem_description}</p>
+        {
+          problemSolution?.M?.solution_prerequiste ||
+          <div name="code-solution " className=" mt-4">
+            <h1 className=" text-white text-2xl ">prerequisite</h1>
+              <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent"}} style={tomorrowNightBlue}>
+                  {problemSolution?.M?.solution_prerequiste}
+              </SyntaxHighlighter>
+          </div>
+        }
 
-        <div name="code-explanation" className="mb-8 whitespace-pre-wrap break-words w-[90%] m-auto">
-            <h1 className=" text-white text-2xl m-2">Solution explanation</h1>
-            <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",padding:"15px"}} style={tomorrowNightBlue}>
-              {solutionExplanation}
-            </SyntaxHighlighter>
-        </div>
-        <div name="code-links" className="mb-8 whitespace-pre-wrap break-words w-[90%] m-auto">
-        <h1 className=" text-white text-2xl m-2">Relevant links</h1>
+        {
+          problemSolution?.M?.solution_requirement ||
+          <div name="code-solution " className=" mt-4">
+            <h1 className=" text-white text-2xl ">requirement</h1>
+              <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent"}} style={tomorrowNightBlue}>
+                  {problemSolution?.M?.solution_requirement}
+              </SyntaxHighlighter>          
+          </div>
+        }
 
-          {
-            relevantLinks.map((link, index) => 
-                {
-                  return <>
-                    <a href={link} target="_blank" rel="noopener noreferrer">
-                      <div className="relevant_links flex h-48   mb-5 rounded-md bg-[#002451] justify-center items-center">
-                        <YouTubeIcon sx={{color:"red",fontSize:"80px"}}/>
-                      </div>
-                    </a>
-                  </>
-              })
-          }
+        {
+          <div name="code-solution " className=" mt-8">
+            <h1 className=" text-white text-3xl mb-4 ">solution</h1>
+            <div className="flex gap-6 flex-wrap">
+              <div className="solution-code">
+                <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent"}} style={tomorrowNightBlue}>
+                  {solutionCode}
+                </SyntaxHighlighter>
+              </div>
+              <div  className="solution-explanation ">
+                <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent",overflow:"hidden"}} style={tomorrowNightBlue}>
+                  {solutionExplanation}
+                </SyntaxHighlighter>
+              </div>
+            </div>         
+          </div>
+        }
+
+        <div name="code-links" className="mt-4">
+          <h1 className=" text-white text-2xl ">Resources</h1>
+          
+            <div className="flex gap-8 flex-wrap">
+              {
+              relevantLinks.map((link, index) => 
+                  {
+                    return <>
+                      <a href={link} className="relevant-links" target="_blank" rel="noopener noreferrer">
+                        <div className=" flex h-60 mt-5 rounded-md bg-[#5867EA] justify-center items-center">
+                          <YouTubeIcon className="icon-hover" sx={{color:"#002451",fontSize:"80px"}}/>
+                        </div>
+                      </a>
+                    </>
+                })
+              }
+            </div>
+          
         </div>
       </div>
     </>

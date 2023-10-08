@@ -35,9 +35,6 @@
     align-items: center;
 }
 @media (max-width:1000px) {
-    .language-block{
-        
-    }
 }
 
 @media (max-width:500px) {

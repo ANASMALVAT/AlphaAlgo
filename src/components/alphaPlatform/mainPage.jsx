@@ -166,7 +166,7 @@ useEffect(() => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1100) {
+      if (window.innerWidth > 1150) {
         dispatch(
           setDefault({
             editor: true,

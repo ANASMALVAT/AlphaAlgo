@@ -1,4 +1,4 @@
-import React , {useEffect, useState}  from 'react';
+import React   from 'react';
 import axios from "axios";
 import Popup from 'reactjs-popup';
 import { toast } from 'react-toastify';

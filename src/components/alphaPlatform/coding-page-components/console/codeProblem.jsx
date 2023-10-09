@@ -39,13 +39,13 @@ const CodeProblem = () => {
 
     return (
         <>
-            <div className=" code-problem flex flex-col gap-2 h-full w-full whitespace-pre overflow-auto rounded-md ">
+            <div className=" code-problem flex flex-col h-full w-full whitespace-pre overflow-auto rounded-md ">
 
                 <div className="mb-2">
                     <div className="flex ">
                         <h2 className="problem-question text-white">{problemName}</h2>
                     </div>
-                    <h1 className=" problem-statement text-justify word-break bg-[transparent] pt-4 pb-4  border-t border-b border-gray-700" style={{ whiteSpace: 'pre-line' }}>
+                    <h1 className=" problem-statement text-justify word-break bg-[transparent] pt-2 pb-2  border-t border-b border-gray-700" style={{ whiteSpace: 'pre-line' }}>
                         <p className=" whitespace-pre-wrap  text-[#bfc4cd]">{problemStatement}</p>
                     </h1>
                 </div>

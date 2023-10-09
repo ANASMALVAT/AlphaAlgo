@@ -1,5 +1,6 @@
 import React from 'react'
 import AlphaNavbar from '../../../../layouts/navbar/AlphaNavbar'
+import DefaultFooter from '../../../../layouts/footer/AlphaFooter';
 import TeamMember from './teamMembers'
 import { teamMembers } from '../../../../data/teamMembers';
 
@@ -16,7 +17,9 @@ const Team = () => {
                     })
                 }
             </div>
+            <DefaultFooter/>
             </>
+           
         )
 }
 

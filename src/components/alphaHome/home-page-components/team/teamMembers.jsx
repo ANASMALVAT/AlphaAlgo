@@ -1,4 +1,5 @@
 import React from "react";
+import Typewriter from 'typewriter-effect';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { a11yLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import "./styles/team.css"
@@ -12,9 +13,16 @@ const TeamMember = ({memberInfo}) => {
                         {memberInfo.name}
                     </h1>
 
-                    <h2 className="team-position">
-                        {memberInfo.position}
-                    </h2>
+                    <h1 className="team-position font-mono font-bold text-[#4C5ADF]">
+                        <Typewriter
+                            
+                            options={{
+                                strings: ['Founder', 'Creator','Designer','Maintainer'],
+                                autoStart: true,
+                                loop: true,
+                            }}
+                        />
+                    </h1>
 
                      <img  className='team-img ' src={require(`../../../../assets/` + memberInfo.img)}></img>
 

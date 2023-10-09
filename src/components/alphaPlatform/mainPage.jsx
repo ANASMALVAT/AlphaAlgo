@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
 import SlidingPane from "./coding-page-components/sliding-panel/solutionSlidingPane";
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
-import ConsoleInput from "./coding-page-components/console/ConsoleInput";
+import ConsoleInput from "./coding-page-components/console/console";
 import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
 import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
 import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";

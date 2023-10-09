@@ -45,10 +45,11 @@ const ConsoleInput = ({output,runCode,showSolution,}) =>{
                 </div>
             </div>
 
-            <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md overflow-hidden p-4 ">
+            <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md overflow-hidden p-1 ">
                 {isInput   &&  <CustomInput  /> }
-                {isConsole &&  <CodeOutput outputDetail={output}/> }
                 {isProblem && <CodeProblem />}
+                {isConsole &&  <CodeOutput outputDetail={output}/> }
+
             </div>
 
             <div className="console-run-button flex gap-1">

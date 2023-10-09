@@ -4,6 +4,7 @@ import ProblemGrid from './grid/problemGrid';
 import TopicFilterDropdown from './ui/topicFilterDropdown';
 import ProblemInformation from './ui/problemInformation';
 import { fetchQuestionList } from '../../services/fetchQuestionList';
+import DefaultFooter from '../../layouts/footer/AlphaFooter';
 
 
 const CodingProblems = () => {
@@ -27,7 +28,7 @@ const CodingProblems = () => {
         <AlphaNavbar/>
         <div className='  flex flex-col min-h-screen h-full w-full bg-[#00182D]'>
             
-            <div className=' flex flex-col justify-center items-center h-80 mt-12 w-full text-center '>
+            <div className=' flex flex-col  justify-center items-center h-80 mt-12 w-full text-center '>
                <ProblemInformation/>
             </div>
             { 
@@ -39,7 +40,7 @@ const CodingProblems = () => {
 
             {!loading  &&
               (
-                <div className='flex flex-col  flex-1 w-full h-2 flex-grow bg-white '>
+                <div className='flex flex-col min-h-screen flex-1 w-full h-2 flex-grow bg-white '>
                   <div className='topic-dropdown mt-8 '>
                     <TopicFilterDropdown />
                   </div>
@@ -50,6 +51,7 @@ const CodingProblems = () => {
               )
             }
         </div>
+        <DefaultFooter/>
         </>
     )
 }

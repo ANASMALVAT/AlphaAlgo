@@ -22,13 +22,13 @@ const VerticalHorizontalButtons = () => {
 
     return (
         <>  
-                <button onClick={changeHeight} className={` bg-[#5867EA] overflow-hidden flex flex-row  w-16  justify-center rounded-[4px] px-2  h-full items-center  font-sans  font-normal text-white`}>
+                <button onClick={changeHeight} className={` bg-[#5867EA] overflow-hidden flex flex-row  w-[50px]  justify-center rounded-[4px]  h-full items-center  font-sans  font-normal text-white`}>
                     <HeightIcon sx={{color:"white" ,borderRadius:"50%",":hover": { transform: "scale(1.5)", transition: 'transform 0.3s, background-color 0.3s'}}}  />
                 </button>
-                <button onClick={changeWidth} className={`  bg-[#5867EA] overflow-hidden flex flex-row r w-16  justify-center rounded-[4px] px-2 h-full items-center font-sans font-normal text-white`}>
+                <button onClick={changeWidth} className={`  bg-[#5867EA] overflow-hidden flex flex-row r w-[50px]  justify-center rounded-[4px]  h-full items-center font-sans font-normal text-white`}>
                     <SwitchRightIcon sx={{color:"white", ":hover": { transform: "scale(1.5)", transition: 'transform 0.3s, background-color 0.3s',}}} />
                 </button>
-                <button onClick={swapWindow} className={`  bg-[#5867EA] overflow-hidden flex flex-row r w-16  justify-center rounded-[4px] px-2 h-full items-center font-sans font-normal text-white`}>
+                <button onClick={swapWindow} className={`  bg-[#5867EA] overflow-hidden flex flex-row r w-[50px]  justify-center rounded-[4px]  h-full items-center font-sans font-normal text-white`}>
                     <SwapVertIcon sx={{color:"white", ":hover": { transform: "scale(1.5)", transition: 'transform 0.3s, background-color 0.3s',}}} />
                 </button>
         </>

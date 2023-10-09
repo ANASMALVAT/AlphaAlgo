@@ -41,9 +41,10 @@ const CustomInput = () => {
   }
 
   return (
-    <div className="custom-input pt-4 flex flex-col gap-4 h-full w-full whitespace-pre overflow-auto rounded-md">
+    <div className="custom-input pt-4 p-2 flex flex-col  gap-4 h-full w-full whitespace-pre overflow-auto rounded-md">
       {sessionStorage.getItem('custom_testcase')  ? 
       (
+        
         <div className="flex items-center">
         <pre>
           <EdiText
@@ -100,11 +101,13 @@ const CustomInput = () => {
       )}
 
       {testCases.map((data, index) => (
+        
         <div className="flex items-center" key={index}>
           {
             data ? (
-            <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px",width:"100%",paddingLeft:"10px"}} style={tomorrowNightBlue}>
-              {data}
+            <SyntaxHighlighter language="javascript" wrapLongLines={true}  customStyle={{borderRadius:"8px",fontSize:"16px",width:"100%",paddingLeft:"10px"}} style={tomorrowNightBlue}>
+              
+              {`\n${data} \n `}
             </SyntaxHighlighter>
           ) : (
             <></>

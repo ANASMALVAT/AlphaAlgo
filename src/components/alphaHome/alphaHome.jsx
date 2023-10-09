@@ -7,6 +7,8 @@ import LanguageComponent from "./home-page-components/language/languageComponent
 import QuestionComponent from "./home-page-components/questions/questionComponent";
 import CodingEnviorment from "./home-page-components/coding-enviorment/codingEnviorment";
 import AlphaGPT from "./home-page-components/alpha-gpt/alphaGPT";
+import DefaultFooter from "../../layouts/footer/AlphaFooter";
+
 const AlphaHomePage = () => {
     console.log(localStorage.getItem('jwt-token'));
     return (
@@ -20,6 +22,7 @@ const AlphaHomePage = () => {
                 <AlphaGPT/>
                 <QuestionComponent/>
                 <LanguageComponent/>
+                <DefaultFooter/>
             </div>
         </>
     )

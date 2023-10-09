@@ -10,15 +10,19 @@ const ProblemGrid = ({ problemList }) => {
   const problemCategories = useSelector((state) => state.problemCategories.category);
   
   useEffect(() => {
-    const updatedCategorizedProblems = { easy: [], medium: [], hard: [], special :[]};
+    const updatedCategorizedProblems = { easy: [], medium: [], hard: [], special: [] };
     for (let i = 0; i < problemList.length; i++) {
         const problem = problemList[i];
-        if (problem &&  problemCategories.length === 0 || problemCategories.includes(problem?.question_category)) {
-          updatedCategorizedProblems[problem?.question_difficulty].push(problem);
+        if (problem && (problemCategories.length === 0 || problemCategories.includes(problem?.question_category))) {
+            if (problem?.isFree) {
+                updatedCategorizedProblems[problem?.question_difficulty].unshift(problem);
+            } else {
+                updatedCategorizedProblems[problem?.question_difficulty].push(problem);
+            }
         }
     }
     setCategorizedProblems(updatedCategorizedProblems);
-  }, [problemList, problemCategories]);
+}, [problemList, problemCategories]);
 
 
 

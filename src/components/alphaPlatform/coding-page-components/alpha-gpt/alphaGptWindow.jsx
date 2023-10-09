@@ -53,7 +53,7 @@ const AlphaGPTWindow = () => {
   return (
     <div className='max-h-[500px] h-full flex flex-col flex-1 w-full   p-2 rounded-md border border-gray-600'>
 
-      <div className={`gpt-output-console h- ${windowHeight === 0 ? 'h-[75px]' :windowHeight === 1 ? 'h-[250px]' : 'h-[433px]'} transition-all duration-700 ease-in-out flex-grow w-full p-2 border border-gray-600 mb-2 rounded-md overflow-auto h-[100%]`}>
+      <div className={`gpt-output-console h- ${windowHeight === 0 ? 'h-[25px]' :windowHeight === 1 ? 'h-[250px]' : 'h-[425px]'} transition-all duration-1000 ease-in-out flex-grow w-full p-2 border border-gray-600 mb-2 rounded-md overflow-auto h-[100%]`}>
         {
           messages.map((message, index) => (
             <AlphaGptWindowText

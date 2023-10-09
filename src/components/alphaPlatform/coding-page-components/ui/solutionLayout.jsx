@@ -13,7 +13,6 @@ const SolutionLayout = () => {
     if (storedProblemSolution) {
       try {
         const parsedData = JSON.parse(storedProblemSolution);
-        console.log(parsedData);
         setProblemSolution(parsedData);
       } catch (error) {
         console.error("Error parsing stored problemData:", error);
@@ -28,7 +27,6 @@ const SolutionLayout = () => {
   const prerequisite = problemSolution?.M?.solution_prerequiste?.S || "";
   const prerequisiteLink = problemSolution?.M?.solution_prerequiste_links?.S || "";
   const requirement = problemSolution?.M?.solution_requirement?.S || "";
-  console.log(problemName);
   const setJava = () => {
 
   }
@@ -95,10 +93,8 @@ const SolutionLayout = () => {
               relevantLinks.map((link, index) => 
                   {
                     return <>
-                      <a href={link} className="relevant-links" target="_blank" rel="noopener noreferrer">
-                        <div className=" flex h-30 mt-5 rounded-md bg-[transparent] justify-center  items-center">
+                      <a href={link} className="relevant-links mt-4" target="_blank" rel="noopener noreferrer">
                           <YouTubeIcon className="icon-hover " sx={{color:"#626EE3",fontSize:"120px"}}/>
-                        </div>
                       </a>
                     </>
                 })

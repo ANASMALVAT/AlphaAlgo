@@ -56,7 +56,7 @@ const UserLogin = () => {
             >
             {
             close => (
-                <div className="modal">
+                <div className="modal min-w-[350px] max-w-[350px]">
                     <div className="header">
                         <div>
                             <button className="close" onClick={close} style={{color:"red",fontSize:"40px",marginRight:"20px",fontWeight:"bolder"}}>
@@ -64,7 +64,7 @@ const UserLogin = () => {
                             </button>
                         </div> 
                     </div>
-                    <div className="content max-h-[400px] max-w-[400px]">
+                    <div className="content max-h-[400px] min-w-[350px] max-w-[350px]">
                         <div>
                             <div className="plex-sans flex flex-row items-center justify-center ">
                                 <div className="sign-name  tracking-wide font-normal  antialiased text-[black] ">Sign in to</div>

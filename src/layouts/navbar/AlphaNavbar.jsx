@@ -91,18 +91,18 @@ const AlphaNavbar  = () => {
                         IsUserLoggedIn ? 
                         (
                             <div id="logout" className="w-[25%] min-w-[30px] h-full justify-center align-bottom text-center">
-                                <button onClick={logout} className="login-ul flex h-full w-full flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
+                                <button onClick={logout} className="login-ul flex h-full w-[120px] flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
                                     <div className="font-mono font-semibold italic text-xl hover:duration-100 p-1 rounded-md hover:border-2 border-[#4C5ADF]" href="#">
-                                    Logout
+                                        Logout
                                     </div>
                                 </button>
                             </div>
                         ) : 
                         (
                             <div id="login" className="w-[25%] min-w-[30px] h-full justify-center align-bottom text-center">
-                            <button onClick={showLogin} className="login-ul flex h-full w-full flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
+                            <button onClick={showLogin} className="login-ul flex h-full w-[85px] py-4 px-4 flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
                                 <div className="font-mono font-semibold italic text-xl hover:duration-100 p-1 rounded-md hover:border-2 border-[#4C5ADF]" href="#">
-                                Login
+                                    Login
                                 </div>
                             </button>
                             </div>

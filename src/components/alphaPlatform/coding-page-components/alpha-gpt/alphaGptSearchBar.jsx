@@ -24,7 +24,7 @@ export default function AlphaGPTSearchBar({sendRequest, loading}) {
           sx={{ display: 'flex', background:'transparent', borderRight:'1px solid white', alignItems: 'center', height:"60px", width: '100%' }}
         >
         <textarea 
-          className=' flex items-center text-area font-mono text-[1.2rem] bg-transparent w-full rounded-[0.25rem] h-14 border border-gray-500 text-white' 
+          className=' flex items-center text-area font-mono text-[1.2rem] bg-transparent w-full rounded-[0.25rem] h-12 border border-gray-500 text-white' 
           placeholder='AlphaGPT' 
           onChange={(event) => {handleUserInput(event.target.value)}}
           value={userInput}

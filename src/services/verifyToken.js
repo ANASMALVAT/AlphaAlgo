@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const VERIFY_TOKEN = process.env.REACT_APP_VERIFY_TOKEN;
 
 export async function verifyToken() {
-    console.log("verify token");
+
     const config = {
         headers: {
           Authorization: `${localStorage.getItem('csrf-token')}`, 

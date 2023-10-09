@@ -26,7 +26,6 @@ const AlphaGPT = () => {
                 <div className=" alpha-cards common-margin flex flex-col gap-2">
                     {
                       alphaFeatures.map((value,index) => {
-                        console.log(value);
                         return <AlphaCardComponent features={value} />
                       })
                     }

@@ -1,14 +1,13 @@
 import React, { useLayoutEffect } from "react";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import {setDifferentEditor, setConsole, setDefault,} from "../../redux/slices/alphaPlatformSlice";
 import { alphaRunning,alphaStopRunning } from "../../redux/slices/alphaRunning";
 import { codeCompile } from "./api/codeCompile";
-import { codeSubmit } from "./api/codeSubmission";
 import { authorizedUser } from "./api/authorizedUser";
 import { useParams } from "react-router-dom";
+import { toggelUserLoginFalse } from "../../redux/slices/userAuthentication";
 
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
 import SlidingPane from "./coding-page-components/sliding-panel/solutionSlidingPane";
@@ -22,11 +21,13 @@ import RestrictServerSide from "./coding-page-components/alpha-restrictions/rest
 
 import "./styles/mainPage.css";
 import "react-toastify/dist/ReactToastify.css";
+import { verifyToken } from "../../services/verifyToken";
 
 const AlphaPlatform = ({}) => {
 
   const alphaPlatformComponents = useSelector((state) => state.alphaPlatform.value);
   const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
+  const isRunning = useSelector((state) => state.alphaRunning.isRunning);
   const layoutValue = useSelector((state) => state.layoutValue);
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState(dropdownValue.language);
@@ -34,19 +35,18 @@ const AlphaPlatform = ({}) => {
   const [output, setOutput] = useState("");
   const [windowWidth, setwindowWidth] = useState(layoutValue.width);
   const [toggelWindow, setToggelWindow] = useState(layoutValue.swapWindow);
-  const toastId = useRef(null);
-  const dispatch = useDispatch();
   const {problemId} = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn,setIsLoggedIn] = useState(false);
   const [isQuestion,setIsQuestion] = useState(false);
   const [isServer,setIsServer] = useState(false);
   const [isAuthorised, setIsAuthorised] = useState(false);
+  const toastId = useRef(null);
+  const dispatch = useDispatch();
 
   function updateCodeAndDriverCode() {
 
     const currentDropdownLanguage = dropdownValue.language?.value;
-
     if(sessionStorage.getItem('driverCode')){
       const presentDriverCode = sessionStorage.getItem('driverCode');
       const parsedDriverCode = JSON.parse(presentDriverCode);
@@ -55,6 +55,51 @@ const AlphaPlatform = ({}) => {
       setCode(currentLanguageDriverCode?.user_code.S);
     }
   }
+
+  function handleSessionExpired() {
+    localStorage.clear();
+    dispatch(toggelUserLoginFalse());
+    setIsLoading(false);
+    setIsLoggedIn(false);
+  }
+
+  function handleUnauthorizedAccess() {
+    localStorage.clear();
+    dispatch(toggelUserLoginFalse());
+    setIsLoading(false);
+    setIsLoggedIn(true);
+    setIsQuestion(true);
+    setIsAuthorised(false);
+  }
+
+  function handleAuthorizedButNotQuestion() {
+    setIsLoading(false);
+    setIsLoggedIn(true);
+    setIsQuestion(false);
+    setIsAuthorised(true);
+  }
+
+  function handleServerFailure() {
+    setIsLoading(false);
+    setIsLoggedIn(true);
+    setIsQuestion(true);
+    setIsAuthorised(true);
+    setIsServer(false);
+  }
+
+  function handleSuccess(questionDetail) {
+    setIsLoading(false);
+    setIsLoggedIn(true);
+    setIsQuestion(true);
+    setIsAuthorised(true);
+    setIsServer(true);
+    sessionStorage.setItem(`problemData`,JSON.stringify(questionDetail?.question_detail));
+    sessionStorage.setItem('problemSolution',JSON.stringify(questionDetail?.question_solution));
+    sessionStorage.setItem('problemTestCases',JSON.stringify(questionDetail?.test_cases.SS));
+    sessionStorage.setItem('driverCode',JSON.stringify(questionDetail.driver_codes.M));
+    sessionStorage.setItem('custom_testcase',questionDetail?.custom_test_case.S);
+    updateCodeAndDriverCode();
+    }
 
   useLayoutEffect (() => 
   {
@@ -101,64 +146,22 @@ const AlphaPlatform = ({}) => {
       default:
         handleServerFailure();
         break;
+      }
     }
   }
 
-  function handleSessionExpired() {
-    setIsLoading(false);
-    setIsLoggedIn(false);
-  }
+  fetchData();
 
-  function handleUnauthorizedAccess() {
-    setIsLoading(false);
-    setIsLoggedIn(true);
-    setIsQuestion(true);
-    setIsAuthorised(false);
-  }
+  },[]);
 
-  function handleAuthorizedButNotQuestion() {
-    setIsLoading(false);
-    setIsLoggedIn(true);
-    setIsQuestion(false);
-    setIsAuthorised(true);
-  }
-
-  function handleServerFailure() {
-    setIsLoading(false);
-    setIsLoggedIn(true);
-    setIsQuestion(true);
-    setIsAuthorised(true);
-    setIsServer(false);
-  }
-
-  function handleSuccess(questionDetail) {
-    sessionStorage.clear();
-    setIsLoading(false);
-    setIsLoggedIn(true);
-    setIsQuestion(true);
-    setIsAuthorised(true);
-    setIsServer(true);
-    console.log(questionDetail);
-    sessionStorage.setItem(`problemData`,JSON.stringify(questionDetail?.question_detail));
-    sessionStorage.setItem('problemSolution',JSON.stringify(questionDetail?.question_solution));
-    sessionStorage.setItem('problemTestCases',JSON.stringify(questionDetail?.test_cases.SS));
-    sessionStorage.setItem('driverCode',JSON.stringify(questionDetail.driver_codes.M));
-    sessionStorage.setItem('custom_testcase',questionDetail?.custom_test_case.S);
+  useEffect(() => {
+    setLanguage(dropdownValue.language);
     updateCodeAndDriverCode();
-  }
-}
-fetchData();
+  }, [dropdownValue.language]);
 
-},[]);
-
-useEffect(() => {
-  setLanguage(dropdownValue.language);
-  updateCodeAndDriverCode();
-}, [dropdownValue.language]);
-
-useEffect(() => {
-  setwindowWidth(layoutValue.width);
-}, [layoutValue.width]);
+  useEffect(() => {
+    setwindowWidth(layoutValue.width);
+  }, [layoutValue.width]);
 
   useEffect(() => {
     setToggelWindow(layoutValue.swapWindow);
@@ -238,8 +241,6 @@ useEffect(() => {
     alphaPlatformComponents.isConsoleGpt,
   ]);
  
- 
-
   const onChange = (action, data) => {
     switch (action) {
       case "code": {
@@ -262,39 +263,59 @@ useEffect(() => {
   };
 
   async function runCode(runOrSubmitCode) {
+    
+    if(isRunning){
+      toast(" last execution still in progress!");
+      return;
+    }
+
     try{
-      console.log(runOrSubmitCode);
+      const verifyResult = await verifyToken();
+      if(!verifyResult.success){
+        dispatch(toggelUserLoginFalse);
+        handleSessionExpired();
+        return;
+      }
+    }catch(error){
+      dispatch(toggelUserLoginFalse);
+      handleSessionExpired();
+      return;
+    }
+
+    try{
+
       toastId.current = toast("Processing...", { autoClose: 10000 });
       dispatch(alphaRunning());
-
       let codeCompileResponse;
-
       if(language.value === 'java'){
         codeCompileResponse = await codeCompile(code,language,problemId,runOrSubmitCode);
       }else{
         codeCompileResponse = await codeCompile(code,language,problemId,runOrSubmitCode);
       }
-
       if(codeCompileResponse.success){
         toast.update(toastId.current, { autoClose: 1 });
         setOutput(codeCompileResponse.data);
         showSuccess("Code compiled successfully!");
-        dispatch(alphaStopRunning());
+        setTimeout(function() {
+          dispatch(alphaStopRunning());
+        }, 2000);
       }
       else{
         toast.update(toastId.current, { autoClose: 1 });
         showError("Error compiling code!");
-        dispatch(alphaStopRunning());
+        setTimeout(function() {
+          dispatch(alphaStopRunning());
+        }, 2000);
       }
     }
     catch(error){
-      dispatch(alphaStopRunning());
       toast.update(toastId.current, { autoClose: 1 });
       toast("Error compiling code!");
+      setTimeout(function() {
+        dispatch(alphaStopRunning());
+      }, 2000);
     }
   }
-
-  
 
   const showError = (notification) => {
     toast.error(
@@ -315,7 +336,6 @@ useEffect(() => {
     });
   };
 
-
   if(isLoading)
     {
       return (
@@ -327,17 +347,20 @@ useEffect(() => {
             </div>
         </div>
         )
-    }
+  }
 
   if(!isLoggedIn){
-      return <RestrictLogin/>
-    }
+    return <RestrictLogin/>
+  }
+
   if(!isQuestion){
     return <RestrictQuestion/>
   }
+
   if(!isAuthorised){
-      return <RestrictUnauthorized/>
+    return <RestrictUnauthorized/>
   }
+
   if(!isServer){
     return <RestrictServerSide/>
   }
@@ -363,7 +386,7 @@ useEffect(() => {
           </div>
         )}
 
-          {alphaPlatformComponents.isConsoleGpt && alphaPlatformComponents.editor && <div className=" vertical-divider ml-1 w-2 bg-gray-700 h-full min-h-[98vh] rounded-md m-auto flex-grow"></div> }
+        {/* {alphaPlatformComponents.isConsoleGpt && alphaPlatformComponents.editor && <div className=" vertical-divider ml-1 w-2 bg-gray-700 h-full min-h-[98vh] rounded-md m-auto flex-grow"></div> } */}
       
         {alphaPlatformComponents.isConsoleGpt && (
           <div
@@ -382,7 +405,6 @@ useEffect(() => {
                 )
                 }
 
-                
                 {alphaPlatformComponents.gpt && <AlphaGPTWindow />}
 
               </>
@@ -392,9 +414,9 @@ useEffect(() => {
 
                 {alphaPlatformComponents.console && (
                   <ConsoleInput
-                  output={output}
-                  showSolution={showSolution}
-                  runCode={runCode}
+                    output={output}
+                    showSolution={showSolution}
+                    runCode={runCode}
                   />
                 )}
               </>

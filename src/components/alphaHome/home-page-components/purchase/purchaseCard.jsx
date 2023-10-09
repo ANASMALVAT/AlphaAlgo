@@ -56,7 +56,7 @@ export default function PricingCard() {
   
   return (
 
-    <Card size="lg" variant="outlined" sx={{width:"375px",height:"450px"}}>
+    <Card size="lg" variant="outlined" sx={{width:"350px",height:"450px"}}>
       <Chip size="sm" variant="outlined" color="neutral">
         PREMIUM
       </Chip>

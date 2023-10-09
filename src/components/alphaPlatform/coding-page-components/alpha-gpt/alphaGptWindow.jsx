@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import AlphaGPTSearchBar from './alphaGptSearchBar';
 import AlphaGptWindowText from './alphaGptWindowText';
-import {useSelector} from "react-redux"
+import { verifyToken } from '../../../../services/verifyToken';
+import { toggelUserLoginFalse } from '../../../../redux/slices/userAuthentication';
+import {useSelector, useDispatch} from "react-redux"
 import { askAlpha } from '../../api/askAlpha';
 import { toast } from 'react-toastify';
 
@@ -14,7 +16,7 @@ const AlphaGPTWindow = () => {
   const [messages, setMessages] = useState([]);
   const [chats, setChats] = useState([]);
   const [windowHeight, setWindowHeight] = useState(layoutValue.toggelHeight);
- 
+  const dispatch = useDispatch();
   
   useEffect(() => {
     setWindowHeight(layoutValue.toggelHeight);
@@ -29,6 +31,17 @@ const AlphaGPTWindow = () => {
   },[])
 
   const handleAskGPT = async (userInput) => {
+    try{
+      const verifyResult = await verifyToken();
+
+      if(!verifyResult.success){
+        dispatch(toggelUserLoginFalse);
+        return;
+      }
+    }catch(error){
+      dispatch(toggelUserLoginFalse);
+      return;
+    }
     await askAlpha(userInput, chats, setChats, setMessages, messages,setLoading, showError);
   };
 

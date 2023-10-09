@@ -5,7 +5,6 @@ import AlphaGptWindow from "./alphaGptWindow";
 import "./alphaGPT.css"
 
 const AlphaGPT = () => {
-    console.log(alphaFeatures);
 
     return (
         <div className="enviorment flex min-h-[700px] flex-1 bg-algoblack justify-evenly pt-4 overflow-visible ">
@@ -33,9 +32,6 @@ const AlphaGPT = () => {
                     }
                 </div>
             </div>
-            
-        
-         
         </div>
     )
 

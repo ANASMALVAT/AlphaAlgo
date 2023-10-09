@@ -12,7 +12,7 @@ const SlidingPane = ({ isOpen, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       from="right"
-      width="100%"
+      width="80%"
       >
 
       <SolutionLayout/>

@@ -13,7 +13,12 @@ const ProblemGrid = ({ problemList }) => {
     const updatedCategorizedProblems = { easy: [], medium: [], hard: [], special: [] };
     for (let i = 0; i < problemList.length; i++) {
         const problem = problemList[i];
-        if (problem && (problemCategories.length === 0 || problemCategories.includes(problem?.question_category))) {
+
+        if (problem && 
+            problemCategories.length === 0 || 
+            problemCategories.some(category => problem?.question_category?.some(problemCategory => category.includes(problemCategory)))
+           )
+        {
             if (problem?.isFree) {
                 updatedCategorizedProblems[problem?.question_difficulty].unshift(problem);
             } else {

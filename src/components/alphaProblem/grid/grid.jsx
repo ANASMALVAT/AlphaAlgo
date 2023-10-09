@@ -1,5 +1,4 @@
 import React  from 'react'
-import Popup from 'reactjs-popup';
 import { Link } from 'react-router-dom';
 import "./styles/grid.css"
 

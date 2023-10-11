@@ -9,7 +9,6 @@ const NavLinks = ({flexClass}) => {
         <>
            <div className="  w-full ">
                 <ul className = {`nav flex h-full w-full ${flexClass} hover:duration-100 text-white justify-between p-2 items-center text-center`}>
-                    
                     <Popup
                         trigger=
                         {
@@ -41,7 +40,6 @@ const NavLinks = ({flexClass}) => {
                         </Link>
                     </li>
                     <li class="nav-item mb-1">
-                      
                     </li>
                 </ul>
             </div>

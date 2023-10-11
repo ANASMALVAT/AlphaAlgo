@@ -14,7 +14,7 @@ const ComponentAlphaAlgo =  ({isOpen}) => {
         Explore 
       <h1 className="ml-2 logo-com-3 font-bold antialiased text-[#2D33CA] hover:duration-300 hover:scale-125"> X </h1>
       </button>
-      <Popup open={open} modal closeOnDocumentClick onClose={closeModal} className='explore-container'>
+      <Popup open={open} modal  closeOnDocumentClick onClose={closeModal} className='explore-container'>
       </Popup>
     </>
   )

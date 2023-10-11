@@ -88,9 +88,24 @@
 
 .select-item span{
     color: #445d6e;
-    /* font-family: Ubuntu,Helvetica,Arial,sans-serif; */
     font-family: 'IBM Plex Sans', sans-serif;
     margin-left: 10px;
     font-size: 16px;
     font-weight: normal !important;
+}
+
+@media screen and (max-width: 480px){
+    .rmsc{
+        width: 350px;
+        margin: auto;
+    }
+    .topic-dropdown{
+        width: 350px;
+        margin: 35px auto;
+
+    }
+    .dropdown-container{
+        width: 350px;
+        margin: auto;
+    }
 }

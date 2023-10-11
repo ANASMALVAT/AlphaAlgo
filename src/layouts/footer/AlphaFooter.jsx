@@ -5,11 +5,11 @@ import "./alphaFooter.css"
 export default function DefaultFooter() {
   return (
     <Footer container className=' alpha-footer flex flex-col rounded-[0px] h-32 justify-start items-start bg-[#7E3AF2] border-none w-[100%]  mb-0' >
-        <ul className = {` flex h-full w-80  hover:duration-100 text-white justify-between  items-center text-center`}>
+        <ul className = {` alpha-footer-navlink flex h-full w-80  hover:duration-100 text-white justify-between  items-center text-center`}>
           <li class="nav-item">
             <Link
                   to="/team"
-                  className="font-mono text-white font-semibold hover:duration-100 hover:border-b-4 hover:border-[#4C5ADF]"
+                  className="font-mono text-white font-semibold hover:duration-300 hover:border-b-2 hover:border-[white]"
               >
               Privacy Policy
             </Link>
@@ -17,7 +17,7 @@ export default function DefaultFooter() {
           <li class="nav-item">
               <Link
                   to="/team"
-                  className="font-mono text-white font-semibold hover:duration-100 hover:border-b-4 hover:border-[#4C5ADF]"
+                  className="font-mono text-white font-semibold hover:duration-100 hover:border-b-2 hover:border-[white]"
               >
               Reviews
               </Link>
@@ -25,7 +25,7 @@ export default function DefaultFooter() {
           <li class="nav-item ">
               <Link
                   to="/purchase"
-                  className="font-mono text-white font-semibold hover:duration-100 hover:border-b-4 hover:border-[#4C5ADF]"
+                  className="font-mono text-white font-semibold hover:duration-100 hover:border-b-2 hover:border-[white]"
               >
               Contact Us
               </Link>
@@ -34,7 +34,7 @@ export default function DefaultFooter() {
       <Footer.Copyright
         by="Alpha Algo LLC"
         year={2023}
-        className='text-white font-semibold text-md w-[90%] text-center'
+        className='text-white font-semibold text-md w-full text-center'
       />
     </Footer>
   )

@@ -6,7 +6,7 @@ import "./codingEnviorment.css"
 const CodingEnviorment = () => {
 
     return (
-        <div className="enviorment flex min-h-[700px] flex-1 bg-algoblack justify-evenly pt-4 overflow-visible ">
+        <div className="enviorment flex min-h-[650px] flex-1 bg-algoblack justify-x pt-4 overflow-visible ">
 
             <div className="div-enviorment  flex flex-col"> 
                 <div className="enviorment-header common-margin-enviorment mb-4">

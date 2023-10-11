@@ -83,7 +83,9 @@
         margin: auto;
         text-align: center;
         align-items: center;
-        height: 850px;
+        height: 825px;
+        display: flex;
+        justify-content: space-evenly;
     }
     .div-enviorment{
         margin:0px;

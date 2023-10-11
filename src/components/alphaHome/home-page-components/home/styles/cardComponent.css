@@ -23,3 +23,14 @@
         font-size: 22px;
     }
 }
+
+@media (max-width:400px){
+    .card-css{
+        width: 285px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .text-2xl{
+        font-size: 20px;
+    }
+}

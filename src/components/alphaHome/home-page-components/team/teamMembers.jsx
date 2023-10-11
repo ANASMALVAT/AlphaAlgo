@@ -26,7 +26,7 @@ const TeamMember = ({memberInfo}) => {
 
                      <img  className='team-img ' src={require(`../../../../assets/` + memberInfo.img)}></img>
 
-                     <SyntaxHighlighter language="elixir" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent",overflow:"hidden",overFlowY:"hidden",textAlign:"justify"}} style={a11yLight}>
+                     <SyntaxHighlighter language="xml" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent",overflow:"hidden",overFlowY:"hidden",textAlign:"justify"}} style={a11yLight}>
                         {memberInfo.description}
                     </SyntaxHighlighter>
             </div>

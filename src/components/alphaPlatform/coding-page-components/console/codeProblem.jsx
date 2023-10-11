@@ -76,36 +76,27 @@ const CodeProblem = () => {
                 }
 
                 <div name = 'constraint' className="mb-4  w-full  rounded-md font-mono">
-                    <h1 name = "example" className=" text-xl antialiased tracking-normal landing-relaxed text-white mb-2">Constraints </h1>
+                    <h1 name = "example" className=" text-xl antialiased tracking-normal landing-relaxed text-white mb-2">Expected Time Complexity </h1>
                     <div className=" text-[16px] w-full bg-[#002451]  whitespace-pre-wrap rounded-md pt-4 pb-4 font-mono text-sm antialiased  font-normal tracking-normal landing-relaxed text-white">
-
-                        <div className="flex pl-3">
-                            <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>
-                                Expected Time Complexity:
-                            </SyntaxHighlighter>
-                            <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>
+                            <SyntaxHighlighter language="C#" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>
                                 {problemConstraint?.time_complexity?.S }
                             </SyntaxHighlighter>
-                        </div>
-
-                        <div className="flex pl-3">
-                            <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>
-                                Expected Space Complexity:
-                            </SyntaxHighlighter>
-                            <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>
+                    </div>
+                </div>
+                <div name = 'constraint' className="mb-4  w-full  rounded-md font-mono">
+                    <h1 name = "example" className=" text-xl antialiased tracking-normal landing-relaxed text-white mb-2">Expected Space Complexity </h1>
+                    <div className=" text-[16px] w-full bg-[#002451]  whitespace-pre-wrap rounded-md pt-4 pb-4 font-mono text-sm antialiased  font-normal tracking-normal landing-relaxed text-white">
+                            <SyntaxHighlighter language="C#" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>
                                 {problemConstraint?.space_complexity?.S }
                             </SyntaxHighlighter>
-                        </div>
-
-                        <div className="flex  pl-3">
-                            <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>
-                                Problem Constraints:
-                            </SyntaxHighlighter>
-                            <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>
+                    </div>
+                </div>
+                <div name = 'constraint' className="mb-4  w-full  rounded-md font-mono">
+                    <h1 name = "example" className=" text-xl antialiased tracking-normal landing-relaxed text-white mb-2">Constraints </h1>
+                    <div className=" text-[16px] w-full bg-[#002451]  whitespace-pre-wrap rounded-md pt-4 pb-4 font-mono text-sm antialiased  font-normal tracking-normal landing-relaxed text-white">
+                            <SyntaxHighlighter language="C#" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>
                                 {problemConstraint?.constraint?.S }
                             </SyntaxHighlighter>
-                        </div>
-
                     </div>
                 </div>
 

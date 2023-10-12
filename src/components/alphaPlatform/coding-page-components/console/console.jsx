@@ -10,9 +10,9 @@ import "./styles/consoleInput.css";
 
 const ConsoleInput = ({output,runCode,showSolution,}) =>{
 
-    const [isConsole, setIsConsole] = useState(true);
+    const [isConsole, setIsConsole] = useState(false);
     const [isInput, setIsInput] = useState(false);
-    const [isProblem, setIsProblem] = useState(false);
+    const [isProblem, setIsProblem] = useState(true);
 
     const setConsole = () => {
         setIsConsole(currentIsConsole => true);
@@ -46,10 +46,9 @@ const ConsoleInput = ({output,runCode,showSolution,}) =>{
             </div>
 
             <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md overflow-hidden p-1 ">
-                {isInput   &&  <CustomInput  /> }
                 {isProblem && <CodeProblem />}
                 {isConsole &&  <CodeOutput outputDetail={output}/> }
-
+                {isInput   &&  <CustomInput  /> }
             </div>
 
             <div className="console-run-button flex gap-1">

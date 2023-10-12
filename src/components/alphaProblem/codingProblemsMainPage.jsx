@@ -34,7 +34,7 @@ const CodingProblems = () => {
             { 
               loading && 
               <div className='h-60 w-60 ml-auto mr-auto'>
-                <img className='animate-spin ' style={{ animationDuration: '3s' }} src='https://www.svgrepo.com//show/408307/cog-wheel-settings.svg'></img>
+                <img className='animate-spin ' style={{ animationDuration: '3s' }} src='https://alpha-images.s3.amazonaws.com/loading-wheel.svg'></img>
               </div>
             }
 

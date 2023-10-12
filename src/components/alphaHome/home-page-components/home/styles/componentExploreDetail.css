@@ -1,0 +1,20 @@
+.MuiPaper-root{
+    background:transparent;
+    display: flex;
+    overflow: hidden;
+}
+.MuiDialogContent-root{
+    border: none;
+}
+
+.closeIcon{
+    scale: 1.35;
+}
+.closeIcon:hover{
+    scale: 2;
+    transition: all 300ms;
+}
+
+.explore-text{
+    font-family: Ubuntu;
+}

@@ -8,7 +8,8 @@
 
 @media(min-width:881px){
     .nav{
-        display: flex;
+
+
     }
     .sideNav{
         display: none;
@@ -20,6 +21,9 @@
     }
     .sideNav{
         display: flex;
+    }
+    .nav-item{
+        text-align: center;
     }
     .logo{
         justify-content: center;

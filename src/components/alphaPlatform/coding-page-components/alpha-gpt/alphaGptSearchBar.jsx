@@ -38,7 +38,7 @@ export default function AlphaGPTSearchBar({sendRequest, loading}) {
           loading ? 
           (
                 <div className='h-11 w-11 flex justify-center items-start'>
-                    <img className='animate-spin ' style={{ animationDuration: '1s' }} src='https://www.svgrepo.com//show/408307/cog-wheel-settings.svg'></img>
+                    <img className='animate-spin ' style={{ animationDuration: '1s' }} src='https://alpha-images.s3.amazonaws.com/loading-wheel.svg'></img>
                 </div>
           )
           : <SendIcon  sx={{color:"white", fontWeight:"bold",fontSize:"30px"}} />

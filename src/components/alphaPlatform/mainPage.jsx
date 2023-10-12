@@ -64,8 +64,6 @@ const AlphaPlatform = ({}) => {
   }
 
   function handleUnauthorizedAccess() {
-    localStorage.clear();
-    dispatch(toggelUserLoginFalse());
     setIsLoading(false);
     setIsLoggedIn(true);
     setIsQuestion(true);

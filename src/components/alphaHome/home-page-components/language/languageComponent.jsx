@@ -12,7 +12,7 @@ const LanguageComponent = () => {
         <div className="flex flex-row min-h-[500px] bg-algoblack mt-10 mb-10 justify-evenly pt-8 ">
 
             <div className="language-animation">
-                <img className="coding-gif" src="https://media2.giphy.com/media/juua9i2c2fA0AIp2iq/giphy.gif" allowFullScreen></img>
+                <img className="coding-gif" src="https://alpha-images.s3.amazonaws.com/coding-languages.gif" allowFullScreen></img>
             </div>
 
             <div className="languages"> 

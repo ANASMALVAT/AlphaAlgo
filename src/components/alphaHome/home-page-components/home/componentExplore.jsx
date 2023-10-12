@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import ComponentExploreDetail from "./componentExploreDetail";
-
-import 'reactjs-popup/dist/index.css';
 import "./styles/componentThree.css"
 
 const ComponentExplore = () => {

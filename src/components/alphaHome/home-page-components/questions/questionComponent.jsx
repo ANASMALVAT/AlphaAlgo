@@ -27,7 +27,7 @@ const QuestionComponent = () => {
                 </div>
             </div>
             <div className="question-animation">
-                <img className="question-gif" src="https://www.pngmart.com/files/22/Programmer-PNG-Photos.png" ></img>
+                <img className="question-gif" src="https://alpha-images.s3.amazonaws.com/coding-questions.png" ></img>
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import { slide as Menu } from 'react-burger-menu'
 import ReactSlidingPane from "react-sliding-pane";
 import NavLinks from './navLinks';
+import SideNavLinks from './sideNavLinks';
 import "./styles/sideNav.css"
 
 const SideNav = ({isOpen, onRequestClose}) =>
@@ -16,7 +17,7 @@ const SideNav = ({isOpen, onRequestClose}) =>
                 onRequestClose={onRequestClose}
                 
                 from="left"
-                width="25%"
+                width="375px"
                 hideHeader={false}
                 minWidth="300px"
                 >
@@ -29,7 +30,7 @@ const SideNav = ({isOpen, onRequestClose}) =>
                     </div>
 
                     <div className=''>
-                        <NavLinks flexClass={"display-flex-col"}/>
+                        <SideNavLinks />
                     </div>
                 </div>
             </ReactSlidingPane>

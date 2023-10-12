@@ -91,12 +91,15 @@ export default function PricingCard() {
         </ListItem>
       </List>
       <Divider inset="none" />
-      <CardActions>
-        <Typography level="title-lg" sx={{ mr: 'auto' }}>
-          29.99{' '}${' '} Anually
-          <Typography fontSize="sm" textColor="text.tertiary">
-          </Typography>
-        </Typography>
+      <CardActions >
+         <div className='flex flex-col text-left mr-auto'>
+            <Typography level="title-lg" sx={{ mr: 'auto' }}>
+              29.99{' '}${' '}
+            </Typography>
+            <Typography fontSize="md" textColor="black">
+              1 Year Access
+            </Typography>
+          </div>
         <Button
           variant="soft"
           color="neutral"

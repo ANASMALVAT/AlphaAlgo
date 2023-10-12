@@ -24,9 +24,9 @@ const TeamMember = ({memberInfo}) => {
                         />
                     </h1>
 
-                     <img  className='team-img ' src={require(`../../../../assets/` + memberInfo.img)}></img>
+                     <img  className='team-img ' src={memberInfo.img}></img>
 
-                     <SyntaxHighlighter language="xml" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent",overflow:"hidden",overFlowY:"hidden",textAlign:"justify"}} style={a11yLight}>
+                     <SyntaxHighlighter language="xml" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent",overflow:"hidden",overFlowY:"hidden",textAlign:"justify",textAlignLast:"center"}} style={a11yLight}>
                         {memberInfo.description}
                     </SyntaxHighlighter>
             </div>

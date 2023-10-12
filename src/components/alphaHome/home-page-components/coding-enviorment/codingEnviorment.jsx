@@ -28,7 +28,7 @@ const CodingEnviorment = () => {
             </div>
             
             <div className="enviorment-grid w-[40%] flex overflow-visisble justify-center">
-                <img className=" enviorment-img justify-center rounded-md  p-2 opacity-90" src={require(`../../../../assets/coding-console.png`)}  style={{ maxWidth: '100%', height: 'auto' }} ></img>
+                <img className=" enviorment-img justify-center rounded-md  p-2 opacity-90" src={`https://alpha-images.s3.amazonaws.com/coding-console.png`}  style={{ maxWidth: '100%', height: 'auto' }} ></img>
             </div>
          
         </div>

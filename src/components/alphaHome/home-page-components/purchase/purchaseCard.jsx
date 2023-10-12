@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from "axios";
-import Box from '@mui/joy/Box';
 import Chip from '@mui/joy/Chip';
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
@@ -10,9 +9,7 @@ import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Typography from '@mui/joy/Typography';
-import Check from '@mui/icons-material/Check';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import { verifyToken } from '../../../../services/verifyToken';
 import { useSelector, useDispatch } from 'react-redux';
 import { showNotification } from '../../../../redux/slices/alphaNotification';
 import "./purchaseCard.css"

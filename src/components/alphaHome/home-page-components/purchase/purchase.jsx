@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PricingCard from './purchaseCard'
 import "./purchase.css"
 import AlphaNavbar from '../../../../layouts/navbar/AlphaNavbar'
+import AlphaFooter from '../../../../layouts/footer/AlphaFooter'
 
 const Purchase = () => {
     return(
@@ -12,6 +13,7 @@ const Purchase = () => {
                 <PricingCard/>
             </div>
         </div>
+        <AlphaFooter/>
         </>
     )
 }

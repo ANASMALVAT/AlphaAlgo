@@ -25,7 +25,8 @@
   }
   
 .code-problem::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
+    border-radius: 4px;
 }
 
 
@@ -39,40 +40,12 @@
     background: #5867EA;
     border-radius: 8px;
 }
-.code-output::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.code-output::-webkit-scrollbar-track {
-background: white;
-border-radius: 8px;
-margin:5px;
-}
-
-.code-output::-webkit-scrollbar-thumb {
-background: #5867EA;
-border-radius: 8px;
-}
 
 
 .hint:hover{
   cursor: pointer;
 }
 
-/* styles/problemLayout.css */
-
-/* .code-problem {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    height: 100%;
-    width: 100%;
-    white-space: pre;
-    overflow-x: auto; 
-    border-radius: 0.25rem;
-    padding: 1rem;
-  } */
   
   
   .h-16 {

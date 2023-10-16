@@ -1,27 +1,23 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setDifferentEditor,setGPT,setConsole } from "../../../../redux/slices/alphaPlatformSlice";
+import { setDifferentEditor,setConsole } from "../../../../redux/slices/alphaPlatformSlice";
 
 
-const AlgoButtons = ({buttonOne,buttonTwo,buttonThree }) => {
+const AlgoButtons = ({buttonOne,buttonTwo }) => {
 
 
   const dispatch = useDispatch();
 
   const openEditor = () => 
       {
-          dispatch(setDifferentEditor({ editor: true, console: false, gpt: false, isConsoleGpt: false}))
+          dispatch(setDifferentEditor({ editor: true, isConsoleGpt: false}))
       };
 
   const openConsole = () => 
       {
-          dispatch(setConsole({ editor: false, console: true, gpt: false, isConsoleGpt: true}))
+          dispatch(setConsole({ editor: false, isConsoleGpt: true}))
       };
 
-  const openAlphaGPT = () => 
-      {
-          dispatch(setGPT({ editor: false, console: false, gpt: true, isConsoleGpt: true}))
-      };
 
     return (
         <>
@@ -31,9 +27,6 @@ const AlgoButtons = ({buttonOne,buttonTwo,buttonThree }) => {
               </button>
               <button onClick={openConsole}  className={`overflow-hidden rounded-sm w-24 mr-2 flex flex-row items-center   px-2 py-2 font-mono text-sm font-normal justify-center border border-gray-600 text-white   hover:border-[#4C5ADF]`}>
                 {buttonTwo}
-              </button>
-              <button onClick={openAlphaGPT} className={`overflow-hidden rounded-sm w-24 mr-2 flex flex-row items-center  px-2 py-2 font-mono text-sm font-normal justify-center border border-gray-600 text-white   hover:border-[#4C5ADF]`}>
-                {buttonThree}
               </button>
         </div>
         </>

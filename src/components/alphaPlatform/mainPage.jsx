@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from "react";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { useSelector,useDispatch } from "react-redux";
-import {setDifferentEditor, setConsole, setDefault,} from "../../redux/slices/alphaPlatformSlice";
+import {setDifferentEditor, setDefault,} from "../../redux/slices/alphaPlatformSlice";
 import { alphaRunning,alphaStopRunning } from "../../redux/slices/alphaRunning";
 import { codeCompile } from "./api/codeCompile";
 import { authorizedUser } from "./api/authorizedUser";
@@ -13,7 +13,6 @@ import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWin
 import SlidingPane from "./coding-page-components/sliding-panel/solutionSlidingPane";
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/console";
-import AlphaGPTWindow from "./coding-page-components/alpha-gpt/alphaGptWindow";
 import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
 import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";
 import RestrictQuestion from "./coding-page-components/alpha-restrictions/restrictQuestion";
@@ -28,13 +27,11 @@ const AlphaPlatform = ({}) => {
   const alphaPlatformComponents = useSelector((state) => state.alphaPlatform.value);
   const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
   const isRunning = useSelector((state) => state.alphaRunning.isRunning);
-  const layoutValue = useSelector((state) => state.layoutValue);
+  const [editorWidth, setEditorWidth] = useState();
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState(dropdownValue.language);
   const [solution, setSolution] = useState(false);
   const [output, setOutput] = useState("");
-  const [windowWidth, setwindowWidth] = useState(layoutValue.width);
-  const [toggelWindow, setToggelWindow] = useState(layoutValue.swapWindow);
   const {problemId} = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn,setIsLoggedIn] = useState(false);
@@ -43,6 +40,15 @@ const AlphaPlatform = ({}) => {
   const [isAuthorised, setIsAuthorised] = useState(false);
   const toastId = useRef(null);
   const dispatch = useDispatch();
+
+
+ 
+
+  const handleResize = (e) => {
+    const newWidth = e.clientX;
+    setEditorWidth(newWidth);
+  };
+
 
   function updateCodeAndDriverCode() {
 
@@ -97,7 +103,17 @@ const AlphaPlatform = ({}) => {
     sessionStorage.setItem('driverCode',JSON.stringify(questionDetail.driver_codes.M));
     sessionStorage.setItem('custom_testcase',questionDetail?.custom_test_case.S);
     updateCodeAndDriverCode();
-    }
+  }
+
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    document.body.style.cursor = 'col-resize';
+    document.addEventListener('mousemove', handleResize);
+    document.addEventListener('mouseup', () => {
+      document.body.style.cursor = 'auto';
+      document.removeEventListener('mousemove', handleResize);
+    });
+  };
 
   useLayoutEffect (() => 
   {
@@ -147,9 +163,7 @@ const AlphaPlatform = ({}) => {
       }
     }
   }
-
   fetchData();
-
   },[]);
 
   useEffect(() => {
@@ -158,67 +172,17 @@ const AlphaPlatform = ({}) => {
   }, [dropdownValue.language]);
 
   useEffect(() => {
-    setwindowWidth(layoutValue.width);
-  }, [layoutValue.width]);
-
-  useEffect(() => {
-    setToggelWindow(layoutValue.swapWindow);
-  }, [layoutValue.swapWindow]);
-
-  useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1150) {
+      if (window.innerWidth > 1050) {
         dispatch(
           setDefault({
             editor: true,
             console: true,
-            gpt: true,
-            isConsoleGpt: true,
           })
         );
-      } else {
-        if (
-          alphaPlatformComponents.editor === true &&
-          alphaPlatformComponents.isConsoleGpt === true
-        ) {
-          dispatch(
-            setDifferentEditor({
-              editor: true,
-              console: false,
-              gpt: false,
-              isConsoleGpt: false,
-            })
-          );
-        } else if (
-          (alphaPlatformComponents.editor === true &&
-            alphaPlatformComponents.isConsoleGpt === true) ||
-          (alphaPlatformComponents.editor === true &&
-            alphaPlatformComponents.console === true) ||
-          (alphaPlatformComponents.editor === true &&
-            alphaPlatformComponents.gpt === true)
-        ) {
-          dispatch(
-            setDifferentEditor({
-              editor: true,
-              console: false,
-              gpt: false,
-              isConsoleGpt: false,
-            })
-          );
-        } else if (
-          alphaPlatformComponents.isConsoleGpt === true &&
-          alphaPlatformComponents.console === true &&
-          alphaPlatformComponents.gpt === true
-        ) {
-          dispatch(
-            setConsole({
-              editor: false,
-              console: true,
-              gpt: false,
-              isConsoleGpt: true,
-            })
-          );
-        }
+      }
+      else if ( alphaPlatformComponents.editor === true && alphaPlatformComponents.console === true){
+         dispatch(setDifferentEditor({editor: true, console: false}));
       }
     };
 
@@ -232,13 +196,8 @@ const AlphaPlatform = ({}) => {
       window.removeEventListener("beforeunload", handleResize);
     };
   },
-  [
-    alphaPlatformComponents.console,
-    alphaPlatformComponents.gpt,
-    alphaPlatformComponents.editor,
-    alphaPlatformComponents.isConsoleGpt,
-  ]);
- 
+  [alphaPlatformComponents.console, alphaPlatformComponents.editor]);
+
   const onChange = (action, data) => {
     switch (action) {
       case "code": {
@@ -366,59 +325,38 @@ const AlphaPlatform = ({}) => {
   return (
     <>
       <SlidingPane isOpen={solution} onRequestClose={closePane} />
-      <div className="main-class min-w-[350px] min-h-[600px] w-full h-full flex flex-grow flex-row-reverse  min-w-screen max-h-screen bg-algoblack overflow-auto">
+      
+      <div className="main-class min-w-[375px] min-h-[600px] w-full h-full flex flex-grow   min-w-screen max-h-screen bg-algoblack overflow-auto">
         
         {alphaPlatformComponents.isConsoleGpt && (
           <div className="show-buttons bg-algoblack justify-center h-14 p-2  border-1 w-[100%] border-[#1F2937]">
-            <AlgoButtons buttonOne={`Editor`} buttonTwo={`Console`} buttonThree={`AlphaGPT`} />
+            <AlgoButtons buttonOne={`Editor`} buttonTwo={`Console`} />
           </div>
         )}
 
-        {alphaPlatformComponents.editor && (
+        { alphaPlatformComponents.editor && (
           <div
-            className={`editor-class overflow-hidden flex flex-col grow-1  ${
-              windowWidth ? "w-[60%]" : "w-[40%]"
-            }  h-[100vh]  min-h-[375px]  flex-grow transition-all duration-700 ease-in-out`}
+            className={`editor-class overflow-hidden flex flex-col grow-1 h-[100vh]  min-h-[375px]  flex-grow `}
+            style={{ width: editorWidth }} 
+
           >
             <CodeEditorWindow code={code} onChangeData={onChange} />
           </div>
         )}
 
-        {/* {alphaPlatformComponents.isConsoleGpt && alphaPlatformComponents.editor && <div className=" vertical-divider ml-1 w-2 bg-gray-700 h-full min-h-[98vh] rounded-md m-auto flex-grow"></div> } */}
-      
-        {alphaPlatformComponents.isConsoleGpt && (
-          <div
-            className={`console-gpt ${windowWidth ? "w-[40%]" : "w-[60%]"} ${
-              toggelWindow ? "alpha-first" : "console-first"
-            } transition-all duration-700 ease-in-out max-h-[100vh] `}
-          >
-            {toggelWindow ? (
-              <>
-                {alphaPlatformComponents.console && (
-                  <ConsoleInput
-                    output={output}
-                    showSolution={showSolution}
-                    runCode={runCode}
-                  />
-                )
-                }
+        <div id="resize" class="resize"
+          onMouseDown={handleMouseDown} 
+          className=" resize no-select w-1 h-full min-h-screen bg-[#002451] pt-2 pb-2 ml-1 mr-1 rounded-md">
+        </div>
 
-                {alphaPlatformComponents.gpt && <AlphaGPTWindow />}
 
-              </>
-            ) : (
-              <>
-                {alphaPlatformComponents.gpt && <AlphaGPTWindow />}
-
-                {alphaPlatformComponents.console && (
-                  <ConsoleInput
-                    output={output}
-                    showSolution={showSolution}
-                    runCode={runCode}
-                  />
-                )}
-              </>
-            )}
+        {alphaPlatformComponents.console && (
+          <div className={`console-gpt`} >
+            <ConsoleInput
+              output={output}
+              showSolution={showSolution}
+              runCode={runCode}
+            />
           </div>
         )}
       </div>

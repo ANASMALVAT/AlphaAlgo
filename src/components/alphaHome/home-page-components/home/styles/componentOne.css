@@ -1,6 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Ubuntu:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Ubuntu:wght@300;400&display=swap');
 
+
+.logo {
+    font-size: 8rem;
+    color: #4C5ADF;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-align: center;
+    animation: rotate 4s linear infinite; /* Adjust the duration (4s) and timing function (linear) as needed */
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Hover effect */
+  .logo {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.25);
+  }
+  
+
 p
 {
     /* font-family: 'IBM Plex Sans', sans-serif; */

@@ -1,22 +1,20 @@
-
 import axios from 'axios';
 
-const GPT_URL = process.env.REACT_APP_CALL_GPT;
 
-export async function askAlpha (userInput, chats, setChats, setMessages, messages,setLoading, showError) {
+const GPT_URL = process.env.REACT_APP_CALL_GPT;
+export async function askAlpha (userInput,setLoading, showError) {
 
   if (userInput.trim() !== '') {
     setLoading(true);
+    let storedMessages = localStorage.getItem('stored-messages');
+    let parsedMessages = storedMessages ? JSON.parse(storedMessages) : [];
+    let currentChats = parsedMessages;
+    let tempChats = []
+    tempChats.push({ role: 'user', content: userInput });
 
-    let currentChats = chats;
-
+    const updatedMessages = [...parsedMessages, ...tempChats];
+    localStorage.setItem('stored-messages', JSON.stringify(updatedMessages));
     currentChats.push({ role: 'user', content: userInput });
-    setChats(currentChats);
-
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { type: 'User', text: userInput },
-    ]);
 
     try {
       const response = await axios.post(GPT_URL, {
@@ -27,12 +25,14 @@ export async function askAlpha (userInput, chats, setChats, setMessages, message
         currentChats,
       });
 
-      setMessages((prevMessages) => [...prevMessages,{ type: 'Bot', text: response.data.content }]);
-      currentChats.push({ role: 'assistant', content: response.data.content });
-      setChats(currentChats);
-      localStorage.setItem('stored-messages',JSON.stringify([...messages]));
+      tempChats = []
+      tempChats.push({ role: 'assistant', content: response.data.content })
 
-    } 
+      let storedMessages = localStorage.getItem('stored-messages');
+      let parsedMessages = storedMessages ? JSON.parse(storedMessages) : [];
+      const updatedMessages = [...parsedMessages, ...tempChats];
+      localStorage.setItem('stored-messages', JSON.stringify(updatedMessages));
+    }
     catch (error) {
       showError(' AlphaGPT is under maintenance!');
     }

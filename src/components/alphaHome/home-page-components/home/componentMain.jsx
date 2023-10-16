@@ -3,7 +3,10 @@ import ComponentTypeWriter from "./componentTypeWriter";
 import { Link } from "react-router-dom";
 import "./styles/componentOne.css"
 
+
+
 const ComponentMain = () => 
+
 {
     return (
         <>
@@ -15,7 +18,7 @@ const ComponentMain = () =>
 
                         <div className="plex-sans flex flex-row items-center mb-2 mt-4">
                             <h1 className="logo-name  tracking-wide font-normal antialiased text-white text-5xl">Alpha</h1>
-                            <h1 className="logo  tracking-wide font-bold antialiased text-[#4C5ADF] text-8xl hover:duration-300 hover:scale-125">X</h1>
+                            <h1 className="tracking-wide font-bold antialiased text-[#4C5ADF] text-8xl hover:duration-[10000ms] hover:rotate-[90000deg]">X</h1>
                             <h1 className="logo-name  tracking-wide font-normal antialiased text-white text-5xl">Algo</h1>
                         </div>
 

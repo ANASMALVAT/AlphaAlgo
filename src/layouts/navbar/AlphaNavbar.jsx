@@ -71,7 +71,7 @@ const AlphaNavbar  = () => {
                             <h1 className="tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
                                 <Link
                                 to="/"
-                                className="tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-500 hover:rotate-[900deg]"
+                                className="tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-500 hover:rotate-[90000deg]"
                                 >
                                 X
                                 </Link> 

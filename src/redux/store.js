@@ -1,7 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit"
 import alphaPlatformReducer from "./slices/alphaPlatformSlice"
 import dropdownSliceReducer from "./slices/dropDownSlice"
-import windowWidthReducer from "./slices/layoutSlice"
 import problemCategories from "./slices/problemCategorySlice"
 import userLoginWindow from "./slices/userComponentSlice"
 import userLogin from "./slices/userAuthentication"
@@ -12,12 +11,11 @@ const store = configureStore({
     reducer:{
       alphaPlatform:alphaPlatformReducer,
       dropdownValues:dropdownSliceReducer,
-      layoutValue:windowWidthReducer,
       problemCategories:problemCategories,
       userLoginWindow:userLoginWindow,
       userLogin:userLogin,
       alphaNotification:alphaNotification,
-      alphaRunning:alphaRunning
+      alphaRunning:alphaRunning,
     },
   });
 

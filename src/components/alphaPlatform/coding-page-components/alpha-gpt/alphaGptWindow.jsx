@@ -3,7 +3,7 @@ import AlphaGPTSearchBar from './alphaGptSearchBar';
 import AlphaGptWindowText from './alphaGptWindowText';
 import { verifyToken } from '../../../../services/verifyToken';
 import { toggelUserLoginFalse } from '../../../../redux/slices/userAuthentication';
-import {useSelector, useDispatch} from "react-redux"
+import { useDispatch} from "react-redux"
 import { askAlpha } from '../../api/askAlpha';
 import { toast } from 'react-toastify';
 
@@ -11,24 +11,18 @@ import './styles/alphaGptWindow.css';
 
 const AlphaGPTWindow = () => {
 
-  const layoutValue = useSelector((state) => state.layoutValue);
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [chats, setChats] = useState([]);
-  const [windowHeight, setWindowHeight] = useState(layoutValue.toggelHeight);
   const dispatch = useDispatch();
   
   useEffect(() => {
-    setWindowHeight(layoutValue.toggelHeight);
-  },[layoutValue.toggelHeight])
+      let storedMessages = localStorage.getItem('stored-messages');
+      if (storedMessages) {
+        let parsedMessages = JSON.parse(storedMessages);
+        setMessages(parsedMessages);
+      }
+  }, [localStorage.getItem('stored-messages')]);
 
-  useEffect(()=>{
-    let storedMessages = localStorage.getItem('stored-messages',messages);
-    if(storedMessages){
-      let parsedMessages = JSON.parse(storedMessages);
-      setMessages(parsedMessages);
-    }
-  },[])
 
   const handleAskGPT = async (userInput) => {
     try{
@@ -42,7 +36,7 @@ const AlphaGPTWindow = () => {
       dispatch(toggelUserLoginFalse);
       return;
     }
-    await askAlpha(userInput, chats, setChats, setMessages, messages,setLoading, showError);
+    await askAlpha(userInput,setLoading, showError);
   };
 
 
@@ -64,19 +58,17 @@ const AlphaGPTWindow = () => {
   };
 
   return (
-    <div className='max-h-[500px] h-full flex flex-col flex-1 w-full   p-2 rounded-md border border-gray-600'>
-
-      <div className={`gpt-output-console h- ${windowHeight === 0 ? 'h-[10px]' :windowHeight === 1 ? 'h-[250px]' : 'h-[425px]'} transition-all duration-1000 ease-in-out flex-grow w-full p-2 border border-gray-600 mb-2 rounded-md overflow-auto h-[100%]`}>
+    <div className=' min-h-[50px] h-full flex flex-col flex-1 w-full p-2 rounded-md '>
+      <div className={`gpt-output-console transition-all duration-1000 ease-in-out flex-grow w-full p-2   overflow-auto border-b border-gray-400 mb-2 h-[100%]`}>
         {
           messages.map((message, index) => (
             <AlphaGptWindowText
               key={index}
-              data={message.text}
-              type={message.type}
+              data={message.content}
+              type={message.role}
             />
           ))
         }
-
       </div>
         <AlphaGPTSearchBar sendRequest={handleAskGPT} loading={loading} />
     </div>

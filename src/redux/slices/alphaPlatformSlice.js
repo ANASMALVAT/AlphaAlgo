@@ -4,14 +4,11 @@ export const alphaPlatformSlice = createSlice({
 
     name:"alphaPlatform",
 
-    initialState: { value : { editor:true, console:true, gpt:true,isConsoleGpt:true} },
+    initialState: { value : { editor:true, console:true} },
 
     reducers:{
 
         setDifferentEditor : (state,action) => {
-            state.value = action.payload;
-        },
-        setGPT : (state, action) => {
             state.value = action.payload;
         },
         setConsole: (state,action) => {
@@ -23,6 +20,6 @@ export const alphaPlatformSlice = createSlice({
     },
 });
 
-export const {setDifferentEditor,setGPT,setConsole,setDefault} = alphaPlatformSlice.actions;
+export const {setDifferentEditor,setConsole,setDefault} = alphaPlatformSlice.actions;
 
 export default alphaPlatformSlice.reducer;

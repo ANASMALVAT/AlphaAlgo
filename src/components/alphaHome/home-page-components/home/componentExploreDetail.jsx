@@ -35,6 +35,7 @@ const ComponentAlphaAlgo =  ({isOpen}) => {
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        
       >
         <IconButton
           aria-label="close"
@@ -44,6 +45,7 @@ const ComponentAlphaAlgo =  ({isOpen}) => {
             color: "red",
             fontWeight:"bold",
             border:"none",
+            
           }}
         >
         <CloseIcon/>

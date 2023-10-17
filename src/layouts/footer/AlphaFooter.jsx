@@ -4,7 +4,7 @@ import "./alphaFooter.css"
 
 export default function AlphaFooter() {
   return (
-    <Footer container className=' alpha-footer flex flex-col rounded-[0px] h-32 justify-start items-start bg-[#00182D]  w-[100%] border-t border-gray-700 mb-0' >
+    <Footer container className=' alpha-footer flex flex-col rounded-[0px] h-32 justify-start items-start bg-[#002451]  w-[100%] border-t border-gray-700 mb-0' >
         <ul className = {` alpha-footer-navlink flex h-full w-80  hover:duration-100 text-white justify-between  items-center text-center`}>
           <li class="nav-item">
             <Link

@@ -327,12 +327,6 @@ const AlphaPlatform = ({}) => {
       <SlidingPane isOpen={solution} onRequestClose={closePane} />
       
       <div className="main-class min-w-[375px] min-h-[600px] w-full h-full flex flex-grow   min-w-screen max-h-screen bg-algoblack overflow-auto">
-        
-        {alphaPlatformComponents.isConsoleGpt && (
-          <div className="show-buttons bg-algoblack justify-center h-14 p-2  border-1 w-[100%] border-[#1F2937]">
-            <AlgoButtons buttonOne={`Editor`} buttonTwo={`Console`} />
-          </div>
-        )}
 
         { alphaPlatformComponents.editor && (
           <div

@@ -59,10 +59,7 @@ const ConsoleInput = ({output,runCode,showSolution,}) =>{
                 {isInput   &&  <CustomInput  /> }
                 {isAlphaGPT && <AlphaGPTWindow  /> }
             </div>
-
-            {/* <div className="console-run-button flex gap-1">
-              <ConsoleRunButtons runCode={runCode} showSolution={showSolution} />
-            </div> */}
+            
         </div>
     );
 }

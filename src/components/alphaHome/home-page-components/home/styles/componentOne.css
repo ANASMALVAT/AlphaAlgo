@@ -8,17 +8,8 @@
     font-weight: bold;
     letter-spacing: 0.1em;
     text-align: center;
-    animation: rotate 4s linear infinite; /* Adjust the duration (4s) and timing function (linear) as needed */
   }
   
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
   
   /* Hover effect */
   .logo {

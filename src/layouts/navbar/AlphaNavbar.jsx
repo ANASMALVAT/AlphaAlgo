@@ -66,12 +66,12 @@ const AlphaNavbar  = () => {
                         </button>
                     </div>
 
-                    <div id="logo" className="logo w-[25%] min-w-[100px] justify-center align-bottom items-center h-full  overflow-hidden">
+                    <div className="logo w-[25%] min-w-[100px] justify-center align-bottom items-center h-full  overflow-hidden">
                         <div className="flex flex-row justify-center items-center">
                             <h1 className="tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
                                 <Link
                                 to="/"
-                                className="tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-500 hover:rotate-[90000deg]"
+                                className="tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-[400ms] hover:rotate-[720deg]"
                                 >
                                 X
                                 </Link> 

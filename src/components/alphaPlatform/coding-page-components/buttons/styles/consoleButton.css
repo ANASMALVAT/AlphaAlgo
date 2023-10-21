@@ -1,6 +1,7 @@
 .side-menu{
     display: none;
 }
+
 @media (max-width: 1050px) {
 .side-menu{
     display: flex;

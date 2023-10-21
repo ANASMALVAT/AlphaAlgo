@@ -47,9 +47,6 @@
 .resize{
     cursor:col-resize;
 }
-.resize:hover{
-    background: #002451;
-}
 
 @media (min-width: 0px) and (max-width: 1050px) {
 

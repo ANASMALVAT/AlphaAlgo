@@ -114,6 +114,12 @@ const CodeEditorWindow = ({onChangeData,code }) =>
 
                 </div>
 
+                <div className="flex items-center bg-algoXcolor rounded-[0.25rem] p-2 mt-1 mb-1">
+                    <Link to={"/problems"}>
+                        <h1 className=" font-bold text-4xl  antialiased text-[#2D33CA] hover:duration-300 hover:scale-125">X</h1>
+                    </Link>
+                </div>
+
                 <div className="language-button ">
                     <LanguageDropDown />
                 </div>

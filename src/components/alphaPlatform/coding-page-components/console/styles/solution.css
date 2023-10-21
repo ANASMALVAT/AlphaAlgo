@@ -26,12 +26,13 @@
     border-radius: 8px;
   } 
   .solution-layout{
-    min-width: 90%;
-    max-width: 90%;
+    min-width: 100%;
+    max-width: 100%;
   }
 
   .solution{
     width: 100%;
+    
   }
 
   .relevant-links{

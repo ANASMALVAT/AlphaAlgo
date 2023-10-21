@@ -6,6 +6,7 @@ import "./styles/grid.css"
 const Grid = ({problemInfo}) => {
     return(
     <Link to={`/problems/${problemInfo?.question_id}`}>
+        
         <div className=' problem-grid flex flex-row items-center justify-between h-12 shadow-md rounded-sm bg-[#F5F5F5]'>
             
             <div className='problem-name mr-8 ml-8 font-normal text-gray-900'>

@@ -55,14 +55,14 @@ const ConsoleButton = ({setConsole,isConsole, setInput, isInput, setProblem, isP
                     <pre className="font-normal font-resize">AlphaGPT</pre>
                 </button>
 
-                {/* <button
+                <button
                     onClick={setSolution}
                     className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
                     ${isSolution ? 'bg-[#3e49b4]' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                     >
                     <pre className="font-normal font-resize">Solution</pre>
-                    </button> */}
+                </button>
 
             </div>
 

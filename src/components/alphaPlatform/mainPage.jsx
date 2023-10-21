@@ -10,7 +10,6 @@ import { useParams } from "react-router-dom";
 import { toggelUserLoginFalse } from "../../redux/slices/userAuthentication";
 
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
-import SlidingPane from "./coding-page-components/sliding-panel/solutionSlidingPane";
 import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/console";
 import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
@@ -211,10 +210,6 @@ const AlphaPlatform = ({}) => {
     }
   };
 
-  const showSolution = () => {
-    setSolution((solution) => !solution);
-  };
-
   const closePane = () => {
     setSolution((solution) => !solution);
   };
@@ -324,7 +319,6 @@ const AlphaPlatform = ({}) => {
 
   return (
     <>
-      <SlidingPane isOpen={solution} onRequestClose={closePane} />
       
       <div className="main-class min-w-[375px] min-h-[600px] w-full h-full flex flex-grow   min-w-screen max-h-screen bg-algoblack overflow-auto">
 
@@ -348,7 +342,6 @@ const AlphaPlatform = ({}) => {
           <div className={`console-gpt`} >
             <ConsoleInput
               output={output}
-              showSolution={showSolution}
               runCode={runCode}
             />
           </div>

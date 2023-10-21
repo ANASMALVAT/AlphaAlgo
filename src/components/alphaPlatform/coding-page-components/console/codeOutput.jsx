@@ -3,7 +3,7 @@ import { CodeBlock, dracula } from "react-code-blocks";
 import ConsoleRunButtons from '../buttons/consoleRunButtons';
 import "./styles/codeOutput.css";
 
-const CodeOutput = ( { outputDetail ,runCode,showSolution} ) => 
+const CodeOutput = ( { outputDetail ,runCode} ) => 
 {
     let errorId = outputDetail?.status_id;
 
@@ -13,9 +13,6 @@ const CodeOutput = ( { outputDetail ,runCode,showSolution} ) =>
         {
             case 3:
                 return atob(outputDetail?.stdout);
-            
-                
-      
             case 5:
                 return `Time Limit Exceed`
                
@@ -36,7 +33,7 @@ const CodeOutput = ( { outputDetail ,runCode,showSolution} ) =>
                 </pre>
             </div>
 
-            <ConsoleRunButtons runCode={runCode} showSolution={showSolution}/>
+            <ConsoleRunButtons runCode={runCode}/>
         </div>
         </>
     )

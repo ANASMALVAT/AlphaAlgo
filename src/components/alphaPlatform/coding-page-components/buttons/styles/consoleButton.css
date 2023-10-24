@@ -1,9 +1,12 @@
-.side-menu{
-    display: none;
+.console-dropdown{
+  display: none;
 }
 
-@media (max-width: 1050px) {
-.side-menu{
+@media (max-width:600px){
+  .console-buttons{
+    display: none;
+  }
+  .console-dropdown{
     display: flex;
   }
 }

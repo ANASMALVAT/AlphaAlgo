@@ -6,6 +6,7 @@ import userLoginWindow from "./slices/userComponentSlice"
 import userLogin from "./slices/userAuthentication"
 import alphaNotification from "./slices/alphaNotification"
 import alphaRunning from "./slices/alphaRunning"
+import alphaConsole from "./slices/alphaConsole"
 
 const store = configureStore({
     reducer:{
@@ -16,6 +17,7 @@ const store = configureStore({
       userLogin:userLogin,
       alphaNotification:alphaNotification,
       alphaRunning:alphaRunning,
+      alphaConsole:alphaConsole,
     },
   });
 

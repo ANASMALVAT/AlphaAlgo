@@ -11,12 +11,12 @@ const RestrictLogin = () => {
                 </div>
                 <div className='text-center'>
                     <h5 className=" flex text-3xl font-normal tracking-tight text-white">
-                        <p>
-                            Login to
-                        </p>
                         <Link to = "/">
-                            <h5 className=" font-mono font-bold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:scale-150 ml-1 mr-1"> X </h5>
+                            <p className=" font-mono font-bold text-3xl text-[#4C5ADF]  mr-1"> Login </p>
                         </Link>
+                        <p className=''>
+                            to X
+                        </p>
                     </h5>
                 </div>
             </div>

@@ -124,7 +124,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
                     <LanguageDropDown />
                 </div>
 
-                <div className="side-menu flex  min-w-[125px] text-white ml-8 items-center justify-left p-2">
+                <div className="side-menu-editor flex  min-w-[125px] text-white ml-8 items-center justify-left p-2">
                     <button  onClick={openConsolePane} >
                         <MenuIcon sx={{fontSize:'28px'}}/>
                     </button>

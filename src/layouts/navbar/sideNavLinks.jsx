@@ -18,7 +18,7 @@ const SideNavLinks = () => {
                         }
                         on={['hover', 'focus']}
                         position={'right center'}
-                        contentStyle={{minWidth:"300px", width:"300px",height:"300px", borderRadius:"4px",background:"transparent",border:"none"}}
+                        contentStyle={{minWidth:"275px", width:"275px",height:"200px", borderRadius:"4px",background:"transparent",border:"none"}}
                         >   
                         <SideNavToolTip />
                     </Popup>

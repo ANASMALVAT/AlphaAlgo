@@ -39,14 +39,11 @@
     flex-grow: 1;
 }
 
-@media (min-width: 0px) and (max-width: 1100px) 
+@media (min-width: 0px) and (max-width: 1225px) 
 {
     .show-buttons {
       display: flex;
       flex-direction: row;
-    }
-    .vertical-button {
-      display: none;
     }
     .console-run-button {
       margin: auto;

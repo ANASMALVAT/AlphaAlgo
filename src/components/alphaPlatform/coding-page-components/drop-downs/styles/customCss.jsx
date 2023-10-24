@@ -19,15 +19,9 @@ export const customStyles = {
       minWidth:'150px',
       maxWidth:'215px',
       width:"175px",
-      border:"1px solid gray",
-      borderBottom:"4px solid #4C5ADF",
-      
-      
-    ":hover": {
-        boxShadow: "none",
-        border:"1px solid #4C5ADF",
-        borderBottom:"5px solid #4C5ADF",
-      },
+      border:"2px solid #4C5ADF",
+      borderTop:"4px solid #4C5ADF",
+      borderBottom:"5px solid #4C5ADF",
       overflow:"auto",
       borderRadius:"2px",
     }),

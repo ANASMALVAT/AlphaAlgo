@@ -27,7 +27,8 @@ const CodeSolution = () => {
   const prerequisite = problemSolution?.M?.solution_prerequiste?.S || "";
   const prerequisiteLink = problemSolution?.M?.solution_prerequiste_links?.S || "";
   const requirement = problemSolution?.M?.solution_requirement?.S || "";
-  console.log("here");
+
+  
   return (
     <>
       <div className=" solution-layout max-h-full pt-4 pl-3 p-2 overflow-auto flex flex-col text-left h-full m-auto flex-grow  ">

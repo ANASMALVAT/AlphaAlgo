@@ -11,7 +11,7 @@ h1{
   animation-duration: 4s;
 }
 .alpha-screen:hover{
-  transform: scale(1.25);
+  transform: scale(1.15);
   transition: 0.5s all;
 }
 

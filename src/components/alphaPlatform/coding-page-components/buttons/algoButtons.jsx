@@ -5,7 +5,6 @@ import { setDifferentEditor,setConsole } from "../../../../redux/slices/alphaPla
 
 const AlgoButtons = ({buttonOne,buttonTwo }) => {
 
-
   const dispatch = useDispatch();
 
   const openEditor = () => 

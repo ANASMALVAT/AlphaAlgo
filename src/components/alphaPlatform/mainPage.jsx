@@ -172,7 +172,7 @@ const AlphaPlatform = ({}) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1050) {
+      if (window.innerWidth > 1225) {
         dispatch(
           setDefault({
             editor: true,

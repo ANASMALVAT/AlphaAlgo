@@ -10,15 +10,12 @@ const RestrictUnauthorized = () => {
                 <img src='https://www.svgrepo.com/show/408465/lock-security-open.svg'></img>
                 </div>
                 <div className='text-center'>
-                    <h5 className=" flex text-2xl font-normal tracking-tight text-white">
-                        <p>
-                            Purchase
-                        </p>
-                        <Link to="/purchase">
-                            <h5 className=" font-mono font-bold  text-[#4C5ADF] text-[32px] hover:duration-500 hover:scale-150 ml-2 mr-2"> X </h5>
+                    <h5 className=" flex text-3xl font-normal tracking-tight text-white">
+                        <Link to = "/purchase">
+                            <p className=" font-mono font-bold text-3xl text-[#4C5ADF]  mr-1"> purchase</p>
                         </Link>
-                        <p>
-                            to access the question
+                        <p className=''>
+                           to access the question.
                         </p>
                     </h5>
                 </div>

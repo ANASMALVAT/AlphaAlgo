@@ -18,8 +18,28 @@
   height: 100%;
 }
 
-.side-menu{
+.side-menu-editor{
     display:none;
+}
+
+
+@media (max-width: 1225px) {
+    .logo{
+     margin-left: 10px;
+     margin-right: 10px;
+    }
+    .language-button{
+      display: none;
+    }
+    .side-menu-editor{
+      display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+  .editor-logo{
+   display: none;
+  }
 }
 
 @media (max-width: 385px) {
@@ -31,27 +51,6 @@
       display: none;
       width: 0px;
     }
-}
-
-
-
-@media (max-width: 1050px) {
-    .logo{
-     margin-left: 10px;
-     margin-right: 10px;
-    }
-    .language-button{
-      display: none;
-    }
-    .side-menu{
-      display: flex;
-    }
-}
-
-@media (max-width: 480px) {
-  .editor-logo{
-   display: none;
-  }
 }
 
 

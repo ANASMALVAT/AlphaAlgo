@@ -48,7 +48,7 @@
     cursor:col-resize;
 }
 
-@media (min-width: 0px) and (max-width: 1050px) {
+@media (min-width: 0px) and (max-width: 1225px) {
 
     .editor-class{
         width: 100%;

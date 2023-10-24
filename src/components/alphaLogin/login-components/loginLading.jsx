@@ -1,21 +1,30 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { toggelUserLoginTrue } from '../../../redux/slices/userAuthentication';
+import { toggelLoginWindowFalse } from "../../../redux/slices/userComponentSlice";
 
 
 export function LoginSuccess() {
-
     let { token } = useParams();
+    const dispatch = useDispatch();
+
+    const fetchAuthUser = async () => {
+
+        dispatch(toggelUserLoginTrue());
+        dispatch(toggelLoginWindowFalse());
+
+    }
 
     useEffect(() => {
-        const parentWindow = window.opener;
-        if (parentWindow) {
-            parentWindow.localStorage.setItem('csrf-token', token);
-        }
+    
+        window.localStorage.setItem('csrf-token', token);
+        fetchAuthUser();
         setTimeout(() => {
-            window.close();
-        }, 500); 
+            window.location.href = '/';
+        }, 200);
+
     }, [token]);
 
     return (<></>);
-
 }

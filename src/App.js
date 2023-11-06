@@ -1,6 +1,6 @@
 import React, {  useLayoutEffect } from "react";
-import {createBrowserRouter, RouterProvider,} from "react-router-dom";
-import { LoginSuccess } from "./components/alphaLogin/login-components/loginLading";
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { LoginSuccess } from "./components/alphaLogin/login-components/loginLanding";
 import { toggelUserLoginFalse, toggelUserLoginTrue } from "./redux/slices/userAuthentication";
 import { verifyToken } from "./services/verifyToken";
 import { ToastContainer } from "react-toastify";
@@ -9,7 +9,6 @@ import Team from "./components/alphaHome/home-page-components/team/team";
 import AlphaHomePage from './components/alphaHome/alphaHome';
 import AlphaPlatform from "./components/alphaPlatform/mainPage";
 import CodingProblems from "./components/alphaProblem/codingProblemsMainPage";
-import AlphaGPT from "./components/alphaHome/home-page-components/alpha-gpt/alphaGPT";
 import Purchase from "./components/alphaHome/home-page-components/purchase/purchase";
 import SuccessfulPurchase from "./components/alphaHome/home-page-components/purchase/purchaseSuccess";
 
@@ -34,49 +33,7 @@ function App() {
       }
       
   },[])
-
-  const router = createBrowserRouter
-  ([
-    {
-      path: "/",
-      element: <AlphaHomePage/>
-    },
-    {
-      path: "team",
-      element: <Team/>,
-    },
-    {
-      path: "problems/:problemId",
-      element:<AlphaPlatform/>
-    },
-    {
-      path: "/coding-platform",
-      element:<AlphaPlatform/>
-    },
-    {
-      path:"/problems",
-      element:<CodingProblems/>
-    },
-    {
-      path:"/user/success/:token",
-      element:<LoginSuccess />
-    }
-    ,
-    {
-      path:"/purchase",
-      element:<Purchase />
-    },
-    {
-      path:"/payment-successful",
-      element:<SuccessfulPurchase/>
-    },
-    {
-      path:"/dev",
-      element:<AlphaGPT/>
-    }
-  ]);
   
-
   return (
     <div className="App">
       <ToastContainer
@@ -86,7 +43,17 @@ function App() {
         closeOnClick={true}
         theme="light"
       />
-        <RouterProvider router={router}/>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<AlphaHomePage/>} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/purchase" element={<Purchase />} />
+          <Route path="/problems" element={<CodingProblems />} />
+          <Route path="/user/success/:token" element={<LoginSuccess />} />
+          <Route path="/payment-successful" element={<SuccessfulPurchase />} />
+          <Route path="/problems/:problemId" element={<AlphaPlatform />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

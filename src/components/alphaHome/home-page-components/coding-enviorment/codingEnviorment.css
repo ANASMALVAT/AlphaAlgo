@@ -2,7 +2,8 @@
     display: flex;
     align-items: start;
     justify-content: space-evenly;
-    width: 100%;
+    width: 90%;
+    margin: auto;
 }
 .common-margin-enviorment{
     margin-left: 20%
@@ -36,20 +37,11 @@
     align-items: center;
     min-height: 600px;
     height: 100%;
-    width: 40%;
+    width: 50%;
 }
 
 .enviorment-img{
-    width: 650px;
-    height: 350px;
-    transition: transform 2s ease;
-    background: linear-gradient(60deg,rgba(225,225,225,.25),hsla(25,50%,100%,.25));
-    transform: scale(1.5) translateX(20%);
-}
-
-.enviorment-img:hover{
-    transform: scale(2) translateX(-30%);
-    transition: 0.7s all;
+    width: 90%;
 }
 
 @keyframes fadeIn {
@@ -79,7 +71,6 @@
     }
 
     .enviorment{
-        width: 100%;
         margin: auto;
         text-align: center;
         align-items: center;
@@ -111,9 +102,9 @@
 }
 
 @media (max-width:500px) {
+    .enviorment{width: 100%;}
     .div-enviorment{
         width: 90%;
-
     }
     .enviorment-header{
         font-size: 28px;

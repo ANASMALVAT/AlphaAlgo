@@ -13,7 +13,7 @@ const ComponentExplore = () => {
     return (
         <>
         
-        <div className="h-full w-full bg-algoblack flex flex-col items-center">
+        <div className="h-full w-full max-w-[1700px] m-auto bg-algoblack flex flex-col items-center mb-8">
                 <div className=" what-is-alpha">
                     <h1 className="h1-tag text-white ">What is Alpha Algo?</h1>
                 </div>

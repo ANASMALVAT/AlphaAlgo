@@ -7,40 +7,13 @@ import "./styles/componentTwo.css"
 const componentTypeWriter = () => 
 {
     const code = [
-        'void quickSort(int arr[], int low, int high)',
-        '{',
-        '    if (low > high)',
-        '    {',
-        '        return;',
-        '    }',
-        '    int j = partition(arr, low, high);',
-        '    quickSort(arr, low, j - 1);',
-        '    quickSort(arr, j + 1, high);',
-        '}',
-        '',
-        'int partition(int arr[], int l, int h)',
-        '{',
-        '    int pivot = arr[l];',
-        '    int i = l;',
-        '    int j = h;',
-        '    while (i < j)',
-        '    {',
-        '        while (arr[i] <= pivot)',
-        '        {',
-        '            i++;',
-        '        }',
-        '        while (arr[j] > pivot)',
-        '        {',
-        '            j--;',
-        '        }',
-        '        if (i < j)',
-        '        {',
-        '            swap(arr[i], arr[j]);',
-        '        }',
-        '    }',
-        '    swap(arr[l], arr[j]);',
-        '    return j;',
-        '}'
+    "function alphaAlgo {",
+    "",
+    "  console.log('Welcome to Alpha Algo!');",
+    "  console.log('🔥 Master Data Structures and Algorithms! 🔥');",
+    "  console.log('👉 Sign up now and supercharge your coding skills! 👈');",
+    "",
+    "};",
     ];
 
     const formattedCode = code.join('\n');
@@ -58,7 +31,7 @@ const componentTypeWriter = () =>
             boxShadow: '0 4px 8px 0 rgba(249, 248, 248, 0.1)'
 
             }}
-            className="algo-screen  custom-scrollbar  hover:scale-[1.15] hover:duration-300 min-w-[500px]  w-[600px] h-[375px]  mr-6 border text-white rounded-[0.5rem] border-gray-700 bg-[#011627] text-left overflow-auto">
+            className="algo-screen  overflow-hidden  hover:scale-[1.15] hover:duration-300 min-w-[625px]  w-[625px] h-[375px]  mr-6 border text-white rounded-[0.5rem] border-gray-700 bg-[#011627] text-left">
 
                 <div className="flex flex-row m-auto  text-center overflow-hidden items-center  w-full justify-center border-b border-gray-800 mb-2">
                     <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>

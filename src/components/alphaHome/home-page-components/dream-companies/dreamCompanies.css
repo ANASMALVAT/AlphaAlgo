@@ -1,0 +1,22 @@
+.text-description{
+    text-align-last: center;
+}
+
+  @media screen and (max-width:642px) {
+    .dream-companies-text-container {
+        height: 250px;
+    }
+  }
+  
+  @media screen and (max-width:500px) {
+    .dream-companies-text-container {
+        height: 265px;
+    }
+  }
+  
+
+  @media screen and (max-width:400px) {
+    .dream-companies-text-container {
+        height: 285px;
+    }
+  }

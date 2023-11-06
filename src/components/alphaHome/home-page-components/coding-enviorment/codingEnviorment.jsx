@@ -6,7 +6,7 @@ import "./codingEnviorment.css"
 const CodingEnviorment = () => {
 
     return (
-        <div className="enviorment flex min-h-[650px] flex-1 bg-algoblack justify-x pt-4 overflow-visible ">
+        <div className="enviorment flex min-h-[650px] max-w-[1700px] flex-1 bg-algoblack justify-x pt-4 overflow-visible ">
 
             <div className="div-enviorment  flex flex-col"> 
                 <div className="enviorment-header common-margin-enviorment mb-4">
@@ -28,7 +28,8 @@ const CodingEnviorment = () => {
             </div>
             
             <div className="enviorment-grid w-[40%] flex overflow-visisble justify-center">
-                <img className=" enviorment-img justify-center rounded-md  p-2 opacity-90" src={`https://alpha-images.s3.amazonaws.com/coding-console.png`}  style={{ maxWidth: '100%', height: 'auto' }} ></img>
+                <img className="enviorment-img" src="https://alpha-images.s3.amazonaws.com/coding-questions.png" ></img>
+                {/* <img className=" enviorment-img justify-center rounded-md  p-2 opacity-90" src={`https://alpha-images.s3.amazonaws.com/coding-console.png`}  style={{ maxWidth: '100%', height: 'auto' }} ></img> */}
             </div>
          
         </div>

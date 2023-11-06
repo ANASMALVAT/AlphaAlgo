@@ -5,7 +5,6 @@ h1{
 }
 
 .alpha-screen{
-  margin-left: 10%;
   transition: transform 1s ease;
   animation: fadeIn;
   animation-duration: 4s;

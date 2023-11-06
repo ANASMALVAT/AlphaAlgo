@@ -1,7 +1,7 @@
 .alpha{
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
+    width: 90%;
 }
 
 .common-margin{
@@ -13,7 +13,6 @@
     font-weight: 300;
     color: white;
     font-family: IBM Plex Sans,sans-serif;
-
 }
 
 .alpha-text{
@@ -24,7 +23,7 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    max-width: 45%;
+    width: 50%;
 }
 
 .alpha-grid{
@@ -38,17 +37,8 @@
 
 
 .alpha-img{
-    width: 575px;
-    height: 350px;
-    transition: transform 2s ease;
-    background: linear-gradient(60deg,rgba(225,225,225,.25),hsla(25,50%,100%,.25));
-}
-
-.alpha-img:hover{
-    transform: scale(2) translateX(-50%);
-    transition: 1s all;
-}
-.alpha-screen{
+    width: 80%;
+    height: 400px;
 }
 
 @keyframes fadeIn {

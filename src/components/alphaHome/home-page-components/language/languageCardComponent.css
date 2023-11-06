@@ -11,20 +11,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #4C5ADF;
+    color: #2737BD;
     font-size: 48px;
 }
 .language-img:hover{
     scale: 1.25;
     transition: 300ms all;
-}
-.language-name{
-    font-weight: normal;
-    font-size: 1.25rem;
-    color: white;
-    margin-right:7px ;
-    margin-left: 10px;
-    font-family: Ubuntu,Helvetica,Arial,sans-serif;
 }
 .language-description{
     font-size: 1.1rem;

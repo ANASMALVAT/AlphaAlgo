@@ -9,8 +9,8 @@ const LanguageCardComponent = ({language}) => {
                 {language.img}
             </div>
             <div className="flex">
-                <h1 className="language-name ">{language.language}</h1>
-                <p className="language-description text-gray-300" >{language.description}</p>
+                <h2 className="language-name text-xl text-algocodeOutput ml-3 mr-1 font-semibold">{language.language}</h2>
+                <p className="language-description text-gray-600 font-light" >{language.description}</p>
             </div>
         </div>
     )

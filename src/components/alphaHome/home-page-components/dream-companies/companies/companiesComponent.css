@@ -1,0 +1,26 @@
+.companies-container{
+  min-height: 300px;
+}
+.company-img{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+@media screen and (max-width:800px) {
+  .companies-container{
+    min-height: 325px;
+  }
+}
+
+
+@media screen and (max-width:500px) {
+  .companies-container{
+    min-height: 400px;
+  }
+}
+
+@media screen and (max-width:400px) {
+  .companies-container{
+    min-height: 500px;
+  }
+}

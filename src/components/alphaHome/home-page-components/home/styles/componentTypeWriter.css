@@ -6,7 +6,9 @@ h1{
 .algo-screen{
   transition: transform 1s ease;
   animation: fadeIn;
-  animation-duration: 4s;
+  animation-duration: 2s;
+  box-shadow: rgba(0.4, 0.4, 0.4, 0.5) 0px 22px 70px 4px;
+
 }
 
 @keyframes fadeIn {
@@ -19,7 +21,6 @@ h1{
 }
 
 .custom-scrollbar {
-    /* For Webkit (Chrome, Safari) */
     scrollbar-width: thin;
     scrollbar-color: #4C5ADF #011627;
   }

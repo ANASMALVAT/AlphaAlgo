@@ -2,21 +2,15 @@
     text-align-last: center;
 }
 
-  @media screen and (max-width:642px) {
-    .dream-companies-text-container {
-        height: 250px;
-    }
-  }
-  
   @media screen and (max-width:500px) {
     .dream-companies-text-container {
-        height: 265px;
+        height: 275px;
     }
   }
   
 
   @media screen and (max-width:400px) {
     .dream-companies-text-container {
-        height: 285px;
+        height: 300px;
     }
   }

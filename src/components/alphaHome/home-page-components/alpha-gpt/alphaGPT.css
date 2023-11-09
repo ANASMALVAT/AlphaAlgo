@@ -1,29 +1,29 @@
 .alpha{
     display: flex;
     justify-content: space-evenly;
-    width: 90%;
 }
 
 .common-margin{
-    margin-left: 20%
+    margin-left: 10%
 }
 
 .alpha-header{
     font-size: 32px;
-    font-weight: 300;
-    color: white;
     font-family: IBM Plex Sans,sans-serif;
 }
 
 .alpha-text{
     font-size: 18px;
+
 }
 
 .div-alpha{
     display: flex;
-    justify-content: center;
+    justify-content:left;
+    margin-right: auto;
     margin: auto;
     width: 50%;
+
 }
 
 .alpha-grid{
@@ -37,8 +37,9 @@
 
 
 .alpha-img{
-    width: 80%;
+    width: 90%;
     height: 400px;
+    margin: auto;
 }
 
 @keyframes fadeIn {
@@ -65,7 +66,10 @@
     }
 }
 
-@media (max-width:1000px) {
+@media (max-width:1200px) {
+    .common-margin{
+        margin-left: 0%
+    }
     .alpha-grid{
         display: none;
     }
@@ -74,6 +78,7 @@
         width: 80%;
         text-align: center;
         gap: 2rem;
+        padding: 0px;
     }
     .alpha-header{
         text-align: center;
@@ -84,10 +89,11 @@
         margin: auto;
         text-align: center;
         align-items: center;
-        height: 850px;
+        height: 600px;
     }
     .alpha-text{
         margin: auto;
+        text-align: center;
     }
     .alpha-cards{
         margin: auto;

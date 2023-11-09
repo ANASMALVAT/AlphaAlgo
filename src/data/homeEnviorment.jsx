@@ -1,20 +1,26 @@
 export const enviormentFeatures = [
     {
-        description:"Compile code in real time"
+        description: "Responsive U.I",
+        sentence: "Effortless and adaptive interface for smooth navigation and interaction."
     },
     {
-        description:"Coding Assitance, to never get stuck"
+        description: "Coding Assistance",
+        sentence: "Intelligent suggestions and real-time support for enhanced productivity."
     },
     {
-        description:"White-Board to practice with your friends"
+        description: "White-Board",
+        sentence: "Interactive whiteboard for effective brainstorming and visual collaboration."
     },
     {
-        description:"Write code in 4 languages"
+        description: "Four Languages",
+        sentence: "Support for multiple programming languages catering to diverse needs."
     },
     {
-        description:"Responsive User-Interface"
+        description: "Editor Settings",
+        sentence: "Customizable interface to match your unique workflow and preferences."
     },
     {
-        description:"Editor settings, Theme settings"
+        description: "Theme Settings",
+        sentence: "Personalized themes for a visually appealing coding environment."
     }
-]
+];

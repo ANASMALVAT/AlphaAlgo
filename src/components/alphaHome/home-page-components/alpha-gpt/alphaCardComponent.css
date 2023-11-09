@@ -5,7 +5,6 @@
 }
 
 .alpha-description{
-    font-size: 22px;
     margin-left: 10px;
     text-align: left;
 }
@@ -21,12 +20,7 @@
     border-radius: 5px;
 }
 
-.alpha-block:hover{
-    scale: 1.35;
-    transition-duration: 300ms;
-}
-
-@media (max-width:1000px) {
+@media (max-width:1200px) {
     .alpha-block{
         margin-left: 50px;
     }
@@ -37,9 +31,6 @@
 
 
 @media (max-width:500px) {
-    .alpha-block{
-       margin: auto;
-    }
     .alpha-description{
         font-size: 18px;
     }

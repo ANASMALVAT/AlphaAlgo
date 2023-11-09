@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ComponentExploreDetail from "./componentExploreDetail";
-import "./styles/componentThree.css"
+import "./styles/componentExplore.css"
 
 const ComponentExplore = () => {
 
@@ -13,12 +13,9 @@ const ComponentExplore = () => {
     return (
         <>
         
-        <div className="h-full w-full max-w-[1700px] m-auto bg-algoblack flex flex-col items-center mb-8">
-                <div className=" what-is-alpha">
-                    <h1 className="h1-tag text-white ">What is Alpha Algo?</h1>
-                </div>
-                <div>
-                    <ComponentExploreDetail/>
+        <div className=" w-full max-w-[1700px] m-auto bg-algoblack flex flex-col items-center mb-4 ">
+                <div className=" what-is-alpha z-10">
+                    <h1 className="h1-tag text-white mb-4 z-10">What is Alpha Algo?</h1>
                 </div>
         </div>
         </>

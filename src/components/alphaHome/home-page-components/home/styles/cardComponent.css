@@ -3,7 +3,7 @@
 
 .card-css{
     color:#4C5ADF;
-
+    width: 425px;
 }
 
 .card-css:hover{
@@ -12,9 +12,9 @@
 
 @media (max-width:500px){
     .card-css{
-        width: 310px;
         margin: auto;
         margin-bottom: 10px;
+        width: 375px;
     }
     .text-2xl{
         font-size: 22px;
@@ -23,9 +23,9 @@
 
 @media (max-width:400px){
     .card-css{
-        width: 285px;
         margin: auto;
         margin-bottom: 10px;
+        width: 350px;
     }
     .text-2xl{
         font-size: 20px;

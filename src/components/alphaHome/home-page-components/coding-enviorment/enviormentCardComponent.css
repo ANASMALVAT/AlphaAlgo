@@ -1,14 +1,18 @@
 .enviorment-block{
     display: flex;
-    justify-content: start;
-    align-items: center;
+    height: 9rem;
+}
+
+.enviorment-block:hover{
+    background-color: rgba(243,244,246,.05);
+    cursor:auto;
 }
 
 .enviorment-description{
-    font-size: 22px;
-    margin-left: 10px;
     text-align: left;
+    cursor: auto;
 }
+
 
 .check-icon{
     font-weight: 900;
@@ -20,26 +24,50 @@
     width: fit-content;
     border-radius: 5px;
 }
-.enviorment-block:hover{
-    scale: 1.15;
-    transition-duration: 200ms;
+
+.enviorment-description-sentence{
+    font-size: 16px;
 }
 
 @media (max-width:1000px) {
     .enviorment-block{
         margin-left: 50px;
+        height: 10rem;
     }
     .enviorment-description{
-        font-size: 20px;
+        font-size: 18px;
+    }
+    .enviorment-description-sentence{
+        font-size: 16px;
     }
 }
 
+@media (max-width:765px) {
+    .enviorment-block{
+        margin-left: 50px;
+        height: 10rem;
+        min-width:225px ;
+    }
+    .enviorment-description{
+        font-size: 17px;
+    }
+    .enviorment-description-sentence{
+        font-size: 15px;
+    }
+}
+@media (max-width:710px) {
+    .enviorment-block{
+        margin-left: 50px;
+        height: 8rem;
+        min-width:225px ;
+    }
+}
 
 @media (max-width:500px) {
     .enviorment-block{
        margin: auto;
     }
-    .enviorment-description{
-        font-size: 18px;
+    .enviorment-description-sentence{
+        font-size: 16px;
     }
 }

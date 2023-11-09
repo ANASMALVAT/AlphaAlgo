@@ -4,6 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&family=Ubuntu&display=swap');
 
+.div-container{
+    flex-wrap: wrap;
+    margin: 0px;
+    padding: 0px;
+
+}
 .logo {
     font-size: 8rem;
     color: #4C5ADF;
@@ -32,6 +38,9 @@ transform: scale(1.25);
 .alpha-info-button{
     border-radius: 4px;
 }
+.info{
+    text-align: left;
+}
 
 @media (max-width:1100px) 
 {
@@ -51,8 +60,10 @@ transform: scale(1.25);
     .alpha-info-detail{
         width: 100%;
         justify-content: center;
-        text-align: center;
         align-items: center;
+    }
+    .info{
+        text-align: center;
     }
 }
 

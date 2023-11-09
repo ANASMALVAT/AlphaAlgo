@@ -1,99 +1,41 @@
-
-.question{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    width: 50%;
-    gap: 2rem;
-}
-
-.question-header{
-    font-size: 38px;
-    font-weight: 300;
-    width: 100%;
-    color: white;
-}
-
-.question-text {
-    font-size: 18px;
-}
-
-.question-grid{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-left: 15%;
+.question-flow{
+    box-shadow: rgba(0.8, 0.5, 0.5, 0.9) 0px 22px 70px 4px;
 
 }
 
-.common-margin-question{
-    margin-left: 15%;
+.start-data {
+    position: absolute;
+    display: none;
+  }
+  
+.question-flow .start-data {
+display: block;
 }
 
-.question-animation{
-    width: 45%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.question-gif{
-    width: 90%;
+.start-data{
+    animation: moveTrain 10s linear infinite; /* 5s duration, linear movement, infinite loop */
 }
 
+@keyframes moveTrain {
+    0% {
+      left: -250px; /* Initial position */
+    }
+    100% {
+      left: 50%; /* Move train to the right end */
+    }
+  }
 
 @media (max-width:1000px) {
     .question-main{
         height: 500px;
     }
-    .question{
-        width: 80%;
-    }
-    .question-header{
-        justify-content: center;
-        margin: auto;
-        text-align: center;
-    }
-    .question-text{
-        display: flex;
-        text-align: center;
-        font-size: 18px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    .question-animation{
-        display: none;
-    }
-    .common-margin-question{
-        margin:0px;
-    }
-    .question-grid{
-        margin-left: 0px;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+   
 }
 
 @media (max-width:500px) {
 
     .question-main{
         height: 900px;
-    }
-    .question-header{
-        font-size: 28px;
-    }
-    .question-text{
-        font-size: 16px;
-    }
-    
-    .question-grid{
-        flex-wrap: nowrap;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        align-items: center;
-        width: 100%;
     }
 }
 

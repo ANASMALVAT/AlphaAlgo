@@ -1,13 +1,17 @@
-.common-margin-language{
-    margin-left: 20%;
-}
 
 .language-header{
-    font-size: 38px;
-    width: 100%;
+    font-size: 32px;
+    font-weight: 300;
+    color: white;
+    text-align: left;
 }
+
 .language-text{
     font-size: 18px;
+}
+
+.common-margin-language{
+    margin-left: 20%;
 }
 
 .languages{
@@ -15,45 +19,39 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    width: 40%;
+    width: 50%;
 }
 .language-animation{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 50%;
 }
 .coding-gif{
-    width: 450px;
-    height: 450px;
+    width: 550px;
+    height: 550px;
     border-radius: 5px;
 }
 
-@media (max-width:1000px) {
-
-
+@media (max-width:1200px) {
     .common-margin-language{
         margin:0px;
     }
-
     .common-margin{
         margin: 0;
         margin-left: 0px;
     }
-
     .languages{
         width: 80%;
         justify-content: center;
         align-items: center;
         gap: 2rem;
     }
-
     .language-header{
         justify-content: center;
         text-align: center;
         font-size: 32px;
     }
-
     .language-text {
         display: flex;
         justify-content: center;

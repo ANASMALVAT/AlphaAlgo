@@ -20,8 +20,8 @@ const AlphaHomePage = () => {
                 <DreamCompanies/>
                 <CodingEnviorment/>
                 <AlphaGPT/>
-                <QuestionComponent/>
                 <LanguageComponent/>
+                {/* <QuestionComponent/> */}
                 <AlphaFooter/>
             </div>
         </>

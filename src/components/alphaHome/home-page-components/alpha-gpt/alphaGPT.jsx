@@ -7,27 +7,28 @@ import "./alphaGPT.css"
 const AlphaGPT = () => {
 
     return (
-        <div className="alpha flex min-h-[700px] max-w-[1700px] flex-1 m-auto bg-algoblack justify-evenly pt-4 overflow-visible ">
-            
-            <div className="alpha-grid flex overflow-visisble ">
-                <div className="alpha-img">
-                    <AlphaGptWindow className=" alpha-img justify-center rounded-md  p-2 opacity-90" style={{ maxWidth: '90%', height: 'auto' }} />
+        <div className="alpha flex min-h-[700px] w-screen  flex-1 m-auto bg-[#F5F5F5] justify-evenly pt-4 overflow-visible ">
+            <div className=" w-full max-w-[1400px] flex">
+                <div className="alpha-grid flex overflow-visisble ">
+                    <div className="alpha-img">
+                        <AlphaGptWindow className=" alpha-img justify-center rounded-md  p-2 opacity-90" style={{ maxWidth: '90%', height: 'auto' }} />
+                    </div>
                 </div>
-            </div>
 
-            <div className="div-alpha  flex flex-col" > 
-                <h1 className=" alpha-header common-margin mb-4  ">AlphaGPT, Your Coding Assistance.</h1>
-                <div className=" alpha-text common-margin mb-10 text-gray-600  ">
-                    <p className="text-gray-300 text-justify">
-                        Introducing AlphaGPT, your trusted coding companion, specializing in language syntax, code review, and knowledge enrichment.
-                    </p>
-                </div>
-                <div className=" alpha-cards common-margin flex flex-col gap-2">
-                    {
-                      alphaFeatures.map((value,index) => {
-                        return <AlphaCardComponent features={value} />
-                      })
-                    }
+                <div className="div-alpha  flex flex-col " > 
+                    <h1 className=" alpha-header common-margin mb-4 font-semibold  text-algoblack ">AlphaGPT, Your Coding Assistance.</h1>
+                    <div className=" alpha-text common-margin mb-8 text-algoblack  ">
+                        <h2 className=" alpha-text text-algoblack font-normal text-lg text-justify">
+                            Introducing AlphaGPT, your trusted coding companion, specializing in language syntax, code review, and knowledge enrichment.
+                        </h2>
+                    </div>
+                    <div className=" alpha-cards common-margin flex flex-col gap-2">
+                        {
+                        alphaFeatures.map((value,index) => {
+                            return <AlphaCardComponent features={value} />
+                        })
+                        }
+                    </div>
                 </div>
             </div>
         </div>

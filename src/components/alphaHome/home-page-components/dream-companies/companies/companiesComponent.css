@@ -2,25 +2,33 @@
   min-height: 300px;
 }
 .company-img{
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: 25px;
+  margin-right: 25px;
+  height: 158px;
+  width: 178px;
+}
+.apple-img{
+  margin-left: 25px;
+  margin-right: 25px;
+  height: 58px;
+  width: 72px;
 }
 
 @media screen and (max-width:800px) {
   .companies-container{
-    min-height: 325px;
+    min-height: 425px;
   }
 }
 
 
 @media screen and (max-width:500px) {
   .companies-container{
-    min-height: 400px;
+    min-height: 500px;
   }
 }
 
 @media screen and (max-width:400px) {
   .companies-container{
-    min-height: 500px;
+    min-height: 600px;
   }
 }

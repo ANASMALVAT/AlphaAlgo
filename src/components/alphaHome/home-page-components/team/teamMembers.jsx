@@ -17,7 +17,7 @@ const TeamMember = ({memberInfo}) => {
                         <Typewriter
                             
                             options={{
-                                strings: ['Founder', 'Creator','Designer','Maintainer'],
+                                strings: ['Founder','Maintainer'],
                                 autoStart: true,
                                 loop: true,
                             }}

@@ -2,33 +2,29 @@
     display: flex;
     align-items: start;
     justify-content: space-evenly;
-    width: 90%;
     margin: auto;
 }
+
 .common-margin-enviorment{
     margin-left: 20%
 }
-
 
 .enviorment-header{
     font-size: 32px;
     font-weight: 300;
     color: white;
-
 }
 
 .enviorment-text{
-    font-size: 18px;
-
+    font-size: 17px;
+     text-align: left;
 }
-
 
 .div-enviorment{
     display: flex;
     justify-content: center;
     margin: auto;
     width: 50%;
-
 }
 
 .enviorment-grid{    
@@ -37,12 +33,18 @@
     align-items: center;
     min-height: 600px;
     height: 100%;
-    width: 50%;
+    width: 48%;
+    margin-left: 2%;
 }
 
 .enviorment-img{
-    width: 90%;
+    width: 93%;
 }
+
+.enviorment-cards > div {
+    flex: 35%;
+}
+
 
 @keyframes fadeIn {
     0% {
@@ -62,7 +64,7 @@
     }
   }
 
-@media (max-width:1000px) {
+@media (max-width:1200px) {
     .common-margin-enviorment{
         margin: 0px;
     }
@@ -94,11 +96,22 @@
     .enviorment-text{
         margin: auto;
         text-align: center;
-        width: 80%;
+        width: 90%;
     }
     .enviorment-cards{
         margin: auto;
     }
+}
+
+@media (max-width:710px) {
+    .enviorment{
+        min-height: 1200px;
+    }
+    .enviorment-text{
+        text-align: center;
+        width: 100%;
+    }
+
 }
 
 @media (max-width:500px) {

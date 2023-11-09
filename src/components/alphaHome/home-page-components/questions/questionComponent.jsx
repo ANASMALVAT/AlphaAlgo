@@ -8,26 +8,16 @@ import "./questionComponent.css"
 const QuestionComponent = () => {
 
     return (
-        <div className=" question-main flex flex-row  min-h-[600px] flex-1 bg-algoblack justify-evenly pt-4 ">
-            <div className="question"> 
-                <div className="question-header common-margin-question">                
-                    <h1 >Practice Real World Coding Questions</h1>
-                </div>
-                <div className=" question-text common-margin-question mb-6 text-gray-300">
-                    <p className="text-gray-300">
-                        After mastering problem solving by dedicating more than 20000 hours and consulting with coding interview experts, we've meticulously curated the ultimate collection for you.
-                    </p>    
-                </div>
-                <div className=" question-grid  mb-4 text-gray-300">
-                    {
-                        questionCategory.map((topic) => {
-                            return <QuestionCardComponent topic={topic} />
-                        })
-                    }
+        <div className=" question-main flex relative flex-row overflow-hidden min-h-[600px] flex-1 bg-[#F5F5F5] justify-center items-center pt-4 ">
+            <div className=" absolute w-28 h-28 rounded-md flex bg-algoXcolor m-auto z-10 items-center justify-center text-center">
+                <h2 className="tracking-wide font-bold antialiased text-gray-200 opacity-90 text-8xl">X</h2>
+            </div>
+            <div className="z-0 flex-col w-[50%] h-[400px]  bg-transparent">
+                <div className="z-0 question-flow flex flex-col w-full h-full rounded-r-full bg-algoblack ">
+                    <QuestionCardComponent/>
                 </div>
             </div>
-            <div className="question-animation">
-                <img className="question-gif" src="https://alpha-images.s3.amazonaws.com/coding-questions.png" ></img>
+            <div className="z-0 flex-col w-[50%] h-[400px]  bg-transparent">
             </div>
         </div>
     )

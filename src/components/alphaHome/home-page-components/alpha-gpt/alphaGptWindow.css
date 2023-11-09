@@ -7,11 +7,11 @@ h1{
 .alpha-screen{
   transition: transform 1s ease;
   animation: fadeIn;
-  animation-duration: 4s;
+  box-shadow: rgba(0.4, 0.2, 0.2, 0.8) 0px 22px 70px 4px;
 }
+
 .alpha-screen:hover{
-  transform: scale(1.15);
-  transition: 0.5s all;
+  
 }
 
 @keyframes fadeIn {

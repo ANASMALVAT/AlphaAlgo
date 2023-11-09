@@ -6,9 +6,6 @@ export const alphaFeatures = [
         features: "Code Reviews",
     },
     {
-        features: "User-Friendly Interaction",
-    },
-    {
         features:"Code Refactoring"
     },
     {

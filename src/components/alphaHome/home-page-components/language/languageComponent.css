@@ -8,6 +8,7 @@
 
 .language-text{
     font-size: 18px;
+    
 }
 
 .common-margin-language{
@@ -43,6 +44,7 @@
     }
     .languages{
         width: 80%;
+        max-width: 700px;
         justify-content: center;
         align-items: center;
         gap: 2rem;

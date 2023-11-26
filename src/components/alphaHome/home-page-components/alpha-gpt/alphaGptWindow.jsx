@@ -39,7 +39,6 @@ const AlphaGptWindow = () =>
                             placeholder='AlphaGPT'
                         >
                         </textarea>
-                        
                         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                         <IconButton className='flex' color="primary" sx={{ p: '5px'}} aria-label="directions" >
                             {

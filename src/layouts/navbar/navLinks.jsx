@@ -12,7 +12,7 @@ const NavLinks = ({flexClass}) => {
                     <Popup
                         trigger=
                         {
-                            <li class="nav-item mb-1 font-mono font-semibold hover:duration-100 hover:border-b-4 hover:border-[#4C5ADF]">
+                            <li class="mb-1  cursor-pointer font-mono font-semibold hover:duration-100 hover:border-b-4 hover:border-[#4C5ADF]">
                                 Products
                             </li>
                         }
@@ -38,8 +38,6 @@ const NavLinks = ({flexClass}) => {
                         >
                         Purchase
                         </Link>
-                    </li>
-                    <li class="nav-item mb-1">
                     </li>
                 </ul>
             </div>

@@ -28,10 +28,12 @@ const ComponentMain = () =>
                         <h2 className=" info mt-1 font-light text-lg  text-gray-300 z-10">
                             Your definitive guide to crack coding interviews.
                         </h2>
+                        
                         <Link to="/problems">
-                            <button className={` overflow-hidden mt-12 mb-4 text-lg flex flex-row items-center text-center align-middle  rounded-[0.25rem] px-3 py-2  font-mono font-normal justify-center text-white border bg-[#4C5ADF] hover:duration-300 border-b-8 z-10 border-[#4C5ADF]`}>
-                                <p className="text-lg font-normal ">Explore Problems</p> 
-                            </button>   
+                        <button className={`what-button overflow-hidden mt-8 flex flex-row items-center text-center align-middle  rounded-sm px-4  font-mono font-normal justify-center text-white border bg-[#4C5ADF] hover:duration-300 border-b-8 border-[#4C5ADF]`}>
+                            <h2 className=" text-xl">Explore</h2> 
+                            <h1 className="ml-2 logo-com-3 font-bold antialiased text-[#2D33CA] hover:duration-300 hover:scale-125"> X </h1>
+                        </button>   
                         </Link>
                     </div>
                 </div>

@@ -7,6 +7,7 @@
 .alpha-description{
     margin-left: 10px;
     text-align: left;
+    
 }
 
 .check-icon{
@@ -23,10 +24,14 @@
 @media (max-width:1200px) {
     .alpha-block{
         margin-left: 50px;
+        justify-content:left;
+        margin: 0px
     }
     .alpha-description{
         font-size: 20px;
+        
     }
+
 }
 
 

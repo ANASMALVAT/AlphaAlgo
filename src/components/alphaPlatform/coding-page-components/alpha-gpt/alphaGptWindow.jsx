@@ -58,8 +58,8 @@ const AlphaGPTWindow = () => {
   };
 
   return (
-    <div className=' min-h-[50px] h-full flex flex-col flex-1 w-full p-2 rounded-md '>
-      <div className={`gpt-output-console transition-all duration-1000 ease-in-out flex-grow w-full p-2   overflow-auto border-b border-gray-400 mb-2 h-[100%]`}>
+    <div className=' min-h-[50px] h-full flex flex-col flex-1 w-full p-2 rounded-md  bg-algoblack'>
+      <div className={`gpt-output-console transition-all duration-1000 ease-in-out flex-grow w-full p-2   overflow-auto border-b border-gray-400 mb-2 h-[100%] bg-algoblack`}>
         {
           messages.map((message, index) => (
             <AlphaGptWindowText

@@ -58,7 +58,7 @@ const AlphaNavbar  = () => {
             <UserLogin />
             <SideNav isOpen={sideNav} onRequestClose={closePane}/>
 
-            <div className=" h-20 w-full bg-[#00182D] flex flex-row  flex-grow p-2 items-center m-auto  justify-between">
+            <div className=" h-20 w-full bg-[#00182D] flex flex-row  flex-grow p-2 items-center m-auto  justify-evenly">
 
                     <div id="sideNav" className="sideNav max-w-[150px] text-white ml-8">
                         <button onClick={openNav}>
@@ -66,12 +66,12 @@ const AlphaNavbar  = () => {
                         </button>
                     </div>
 
-                    <div className="logo w-[25%] min-w-[100px] justify-center align-bottom items-center h-full  overflow-hidden">
-                        <div className="flex flex-row justify-center items-center">
+                    <div className="logo max-w-[200px] min-w-[100px] justify-center align-bottom items-center h-full  overflow-hidden">
+                        <div className="flex flex-row justify-start items-center">
                             <h1 className="tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
                                 <Link
                                 to="/"
-                                className="tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-[400ms] hover:rotate-[720deg]"
+                                className="tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-[1500ms] hover:rotate-[360deg]"
                                 >
                                 X
                                 </Link> 
@@ -83,14 +83,14 @@ const AlphaNavbar  = () => {
                         <NavLinks/>
                     </div>
 
-                    { !showLoginButton && <div  className="w-[25%] min-w-[30px] h-full justify-center align-bottom text-center"> </div> }
+                    { !showLoginButton && <div  className="w-[175px] min-w-[40px] h-full justify-center align-bottom text-center opacity-0"></div> }
 
                     {
                     showLoginButton && 
                     (
                         IsUserLoggedIn ? 
                         (
-                            <div id="logout" className="w-[25%] min-w-[30px] h-full justify-center align-bottom text-center">
+                            <div id="logout" className="w-[175px] min-w-[40px] h-full justify-center align-bottom text-center">
                                 <button onClick={logout} className="login-ul flex h-full w-[120px] flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
                                     <div className="font-mono font-semibold italic text-xl hover:duration-100 p-1 rounded-md hover:border-2 border-[#4C5ADF]" href="#">
                                         Logout
@@ -99,12 +99,12 @@ const AlphaNavbar  = () => {
                             </div>
                         ) : 
                         (
-                            <div id="login" className="w-[25%] min-w-[30px] h-full justify-center align-bottom text-center">
-                            <button onClick={showLogin} className="login-ul flex h-full w-[85px] py-4 px-4 flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
-                                <div className="font-mono font-semibold italic text-xl hover:duration-100 p-1 rounded-md hover:border-2 border-[#4C5ADF]" href="#">
-                                    Login
-                                </div>
-                            </button>
+                            <div id="login" className=" w-[175px] min-w-[40px] h-full justify-center align-bottom text-center">
+                                <button onClick={showLogin} className="login-ul flex h-full w-[120px] flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
+                                    <div className="font-mono font-semibold italic text-xl hover:duration-100 p-1 rounded-md hover:border-2 border-[#4C5ADF]" href="#">
+                                        Login
+                                    </div>
+                                </button>
                             </div>
                         )
                     )}

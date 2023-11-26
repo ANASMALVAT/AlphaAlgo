@@ -9,6 +9,7 @@ import AlphaGPT from "./home-page-components/alpha-gpt/alphaGPT";
 import DreamCompanies from "./home-page-components/dream-companies/dreamCompanies";
 import AlphaFooter from "../../layouts/footer/AlphaFooter";
 
+
 const AlphaHomePage = () => {
     console.log(localStorage.getItem('jwt-token'));
     return (
@@ -21,7 +22,7 @@ const AlphaHomePage = () => {
                 <CodingEnviorment/>
                 <AlphaGPT/>
                 <LanguageComponent/>
-                {/* <QuestionComponent/> */}
+                <QuestionComponent/>
                 <AlphaFooter/>
             </div>
         </>

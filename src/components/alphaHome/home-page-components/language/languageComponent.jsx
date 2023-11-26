@@ -9,9 +9,9 @@ const LanguageComponent = () => {
 
     return (
         
-        <div className="flex flex-row min-h-[80vh] bg-transparent justify-evenly pt-8 ">
+        <div className="flex flex-row min-h-[80vh] bg-transparent justify-evenly pt-8 max-w-[1500px] m-auto ">
 
-            <div className="languages  max-w-[1400px]"> 
+            <div className="languages  "> 
                 <div className="language-header common-margin-language mb-4">
                     <h1 className="language-header-text">Type In Four Syntax</h1>
                 </div>

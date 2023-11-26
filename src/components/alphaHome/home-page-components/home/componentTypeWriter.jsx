@@ -40,7 +40,7 @@ const componentTypeWriter = () =>
 
                 <div className="flex flex-row m-auto  text-center overflow-hidden items-center  w-full justify-center border-b border-gray-800 mb-2">
                     <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
-                    <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] hover:duration-500 hover:rotate-[540deg] ">X</h1>
+                    <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] ">X</h1>
                     <h1 className="font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
                 </div>
 

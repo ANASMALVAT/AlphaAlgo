@@ -21,7 +21,7 @@ export default function AlphaGPTSearchBar({sendRequest, loading}) {
 
       <Paper
           component="form"
-          sx={{ display: 'flex', background:'transparent', borderRight:'1px solid white', alignItems: 'center', height:"60px", width: '100%' }}
+          sx={{ display: 'flex', background:'#00182D', borderRight:'1px solid white', alignItems: 'center', height:"60px", width: '100%' }}
         >
         <textarea 
           className=' flex items-center text-area font-mono text-[1.2rem] bg-transparent w-full rounded-[0.25rem] h-12 border border-gray-500 text-white' 

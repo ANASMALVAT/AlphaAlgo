@@ -42,8 +42,5 @@ export const questionCategory = [
     {
         description:"Sliding Window"
     },
-    {
-        description:"and many more..."
-    },
     
 ]

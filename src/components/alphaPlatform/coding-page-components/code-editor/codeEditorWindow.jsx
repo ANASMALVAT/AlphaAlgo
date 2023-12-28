@@ -104,11 +104,11 @@ const CodeEditorWindow = ({onChangeData,code }) =>
 
                 <div className=" buttons flex  text-center align-center rounded-sm ">
 
-                    <button onClick={handleRestore}  className={`button-disappear overflow-hidden mr-2 h-12  flex flex-row items-center border-b-4 border-[#4C5ADF] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
+                    <button onClick={handleRestore}  className={`button-disappear overflow-hidden mr-2 h-12  flex flex-row items-center border-b-4 border-algoXcolor rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
                         <RestoreIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
                     </button>
 
-                    <button  onClick={openSettingPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center   border-b-4 border-[#4C5ADF] rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
+                    <button  onClick={openSettingPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center   border-b-4 border-algoXcolor rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
                         <SettingsIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
                     </button>
 
@@ -116,7 +116,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
 
                 <div className="flex items-center bg-algoXcolor rounded-[0.25rem] p-2 mt-1 mb-1">
                     <Link to={"/problems"}>
-                        <h1 className=" font-bold text-4xl  antialiased text-[#2D33CA] hover:duration-300 hover:scale-125">X</h1>
+                        <h1 className=" font-bold text-4xl  antialiased text-white hover:duration-300 hover:scale-110">X</h1>
                     </Link>
                 </div>
 

@@ -16,7 +16,7 @@ module.exports = {
         algoblack:"#00182D",
         algoprob:"#1B3B6F",
         algocodeOutput: "#1E293B",
-        algoXcolor:"#4C5ADF",
+        algoXcolor:"#392A6D",
         
       }
     },

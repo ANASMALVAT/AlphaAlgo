@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { toggelUserLoginTrue } from '../../../redux/slices/userAuthentication';
-import { toggelLoginWindowFalse, userWindowSlice } from "../../../redux/slices/userComponentSlice";
+import { toggelLoginWindowFalse } from "../../../redux/slices/userComponentSlice";
 import {useNavigate} from 'react-router-dom';
 
 export function LoginSuccess() {
@@ -18,16 +18,12 @@ export function LoginSuccess() {
 
     useEffect(() => {
         window.localStorage.setItem('csrf-token', token);
-        console.log(token);
-        
         fetchAuthUser();
         setTimeout(() => {
             navigate("/");
         }, 300);
     }, [token]);
 
-    return (<>
-    Success!
-    </>);
+    return (<></>);
 }
 

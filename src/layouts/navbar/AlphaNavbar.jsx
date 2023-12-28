@@ -66,20 +66,20 @@ const AlphaNavbar  = () => {
                         </button>
                     </div>
 
-                    <div className="logo max-w-[200px] min-w-[100px] justify-center align-bottom items-center h-full  overflow-hidden">
-                        <div className="flex flex-row justify-start items-center">
-                            <h1 className="tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
+                    <div className="logo max-w-[200px] min-w-[100px] justify-center align-bottom items-center  overflow-hidden">
+                        <div className="flex flex-row justify-center">
+                            <h1 className=" flex  items-center tracking-wide font-normal antialiased text-[white] text-xl  text-center">A</h1>
                                 <Link
                                 to="/"
-                                className="tracking-wide font-bold antialiased text-[#4C5ADF] text-6xl hover:duration-[1500ms] hover:rotate-[360deg]"
+                                className="tracking-wide font-bold antialiased text-[#392A6D] text-4xl hover:duration-[1500ms] hover:rotate-[360deg]"
                                 >
                                 X
                                 </Link> 
-                            <h1 className=" tracking-wide font-normal antialiased text-[white] text-3xl">A</h1>
+                            <h1 className="flex items-center  tracking-wide font-normal antialiased text-[white] text-xl text-center">A</h1>
                         </div>
                     </div>
 
-                    <div id="nav" className="nav w-[45%]  max-w-[400px] h-full"> 
+                    <div id="nav" className="nav w-[45%]  max-w-[400px] h-full flex justify-center items-center "> 
                         <NavLinks/>
                     </div>
 
@@ -101,7 +101,7 @@ const AlphaNavbar  = () => {
                         (
                             <div id="login" className=" w-[175px] min-w-[40px] h-full justify-center align-bottom text-center">
                                 <button onClick={showLogin} className="login-ul flex h-full w-[120px] flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
-                                    <div className="font-mono font-semibold italic text-xl hover:duration-100 p-1 rounded-md hover:border-2 border-[#4C5ADF]" href="#">
+                                    <div className="font-mono font-semibold italic text-xl hover:duration-100 p-1 hover:border-b-4 border-algoXcolor" href="#">
                                         Login
                                     </div>
                                 </button>

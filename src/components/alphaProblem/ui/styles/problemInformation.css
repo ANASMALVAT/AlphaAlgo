@@ -1,7 +1,7 @@
 /* Base Styles */
 .container {
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +9,7 @@
 
   .header {
     font-size: 38px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: white;
     max-width: 600px;
     justify-items: center;

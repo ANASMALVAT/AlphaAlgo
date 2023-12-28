@@ -48,7 +48,7 @@ const ConsoleButton = ({}) => {
                 <button
                     onClick={setConsoleProblem}
                     className={` border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full font-mono text-sm font-normal text-white
-                    ${alphaConsole.isProblem ? 'bg-[#3e49b4]' : 'bg-[#002451]'}
+                    ${alphaConsole.isProblem ? 'bg-algoXcolor' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                 >
                     <span className="font-normal font-resize">Problem</span>
@@ -57,7 +57,7 @@ const ConsoleButton = ({}) => {
                 <button
                     onClick={setConsoleConsole}
                     className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2 h-full font-mono text-sm font-normal text-white
-                    ${alphaConsole.isConsole ? 'bg-[#3e49b4]' : 'bg-[#002451]'}
+                    ${alphaConsole.isConsole ? 'bg-algoXcolor' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                 >
                     <pre className="font-normal font-resize">Console</pre>
@@ -66,7 +66,7 @@ const ConsoleButton = ({}) => {
                 <button
                     onClick={setConsoleInput}
                     className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
-                    ${alphaConsole.isInput ? 'bg-[#3e49b4]' : 'bg-[#002451]'}
+                    ${alphaConsole.isInput ? 'bg-algoXcolor' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                 >
                     <pre className="font-normal font-resize">Test Cases</pre>
@@ -75,7 +75,7 @@ const ConsoleButton = ({}) => {
                 <button
                     onClick={setConsoleAlpha}
                     className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
-                    ${alphaConsole.isAlphaGPT ? 'bg-[#3e49b4]' : 'bg-[#002451]'}
+                    ${alphaConsole.isAlphaGPT ? 'bg-algoXcolor' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                 >
                     <pre className="font-normal font-resize">AlphaGPT</pre>
@@ -84,7 +84,7 @@ const ConsoleButton = ({}) => {
                 <button
                     onClick={setConsoleSolution}
                     className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
-                    ${alphaConsole.isSolution ? 'bg-[#3e49b4]' : 'bg-[#002451]'}
+                    ${alphaConsole.isSolution ? 'bg-algoXcolor' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                     >
                     <pre className="font-normal font-resize">Solution</pre>
@@ -95,7 +95,7 @@ const ConsoleButton = ({}) => {
             </div>
             <button
                 onClick={openConsolePane}
-                className={` side-menu-editor border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
+                className={` side-menu-editor border border-algoXcolor overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
                 sm:text-sm lg:text-md xl:text-md`}
             >
                 <MenuIcon sx={{fontSize:'28px'}}/>

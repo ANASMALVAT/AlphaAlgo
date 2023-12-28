@@ -27,7 +27,6 @@
     width: 100%;
 }
 
-
 @media (max-width:1200px) {
    
     .common-margin-question{
@@ -44,10 +43,3 @@
     }
 }
 
-@media (max-width:710px) {
-
-}
-
-@media (max-width:500px) {
-
-}

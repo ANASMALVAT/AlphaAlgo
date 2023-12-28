@@ -64,7 +64,7 @@
     }
   }
 
-@media (max-width:1200px) {
+@media (max-width:1100px) {
     .common-margin-enviorment{
         margin: 0px;
     }
@@ -103,7 +103,7 @@
     }
 }
 
-@media (max-width:710px) {
+@media (max-width:810px) {
     .enviorment{
         min-height: 1200px;
     }

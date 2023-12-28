@@ -28,7 +28,7 @@ const CodingProblems = () => {
         <AlphaNavbar/>
         <div className='  flex flex-col min-h-screen h-full w-full bg-[#00182D]'>
             
-            <div className=' flex flex-col  justify-center items-center h-80 mt-12 w-full text-center '>
+            <div className=' flex flex-col  justify-center items-center h-48 mt-10 w-full text-center '>
                <ProblemInformation/>
             </div>
             { 

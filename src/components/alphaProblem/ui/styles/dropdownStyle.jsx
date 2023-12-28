@@ -32,7 +32,7 @@ export const customStyles = {
     return {
       ...styles,
       color:'black',
-      fontSize: "1rem",
+      fontSize: "0.5rem",
       lineHeight:"1.5rem",
       fontweight: "bold",
       opacity: "1",
@@ -41,7 +41,6 @@ export const customStyles = {
       background:"#00182D",
       color:"white",
       border:"none",
-      
       ":hover": {
         cursor: "pointer",
         transition: "0.1s",
@@ -69,6 +68,7 @@ export const customStyles = {
       fontSize: "0.8rem",
       lineHeight: "1.75rem",
       border:"none",
+      fontWeight:"light",
       border:"none"
 
     };

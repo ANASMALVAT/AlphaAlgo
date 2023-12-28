@@ -9,11 +9,11 @@ const TeamMember = ({memberInfo}) => {
         <>
         <div className='flex  flex-col  max-h-[full] h-[600px] justify-center items-center max-w-[800px] w-[600px] p-2 rounded-md '>
 
-                    <h1 className='team-name' >
+                    <h2 className='team-name text-white' >
                         {memberInfo.name}
-                    </h1>
+                    </h2>
 
-                    <h1 className="team-position font-mono font-bold text-[#4C5ADF]">
+                    <h1 className="team-position font-mono font-bold text-algoXcolor ">
                         <Typewriter
                             
                             options={{
@@ -26,7 +26,7 @@ const TeamMember = ({memberInfo}) => {
 
                      <img  className='team-img ' src={memberInfo.img}></img>
 
-                     <SyntaxHighlighter language="xml" wrapLongLines={true} customStyle={{borderRadius:"8px",background:"transparent",overflow:"hidden",overFlowY:"hidden",textAlign:"justify",textAlignLast:"center"}} style={a11yLight}>
+                     <SyntaxHighlighter  language="xml" wrapLongLines={true} customStyle={{borderRadius:"8px", color:"rgb(209 213 219)" ,background:"transparent",overflow:"hidden",overFlowY:"hidden",textAlign:"justify",textAlignLast:"center"}} style={a11yLight}>
                         {memberInfo.description}
                     </SyntaxHighlighter>
             </div>

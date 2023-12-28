@@ -19,11 +19,19 @@ export const customStyles = {
       minWidth:'150px',
       maxWidth:'215px',
       width:"175px",
-      border:"2px solid #4C5ADF",
-      borderTop:"4px solid #4C5ADF",
-      borderBottom:"5px solid #4C5ADF",
+      border:"4px solid #392A6D",
+      borderTop:"4px solid #392A6D",
+      borderBottom:"4px solid #392A6D",
       overflow:"auto",
       borderRadius:"2px",
+      ":hover": {
+        border:"4px solid #392A6D",
+        borderTop:"4px solid #392A6D",
+        borderBottom:"4px solid #392A6D",
+      },
+      ":focus":{
+        focus:"none"
+      }
     }),
     option: (styles) => {
       return {
@@ -43,6 +51,7 @@ export const customStyles = {
           transition: "0.1s",
           color: "white",
           background:"#4C5ADF",
+          border:"white"
         },
         overflow:"hidden",
         borderRadius:"2px",

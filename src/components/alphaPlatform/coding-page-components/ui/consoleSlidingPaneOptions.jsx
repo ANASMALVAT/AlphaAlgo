@@ -23,12 +23,12 @@ const ConsoleSlidingPaneOptions = () => {
         <>
            <div className="bg-algoblack flex flex-col justify-center items-center w-full p-4">
                 <div> 
-                    <button onClick={openEditor} className={` overflow-hidden w-44 rounded-sm   flex flex-row items-center mb-2  px-2 py-2 font-mono text-sm font-normal justify-center border-4 border-[#1F2937] text-white hover:border-b-4 hover:border-[#4C5ADF]`}>
+                    <button onClick={openEditor} className={` overflow-hidden w-44 rounded-sm   flex flex-row items-center mb-2  px-2 py-2 font-mono text-sm font-normal justify-center border-4 border-algoXcolor text-white hover:border-b-4 hover:border-[#F5F5F5]`}>
                         Editor
                     </button>
                 </div>
                 <div>
-                    <button onClick={openConsole}  className={`overflow-hidden rounded-sm w-44  flex flex-row items-center mb-2 px-2 py-2 font-mono text-sm font-normal justify-center border-4 border-[#1F2937] text-white hover:border-b-4  hover:border-[#4C5ADF]`}>
+                    <button onClick={openConsole}  className={`overflow-hidden rounded-sm w-44  flex flex-row items-center mb-2 px-2 py-2 font-mono text-sm font-normal justify-center border-4 border-algoXcolor text-white hover:border-b-4  hover:border-[#F5F5F5]`}>
                         Console
                     </button>
                 </div>

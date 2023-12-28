@@ -1,6 +1,6 @@
 export const enviormentFeatures = [
     {
-        description: "Responsive U.I",
+        description: "Responsive Interface",
         sentence: "Effortless and adaptive interface for smooth navigation and interaction."
     },
     {
@@ -8,7 +8,7 @@ export const enviormentFeatures = [
         sentence: "Intelligent suggestions and real-time support for enhanced productivity."
     },
     {
-        description: "White-Board",
+        description: "White Board",
         sentence: "Interactive whiteboard for effective brainstorming and visual collaboration."
     },
     {

@@ -4,7 +4,6 @@ import { Card } from 'flowbite-react';
 import "./styles/cardComponent.css"
 
 export default function DefaultCard({key, features}) {
-  console.log(key);
   return (
     <Card
     className={`card-css card-css p-2 mb-8 max-w-[1400px] bg-transparent rounded-sm border-b-0 border-t-0 border-l-0 border-r-2 border-gray-800 text-center items-center justify-center`}
@@ -12,7 +11,7 @@ export default function DefaultCard({key, features}) {
     >
       <div className='flex card-css '>
         <div className='flex flex-col gap-4 '>
-          <div className=' flex w-8 h-8  rounded-lg bg-[#4C5ADF] m-auto '>
+          <div className=' flex w-10 h-10  rounded-lg bg-algoXcolor m-auto '>
             {features.svg}
           </div>
           <div className=' w-full '>

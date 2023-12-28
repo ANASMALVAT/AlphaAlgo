@@ -34,13 +34,14 @@ const componentTypeWriter = () =>
             fontFamily: 'monospace',
             fontSize: '14px',
             fontColor: 'rgb(55,65,81)',
+            zIndex:"1"
 
             }}
             className="algo-screen  overflow-hidden min-w-[625px]  w-[625px] h-[375px]  mr-6 border text-white rounded-[0.25rem] border-gray-900 bg-[#011627] text-left">
 
                 <div className="flex flex-row m-auto  text-center overflow-hidden items-center  w-full justify-center border-b border-gray-800 mb-2">
                     <h1 className=" font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
-                    <h1 className=" font-mono   font-semibold  text-[#4C5ADF] text-[42px] ">X</h1>
+                    <h1 className=" font-mono   font-semibold  text-algoXcolor text-[42px] ">X</h1>
                     <h1 className="font-mono tracking-wide font-semibold antialiased text-white text-[22px]">A</h1>
                 </div>
 

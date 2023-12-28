@@ -10,14 +10,14 @@ const RestrictLogin = () => {
                 <img src='https://www.svgrepo.com/show/408465/lock-security-open.svg'></img>
                 </div>
                 <div className='text-center'>
-                    <h5 className=" flex text-3xl font-normal tracking-tight text-white">
+                    <h2 className=" flex text-2xl font-normal tracking-tight text-white">
                         <Link to = "/">
-                            <p className=" font-mono font-bold text-3xl text-[#4C5ADF]  mr-1"> Login </p>
+                            <p className=" font-mono font-bold text-2xl text-[#4C5ADF]  mr-1"> Login </p>
                         </Link>
-                        <p className=''>
+                        <p className=' '>
                             to X
                         </p>
-                    </h5>
+                    </h2>
                 </div>
             </div>
         </div>

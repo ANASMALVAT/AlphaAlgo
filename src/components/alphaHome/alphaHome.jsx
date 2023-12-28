@@ -6,6 +6,7 @@ import LanguageComponent from "./home-page-components/language/languageComponent
 import QuestionComponent from "./home-page-components/questions/questionComponent";
 import CodingEnviorment from "./home-page-components/coding-enviorment/codingEnviorment";
 import AlphaGPT from "./home-page-components/alpha-gpt/alphaGPT";
+import Reviews from "./home-page-components/reviews/reviews";
 import DreamCompanies from "./home-page-components/dream-companies/dreamCompanies";
 import AlphaFooter from "../../layouts/footer/AlphaFooter";
 
@@ -22,6 +23,7 @@ const AlphaHomePage = () => {
                 <CodingEnviorment/>
                 <AlphaGPT/>
                 <LanguageComponent/>
+                <Reviews />
                 <QuestionComponent/>
                 <AlphaFooter/>
             </div>

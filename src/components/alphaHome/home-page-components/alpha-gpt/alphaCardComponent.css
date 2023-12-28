@@ -7,6 +7,7 @@
 .alpha-description{
     margin-left: 10px;
     text-align: left;
+    font-weight: light;
     
 }
 
@@ -21,7 +22,7 @@
     border-radius: 5px;
 }
 
-@media (max-width:1200px) {
+@media (max-width:1150px) {
     .alpha-block{
         margin-left: 50px;
         justify-content:left;

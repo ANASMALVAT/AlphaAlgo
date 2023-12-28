@@ -10,12 +10,12 @@ import { useParams } from "react-router-dom";
 import { toggelUserLoginFalse } from "../../redux/slices/userAuthentication";
 
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
-import AlgoButtons from "./coding-page-components/buttons/algoButtons";
 import ConsoleInput from "./coding-page-components/console/console";
 import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
 import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";
 import RestrictQuestion from "./coding-page-components/alpha-restrictions/restrictQuestion";
 import RestrictServerSide from "./coding-page-components/alpha-restrictions/restrictServerSide";
+import { toggelLoginWindowTrue } from "../../redux/slices/userComponentSlice";
 
 import "./styles/mainPage.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,17 +40,12 @@ const AlphaPlatform = ({}) => {
   const toastId = useRef(null);
   const dispatch = useDispatch();
 
-
- 
-
   const handleResize = (e) => {
     const newWidth = e.clientX;
     setEditorWidth(newWidth);
   };
 
-
   function updateCodeAndDriverCode() {
-
     const currentDropdownLanguage = dropdownValue.language?.value;
     if(sessionStorage.getItem('driverCode')){
       const presentDriverCode = sessionStorage.getItem('driverCode');
@@ -130,7 +125,7 @@ const AlphaPlatform = ({}) => {
         } else {
           handleServerFailure();
         }
-      } catch (error) {
+      }catch (error) {
         if(error?.response?.status != 'undefined'){
           handleResponse(error.response.status);
         }
@@ -139,7 +134,8 @@ const AlphaPlatform = ({}) => {
         }
       }
 
-  async function handleResponse(status) {
+  async function handleResponse(status) 
+  {
     switch (status) {
       case 440:
         handleSessionExpired();
@@ -201,7 +197,7 @@ const AlphaPlatform = ({}) => {
     switch (action) {
       case "code": {
         setCode(data);
-        sessionStorage.setItem(`user-code`,code);
+        sessionStorage.setItem(`user-code` , code);
         break;
       }
       default: {
@@ -235,7 +231,6 @@ const AlphaPlatform = ({}) => {
     }
 
     try{
-
       toastId.current = toast("Processing...", { autoClose: 10000 });
       dispatch(alphaRunning());
       let codeCompileResponse;
@@ -310,42 +305,40 @@ const AlphaPlatform = ({}) => {
   }
 
   if(!isAuthorised){
-    return <RestrictUnauthorized/>
+    return < RestrictUnauthorized />
   }
 
   if(!isServer){
-    return <RestrictServerSide/>
+    return < RestrictServerSide />
   }
 
   return (
     <>
-      
       <div className="main-class min-w-[375px] min-h-[600px] w-full h-full flex flex-grow   min-w-screen max-h-screen bg-algoblack overflow-auto">
 
         { alphaPlatformComponents.editor && (
           <div
             className={`editor-class overflow-hidden flex flex-col grow-1 h-[100vh]  min-h-[375px]  flex-grow `}
             style={{ width: editorWidth }} 
-
           >
-            <CodeEditorWindow code={code} onChangeData={onChange} />
-          </div>
-        )}
+            < CodeEditorWindow code={code} onChangeData={onChange} />
+          </div>)
+        }
 
         <div id="resize" class="resize"
           onMouseDown={handleMouseDown} 
-          className=" resize no-select w-1 h-full min-h-screen bg-[#002451] pt-2 pb-2 ml-1 mr-1 rounded-md">
+          className=" resize no-select w-2 h-full min-h-screen bg-algoXcolor pt-2 pb-2 ml-2 mr-2 rounded-md">
         </div>
 
-
-        {alphaPlatformComponents.console && (
+        { 
+          alphaPlatformComponents.console && (
           <div className={`console-gpt`} >
             <ConsoleInput
               output={output}
               runCode={runCode}
             />
-          </div>
-        )}
+          </div>)
+        }
       </div>
     </>
   );

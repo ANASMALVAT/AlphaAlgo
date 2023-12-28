@@ -17,7 +17,7 @@ const AlphaGptWindow = () =>
     return (
         <>
         <div style={{  whiteSpace: 'pre', scrollbarWidth: 'thin', scrollbarColor: '#4C5ADF #011627', fontFamily: 'monospace',  fontSize: '14px',fontColor: 'rgb(55,65,81)'}}
-            className="alpha-screen mt-10  custom-scrollbar   w-full h-[400px] p-2  border text-white rounded-[0.50rem] shadow-md  border-gray-700 bg-[#00182D] text-left overflow-auto">
+            className="alpha-screen mt-10  custom-scrollbar   w-full h-[400px] p-2  border text-white rounded-[0.50rem] shadow-md  border-gray-700 bg-[#0C1326] text-left overflow-auto">
 
                 <div className=" h-[80%] border border-gray-700 rounded-md p-1">
                     <pre className="m-auto text-gray-300 whitespace-pre-wrap text-left w-[full] pl-3 pr-3 border-gray-800 ml-auto mr-auto mt-4">

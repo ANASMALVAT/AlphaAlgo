@@ -10,8 +10,7 @@
 }
 .product-item-problems:hover{
     color: whitesmoke !important;
-    /* background: #BB20DD; */
-    background:#00182D;
+    background: #392A6D;
     transition-duration: 200ms;
 }
 .product-xblogs:hover{

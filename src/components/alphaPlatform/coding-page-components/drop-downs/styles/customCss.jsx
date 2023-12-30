@@ -24,13 +24,20 @@ export const customStyles = {
       borderBottom:"4px solid #392A6D",
       overflow:"auto",
       borderRadius:"2px",
+      boxShadow:"none",
       ":hover": {
         border:"4px solid #392A6D",
         borderTop:"4px solid #392A6D",
         borderBottom:"4px solid #392A6D",
+        boxShadow:"none"
       },
       ":focus":{
-        focus:"none"
+        focus:"none",
+        outline:"none",
+        boxShadow:"none"
+      },
+      ":active":{
+        boxShadow:"none"
       }
     }),
     option: (styles) => {

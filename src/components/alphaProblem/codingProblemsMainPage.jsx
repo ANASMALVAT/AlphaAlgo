@@ -3,7 +3,10 @@ import AlphaNavbar from '../../layouts/navbar/AlphaNavbar';
 import ProblemGrid from './grid/problemGrid';
 import TopicFilterDropdown from './ui/topicFilterDropdown';
 import ProblemInformation from './ui/problemInformation';
+import ProblemButtons from './ui/problemButtons';
+import ProblemRandom from './ui/problemRandom';
 import { fetchQuestionList } from '../../services/fetchQuestionList';
+
 import DefaultFooter from '../../layouts/footer/AlphaFooter';
 
 
@@ -41,11 +44,13 @@ const CodingProblems = () => {
             {!loading  &&
               (
                 <div className='flex flex-col min-h-screen flex-1 w-full h-2 flex-grow bg-white '>
-                  <div className='topic-dropdown mt-8 '>
+                  <div className=' flex flex-wrap gap-8 topic-dropdown mt-8 justify-evenly '>
                     <TopicFilterDropdown />
+                    <ProblemButtons />
+                    <ProblemRandom />
                   </div>
                   <div className='  '>
-                      <ProblemGrid  problemList = {questions}/>
+                      <ProblemGrid problemList = {questions}/>
                   </div>
                 </div>
               )

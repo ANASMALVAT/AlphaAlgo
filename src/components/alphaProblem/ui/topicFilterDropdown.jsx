@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
-import "./styles/topicDropdown.css"
 import {problemCategories} from "../../../data/problemCategory"
 import { useSelector,useDispatch } from "react-redux";
 import { changeCategory } from "../../../redux/slices/problemCategorySlice";
+import "./styles/topicDropdown.css"
 
 const TopicFilterDropdown = () => {
   const problemCategory = useSelector((state) => state.problemCategories.category);
@@ -24,9 +24,11 @@ const TopicFilterDropdown = () => {
   return (
     <div className="">
       <MultiSelect
+        
         options={problemCategories}
         value={selected}
         onChange={setSelected}
+        labelledBy="FILTERS"
         className="multi-select shadow-md"
         
       />

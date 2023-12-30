@@ -8,15 +8,17 @@ const ProblemGrid = ({ problemList }) => {
   
   const [categorizedProblems, setCategorizedProblems] = useState({ easy: [], medium: [], hard: [], special:[]});
   const problemCategories = useSelector((state) => state.problemCategories.category);
-  
-  useEffect(() => {
+  const problemCategoryType = useSelector((state) => state.problemType.difficulty);
+
+
+  const categorizeProblems = (list, categories) => {
     const updatedCategorizedProblems = { easy: [], medium: [], hard: [], special: [] };
-    for (let i = 0; i < problemList.length; i++) {
-        const problem = problemList[i];
+    for (let i = 0; i < list.length; i++) {
+        const problem = list[i];
 
         if (problem && 
-            problemCategories.length === 0 || 
-            problemCategories.some(category => problem?.question_category?.some(problemCategory => category.includes(problemCategory)))
+            categories.length === 0 || 
+            categories.some(category => problem?.question_category?.some(problemCategory => category.includes(problemCategory)))
            )
         {
             if (problem?.isFree) {
@@ -26,8 +28,55 @@ const ProblemGrid = ({ problemList }) => {
             }
         }
     }
+    return updatedCategorizedProblems;
+};
+
+const shuffleAllProblems = (categorizedProblems) => {
+
+  const allProblems = [].concat(
+    categorizedProblems.easy,
+    categorizedProblems.medium,
+    categorizedProblems.hard,
+    categorizedProblems.special
+  );
+  
+  for (let i = allProblems.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [allProblems[i], allProblems[j]] = [allProblems[j], allProblems[i]];
+  }
+
+  const problemsPerCategory = Math.floor(allProblems.length / 4);
+
+  const updatedCategorizedProblems = { easy: [], medium: [], hard: [], special: [] };
+
+  allProblems.forEach((problem, index) => {
+    const categoryIndex = Math.floor(index / problemsPerCategory);
+    updatedCategorizedProblems[Object.keys(updatedCategorizedProblems)[categoryIndex]].push(problem);
+  });
+
+  return updatedCategorizedProblems;
+};
+
+
+useEffect(() => {
+    const updatedCategorizedProblems = categorizeProblems(problemList, problemCategories);
     setCategorizedProblems(updatedCategorizedProblems);
 }, [problemList, problemCategories]);
+
+  useEffect(() => {
+    if(!problemCategoryType){
+      const shuffledProblems = shuffleAllProblems(categorizedProblems);
+      setCategorizedProblems(shuffledProblems);
+    }else{
+      const updatedCategorizedProblems = categorizeProblems(problemList, problemCategories);
+      setCategorizedProblems(updatedCategorizedProblems);
+    }
+  }, [problemCategoryType]);
+
+
+
+  
+
 
 
 
@@ -36,7 +85,7 @@ const ProblemGrid = ({ problemList }) => {
 
     { categorizedProblems.easy.length  != 0 &&
       <div className='category-easy'>
-        <h2 className='h2 mb-2 text-algoblack'>Easy</h2>
+        <h2 className='h2 mb-2 text-algoblack'>{problemCategoryType ? "Easy" : "Random"}</h2>
         <div className='grid gap-3 mt-4 fade-in'>
           {categorizedProblems.easy.map((problem) => (<Grid   className="fade-in" problemInfo={problem} key={problem?.id} />))}
         </div>
@@ -46,7 +95,7 @@ const ProblemGrid = ({ problemList }) => {
 
     { categorizedProblems.medium.length != 0 &&
       <div className='category-medium'>
-        <h2 className='text-algoblack' >Medium</h2>
+        <h2 className='h2 mb-2 text-algoblack'>{problemCategoryType ? "Medium" : "Random"}</h2>
         <div className='grid gap-3 mt-4 fade-in'>
           {categorizedProblems.medium.map((problem) => (<Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))}
         </div>
@@ -55,7 +104,7 @@ const ProblemGrid = ({ problemList }) => {
 
     { categorizedProblems.hard.length  != 0 &&
       <div className='category-hard'>
-        <h2 className='text-algoblack'>Hard</h2>
+        <h2 className='h2 mb-2 text-algoblack'>{problemCategoryType ? "Hard" : "Random"}</h2>
         <div className='grid gap-3 mt-4 fade-in'>
           {categorizedProblems.hard.map((problem) => ( <Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))}
         </div>
@@ -65,11 +114,11 @@ const ProblemGrid = ({ problemList }) => {
       { categorizedProblems.special.length != 0 &&
         <div className='category-special'>
           <div className='flex text-center justify-center align-middle' >
-              <div className=' flex text-center text-algoXcolor justify-center align-middle font-semibold mr-1'>
-                <h2 className=' h-full text-[32px] font-semibold'>X</h2>
+              <div className=' flex text-center text-[#7E3AF2] justify-center align-middle font-semibold mr-1'>
+                <h2 className=' h-full text-[32px] font-semibold'>{problemCategoryType ? "X" : ""}</h2>
               </div>
               <div className=' flex text-center justify-center align-middle'>
-                <h2 className=' h-full text-algoblack'>special</h2>
+              <h2 className='h2 mb-2 text-algoblack'>{problemCategoryType ? "special" : "Random"}</h2>
               </div>
           </div>
           <div className='grid gap-3 mt-4 fade-in'>

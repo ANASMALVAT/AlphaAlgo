@@ -12,7 +12,6 @@ import AlphaFooter from "../../layouts/footer/AlphaFooter";
 
 
 const AlphaHomePage = () => {
-    console.log(localStorage.getItem('jwt-token'));
     return (
         <>
             <div className="h-full overflow-hidden w-full min-h-screen min-w-screen bg-algoblack border border-black">

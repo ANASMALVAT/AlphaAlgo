@@ -19,7 +19,7 @@ const AlphaGPT = () => {
                 </div>
 
                 <div className="div-alpha  flex flex-col " > 
-                    <h1 className=" alpha-header common-margin mb-4  text-algoblack font-semibold ">AlphaGPT, Your Coding Assistance.</h1>
+                    <h1 className=" alpha-header common-margin mb-4  text-algoblack font-semibold ">AlphaGPT, Your Coding Assistance</h1>
                     <div className=" alpha-text common-margin mb-8 text-algoblack  ">
                         <h2 className=" alpha-text text-gray-500  font-light text-lg text-justify">
                             Introducing AlphaGPT, your trusted coding companion, specializing in language syntax, code review, and knowledge enrichment.

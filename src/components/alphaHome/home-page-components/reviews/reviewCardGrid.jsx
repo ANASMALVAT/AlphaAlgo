@@ -49,10 +49,10 @@ const ReviewCardGrid = ({ reviews }) => {
   return (
     <div className='flex flex-col'>
       <div className='mb-3'>
-        <h2 className='font-normal text-4xl'>Satisfied Alpha Coders</h2>
+        <h2 className='font-normal text-4xl'>Satisfied Alpha Members</h2>
       </div>
 
-      <div className=' ml-4 card-show max-w-full flex gap-3 overflow-hidden show-card transition-transform ease-in-out duration-300' style={{ willChange: 'transform', maxWidth: `${cardShowWidth}px` }}>
+      <div className='ml-4  card-show max-w-full flex gap-3 overflow-hidden show-card transition-transform ease-in-out duration-300' style={{ willChange: 'transform', maxWidth: `${cardShowWidth}px` }}>
         {Array.from({ length: totalCards }, (_, index) => (
           <div key={index} style={{ transition: '200ms', width: `${cardShowWidth}px`, transform: `translateX(-${cardIndex * 103.77}%)`, backfaceVisibility: 'hidden' }}>
             <ReviewCard title={`Card ${index + 1}`} index={index} />

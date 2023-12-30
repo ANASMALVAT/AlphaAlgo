@@ -5,7 +5,7 @@
 }
 
 .dropdown-container{
-    height: 57.5px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -29,17 +29,19 @@
 }
 
 .rmsc{
-    width: 500px;
+    width: 400px;
     margin: auto;
     --rmsc-main: #F5F5F5;
-    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    /* --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); */
+    /* --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color); */
+    /* box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); */
     border:0px solid white;
     background: #f5f5f5;
     --rmsc-border:2px solid white !important;
-    --rmsc-radius:10px !important;
-    --rmsc-gray:#362A6B;
+    --rmsc-radius:5px !important;
+    box-shadow: none !important;
+    --rmsc-gray: #00182D;
+
 }
 
 .rmsc :focus{
@@ -112,12 +114,13 @@ input{
 input::placeholder{
     color: #00182D;
     font-family: Ubuntu,Helvetica,Arial,sans-serif;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: normal;
 
 }
 .search input:focus-within{
     transition: 100ms all;
-    outline: 1px solid #362A6B !important;
+    outline: 2px solid white !important;
     border-radius: 2px;
     border: 2px !important;
     background-color: #f5f5f5 !important;
@@ -125,11 +128,15 @@ input::placeholder{
 
 .search input:focus{
 
-    border: none !important;
-    outline: none;
-    --tw-ring-color:"#fff" !important;
+    border: #392A6D !important;
+    outline: #392A6D !important;
+    --tw-ring-color:"#392A6D" !important;
 }
-
+/* span{
+    font-size: 15px;
+    font-weight: normal;
+    color: #00182D;
+} */
 .select-item span{
     color: #00182D;
     font-family: Ubuntu,Helvetica,Arial,sans-serif;
@@ -149,7 +156,6 @@ input::placeholder{
     align-items: center;
 }
 .select-item input{
-    border: 1px solid #362A6B !important;
     /* border-radius: 50%; */
     margin-top: 5px;
 
@@ -163,21 +169,21 @@ input::placeholder{
 }
 @media screen and (max-width: 650px){
     .rmsc{
-        width: 450px;
+        width: 400px;
         margin: auto;
     }
     .topic-dropdown{
-        width: 450px;
+        width: 400px;
         margin: 35px auto;
 
     }
     .dropdown-container{
-        width: 450px;
+        width: 400px;
         margin: auto;
     }
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 500px){
     .rmsc{
         width: 350px;
         margin: auto;
@@ -192,3 +198,4 @@ input::placeholder{
         margin: auto;
     }
 }
+

@@ -1,17 +1,17 @@
 .enviorment-block{
     display: flex;
     height: 9rem;
+    cursor: default;
 }
 
 .enviorment-block:hover{
     background-color: rgba(243,244,246,.05);
-    cursor:auto;
+    cursor: default;
 }
 
 .enviorment-description{
     text-align: left;
-    cursor: auto;
-}
+    cursor: default;}
 
 
 .check-icon{

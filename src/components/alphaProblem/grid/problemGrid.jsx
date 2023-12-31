@@ -12,10 +12,11 @@ const ProblemGrid = ({ problemList }) => {
 
 
   const categorizeProblems = (list, categories) => {
+
     const updatedCategorizedProblems = { easy: [], medium: [], hard: [], special: [] };
+
     for (let i = 0; i < list.length; i++) {
         const problem = list[i];
-
         if (problem && 
             categories.length === 0 || 
             categories.some(category => problem?.question_category?.some(problemCategory => category.includes(problemCategory)))
@@ -45,14 +46,21 @@ const shuffleAllProblems = (categorizedProblems) => {
     [allProblems[i], allProblems[j]] = [allProblems[j], allProblems[i]];
   }
 
-  const problemsPerCategory = Math.floor(allProblems.length / 4);
 
   const updatedCategorizedProblems = { easy: [], medium: [], hard: [], special: [] };
 
-  allProblems.forEach((problem, index) => {
-    const categoryIndex = Math.floor(index / problemsPerCategory);
-    updatedCategorizedProblems[Object.keys(updatedCategorizedProblems)[categoryIndex]].push(problem);
-  });
+  if(allProblems.length < 4 ){
+    for(let i = 0; i < allProblems.length; i ++){
+      updatedCategorizedProblems.easy.push(allProblems[i]);
+    }
+  }
+  else{
+    const problemsPerCategory = Math.floor(allProblems.length / 4);
+    allProblems.forEach((problem, index) => {
+      const categoryIndex = Math.floor(index / problemsPerCategory);
+      updatedCategorizedProblems[Object.keys(updatedCategorizedProblems)[categoryIndex]].push(problem);
+    });
+  }
 
   return updatedCategorizedProblems;
 };
@@ -60,17 +68,19 @@ const shuffleAllProblems = (categorizedProblems) => {
 
 useEffect(() => {
     const updatedCategorizedProblems = categorizeProblems(problemList, problemCategories);
-    setCategorizedProblems(updatedCategorizedProblems);
+    setCategorizedProblems( categorizedProblems => updatedCategorizedProblems);
 }, [problemList, problemCategories]);
 
   useEffect(() => {
+
     if(!problemCategoryType){
       const shuffledProblems = shuffleAllProblems(categorizedProblems);
-      setCategorizedProblems(shuffledProblems);
+      setCategorizedProblems(categorizedProblems => shuffledProblems);
     }else{
       const updatedCategorizedProblems = categorizeProblems(problemList, problemCategories);
-      setCategorizedProblems(updatedCategorizedProblems);
+      setCategorizedProblems(categorizedProblems => updatedCategorizedProblems);
     }
+
   }, [problemCategoryType]);
 
 

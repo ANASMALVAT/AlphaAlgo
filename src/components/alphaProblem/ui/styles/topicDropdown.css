@@ -132,11 +132,7 @@ input::placeholder{
     outline: #392A6D !important;
     --tw-ring-color:"#392A6D" !important;
 }
-/* span{
-    font-size: 15px;
-    font-weight: normal;
-    color: #00182D;
-} */
+
 .select-item span{
     color: #00182D;
     font-family: Ubuntu,Helvetica,Arial,sans-serif;

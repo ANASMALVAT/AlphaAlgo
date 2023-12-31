@@ -18,7 +18,8 @@ const Grid = ({problemInfo}) => {
             </div>
 
             {  
-                problemInfo?.isFree && 
+                !problemCategoryType ? <div  className='h-4 w-4'></div>
+                : problemInfo?.isFree && 
                 <img src='https://pngimg.com/d/free_PNG90767.png' className='h-8 w-8 mr-4'></img>
             }
 

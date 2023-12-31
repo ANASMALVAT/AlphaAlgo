@@ -7,7 +7,7 @@ const ProblemInformation = () => {
     <>
        <div class="container h-40">
             <h1 class="header">Alpha Coding Questions.</h1>
-            <h2 className=' text-gray-400 text-lg font-light '>Crack Your Next Coding Interview. </h2>
+            <h2 className=' text-white text-lg font-light '>Crack Your Next Coding Interview. </h2>
         </div>
     </>
     )

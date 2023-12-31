@@ -47,9 +47,9 @@ const CodingProblems = () => {
                   <div className=' flex flex-wrap gap-8 topic-dropdown mt-8 justify-evenly '>
                     <TopicFilterDropdown />
                     <ProblemButtons />
-                    <ProblemRandom />
+                    <ProblemRandom problemList = {questions} />
                   </div>
-                  <div className='  '>
+                  <div className='  mt-4'>
                       <ProblemGrid problemList = {questions}/>
                   </div>
                 </div>

@@ -1,11 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import { fetchReviewList } from '../../../../services/fetchReviewList';  
 import ReviewCard from './reviewCard';
 import "./styles/reviewCardGrid.css";
 
-const ReviewCardGrid = ({ reviews }) => {
-  const totalCards = 10;
+const ReviewCardGrid = () => {
+
+
+  const [reviews,setReviews] = useState([]);
   const [cardIndex, setCardIndex] = useState(0);
+
+  useLayoutEffect(() => {
+    fetchReviewList().then(
+      reviewList => {
+        setReviews(reviews => reviewList);
+      })
+      .catch(error =>  { console.log("error"); } )
+  },[])
+
+  const totalCards = reviews.length;
 
   const moveRight = () => {
     if (cardIndex < totalCards - 1) {
@@ -52,12 +65,14 @@ const ReviewCardGrid = ({ reviews }) => {
         <h1 className=' text-4xl m-auto flex text-center justify-center'>Be The Next Alpha</h1>
       </div>
 
-      <div className='ml-4  card-show max-w-full flex gap-3 overflow-hidden show-card transition-transform ease-in-out duration-300' style={{ willChange: 'transform', maxWidth: `${cardShowWidth}px` }}>
-        {Array.from({ length: totalCards }, (_, index) => (
-          <div key={index} style={{ transition: '200ms', width: `${cardShowWidth}px`, transform: `translateX(-${cardIndex * 103.77}%)`, backfaceVisibility: 'hidden' }}>
-            <ReviewCard title={`Card ${index + 1}`} index={index} />
+      <div className='ml-2  card-show max-w-full flex gap-3 overflow-hidden show-card transition-transform ease-in-out duration-300' style={{ willChange: 'transform', maxWidth: `${cardShowWidth}px` }}>
+      {
+        Array.from({ length: reviews.length }, (_, index) => (
+          <div key={index} style={{ transition: '200ms', width: `${cardShowWidth}px`, transform: `translateX(-${cardIndex * 103.5}%)`, backfaceVisibility: 'hidden' }}>
+            <ReviewCard review={reviews[index]} />
           </div>
-        ))}
+        ))  
+      }
       </div>
 
       <div className='button-container mt-4 flex m-auto'>

@@ -29,7 +29,7 @@ const ComponentMain = () =>
                             Your definitive guide to crack coding interviews.
                         </h2>
                         
-                        <Link to="/problems" className="h-[50px] mt-8">
+                        <Link to="/problems" className="h-[50px] mt-8 z-[1]">
                             <button className={`what-button  h-[50px] max-w-[175px] min-w-[175px] overflow-hidden  flex flex-row items-center text-center align-middle  rounded-sm  font-mono font-normal justify-center text-white border bg-algoXcolor hover:duration-300 border-none`}>
                                 <h1 className="  font-normal  text-xl text-[#F5F5F5] "> Explore </h1>
                                 <h2 className="ml-1  font-semibold  text-2xl text-[#7d83d3] "> X </h2>

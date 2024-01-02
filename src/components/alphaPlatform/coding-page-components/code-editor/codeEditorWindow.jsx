@@ -116,7 +116,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
 
                 <div className="flex items-center bg-algoXcolor rounded-[0.25rem] p-2 mt-1 mb-1">
                     <Link to={"/problems"}>
-                        <h1 className=" font-bold text-4xl  antialiased text-[#7E3AF2] hover:duration-300 hover:scale-110">X</h1>
+                        <h1 className=" font-bold text-4xl  antialiased text-white hover:duration-300 hover:scale-110">X</h1>
                     </Link>
                 </div>
 

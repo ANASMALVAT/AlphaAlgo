@@ -103,9 +103,9 @@
     }
 }
 
-@media (max-width:810px) {
+@media (max-width:730px) {
     .enviorment{
-        min-height: 1200px;
+        min-height: 1300px;
     }
     .enviorment-text{
         text-align: center;

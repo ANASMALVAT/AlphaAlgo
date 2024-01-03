@@ -15,17 +15,17 @@ const ComponentMain = () =>
                         <ComponentMainGrid />
                     </div>
                 </div>
-                <div className=" alpha-info h-90 flex flex-col flex-grow  w-5/12 overflow-hidden text-left ">
-                    <div className=" alpha-info-detail flex flex-col text-start flex-grow pt-24 w-full p-2 " >
+                <div className=" alpha-info h-90 flex flex-col flex-grow  w-5/12 overflow-hidden text-left  ">
+                    <div className=" alpha-info-detail flex flex-col text-start flex-grow pt-24 w-full p-2  z-[1]" >
                         <div className="plex-sans flex flex-row items-center mb-2 mt-4">
                             <h2 className="logo-name  tracking-wide font-normal antialiased text-white text-5xl">Alpha</h2>
                             <h2 className="tracking-wide font-bold antialiased  text-algoXcolor text-7xl hover:duration-200 hover:scale-125">X</h2>
                             <h2 className="logo-name  tracking-wide font-normal antialiased text-white text-5xl">Algo</h2>
                         </div>
-                        <h2 className=" info mt-1 font-light text-lg text-gray-300 ">
+                        <h2 className=" info mt-1 font-light text-lg text-gray-300 z-[1]">
                             Everything you need, just one click away.
                         </h2>
-                        <h2 className=" info mt-1 font-light text-lg  text-gray-300 ">
+                        <h2 className=" info mt-1 font-light text-lg  text-gray-300 z-[1]">
                             Your definitive guide to crack coding interviews.
                         </h2>
                         

@@ -13,8 +13,8 @@ const  ReviewCard = ({review}) =>
                 <div  className='user-position '><h2 className=' text-[16px] text-algoblack'>{review.position}</h2></div>
                 <div  className='user-company flex align-center mt-2'><img  className=' m-auto w-[80px] h-[25px]' src={review.company} alt="Image"/></div>
 
-                <div  className='user-review overflow-auto mt-3 pl-2 rounded-md m-1'>
-                    <h2 className='  text-left text-[14px] text-gray-600 font-light rounded-[0.25rem] w-[95%] '>
+                <div  className='user-review pb-2 overflow-auto mt-3 pl-2 rounded-md m-1'>
+                    <h2 className='   text-left text-[14px] text-gray-600 font-light rounded-[0.25rem] w-[95%] '>
                         {review.description}
                     </h2>
                 </div>

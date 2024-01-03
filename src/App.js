@@ -5,12 +5,13 @@ import { toggelUserLoginFalse, toggelUserLoginTrue } from "./redux/slices/userAu
 import { verifyToken } from "./services/verifyToken";
 import { ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
-import Team from "./components/alphaHome/home-page-components/team/team";
+import Team from "./components/alphaHome/alpha-pages/team/teamPage";
+import ReviewPage from "./components/alphaHome/alpha-pages/reviews/reviewPage";
 import AlphaHomePage from './components/alphaHome/alphaHome';
 import AlphaPlatform from "./components/alphaPlatform/mainPage";
 import CodingProblems from "./components/alphaProblem/codingProblemsMainPage";
-import Purchase from "./components/alphaHome/home-page-components/purchase/purchase";
-import SuccessfulPurchase from "./components/alphaHome/home-page-components/purchase/purchaseSuccess";
+import Purchase from "./components/alphaHome/alpha-pages/purchase/purchasePage";
+import SuccessfulPurchase from "./components/alphaHome/alpha-pages/purchase/purchaseSuccess";
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
           <Route path="/user/success/:token" element={<LoginSuccess />} />
           <Route path="/payment-successful" element={<SuccessfulPurchase />} />
           <Route path="/problems/:problemId" element={<AlphaPlatform />} />
+          <Route path="/reviews" element={<ReviewPage/>} />
         </Routes>
       </BrowserRouter>
     </div>

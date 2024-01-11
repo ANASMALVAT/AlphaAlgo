@@ -1,35 +1,67 @@
-import React, { useState }  from 'react'
-import GoogleButton from 'react-google-button';
-import SignInComponent from './signInComponent';
-const LoginComponent = ({redirectGoogleSSO}) => {
+import React, { useState,useEffect }  from 'react'
+import {GoogleLogin} from "react-google-login";
+import { useDispatch } from 'react-redux';
+import { userAuthentication } from '../../../services/userAuthentication';
+import { toast } from 'react-toastify';
+import { gapi } from 'gapi-script';
 
-    const [isSignIn, setIsSignIn] = useState(true);
-    const [isSignUp, setIsSignUp] = useState(false);
+const LoginComponent = () => {
 
-    const toggelSignIn = () => {
-        setIsSignIn(isSignIn => true);
-        setIsSignUp(isSignUp => false);
-    }
+  const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+  
+  const setCookieAndToken = (response) => {
+    window.localStorage.setItem('csrf-token',response.data.csrfToken);
+    window.location.reload();
+  }
 
-    const toggelSignUp = () => {
-        setIsSignIn(isSignIn => false);
-        setIsSignUp(isSignUp => false);
-    }
+  const onSuccess = async (res) => {
+    const token = res.tokenObj;
+
+    const response = await userAuthentication(token.access_token, token.id_token);
     
-    return (
-        <div className='flex flex-col rounded-lg bg-[#00182D] h-[350px] w-[375px] '>
-                {/* <div className='flex mt-4 items-center justify-center gap-1'>
-                    <button onClick={toggelSignIn} className={`w-28 r h-12 ${isSignIn === true ? 'bg-[#3E49B4]' : 'bg-[#002451]'} rounded-l-full rounded-r-md text-white`}><h2 className='text-xl'>Sign In</h2></button>
-                    <button onClick={toggelSignUp} className={`w-28 r h-12 ${isSignUp === true ? 'bg-[#3E49B4]' : 'bg-[#002451]'} rounded-r-full rounded-l-md text-white`}><h2 className='text-xl'>Sign Up</h2></button>
-                </div>
+    if(response.success){
+      setCookieAndToken(response.response);
+    }
+    else{
+      toast("Error occured during login!")
+    }
+  }
 
-                {isSignIn && <SignInComponent/>} */}
-                <h2 className='text-white mt-4 text-5xl'>Sign In </h2>
-                <GoogleButton
-                    style={{margin:"auto" ,borderRadius:"2px",fontWeight:"bold" ,width:"225px",fontSize:"18px",fontFamily:"monospace",'.&hover':'translateY(20px)'}}
-                    label='Google'
-                    onClick={redirectGoogleSSO}
-                />
+  const onFailure = (res) => {
+    toast("Error during login!");
+  }
+
+
+  function start(){
+        gapi.client.init({
+            clientId: clientId,
+            scope:""
+        })
+  }
+
+  const loadGapi = () => {
+    gapi.load('client:auth2',start);
+  }
+
+    return (
+        
+        <div className='flex flex-col rounded-lg bg-[#FFFFFF] h-[350px] w-[275px] border-t-[5px] border-[#626EE3] '>
+                <div className=' !font-thin w-full h-1/3 flex flex-col text-center justify-center mt-4'>
+                    <h2 className=' !font-normal !text-[22px] sm:text-xl  md:text-xl  mb-2 text-gray-800'> Sign in to</h2>
+                    <h2 className=" font-normal  text-gray-800 text-4xl">Alpha Algo </h2>
+                </div>
+                <div className=' flex justify-center mt-6 rounded-md'>
+                  <GoogleLogin
+                      className=' w-[225px] m-auto  font-semibold text-center text-white .placeholder-gray-200::placeholder	'
+                      clientId={clientId}
+                      buttonText='Sign In With Google'
+                      onSuccess={onSuccess}
+                      onFailure={onFailure}
+                      cookiePolicy='single_host_origin'
+                      onClick={loadGapi}
+                      >
+                  </GoogleLogin>
+                </div>
         </div>
     )
 

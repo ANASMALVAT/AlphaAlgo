@@ -8,6 +8,7 @@ import userLogin from "./slices/userAuthentication"
 import alphaNotification from "./slices/alphaNotification"
 import alphaRunning from "./slices/alphaRunning"
 import alphaConsole from "./slices/alphaConsole"
+import userAuthorization from "./slices/userAuthorizationSlice"
 
 const store = configureStore({
     reducer:{
@@ -20,6 +21,7 @@ const store = configureStore({
       alphaRunning:alphaRunning,
       alphaConsole:alphaConsole,
       problemType:problemTypeSlice,
+      userAuthorization:userAuthorization,
     },
   });
 

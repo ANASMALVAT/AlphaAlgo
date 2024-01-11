@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import AlphaNavbar from "../../layouts/navbar/AlphaNavbar";
 import ComponentMain from "./home-page-components/home/componentMain";
 import ComponentCardGrid from "./home-page-components/home/componentCardGrid";
@@ -10,8 +10,8 @@ import Reviews from "./home-page-components/reviews/reviews";
 import DreamCompanies from "./home-page-components/dream-companies/dreamCompanies";
 import AlphaFooter from "../../layouts/footer/AlphaFooter";
 
-
 const AlphaHomePage = () => {
+
     return (
         <>
             <div className="h-full overflow-hidden w-full min-h-screen min-w-screen bg-algoblack border border-black">

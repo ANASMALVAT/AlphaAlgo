@@ -8,7 +8,6 @@ import { codeCompile } from "./api/codeCompile";
 import { authorizedUser } from "./api/authorizedUser";
 import { useParams } from "react-router-dom";
 import { toggelUserLoginFalse } from "../../redux/slices/userAuthentication";
-
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
 import ConsoleInput from "./coding-page-components/console/console";
 import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";

@@ -39,7 +39,7 @@
     flex-grow: 1;
 }
 
-@media (min-width: 0px) and (max-width: 1225px) 
+@media (min-width: 0px) and (max-width: 1150px) 
 {
     .show-buttons {
       display: flex;

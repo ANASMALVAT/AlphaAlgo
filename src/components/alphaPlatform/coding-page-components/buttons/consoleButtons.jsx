@@ -3,7 +3,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ConsoleSlidingPane from "../sliding-panel/consoleSlidingPane";
 import ConsoleDropDown from "../drop-downs/consoleDropDown";
 import { useDispatch , useSelector} from "react-redux";
-import { setConsole,setAlpha,setInput,setProblem,setSolution } from "../../../../redux/slices/alphaConsole";
+import { setAlpha,setInput,setProblem,setSolution } from "../../../../redux/slices/alphaConsole";
 import "./styles/consoleButton.css"
 
 const ConsoleButton = ({}) => {
@@ -19,11 +19,7 @@ const ConsoleButton = ({}) => {
     const setConsoleProblem = () => {
         dispatch(setProblem());
     }
-    
-    const setConsoleConsole = () => {
-        dispatch(setConsole());
-    }
-    
+
     const setConsoleInput = () => {
         dispatch(setInput());
     }
@@ -44,7 +40,7 @@ const ConsoleButton = ({}) => {
         <>
             < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} />
 
-            <div className="flex gap-1 console-buttons">
+            <div className="flex gap-2 console-buttons ">
                 <button
                     onClick={setConsoleProblem}
                     className={` border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full font-mono text-sm font-normal text-white
@@ -52,15 +48,6 @@ const ConsoleButton = ({}) => {
                     sm:text-sm lg:text-md xl:text-md`}
                 >
                     <span className="font-normal font-resize">Problem</span>
-                </button>
-
-                <button
-                    onClick={setConsoleConsole}
-                    className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2 h-full font-mono text-sm font-normal text-white
-                    ${alphaConsole.isConsole ? 'bg-algoXcolor' : 'bg-[#002451]'}
-                    sm:text-sm lg:text-md xl:text-md`}
-                >
-                    <pre className="font-normal font-resize">Console</pre>
                 </button>
 
                 <button
@@ -95,7 +82,7 @@ const ConsoleButton = ({}) => {
             </div>
             <button
                 onClick={openConsolePane}
-                className={` side-menu-editor border border-algoXcolor overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
+                className={` side-menu-console border border-algoXcolor overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
                 sm:text-sm lg:text-md xl:text-md`}
             >
                 <MenuIcon sx={{fontSize:'28px'}}/>

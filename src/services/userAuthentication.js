@@ -4,7 +4,6 @@ const USER_AUTHENTICATION = process.env.REACT_APP_FETCH_USER_AUTHENTICATION;
 
 export async function userAuthentication(access_token,id_token) {
 
-    console.log(access_token , id_token)
     if(!access_token || !id_token){
       return { success: false };
     }

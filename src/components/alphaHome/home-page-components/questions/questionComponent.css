@@ -28,7 +28,7 @@
         border-bottom-left-radius: 9999px;
     }
 }
-@media (max-width:1100px) {
+@media (max-width:1150px) {
     .question-animation{
         display: none;
     }

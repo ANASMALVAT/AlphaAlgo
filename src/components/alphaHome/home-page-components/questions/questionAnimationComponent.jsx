@@ -1,5 +1,4 @@
 import {React} from "react";
-import CheckIcon from '@mui/icons-material/Check';
 import "./questionAnimationComponent.css"
 import "./questionComponent.css"
 

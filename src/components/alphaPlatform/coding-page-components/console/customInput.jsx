@@ -106,7 +106,6 @@ const CustomInput = () => {
           {
             data ? (
             <SyntaxHighlighter language="javascript" wrapLongLines={true}  customStyle={{borderRadius:"8px",fontSize:"16px",width:"100%",paddingLeft:"10px"}} style={tomorrowNightBlue}>
-              
               {`\n${data} \n `}
             </SyntaxHighlighter>
           ) : (

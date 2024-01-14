@@ -22,17 +22,18 @@ const ComponentMain = () =>
                             <h2 className="tracking-wide font-bold antialiased  text-algoXcolor text-7xl hover:duration-200 hover:scale-125">X</h2>
                             <h2 className="logo-name  tracking-wide font-normal antialiased text-white text-5xl">Algo</h2>
                         </div>
-                        <h2 className=" info mt-1 font-light text-lg text-gray-300 z-[1]">
+                        
+                        <p className=" info mt-1 font-light text-lg text-gray-300 z-[1]">
                             Everything you need, just one click away.
-                        </h2>
-                        <h2 className=" info mt-1 font-light text-lg  text-gray-300 z-[1]">
+                        </p>
+                        <p className=" info mt-1 font-light text-lg  text-gray-300 z-[1]">
                             Your definitive guide to crack coding interviews.
-                        </h2>
+                        </p>
                         
                         <Link to="/problems" className="h-[50px] mt-8 z-[1]">
                             <button className={`what-button  h-[50px] max-w-[175px] min-w-[175px] overflow-hidden  flex flex-row items-center text-center align-middle  rounded-sm  font-mono font-normal justify-center text-white border bg-algoXcolor hover:duration-300 border-none`}>
-                                <h1 className="  font-normal  text-xl text-[#F5F5F5] "> Explore </h1>
-                                <h2 className="ml-1  font-semibold  text-2xl text-[#7d83d3] "> X </h2>
+                                <h2 className="  font-normal  text-xl text-[#F5F5F5] "> Explore </h2>
+                                <h2 className="ml-1  font-semibold  text-3xl text-[#7d83d3] "> X </h2>
                             </button>   
                         </Link>
                     </div>

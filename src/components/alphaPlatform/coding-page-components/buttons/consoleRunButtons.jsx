@@ -9,13 +9,19 @@ const ConsoleRunButtons = ({runCode}) => {
 
     return (
         <>
-            <div className="flex flex-row ">
-                <button onClick={() => { compileCode(true)}}  className={` overflow-hidden w-24 rounded-sm  mr-2 flex flex-row items-center px-2 py-2 font-mono text-sm font-normal justify-center border border-gray-600 text-white  hover:border-[#4C5ADF]`}>
-                    Run
-                </button>
-                <button onClick={() => { compileCode(false)}} className={`overflow-hidden rounded-sm w-24 mr-2 flex flex-row items-center   px-2 py-2 font-mono text-sm font-normal justify-center border border-gray-600 text-white   hover:border-[#4C5ADF]`}>
-                    Submit
-                </button>
+            <div className="flex flex-row  bottom-0 mb-4 gap-2">
+                    <button
+                        onClick={() => { compileCode(true)}}
+                        className={` h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-normal text-gray-200
+                        bg-[#455B65]
+                        sm:text-sm lg:text-md xl:text-md`}
+                    > <h1 className=" text-[12px] font-normal">Compile & Run</h1></button>
+                    <button 
+                        onClick={() => { compileCode(false)}}
+                        className={` h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-normal text-gray-200
+                        bg-[#2F8D46]
+                        sm:text-sm lg:text-md xl:text-md`}
+                    > <h1 className=" text-[12px] font-normal">Submit</h1></button>
             </div>
         </>
     )

@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
 import  Select  from 'react-select';
 import { consoleOptions } from '../../../../data/consoleOptions';
-import { setProblem,setConsole,setAlpha,setInput,setSolution } from '../../../../redux/slices/alphaConsole';
+import { setProblem,setAlpha,setInput,setSolution } from '../../../../redux/slices/alphaConsole';
 import { customStyles } from './styles/customCss';
 import { useDispatch } from 'react-redux';
 import './styles/dropdown.css';
@@ -14,11 +14,7 @@ const ConsoleDropDown = () =>
     const [consoleValue, setConsoleValue] = useState("Problem");
    
     const changeConsole = (selectedOption) => {
-        console.log(selectedOption.value);
         switch(selectedOption.value){
-            case "Console":
-                dispatch(setConsole());
-                break;
             case "Problem":
                 dispatch(setProblem());
                 break;

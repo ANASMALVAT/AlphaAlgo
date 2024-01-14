@@ -7,19 +7,25 @@ import RestoreIcon from '@mui/icons-material/Restore';
 import SettingSlidingPane from "../sliding-panel/settingSlidingPane";
 import ConsoleSlidingPane from "../sliding-panel/consoleSlidingPane";
 import MenuIcon from '@mui/icons-material/Menu';
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import { defineTheme } from "../../../../data/themeOptions";
-import "./styles/codeEditorWindow.css";
+import { cancelWindow,maximizeWindow,partialWindow } from "../../../../redux/slices/outputWindowSlice";
+import OutputWindowButtons from "../buttons/outputWindowButtons";
 import { Link } from "react-router-dom";
+import CodeOutput from "./codeOutput";
+import "./styles/codeEditorWindow.css";
 
-const CodeEditorWindow = ({onChangeData,code }) =>
+
+const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
  {
     const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
+    const outputWindow = useSelector((state) => state.outputWindow.windowState);
     const [initialValue, setInitialValue] = useState(code); // New state variable
     const [currentFontSize,setFontSize] = useState("16px");
     const [settingPane,setSettingPane] = useState(false);
     const [consolePane,setConsolePane] = useState(false);
     const [currentLanguage,setCurrentLanguagae] = useState(dropdownValue.language);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setFontSize(dropdownValue.fontSize);
@@ -58,7 +64,16 @@ const CodeEditorWindow = ({onChangeData,code }) =>
         onChangeData("code",code);
     };
 
-
+    const makePartialWindow = () => {
+        dispatch(partialWindow());
+    }
+    const makeFullWindow = () => {
+        dispatch(maximizeWindow());
+    }
+    
+    const closeWindow = () => {
+        dispatch(cancelWindow());
+    }
 
     const handleRestore = () => {
         const currentDropdownLanguage = dropdownValue.language?.value;
@@ -98,7 +113,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
         < SettingSlidingPane isOpen={settingPane} onRequestClose={closeSettingPane} />
         < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} />
 
-        <div className="  code-editor  flex flex-col w-full min-w-[385px] border-4 min-h-screen border-[#1f2937]">
+        <div className=" relative   code-editor  flex flex-col w-full min-w-[385px] border-4 border-b-0 min-h-screen border-[#1f2937] rounded-lg">
             
             <div className=" flex flex-row justify-between min-w-[385px]  rounded-sm border-4 m-1 border-[#1f2937] h-14 ">
 
@@ -132,7 +147,7 @@ const CodeEditorWindow = ({onChangeData,code }) =>
 
             </div>
             
-            <div className="h-2 w-full flex-grow min-h-[200px] min-w-[385px]">
+            <div className=" w-full flex-grow min-h-[200px] min-w-[385px] rounded-md ">
                 <Editor
                     height={`100%`}
                     width={`100%`}
@@ -141,11 +156,28 @@ const CodeEditorWindow = ({onChangeData,code }) =>
                     onMount={handleEditorDidMount}
                     value={code}
                     onChange={editorChange}
-                    options={{fontSize: currentFontSize}}
+                    options={{fontSize: currentFontSize, borderRadius:"5px"}}
                 />
             </div>
-        </div>
 
+            <div className="flex h-14 p-3 w-full bg-[#00182D] justify-between items-center rounded-[0.25rem] mr-2  absolute bottom-0">
+                <OutputWindowButtons makeFullWindow={makeFullWindow} makePartialWindow={makePartialWindow} closeWindow={closeWindow}/>
+                <div className=" flex gap-2 ml-2">
+                    <button onClick={makePartialWindow} className={` h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-normal text-gray-200 bg-[#002451] sm:text-sm lg:text-md xl:text-md`}> 
+                        <h1 className=" text-[12px] font-normal">Console</h1>
+                    </button>
+                </div>
+            </div>
+
+            <div className={` transition-all duration-500 ${outputWindow === 'cancel' ? 'hidden' : outputWindow === 'partial' ? 'h-[40%]' : 'h-[80%]' } absolute bg-transparent w-full m-auto bottom-0 mb-10 p-1`}>
+                <div className="output-window-header flex justify-between  h-10 bg-algoblack rounded-t-xl  w-full">
+                    <OutputWindowButtons makeFullWindow={makeFullWindow} makePartialWindow={makePartialWindow} closeWindow={closeWindow}/>
+                </div>
+                <div className="flex-grow bg-[#1F2937] h-full w-full  ">
+                    <CodeOutput runCode={runCode} outputDetail={outputDetail}/>
+                </div>
+            </div>
+        </div>
     </>
     );
 

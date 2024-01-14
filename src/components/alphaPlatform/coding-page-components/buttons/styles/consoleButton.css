@@ -2,7 +2,12 @@
   display: none;
 }
 
-@media (max-width:600px){
+@media (min-width:1101px) {
+  .side-menu-console{
+    display: none;
+  }
+}
+@media (max-width:470px){
   .console-buttons{
     display: none;
   }

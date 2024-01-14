@@ -14,7 +14,6 @@ import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictL
 import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";
 import RestrictQuestion from "./coding-page-components/alpha-restrictions/restrictQuestion";
 import RestrictServerSide from "./coding-page-components/alpha-restrictions/restrictServerSide";
-import { toggelLoginWindowTrue } from "../../redux/slices/userComponentSlice";
 
 import "./styles/mainPage.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -167,7 +166,7 @@ const AlphaPlatform = ({}) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1225) {
+      if (window.innerWidth > 1100) {
         dispatch(
           setDefault({
             editor: true,
@@ -320,18 +319,18 @@ const AlphaPlatform = ({}) => {
             className={`editor-class overflow-hidden flex flex-col grow-1 h-[100vh]  min-h-[375px]  flex-grow `}
             style={{ width: editorWidth }} 
           >
-            < CodeEditorWindow code={code} onChangeData={onChange} />
+            < CodeEditorWindow code={code} onChangeData={onChange}  runCode={runCode} outputDetail={output}/>
           </div>)
         }
 
         <div id="resize" class="resize"
           onMouseDown={handleMouseDown} 
-          className=" resize no-select w-2 h-full min-h-screen bg-algoXcolor pt-2 pb-2 ml-2 mr-2 rounded-md">
+          className=" resize no-select w-[6px] h-full min-h-screen bg-algoXcolor pt-4 pb-4 ml-1 mr-1  rounded-md">
         </div>
 
         { 
           alphaPlatformComponents.console && (
-          <div className={`console-gpt`} >
+          <div className={`console-gpt flex`} >
             <ConsoleInput
               output={output}
               runCode={runCode}

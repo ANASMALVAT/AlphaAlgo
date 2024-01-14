@@ -4,10 +4,6 @@ export const consoleOptions = [
         value: "Problem",
     },
     {
-      label: "Console",
-      value: "Console",
-    },
-    {
       label: "Test Cases",
       value: "Test Cases",
     },

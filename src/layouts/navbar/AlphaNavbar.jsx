@@ -52,7 +52,7 @@ const AlphaNavbar  = () => {
         <footer class="bg-transparent shadow dark:bg-gray-900 ">
           <div class="w-full max-w-screen-xl mx-auto p-4 px-6 gap-4">
               <div class="sm:flex sm:items-center sm:justify-between">
-                    <div className=" max-w-[80px] min-w-[80px] mb-8 justify-center align-bottom items-center  overflow-hidden">
+                    <div className=" max-w-[80px] min-w-[80px] mb-8 justify-center  text-center  align-bottom items-center  overflow-hidden">
                         <div className=" logo flex flex-row justify-center">
                             <h1 className="  flex  items-center tracking-wide font-normal antialiased text-[white] text-2xl  text-center">A</h1>
                                 <Link

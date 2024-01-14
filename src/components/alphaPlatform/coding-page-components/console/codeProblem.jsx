@@ -25,7 +25,6 @@ const CodeProblem = () => {
     const problemStatement = problemData?.M?.question_statement.S || "";
     const problemHint = problemData?.M?.hint.S || "";
     const problemConstraint = problemData?.M?.question_constraints.M || "";
-    
     const problemExampleInput = problemData?.M?.example?.M?.input.S || "";
     const problemExampleOutput = problemData?.M?.example?.M?.output.S || "";
     const problemVisualization = problemData?.M?.visualization?.S || "";
@@ -45,9 +44,9 @@ const CodeProblem = () => {
                     <div className="flex ">
                         <h2 className="problem-question text-white">{problemName}</h2>
                     </div>
-                    <h1 className=" problem-statement text-justify word-break bg-[transparent] pt-2 pb-2  border-t border-b border-gray-700" style={{ whiteSpace: 'pre-line' }}>
-                        <p className=" whitespace-pre-wrap  text-[#bfc4cd]">{problemStatement}</p>
-                    </h1>
+                    <div className=" problem-statement text-justify word-break bg-[transparent] pt-2 pb-2  border-t border-b border-gray-700  antialiased" style={{ whiteSpace: 'pre-line' }}>
+                        <h2 className=" whitespace-pre-wrap font-light text-[16px] text-justify  tracking-tight text-gray-300 ">{problemStatement}</h2>
+                    </div>
                 </div>
 
                 { 

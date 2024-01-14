@@ -26,14 +26,15 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
 
     return (
         <>
-        <div className='flex flex-col h-full gap-2'>
-            <div className= 'code-output text-start  w-full overflow-auto max-h-screen flex-grow border border-gray-700 flex flex-1  text-white font-normal text-2xl p-2 pl-4 rounded-md'>
-                <pre className='text-[18px]'>
-                    <CodeBlock text = {outputDetail ? codeOutPut(): ""} language='javascript' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px"}} codeBlockStyle={{padding:"0px"}} />
-                </pre>
+        <div className=' code-output flex flex-col h-full w-full gap-2 flex-grow '>
+            <div className= 'code-output text-start  w-full h-full overflow-auto max-h-screen  border-b border-gray-700 flex flex-1  text-white font-normal text-2xl p-2 pl-4'>
+                <h2 className='text-[18px] flex text-left w-full '>
+                    <CodeBlock  text = {outputDetail ? codeOutPut(): ""} language='javascript' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}  codeBlockStyle={{padding:"0px"}} />
+                </h2>
             </div>
-
-            <ConsoleRunButtons runCode={runCode}/>
+            <div className='ml-4 flex  items-center'>
+                <ConsoleRunButtons runCode={runCode}/>
+            </div>
         </div>
         </>
     )

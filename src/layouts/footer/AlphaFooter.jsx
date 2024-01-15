@@ -4,7 +4,7 @@ import "./alphaFooter.css"
 
 export default function AlphaFooter() {
   return (
-      <footer class="bg-white shadow dark:bg-gray-900 ">
+      <footer class="bg-[#f5f5f5] shadow dark:bg-gray-900 ">
           <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
               <div class="sm:flex sm:items-center sm:justify-between">
                   <a href="https://www.alphaalgos.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
@@ -19,9 +19,6 @@ export default function AlphaFooter() {
                         </li>
                       </Link>
                       <li>
-                          <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-                      </li>
-                      <li>
                           <a href="/reviews" class="hover:underline me-4 md:me-6">Reviews</a>
                       </li>
                       <Link to={"/team"}>
@@ -29,6 +26,12 @@ export default function AlphaFooter() {
                           <a href="/team" class="hover:underline me-4 md:me-6">Team</a>
                         </li>
                       </Link>
+                      <Link to={"/"}>
+                        <li>
+                          <a href="/" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                        </li>
+                      </Link>
+                      
                   </ul>
               </div>
               <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />

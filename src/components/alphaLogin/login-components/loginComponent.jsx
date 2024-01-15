@@ -52,9 +52,9 @@ const LoginComponent = () => {
                 </div>
                 <div className=' flex justify-center mt-6 rounded-md items-center'>
                   <GoogleLogin
-                      className=' w-[225px] m-auto  font-semibold text-center text-white .placeholder-gray-200::placeholder	'
+                      className=' w-[225px] m-auto  font-semibold text-center placeholder:font-semibold text-white placeholder-gray-200::placeholder	'
                       clientId={clientId}
-                      buttonText='Sign In With Google'
+                      buttonText='Google'
                       onSuccess={onSuccess}
                       onFailure={onFailure}
                       cookiePolicy='single_host_origin'

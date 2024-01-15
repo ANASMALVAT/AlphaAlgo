@@ -1,48 +1,22 @@
-import React from "react";
-import Typewriter from 'typewriter-effect';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { a11yLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import "./styles/team.css";
+import React from 'react';
 
-const TeamMember = ({ memberInfo }) => {
-  return (
-    <>
-      <div className='flex flex-col h-full gap-4 justify-center items-center max-w-[600px] sm:max-w-[600px] p-2 mb-4 rounded-md'>
-        <h2 className='team-name text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4'>
-          {memberInfo.name}
-        </h2>
+const  TeamCard = ({team}) => 
+{
 
-        <h1 className="team-position font-mono font-bold text-[#4C5ADF] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
-          <Typewriter
-            options={{
-              strings: ['Founder', 'Maintainer'],
-              autoStart: true,
-              loop: true,
-            }}
-          />
-        </h1>
-
-        <img className='team-img w-[8rem] sm:[8rem]  h-auto rounded-md' src={memberInfo.img} alt={`${memberInfo.name}'s image`} />
-
-        <SyntaxHighlighter
-          language="xml"
-          wrapLongLines={true}
-          customStyle={{
-            borderRadius: "8px",
-            color: "rgb(209 213 219)",
-            background: "transparent",
-            overflow: "hidden",
-            overflowY: "hidden",
-            textAlign: "justify",
-            textAlignLast: "center"
-          }}
-          style={a11yLight}
-        >
-          {memberInfo.description}
-        </SyntaxHighlighter>
-      </div>
+    return <>
+        <div className='flex bg-transparent w-[400px] max-w-[400px] p-2 h-[375px] rounded-md  justify-center  '>
+            { team.img && <img className=' absolute w-24 h-24 rounded-full shadow-2xl' src={team.img} ></img>  }
+            <div className='flex flex-col justify-center items-center  mt-16 w-full h-[90%] bg-transparent rounded-[0.25rem] border-t-[5px] border-b-[4px]  border  border-gray-200  border-t-[#4C5ADF] border-b-[#4C5ADF]  align-center rounded-md '>
+                <div  className='user-name mt-10 '><h1 className=' tracking-tight  text-[22px] font-normal  text-algoblack mb-1 '>{team.name}</h1></div>
+                <div  className='user-position '><h1 className=' tracking-tight text-[18px] text-[#4C5ADF]'>{team.position}</h1></div>
+                <div  className='user-review pb-2 overflow-auto mt-3 pl-2 rounded-md m-1'>
+                    <h2 className='   text-left text-[14px] text-gray-600 font-light rounded-[0.25rem] w-[95%] '>
+                        {team.description}
+                    </h2>
+                </div>
+            </div>
+        </div>
     </>
-  );
-};
+}
 
-export default TeamMember;
+export default TeamCard;

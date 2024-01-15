@@ -79,17 +79,16 @@ const AlphaNavbar  = () => {
                         >   
                         <ToolTip />
                     </Popup>
-                      <Link to={"/team"}>
+                      <Link to={"/purchase"}>
                         <li>
-                            <a href="#" class="hover:underline me-4 md:me-4">Team</a>
+                            <a href="/purchase" class="hover:underline me-4 md:me-4">Purchase</a>
                         </li>
                       </Link>
                       <li>
-                          <a href="#" class="hover:underline m-4"></a>
-                      </li>
-
+                            <a href="#" class="hover:underline me-3 md:me-3"></a>
+                       </li>
                       <li>
-                        { !showLoginButton && <div  className="w-[75px] min-w-[40px] h-full justify-center align-bottom text-center opacity-0"></div> }
+                        { !showLoginButton && <div  className="w-[50px] min-w-[40px] h-full justify-center align-bottom text-center opacity-0"></div> }
                         {
                         showLoginButton && 
                         (

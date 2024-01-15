@@ -1,85 +1,20 @@
-/* Base styles */
-.team-member {
 
-  }
-  
-  .team-img {
-    max-width: 175px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom:25px;
-  }
-  .team-img:hover {
-    scale: 1.1;
-    transition: all 0.2s;
-  }
-  
-  .team-details {
-    flex: 1;
-  }
 
-  .team-name {
-    font-size: 38px;
-    margin: 0px;
-    font-family: 'IBM Plex Sans', sans-serif;
-  }
-  
-  .team-position {
-    font-size: 25px;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
-    margin-bottom: 1rem;
-  }
-  
-  .team-info {
-    margin-top: 1rem;
-    font-size: 16px;
-    font-weight: 400;
-    font-family: Open Sans,Helvetica,Arial,sans-serif;
-    text-align: justify;
-    box-sizing: border-box;
-    color: rgb(15, 14, 14);
- }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) 
-    {
-      .team-name{
-        font-size: 30px;
-      }
-      .team-info{
-        font-size: 16px;
-      }
-      .team-position{
-        font-size: 18px;
-      }
-        .team-member {
-        flex-direction: column;
-        align-items: center;
-    }
-    .team-img {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  }
-  @media (max-width: 500px) 
-  {
-    .team-name{
-      font-size: 28px;
-    }
-    .team-info{
-      font-size: 14px;
-    }
-    .team-position{
-      font-size: 17px;
-    }
-      .team-member {
-      flex-direction: column;
-      align-items: center;
-  }
-  .team-img {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
+.user-review {
+  scrollbar-width: thin;
+  scrollbar-color:  #F1F1F1;
 }
-  
+
+.user-review::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 6px;
+}
+
+.user-review::-webkit-scrollbar-track {
+  background: #F1F1F1;
+}
+
+.user-review::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 8px;
+}

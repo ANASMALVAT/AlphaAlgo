@@ -13,9 +13,11 @@ export default function AlphaFooter() {
                       <h1 className=' text-algoblack font-semibold text-3xl'>A</h1>
                   </a>
                   <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                      <li>
-                          <a href="#" class="hover:underline me-4 md:me-6">Contact</a>
-                      </li>
+                      <Link to={"/contact"}>
+                        <li>
+                          <a href="/contact" class="hover:underline me-4 md:me-6">Contact Us</a>
+                        </li>
+                      </Link>
                       <li>
                           <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
                       </li>
@@ -27,9 +29,6 @@ export default function AlphaFooter() {
                           <a href="/team" class="hover:underline me-4 md:me-6">Team</a>
                         </li>
                       </Link>
-                      <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">About Us</a>
-                      </li>
                   </ul>
               </div>
               <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />

@@ -24,7 +24,7 @@ const ReviewPage = () => {
             <AlphaNavbar />
             <div className=' flex flex-col w-full mt-4 h-50 justify-center items-center'>
                 <h1 className='review-page-heading   '>Meet The True Alphas</h1>
-                <h2 className="review-page-description text-gray-500 mt-4 w-[550px] text-center text-[15px] font-normal">
+                <h2 className="review-page-description text-gray-600 mt-4 w-[550px] text-center text-[15px] font-light">
                     Meet real people who've conquered coding interviews and smoothly transitioned in their careers, sharing heartfelt experiences of empowerment through AlphaAlgo's supportive resources and strategic guidance.                
                 </h2>    
             </div>

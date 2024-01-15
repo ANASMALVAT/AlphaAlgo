@@ -10,7 +10,7 @@ const Team = () => {
         return  (
             <>
             <AlphaNavbar/>
-            <div className=' w-full h-full flex flex-grow flex-row-3 bg-algoblack justify-center min-h-screen'>
+            <div className=' w-full h-full flex flex-grow flex-row-3 bg-[#392A6D] justify-center pt-4 min-h-screen'>
                 {
                     teamMembers.map((value)=>{
                         return <TeamMember memberInfo={value}  />

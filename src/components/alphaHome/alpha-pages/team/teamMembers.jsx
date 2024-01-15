@@ -12,7 +12,7 @@ const TeamMember = ({ memberInfo }) => {
           {memberInfo.name}
         </h2>
 
-        <h1 className="team-position font-mono font-bold text-algoXcolor text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+        <h1 className="team-position font-mono font-bold text-[#4C5ADF] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
           <Typewriter
             options={{
               strings: ['Founder', 'Maintainer'],

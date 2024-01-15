@@ -46,8 +46,8 @@ const AlphaNavbar  = () => {
 
     return (
         <>
-            <UserLogin />
-            <div className=" w-full bg-[#00182D] ">
+        <UserLogin />
+        <div className=" w-full bg-[#00182D] ">
                 
         <footer class="bg-transparent shadow dark:bg-gray-900 ">
           <div class="w-full max-w-screen-xl mx-auto p-4 px-6 gap-4">
@@ -87,15 +87,16 @@ const AlphaNavbar  = () => {
                       <li>
                           <a href="#" class="hover:underline m-4"></a>
                       </li>
-                        { !showLoginButton && <div  className="w-[75px] min-w-[40px] h-full justify-center align-bottom text-center opacity-0"></div> }
 
+                      <li>
+                        { !showLoginButton && <div  className="w-[75px] min-w-[40px] h-full justify-center align-bottom text-center opacity-0"></div> }
                         {
                         showLoginButton && 
                         (
                             IsUserLoggedIn ? 
                             (
-                                <div id="logout" className="w-[75px] min-w-[40px] h-full justify-center align-bottom text-center">
-                                    <button onClick={logout} className="login-ul flex h-full w-[120px] flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
+                                <div id="logout" className="w-[50px] min-w-[40px] h-full justify-center align-bottom text-center">
+                                    <button onClick={logout} className="login-ul flex h-full w-[50px] flex-row hover:duration-100 text-white justify-between p-2 items-center text-center ">
                                         <div className=" hover:underline text-[16px]" href="#">
                                             <h1>Logout</h1>
                                         </div>
@@ -103,8 +104,8 @@ const AlphaNavbar  = () => {
                                 </div>
                             ) : 
                             (
-                                <div id="login" className=" w-[75px] min-w-[40px] h-full justify-center align-bottom text-center">
-                                    <button onClick={showLogin} className="login-ul flex h-full w-[120px] flex-row hover:duration-100 text-white justify-between p-2 items-center text-center pl-12 pr-12">
+                                <div id="login" className=" w-[50px] min-w-[40px] h-full justify-center align-bottom text-center">
+                                    <button onClick={showLogin} className="login-ul flex h-full w-[50px] flex-row hover:duration-100 text-white justify-between p-2 items-center text-center">
                                         <div className=" hover:underline text-[16px]" href="#">
                                             <h1>Login</h1>
                                         </div>
@@ -112,6 +113,7 @@ const AlphaNavbar  = () => {
                                 </div>
                             )
                         )}
+                      </li>
                   </ul>
               </div>
           </div>

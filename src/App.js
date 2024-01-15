@@ -11,7 +11,7 @@ import AlphaPlatform from "./components/alphaPlatform/mainPage";
 import CodingProblems from "./components/alphaProblem/codingProblemsMainPage";
 import Purchase from "./components/alphaHome/alpha-pages/purchase/purchasePage";
 import SuccessfulPurchase from "./components/alphaHome/alpha-pages/purchase/purchaseSuccess";
-import {gapi} from 'gapi-script'
+import Contact from "./components/alphaHome/alpha-pages/contact-us/contact";
 
 function App() {
 
@@ -56,6 +56,9 @@ function App() {
           <Route path="/payment-successful" element={<SuccessfulPurchase />} />
           <Route path="/problems/:problemId" element={<AlphaPlatform />} />
           <Route path="/reviews" element={<ReviewPage/>} />
+          <Route path="/contact" element={<Contact/>} />
+
+          
         </Routes>
       </BrowserRouter>
     </div>

@@ -129,11 +129,9 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
 
                 </div>
 
-                <div className="flex items-center bg-algoXcolor rounded-[0.25rem] p-2 mt-1 mb-1">
-                    <Link to={"/problems"}>
-                        <h1 className=" font-bold text-4xl  antialiased text-white hover:duration-300 hover:scale-110">X</h1>
-                    </Link>
-                </div>
+                <Link to={"/problems"}>
+                    <h1 className=" font-semibold text-4xl  text-[#4C5ADF] hover:duration-300 h-full flex items-center justify-center hover:scale-110">X</h1>
+                </Link>
 
                 <div className="language-button ">
                     <LanguageDropDown />
@@ -147,7 +145,7 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
 
             </div>
             
-            <div className=" w-full flex-grow min-h-[200px] min-w-[385px] rounded-md ">
+            <div className=" w-full h-28 flex-grow min-h-[200px] min-w-[385px] rounded-md ">
                 <Editor
                     height={`100%`}
                     width={`100%`}
@@ -160,17 +158,19 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
                 />
             </div>
 
-            <div className="flex h-14 p-3 w-full bg-[#00182D] justify-between items-center rounded-[0.25rem] mr-2  absolute bottom-0">
-                <OutputWindowButtons makeFullWindow={makeFullWindow} makePartialWindow={makePartialWindow} closeWindow={closeWindow}/>
+            <div className="flex h-14 p-4 w-full bg-[#00182D] justify-between items-center rounded-[0.25rem] mr-2   absolute bottom-0">
+                <div className=" mb-4">
+                    <OutputWindowButtons makeFullWindow={makeFullWindow}  makePartialWindow={makePartialWindow} closeWindow={closeWindow}/>
+                </div>  
                 <div className=" flex gap-2 ml-2">
-                    <button onClick={makePartialWindow} className={` h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-normal text-gray-200 bg-[#002451] sm:text-sm lg:text-md xl:text-md`}> 
+                    <button onClick={makePartialWindow} className={`${outputWindow === 'cancel' ? 'z-10': 'z-0'}  h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-normal text-gray-200 bg-[#002451] sm:text-sm lg:text-md xl:text-md`}> 
                         <h1 className=" text-[12px] font-normal">Console</h1>
                     </button>
                 </div>
             </div>
 
-            <div className={` transition-all duration-500 ${outputWindow === 'cancel' ? 'hidden' : outputWindow === 'partial' ? 'h-[40%]' : 'h-[80%]' } absolute bg-transparent w-full m-auto bottom-0 mb-10 p-1`}>
-                <div className="output-window-header flex justify-between  h-10 bg-algoblack rounded-t-xl  w-full">
+            <div className={` transition-all duration-1000 ${outputWindow === 'cancel' ? ' h-0  ' : outputWindow === 'partial' ? 'h-[40%]' : 'h-[80%]' } absolute bg-transparent w-full m-auto bottom-0 mb-10 p-1`}>
+                <div className="output-window-header flex justify-between  h-10 bg-algoblack rounded-t-xl   w-full">
                     <OutputWindowButtons makeFullWindow={makeFullWindow} makePartialWindow={makePartialWindow} closeWindow={closeWindow}/>
                 </div>
                 <div className="flex-grow bg-[#1F2937] h-full w-full  ">

@@ -5,7 +5,7 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 
 const OutputWindowButtons = ({makePartialWindow,makeFullWindow,closeWindow}) => {
     return <>
-        <div className=" flex gap-4 ml-4">
+        <div className=" flex gap-4 ml-4 mb-1">
             <button className=' hover:scale-110 transition-all duration-50' onClick={makePartialWindow} ><CloseFullscreenIcon fontSize='small' sx={{color:"white"}} /></button>
             <button className=' hover:scale-125 transition-all duration-100' onClick={makeFullWindow} ><FullscreenIcon sx={{color:"white"}} /></button>
             <button className=' hover:scale-125 transition-all duration-100' onClick={closeWindow} ><ClearIcon sx={{color:"white"}} /></button>

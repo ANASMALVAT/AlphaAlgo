@@ -3,18 +3,18 @@
   flex-grow: 1;
 }
 
-.code-output::-webkit-scrollbar {
-    width: 4px;
-    height: 8px;
+span::-webkit-scrollbar,.code-output::-webkit-scrollbar {
+    width: 3px;
+    height: 4px;
   }
   
-.code-output::-webkit-scrollbar-track {
+  span::-webkit-scrollbar,.code-output::-webkit-scrollbar-track {
   background: white;
-  border-radius: 8px;
+  border-radius: 4px;
   margin:5px;
 }
 
-.code-output::-webkit-scrollbar-thumb {
+span::-webkit-scrollbar,.code-output::-webkit-scrollbar-thumb {
   background: #5867EA;
-  border-radius: 8px;
+  border-radius: 4px;
 }

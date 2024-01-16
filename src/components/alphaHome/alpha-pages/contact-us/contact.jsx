@@ -43,7 +43,7 @@
                             <label for="message" class="block mb-2 text-sm font-medium text-gray-800">Your message</label>
                             <textarea required id="message" onChange={(e) => setMessage(e.target.value)} rows="6" class="block p-2.5 w-full text-sm text-gray-900 rounded-sm shadow-sm border border-gray-300 focus:border-[#6c7af8] focus:ring-[#6c7af8] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500  bg-gray-50 " ></textarea>
                         </div>
-                        <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-gray-100 rounded-md bg-primary-700 sm:w-fit hover:bg-primary-800    bg-gray-800 hover:bg-primary-700 focus:border-[#6c7af8] focus:ring-[#6c7af8]">Send message</button>
+                        <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-gray-100 rounded-sm bg-primary-700 sm:w-fit hover:bg-primary-800  bg-gray-900 hover:bg-primary-700 focus:border-[#6c7af8] focus:ring-[#6c7af8]">Send message</button>
                     </form>
                 </div>
             </section>

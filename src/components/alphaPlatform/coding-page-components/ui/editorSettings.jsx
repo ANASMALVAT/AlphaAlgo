@@ -37,7 +37,7 @@ const EditorSetting = ({}) =>
                 </div>
 
                 <div className="editor-button flex flex-row justify-between items-center text-center mb-6 ">
-                    <button onClick={setWhiteBoard} className={`overflow-hidden rounded-sm w-40 mr-2 flex flex-row items-center  px-2 py-2 font-mono text-sm font-normal justify-center border-4 border-algoXcolor text-white   hover:border-[#F5F5F5]`}>
+                    <button onClick={setWhiteBoard} className={` mb-4 bg-[#4C5ADF] overflow-hidden w-40 rounded-sm   flex flex-row items-center   px-2 py-2 font-mono text-sm font-normal justify-center  text-white hover:opacity-100 opacity-80`}>
                         White Board 
                     </button>
                 </div> 

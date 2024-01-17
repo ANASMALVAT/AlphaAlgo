@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const USER_AUTHENTICATION = process.env.REACT_APP_FETCH_USER_AUTHENTICATION;
+const USER_AUTHENTICATION = process.env.REACT_APP_USER_AUTHENTICATION_GOOGLE;
 
-export async function userAuthentication(access_token,id_token) {
+export async function userAuthenticationGoogle(access_token,id_token) {
 
     if(!access_token || !id_token){
       return { success: false };

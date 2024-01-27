@@ -1,15 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import Chip from '@mui/joy/Chip';
-import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
-import CardActions from '@mui/joy/CardActions';
-import Divider from '@mui/joy/Divider';
-import List from '@mui/joy/List';
-import ListItem from '@mui/joy/ListItem';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import Typography from '@mui/joy/Typography';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import { purchaseAlpha } from '../../../../services/purchaseAlpha';
 import { useSelector, useDispatch } from 'react-redux';
 import { showNotification } from '../../../../redux/slices/alphaNotification';
 import "./purchaseCard.css"
@@ -20,92 +11,50 @@ export default function PricingCard() {
   const AlphaNotification = useSelector((state) => state.alphaNotification);
 
   const dispatch = useDispatch();
-  const purchaseAlpha = async () => 
-  {
-
-    // if(!localStorage.getItem('csrf-token')){
-    //     dispatch(showNotification("Please Login To Continue"));
-    //     return;
-    // }
-
-    // const response = await verifyToken();
-
-    // if(!response.success){
-    //   dispatch(showNotification(response.message));
-    //   return;
-    // }
-
-    try {
-      console.log(process.env.REACT_APP_PURCHASE_URL);
-      const response = await axios.post(process.env.REACT_APP_PURCHASE_URL, {}, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${localStorage.getItem('csrf-token')}`, 
-        }
-      });
-      if (response.data && response.data.url) {
-        window.location.href = response.data.url;
-      } 
-    } catch (error) {
-        dispatch(showNotification("Some error occured, we will fix it as soon as possible!"));
-    }
-  }
   
   return (
-
-    <Card size="lg" variant="outlined" sx={{width:"350px",height:"450px",background:"#00182D"}}>
-      <Chip size="sm"  sx={{background:"transparent",border:"none"}}  variant="outlined" color="neutral">
-      </Chip>
-      <Typography level="h2">
-
-      <div className="flex flex-row justify-center items-center text-white font-mono">
-        <div className="tracking-wide font-semibold antialiased text-algoXcolor text-6xl hover:duration-500 hover:rotate-[900deg]">
-          X
-        </div> 
-        Premium 
-      </div>
-      </Typography>
-      <Divider inset="none" />
-      <List size="sm" sx={{ mx: 'calc(-1 * var(--ListItem-paddingX))' }}>
-        <ListItem>
-          <ListItemDecorator>
-          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="122.877px" height="101.052px" fill="currentColor" viewBox="0 0 122.877 101.052" enable-background="new 0 0 122.877 101.052" class="h-4 w-4 text-cyan-500 lg:h-4 lg:w-4"><g><path d="M4.43,63.63c-2.869-2.755-4.352-6.42-4.427-10.11c-0.074-3.689,1.261-7.412,4.015-10.281 c2.752-2.867,6.417-4.351,10.106-4.425c3.691-0.076,7.412,1.255,10.283,4.012l24.787,23.851L98.543,3.989l1.768,1.349l-1.77-1.355 c0.141-0.183,0.301-0.339,0.479-0.466c2.936-2.543,6.621-3.691,10.223-3.495V0.018l0.176,0.016c3.623,0.24,7.162,1.85,9.775,4.766 c2.658,2.965,3.863,6.731,3.662,10.412h0.004l-0.016,0.176c-0.236,3.558-1.791,7.035-4.609,9.632l-59.224,72.09l0.004,0.004 c-0.111,0.141-0.236,0.262-0.372,0.368c-2.773,2.435-6.275,3.629-9.757,3.569c-3.511-0.061-7.015-1.396-9.741-4.016L4.43,63.63 L4.43,63.63z"></path></g></svg>
-          </ListItemDecorator>
-          <h2 className=' text-sm text-gray-300'>Access To Question Bank</h2>
-        </ListItem>
-        <ListItem>
-          <ListItemDecorator>
-          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="122.877px" height="101.052px" fill="currentColor" viewBox="0 0 122.877 101.052" enable-background="new 0 0 122.877 101.052" class="h-4 w-4 text-cyan-500 lg:h-4 lg:w-4"><g><path d="M4.43,63.63c-2.869-2.755-4.352-6.42-4.427-10.11c-0.074-3.689,1.261-7.412,4.015-10.281 c2.752-2.867,6.417-4.351,10.106-4.425c3.691-0.076,7.412,1.255,10.283,4.012l24.787,23.851L98.543,3.989l1.768,1.349l-1.77-1.355 c0.141-0.183,0.301-0.339,0.479-0.466c2.936-2.543,6.621-3.691,10.223-3.495V0.018l0.176,0.016c3.623,0.24,7.162,1.85,9.775,4.766 c2.658,2.965,3.863,6.731,3.662,10.412h0.004l-0.016,0.176c-0.236,3.558-1.791,7.035-4.609,9.632l-59.224,72.09l0.004,0.004 c-0.111,0.141-0.236,0.262-0.372,0.368c-2.773,2.435-6.275,3.629-9.757,3.569c-3.511-0.061-7.015-1.396-9.741-4.016L4.43,63.63 L4.43,63.63z"></path></g></svg>
-          </ListItemDecorator>
-          <h2 className=' text-sm text-gray-300 '>Access To Premium Features</h2>
-        </ListItem>
-        <ListItem>
-          <ListItemDecorator>
-          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="122.877px" height="101.052px" fill="currentColor" viewBox="0 0 122.877 101.052" enable-background="new 0 0 122.877 101.052" class="h-4 w-4 text-cyan-500 lg:h-4 lg:w-4"><g><path d="M4.43,63.63c-2.869-2.755-4.352-6.42-4.427-10.11c-0.074-3.689,1.261-7.412,4.015-10.281 c2.752-2.867,6.417-4.351,10.106-4.425c3.691-0.076,7.412,1.255,10.283,4.012l24.787,23.851L98.543,3.989l1.768,1.349l-1.77-1.355 c0.141-0.183,0.301-0.339,0.479-0.466c2.936-2.543,6.621-3.691,10.223-3.495V0.018l0.176,0.016c3.623,0.24,7.162,1.85,9.775,4.766 c2.658,2.965,3.863,6.731,3.662,10.412h0.004l-0.016,0.176c-0.236,3.558-1.791,7.035-4.609,9.632l-59.224,72.09l0.004,0.004 c-0.111,0.141-0.236,0.262-0.372,0.368c-2.773,2.435-6.275,3.629-9.757,3.569c-3.511-0.061-7.015-1.396-9.741-4.016L4.43,63.63 L4.43,63.63z"></path></g></svg>
-          </ListItemDecorator>
-          <h2 className=' text-gray-300 text-sm'>Udemy Voucher For Future Course</h2>
-        </ListItem>
-      </List>
-      <Divider inset="none" />
-      <CardActions >
-         <div className='flex flex-col text-left mr-auto text-gray-400'>
-            <Typography level="title-lg " sx={{ mr: 'auto' }}>
-              29.99{' '}${' '}
-            </Typography>
-            <Typography fontSize="md"  textColor="rgb(156 163 175)">
-              1 Year Access
-            </Typography>
+    <section class=" dark:bg-gray-900  mb-16 flex justify-center ">
+      <div class="  px-4  max-w-screen-xl flex-wrap flex gap-12   ">
+          <div class="flex flex-col  h-[280px] max-h-[300px] min-w-[350px]  p-6 mx-auto max-w-[350px] text-center text-gray-900 bg-white rounded-[0.25rem] border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <div class="flex justify-center items-baseline mt-4 mb-8">
+                  <span class="mr-2 text-4xl font-semibold text-green-500  ">$9.99</span>
+                  <span class=  " font-semibold  text-lg text-zinc-900 dark:text-gray-400">/month</span>
+              </div> 
+              <ul role="list" class="mb-12 space-y-4 text-left">
+                  <li class="flex items-center space-x-3">
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Everything <span className=' text-blue-700'>AlphaAlgo</span> offers.</span>
+                  </li>
+              </ul>
+              <button onClick={() => purchaseAlpha(process.env.REACT_APP_STRIPE_MONTHLY_PRICEID)} class="text-white bg-green-500 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-[0.25rem] text-sm px-5 py-2.5 text-center   dark:focus:ring-primary-900">Get started</button>
           </div>
-        <Button
-          variant="soft"
-          color="neutral"
-          endDecorator={<KeyboardArrowRight />}
-          onClick={purchaseAlpha}
-        >
-          Get Alpha
-        </Button>
-      </CardActions>
-    </Card>
-  
+          <div class="flex flex-col  h-[280px] max-h-[300px] min-w-[350px]  p-6 mx-auto max-w-[350px] text-center text-gray-900 bg-white rounded-[0.25rem] border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <div class="flex justify-center items-baseline mt-4 mb-8">
+                  <span class="mr-2 text-4xl font-semibold text-[#626EE3]  ">$29.99</span>
+                  <span class=  " font-semibold  text-lg text-zinc-900 dark:text-gray-400">/6 months</span>
+              </div> 
+              <ul role="list" class="mb-12 space-y-4 text-left">
+                  <li class="flex items-center space-x-3">
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Everything <span className=' text-blue-700'>AlphaAlgo</span> offers.</span>
+                  </li>
+              </ul>
+              <button onClick={() => purchaseAlpha(process.env.REACT_APP_STRIPE_HALFYEAR_PRICEID)} class="text-white bg-[#626EE3] hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-[0.25rem] text-sm px-5 py-2.5 text-center   dark:focus:ring-primary-900">Get started</button>
+          </div>
+          <div class="flex flex-col  h-[280px] max-h-[300px] min-w-[350px]  p-6 mx-auto max-w-[350px] text-center text-gray-900 bg-white rounded-[0.25rem] border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+              <div class="flex justify-center items-baseline mt-4 mb-8">
+                  <span class="mr-2 text-4xl font-semibold text-algoblack">$49.99</span>
+                  <span class=" font-semibold text-lg text-zinc-900 dark:text-gray-400">/year</span>
+              </div>
+              <ul role="list" class="mb-12 space-y-4  text-left">
+                  <li class="flex items-center space-x-3">
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>Everything <span className=' text-blue-700'>AlphaAlgo</span> offers.</span>
+                  </li>
+              </ul>
+              <button onClick={() => purchaseAlpha(process.env.REACT_APP_STRIPE_YEARLY_PRICEID)} class="text-white bg-algoblack hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-[0.25rem] text-sm px-5 py-2.5 text-center   dark:focus:ring-primary-900">Get started</button>
+          </div>
+  </div>
+</section>
   );
 }

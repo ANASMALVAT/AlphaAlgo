@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-
 const GPT_URL = process.env.REACT_APP_CALL_GPT;
-export async function askAlpha (userInput,setLoading, showError) {
 
+export async function askAlpha(userInput, setLoading, showError) {
   if (userInput.trim() !== '') {
     setLoading(true);
+
     let storedMessages = localStorage.getItem('stored-messages');
     let parsedMessages = storedMessages ? JSON.parse(storedMessages) : [];
     let currentChats = parsedMessages;
-    let tempChats = []
+    let tempChats = [];
     tempChats.push({ role: 'user', content: userInput });
 
     const updatedMessages = [...parsedMessages, ...tempChats];
@@ -17,25 +17,38 @@ export async function askAlpha (userInput,setLoading, showError) {
     currentChats.push({ role: 'user', content: userInput });
 
     try {
-      const response = await axios.post(GPT_URL, {
+      const response = await fetch(GPT_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        currentChats,
+        body: JSON.stringify({ currentChats }),
       });
 
-      tempChats = []
-      tempChats.push({ role: 'assistant', content: response.data.content })
+      const reader = response.body.getReader();
 
-      let storedMessages = localStorage.getItem('stored-messages');
-      let parsedMessages = storedMessages ? JSON.parse(storedMessages) : [];
-      const updatedMessages = [...parsedMessages, ...tempChats];
-      localStorage.setItem('stored-messages', JSON.stringify(updatedMessages));
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+          break;
+        }
+
+        // Handle the received data, e.g., update the UI
+        const assistantResponse = value.content;
+        console.log(value);
+        tempChats = [];
+        tempChats.push({ role: 'assistant', content: assistantResponse });
+
+        let storedMessages = localStorage.getItem('stored-messages');
+        let parsedMessages = storedMessages ? JSON.parse(storedMessages) : [];
+        const updatedMessages = [...parsedMessages, ...tempChats];
+        localStorage.setItem('stored-messages', JSON.stringify(updatedMessages));
+      }
+    } catch (error) {
+      showError('AlphaGPT is under maintenance!');
+    } finally {
+      setLoading(false);
     }
-    catch (error) {
-      showError(' AlphaGPT is under maintenance!');
-    }
-    setLoading(false);
   }
 }

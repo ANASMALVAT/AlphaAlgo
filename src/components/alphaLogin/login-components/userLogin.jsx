@@ -19,10 +19,14 @@ const UserLogin = () => {
                 closeOnDocumentClick
                 open={LoginButton}
                 onClose={handleClose}
+                contentStyle={{zIndex:"10"}}
                 className=' my-popup'
             >
             {
-                <div className="modal min-w-[500px] max-w-[500px]">
+                <div className="modal flex min-w-[300px] max-w-[300px]">
+                    <button className="close absolute right-2 top-[-4px] text-gray-500"  style={{color:"rgb(107 114 128)",fontSize:"30px"}} onClick={handleClose}>
+                        &times;
+                    </button>
                     <LoginComponent />
                 </div>
             }

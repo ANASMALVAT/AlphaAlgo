@@ -23,7 +23,7 @@ const ConsoleInput = ({output,runCode}) =>{
                 </div>
             </div>
 
-            <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md  p-2 overflow-hidden  ">
+            <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md  p-2 overflow-hidden   ">
                 {alphaConsole.isProblem && <CodeProblem />}
                 {alphaConsole.isInput   && <CustomInput  /> }
                 {alphaConsole.isAlphaGPT && <AlphaGPTWindow  /> }

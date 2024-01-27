@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const USER_AUTHENTICATION = process.env.REACT_APP_USER_AUTHENTICATION_GITHUB;
-console.log("github", USER_AUTHENTICATION);
+
 export async function userAuthenticationGithub(code) {
 
     if(!code){

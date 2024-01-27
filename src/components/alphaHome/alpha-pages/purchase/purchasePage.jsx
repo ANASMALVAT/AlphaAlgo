@@ -8,8 +8,8 @@ const Purchase = () => {
     return(
         <>
         <AlphaNavbar/>
-        <div className='purchase w-full min-h-screen h-full bg-[#F5F5F5] flex  flex-col  '>
-            <div className='mt-24'>
+        <div className='purchase w-full max-h-[1200px] h-full bg-algoblack flex  flex-col  '>
+            <div className='mt-10'>
                 <PricingCard/>
             </div>
         </div>

@@ -5,7 +5,6 @@ import { userAuthenticationGoogle } from '../../../services/userAuthenticationGo
 import { userAuthenticationGithub } from '../../../services/userAuthenticationGithub';
 import {GithubLoginButton} from 'react-social-login-buttons'
 import {LoginSocialFacebook} from 'reactjs-social-login';
-
 import {FacebookLoginButton} from 'react-social-login-buttons'
 
 import { toast } from 'react-toastify';
@@ -38,7 +37,7 @@ const LoginComponent = () => {
   }
 
   const onGoogleFailure = (res) => {
-    toast("Error during login!");
+    toast("Error occured during login!")
   }
 
   const onGithubSuccess = async (res) => {
@@ -53,16 +52,7 @@ const LoginComponent = () => {
   }
 
   const onGithubFailure = (res) => {
-    console.log("error");
-    toast("Error during login!");
-  }
-
-  const onFacebookSuccess = async (res) => {
-    console.log(res)
-  }
-
-  const onFacebookFailure = (res) => {
-    console.log("res", res);
+    toast("Error occured during login!")
   }
 
   function startGoogle(){
@@ -79,10 +69,11 @@ const LoginComponent = () => {
 
     return (
         
-        <div className='flex flex-col rounded-lg   bg-[#FFFFFF] h-[375px] w-[300px] border-t-[5px] border-[#626EE3] '>
-                <div className=' !font-thin w-full mb-4  h-1/4 flex flex-col text-center justify-center mt-4'>
-                    <h2 className=' !font-normal !text-[24px] tracking-tighter sm:text-xl  md:text-xl  mb text-gray-800'> Sign in to</h2>
-                    <h2 className=" font-normal tracking-tight    text-gray-800 text-4xl">Alpha Algo </h2>
+        <div className='flex flex-col rounded-lg   bg-[#FFFFFF] h-[325px] w-[300px] border-t-[5px] border-[#626EE3] '>
+                <div className=' !font-thin w-[225px] mx-auto mb-4  h-1/4 flex flex-col text-left justify-center mt-4'>
+                  <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-800 md:text-2xl dark:text-white">
+                    Sign in to Alpha Algo
+                  </h1>
                 </div>
 
                 <div className=' flex  flex-col justify-center mt-2 gap-2 rounded-md items-center'>

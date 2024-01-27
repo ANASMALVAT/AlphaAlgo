@@ -18,6 +18,7 @@ export async function userAuthenticationGoogle(access_token,id_token) {
         return {success:true,response:response};
       }
       catch (err) {
+        console.log(err);
         return { success: false, message: 'Problem on server!' };
       }
 

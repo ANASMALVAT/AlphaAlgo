@@ -18,6 +18,7 @@ export async function userContact(user_email,user_subject,user_message) {
       const response = await axios.post(CONTACT_URL, config);
         if (response.status === 200) {
           toast("We will get back to you soon!")
+          
           return response;
         }
         else {

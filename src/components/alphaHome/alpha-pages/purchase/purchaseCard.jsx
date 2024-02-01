@@ -1,24 +1,17 @@
 import React from 'react';
-import axios from "axios";
 import { purchaseAlpha } from '../../../../services/purchaseAlpha';
-import { useSelector, useDispatch } from 'react-redux';
-import { showNotification } from '../../../../redux/slices/alphaNotification';
 import "./purchaseCard.css"
 
 
 export default function PricingCard() {
-
-  const AlphaNotification = useSelector((state) => state.alphaNotification);
-
-  const dispatch = useDispatch();
   
   return (
     <section class=" dark:bg-gray-900  mb-16 flex justify-center ">
       <div class="  px-4  max-w-screen-xl flex-wrap flex gap-12   ">
           <div class="flex flex-col  h-[280px] max-h-[300px] min-w-[350px]  p-6 mx-auto max-w-[350px] text-center text-gray-900 bg-white rounded-[0.25rem] border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
               <div class="flex justify-center items-baseline mt-4 mb-8">
-                  <span class="mr-2 text-4xl font-semibold text-green-500  ">$9.99</span>
-                  <span class=  " font-semibold  text-lg text-zinc-900 dark:text-gray-400">/month</span>
+                  <span class="mr-2 text-4xl font-semibold text-green-500  ">$19.99</span>
+                  <span class=  " font-semibold  text-lg text-zinc-900 dark:text-gray-400">/3 months</span>
               </div> 
               <ul role="list" class="mb-12 space-y-4 text-left">
                   <li class="flex items-center space-x-3">

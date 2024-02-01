@@ -53,7 +53,6 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/purchase" element={<Purchase />} />
           <Route path="/problems" element={<CodingProblems />} />
-          <Route path="/payment-successful" element={<SuccessfulPurchase />} />
           <Route path="/problems/:problemId" element={<AlphaPlatform />} />
           <Route path="/reviews" element={<ReviewPage/>} />
           <Route path="/contact" element={<Contact/>} />

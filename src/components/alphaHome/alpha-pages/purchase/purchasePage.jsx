@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PricingCard from './purchaseCard'
-import "./purchase.css"
 import AlphaNavbar from '../../../../layouts/navbar/AlphaNavbar'
 import AlphaFooter from '../../../../layouts/footer/AlphaFooter'
+import "./purchase.css"
 
 const Purchase = () => {
     return(

@@ -3,6 +3,7 @@ export const customStyles = {
     singleValue:(styles) => ({
       ...styles,
       color:'#fff',
+      fontFamily:"sans"
       
     }),
 
@@ -25,6 +26,7 @@ export const customStyles = {
       overflow:"auto",
       borderRadius:"2px",
       boxShadow:"none",
+      background:"none",
       ":hover": {
         border:"4px solid #392A6D",
         borderTop:"4px solid #392A6D",
@@ -53,6 +55,7 @@ export const customStyles = {
         whiteSpace: "nowrap",
         background:"#1c283b",
         color:"white",
+        marginBottom:"1px",
         ":hover": {
           cursor: "pointer",
           transition: "0.1s",

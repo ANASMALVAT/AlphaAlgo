@@ -9,7 +9,7 @@ const AlphaGptWindowText = ({data,type}) =>{
         formatedData = data.replace(/```/g, '');
     }
     return (
-        <div className={` gpt-window-text flex-1 rounded-md flex flex-row mb-4 bg-transparent  w-[full] font-mono ${type === 'User' ? 'text-right'  : 'text-left'}  border-b border border-gray-700  items-center `}>
+        <div className={` gpt-window-text flex-1 rounded-md flex  mb-4 bg-transparent  w-[full]  font-mono ${type === 'user' ? 'flex-row-reverse'  : 'flex-row'}  border-b border border-gray-700  items-center `}>
             <div className=' h-full m-1 w-8  justify-start  align-top  text-center '>
                 {type === 'user' 
                     ? <h1 className=" tracking-wide font-bold antialiased  text-algoprob text-2xl hover:duration-300 hover:scale-125">U</h1>
@@ -17,9 +17,9 @@ const AlphaGptWindowText = ({data,type}) =>{
                 }
             </div>
 
-            <div className=' whitespace-pre-line  text-data  w-full font-mono  h-full p-2 text-left text-[1rem] font-normal tracking-wide text-[white] dark:text-white overflow-hidden'>
+            <div className={` whitespace-pre-line    w-full font-mono  h-full p-2 text-[1rem] font-normal tracking-wide text-[white] dark:text-white overflow-hidden ${type === 'user' ? 'text-right' : 'text-left'} `}>
                 {
-                    <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px",padding:"10px",overflow:"hidden",textAlign:"justify"}} style={tomorrowNightBlue}>
+                    <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px",padding:"10px",overflow:"hidden",textAlign:"justify", }} style={tomorrowNightBlue}>
                         {formatedData}
                     </SyntaxHighlighter>
                 }

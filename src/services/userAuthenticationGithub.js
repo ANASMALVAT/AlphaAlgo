@@ -16,7 +16,6 @@ export async function userAuthenticationGithub(code) {
         };
         const url = `${USER_AUTHENTICATION}?code=${code}`
         const response = await axios.get(url, config);
-        console.log(response);
         return {success:true,response:response};
       }
       catch (err) {

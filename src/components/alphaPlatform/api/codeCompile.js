@@ -13,7 +13,7 @@ export const codeCompile = async (code,language,problemId,isRunning) =>
     }
 
     const custom_testcase = JSON.stringify(sessionStorage.getItem('custom_testcase'));
-    
+
     const requestData = {
       language_id: language,
       source_code: code,
@@ -22,8 +22,15 @@ export const codeCompile = async (code,language,problemId,isRunning) =>
       isRunning:isRunning,
     }
 
+    const config = {
+      headers: {
+        Authorization: `${localStorage.getItem('csrf-token')}`, 
+      },
+      withCredentials:true,
+    }; 
+
     try{
-      const response = await axios.post(CODE_COMPILE_URL, requestData);
+      const response = await axios.post(CODE_COMPILE_URL, requestData,config);
       return {success : true, data : response.data.code_output};
     } 
     catch (error) {

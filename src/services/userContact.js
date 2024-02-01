@@ -5,7 +5,6 @@ const CONTACT_URL = process.env.REACT_APP_SUBMIT_USER_ISSUE;
 
 export async function userContact(user_email,user_subject,user_message) {
   
-    console.log(user_email,user_message,user_subject);
     const config = {
         user_email:user_email,
         user_subject:user_subject,

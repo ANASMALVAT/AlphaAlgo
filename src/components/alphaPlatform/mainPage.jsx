@@ -6,6 +6,7 @@ import {setDifferentEditor, setDefault,} from "../../redux/slices/alphaPlatformS
 import { alphaRunning,alphaStopRunning } from "../../redux/slices/alphaRunning";
 import { codeCompile } from "./api/codeCompile";
 import { authorizedUser } from "./api/authorizedUser";
+import { getUserSubmission } from "./api/userSubmissions";
 import { useParams } from "react-router-dom";
 import { toggelUserLoginFalse } from "../../redux/slices/userAuthentication";
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
@@ -14,7 +15,7 @@ import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictL
 import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/restrictUnauthorized";
 import RestrictQuestion from "./coding-page-components/alpha-restrictions/restrictQuestion";
 import RestrictServerSide from "./coding-page-components/alpha-restrictions/restrictServerSide";
-
+import CodeDialog from "./coding-page-components/ui/codeDialog";
 import "./styles/mainPage.css";
 import "react-toastify/dist/ReactToastify.css";
 import { verifyToken } from "../../services/verifyToken";
@@ -97,6 +98,12 @@ const AlphaPlatform = ({}) => {
     updateCodeAndDriverCode();
   }
 
+  function setUserSubmission(userSubmissions) {
+    const submission = userSubmissions?.data?.userSubmissions || [];
+    const userSubmissionsJSON = JSON.stringify(submission);
+    sessionStorage.setItem('user-submission', userSubmissionsJSON);
+  }
+
   const handleMouseDown = (e) => {
     e.preventDefault();
     document.body.style.cursor = 'col-resize';
@@ -123,6 +130,16 @@ const AlphaPlatform = ({}) => {
         } else {
           handleServerFailure();
         }
+
+        try{
+          const getUserSubmissionData = await getUserSubmission(problemId);
+          console.log(getUserSubmissionData);
+          setUserSubmission(getUserSubmissionData);
+        }
+        catch(error){
+          console.log(error);
+        }
+
       }catch (error) {
         if(error?.response?.status != 'undefined'){
           handleResponse(error.response.status);
@@ -164,6 +181,7 @@ const AlphaPlatform = ({}) => {
     updateCodeAndDriverCode();
   }, [dropdownValue.language]);
 
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1100) {
@@ -195,7 +213,7 @@ const AlphaPlatform = ({}) => {
     switch (action) {
       case "code": {
         setCode(data);
-        sessionStorage.setItem(`user-code` , code);
+        sessionStorage.setItem(`user_code` , code);
         break;
       }
       default: {
@@ -203,6 +221,8 @@ const AlphaPlatform = ({}) => {
       }
     }
   };
+
+
 
   const closePane = () => {
     setSolution((solution) => !solution);
@@ -313,7 +333,7 @@ const AlphaPlatform = ({}) => {
   return (
     <>
       <div className="main-class min-w-[375px] min-h-[600px] w-full h-full flex flex-grow   min-w-screen max-h-screen bg-algoblack overflow-auto">
-
+        <CodeDialog />
         { alphaPlatformComponents.editor && (
           <div
             className={`editor-class overflow-hidden flex flex-col grow-1 h-[100vh]  min-h-[375px]  flex-grow `}

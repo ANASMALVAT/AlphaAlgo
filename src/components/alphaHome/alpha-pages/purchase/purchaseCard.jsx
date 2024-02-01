@@ -19,7 +19,7 @@ export default function PricingCard() {
                       <span>Everything <span className=' text-blue-700'>AlphaAlgo</span> offers.</span>
                   </li>
               </ul>
-              <button onClick={() => purchaseAlpha(process.env.REACT_APP_STRIPE_MONTHLY_PRICEID)} class="text-white bg-green-500 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-[0.25rem] text-sm px-5 py-2.5 text-center   dark:focus:ring-primary-900">Get started</button>
+              <button onClick={() => purchaseAlpha(process.env.REACT_APP_STRIPE_QUATER_PRICEID)} class="text-white bg-green-500 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-[0.25rem] text-sm px-5 py-2.5 text-center   dark:focus:ring-primary-900">Get started</button>
           </div>
           <div class="flex flex-col  h-[280px] max-h-[300px] min-w-[350px]  p-6 mx-auto max-w-[350px] text-center text-gray-900 bg-white rounded-[0.25rem] border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
               <div class="flex justify-center items-baseline mt-4 mb-8">

@@ -101,7 +101,7 @@ const AlphaPlatform = ({}) => {
   function setUserSubmission(userSubmissions) {
     const submission = userSubmissions?.data?.userSubmissions || [];
     const userSubmissionsJSON = JSON.stringify(submission);
-    sessionStorage.setItem('user-submission', userSubmissionsJSON);
+    sessionStorage.setItem('user-submission', userSubmissionsJSON || []);
   }
 
   const handleMouseDown = (e) => {
@@ -123,7 +123,7 @@ const AlphaPlatform = ({}) => {
           setIsLoggedIn(false);
           return;
         }
-  
+      localStorage.removeItem('stored-messages');
       const getQuestionDetail = await authorizedUser(problemId);
         if (getQuestionDetail) {
           handleSuccess(getQuestionDetail.data);

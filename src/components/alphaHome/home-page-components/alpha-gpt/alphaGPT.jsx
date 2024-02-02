@@ -1,7 +1,7 @@
 import React from "react";
 import { alphaFeatures } from "../../../../data/alphaFeatures";
 import AlphaCardComponent from "./alphaCardComponent";
-import AlphaGptWindow from "./alphaGptWindow";
+// import AlphaGptWindow from "./alphaGptWindow";
 import AlphaGPTWindow from "../../../alphaPlatform/coding-page-components/alpha-gpt/alphaGptWindow";
 import "./alphaGPT.css"
 

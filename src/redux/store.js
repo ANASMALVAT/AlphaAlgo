@@ -10,7 +10,9 @@ import alphaRunning from "./slices/alphaRunning"
 import alphaConsole from "./slices/alphaConsole"
 import userAuthorization from "./slices/userAuthorizationSlice"
 import outputWindowSlice from "./slices/outputWindowSlice"
-import  userSubmissionSlice  from "./slices/userSubmission"
+import  codeDialog  from "./slices/codeDialog"
+import solutionSlice from "./slices/solutionSlice"
+
 
 const store = configureStore({
     reducer:{
@@ -25,7 +27,8 @@ const store = configureStore({
       problemType:problemTypeSlice,
       userAuthorization:userAuthorization,
       outputWindow:outputWindowSlice,
-      userSubmission:userSubmissionSlice
+      codeDialog:codeDialog,
+      solutionLanguage:solutionSlice
     },
   });
 

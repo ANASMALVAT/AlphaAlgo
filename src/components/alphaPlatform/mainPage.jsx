@@ -18,6 +18,7 @@ import RestrictServerSide from "./coding-page-components/alpha-restrictions/rest
 import CodeDialog from "./coding-page-components/ui/codeDialog";
 import "./styles/mainPage.css";
 import "react-toastify/dist/ReactToastify.css";
+
 import { verifyToken } from "../../services/verifyToken";
 
 const AlphaPlatform = ({}) => {
@@ -133,11 +134,9 @@ const AlphaPlatform = ({}) => {
 
         try{
           const getUserSubmissionData = await getUserSubmission(problemId);
-          console.log(getUserSubmissionData);
           setUserSubmission(getUserSubmissionData);
         }
         catch(error){
-          console.log(error);
         }
 
       }catch (error) {
@@ -228,12 +227,13 @@ const AlphaPlatform = ({}) => {
     setSolution((solution) => !solution);
   };
 
-  async function runCode(runOrSubmitCode) {
+  async function runCode(runCode) {
     
     if(isRunning){
       toast(" last execution still in progress!");
       return;
     }
+
 
     try{
       const verifyResult = await verifyToken();
@@ -247,15 +247,20 @@ const AlphaPlatform = ({}) => {
       handleSessionExpired();
       return;
     }
-
+    if(!runCode){
+      const currentDateTime = new Date().toLocaleString('en-GB', { timeZone: 'UTC' });
+      let userSubmission = JSON.parse(sessionStorage.getItem('user-submission')) || [];
+      userSubmission.push({user_code:code,code_language:language.value,submission_time:currentDateTime});
+      sessionStorage.setItem("user-submission",JSON.stringify(userSubmission));
+    }
     try{
       toastId.current = toast("Processing...", { autoClose: 10000 });
       dispatch(alphaRunning());
       let codeCompileResponse;
       if(language.value === 'java'){
-        codeCompileResponse = await codeCompile(code,language,problemId,runOrSubmitCode);
+        codeCompileResponse = await codeCompile(code,language,problemId,runCode);
       }else{
-        codeCompileResponse = await codeCompile(code,language,problemId,runOrSubmitCode);
+        codeCompileResponse = await codeCompile(code,language,problemId,runCode);
       }
       if(codeCompileResponse.success){
         toast.update(toastId.current, { autoClose: 1 });

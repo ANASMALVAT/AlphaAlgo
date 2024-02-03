@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import  Select  from 'react-select';
 import { customStyles } from './styles/customCss';
-import {useSelector, useDispatch } from "react-redux"
-import { setUserSubmission } from '../../../../redux/slices/userSubmission';
+import { useDispatch } from "react-redux"
+import { setCode } from '../../../../redux/slices/codeDialog';
 
 const SubmissionDropDown = () => {
 
-
     const [submissions, setSubmissions] = useState([]);
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         const userSubmissionsJSON = sessionStorage.getItem('user-submission');
@@ -21,7 +19,7 @@ const SubmissionDropDown = () => {
     },[])
 
     const openDialog = (selectedOption) => {
-        dispatch(setUserSubmission(selectedOption.code));
+        dispatch(setCode(selectedOption.code));
     }
 
     return(
@@ -33,8 +31,10 @@ const SubmissionDropDown = () => {
                 
                 options={submissions.length > 0 ? (
                     submissions.map((submission, index) => {
-                      const [datePart, timePart] = submission.submission_time.split(', ');
-                      const formattedLabel = ` ${submission.code_language} - ${timePart}`;
+                      let [datePart, timePart] = submission.submission_time.split(', ');
+                      datePart = new Date(datePart);
+                      const formattedDate = datePart.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+                      const formattedLabel = ` ${submission.code_language} - ${formattedDate}`;
                       return {
                         label: formattedLabel,
                         value: submission.submission_time,

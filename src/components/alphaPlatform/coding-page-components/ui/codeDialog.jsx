@@ -1,16 +1,13 @@
 import React ,{useState, useEffect} from 'react';
-import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector,useDispatch } from 'react-redux';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { closeUserSubmissionDialog } from '../../../../redux/slices/userSubmission';
+import { closeCodeDialog } from '../../../../redux/slices/codeDialog';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
@@ -27,7 +24,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 export default function CodeDialog() {
 
-  const userSubmission = useSelector((state) => state.userSubmission.userSubmission);
+  const userSubmission = useSelector((state) => state.codeDialog.codeDialog);
   const [open, setOpen] = React.useState(false);
   const [code,setCode] = useState("");
   const dispatch = useDispatch();
@@ -36,13 +33,12 @@ export default function CodeDialog() {
     setOpen(true);
   };
   const handleClose = () => {
-    dispatch(closeUserSubmissionDialog());
+    dispatch(closeCodeDialog());
     setOpen(false);
   };
 
 
   useEffect(() => {
-    console.log(userSubmission.code);
     setCode(() => { return userSubmission.code; })
     if(userSubmission.viewDialog){
         handleClickOpen();
@@ -56,7 +52,7 @@ export default function CodeDialog() {
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-        className=' bg-transparent'
+        className=' bg-transparent '
       >
 
         <IconButton
@@ -73,7 +69,7 @@ export default function CodeDialog() {
           <CloseIcon  className=' cursor-pointer transition-all duration-200 hover:text-white  text-zinc-200' />
         </IconButton>
 
-        <DialogContent  dividers className= 'custom-scrollbar  rounded-none bg-[#4C5ADF]'>
+        <DialogContent  dividers className= 'max-w-[1200px] min-w-3/4 custom-scrollbar  rounded-none bg-[#4C5ADF]'>
             <div className=' flex gap-2'>
             <CopyToClipboard text={code}>
                 <ContentCopyIcon className=' cursor-pointer transition-all duration-200 hover:text-white  text-zinc-300' color='white' fontSize='small'/>

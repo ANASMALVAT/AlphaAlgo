@@ -1,4 +1,6 @@
-
+.solution-blurred{
+  filter: blur(5px);
+}
 .icon-hover:hover{
   scale: 1.25;
   transition: 300ms;

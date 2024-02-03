@@ -3,13 +3,22 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import SolutionButton from "../buttons/solutionButton";
+import { useSelector } from "react-redux";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import "./styles/solution.css";
 
 const CodeSolution = () => {
   const [problemSolution, setProblemSolution] = useState(null);
- 
+  const [driverSolution, setDriverSolution] = useState(null);
+  const [driverSolutionCode,setDriverSolutionCode] = useState("");
+  const alphaSolution = useSelector((state) => state.solutionLanguage.solutionState);
+
   useEffect(() => {
     const storedProblemSolution = sessionStorage.getItem("problemSolution");
+    const driverSolutionSession = sessionStorage.getItem("driverCode");
+
     if (storedProblemSolution) {
       try {
         const parsedData = JSON.parse(storedProblemSolution);
@@ -18,17 +27,37 @@ const CodeSolution = () => {
         console.error("Error parsing stored problemData:", error);
       }
     }
+    if(driverSolutionSession){
+      try {
+        const parsedSolution = JSON.parse(driverSolutionSession);
+        setDriverSolution(driverSolution => parsedSolution);
+    } catch (error) {
+        setDriverSolution({});
+      }
+    }
   }, []);
+
+   
  
   const problemName = problemSolution?.M?.problem_name?.S || "";
   const problemDescription = problemSolution?.M?.problem_description?.S || "";
-  const solution = problemSolution?.M?.solution?.S || "";
   const relevantLinks = problemSolution?.M?.relevant_links?.SS || [];
   const prerequisite = problemSolution?.M?.solution_prerequiste?.S || "";
   const prerequisiteLink = problemSolution?.M?.solution_prerequiste_links?.S || "";
   const requirement = problemSolution?.M?.solution_requirement?.S || "";
+  const [solutionBlurred, setSolutionBlured] = useState(true);
 
-  
+
+
+  useEffect(() => {
+    for(const key in alphaSolution){
+        if(alphaSolution[key] === true && driverSolution){
+            setDriverSolutionCode(driverSolution[key]?.M?.driver_run_solution?.S || "" );
+            break;
+        }
+    }
+  },[alphaSolution,driverSolution]);
+
   return (
     <>
       <div className=" solution-layout max-h-full pt-4 pl-3 p-2 overflow-auto flex flex-col text-left h-full m-auto flex-grow  ">
@@ -37,6 +66,7 @@ const CodeSolution = () => {
         <div>
           <h2 className="problem-question text-white text-left border-b border-gray-700">{problemName}</h2>
           <SyntaxHighlighter language="json" wrapLongLines={true} customStyle={{borderRadius:"8px",width:"100%",textAlign:"justify",overflow:"hidden",padding:"10px",marginTop:"25px"}} style={tomorrowNightBlue}>
+            
             {problemDescription}
           </SyntaxHighlighter>
         </div>
@@ -71,13 +101,18 @@ const CodeSolution = () => {
         }
 
         {
-          solution &&
+          driverSolution &&
           <div name="code-solution " className=" mt-8">
             <h2 className="problem-question text-white text-left border-b border-gray-700">solution</h2>
               <div className="solution">
-               <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{ borderRadius:"8px",width:"100%",textAlign:"justify",overflow:"hidden",padding:"15px",marginTop:"25px"}} style={tomorrowNightBlue}>
-                  {solution}
-                </SyntaxHighlighter>
+                <div className=" flex justify-items-end gap-10 flex-wrap items-center ">
+                <SolutionButton  />
+                </div>
+                <div onClick={() => setSolutionBlured(prev => !prev)}  className={`${solutionBlurred ? 'solution-blurred' : ''} cursor-pointer`}>
+                  <SyntaxHighlighter language="javascript" wrapLongLines={true} customStyle={{ borderRadius:"8px",width:"100%",textAlign:"justify",overflow:"hidden",padding:"15px",marginTop:"25px"}} style={tomorrowNightBlue}>
+                    {driverSolutionCode}
+                  </SyntaxHighlighter>
+                </div>
               </div>
           </div>
         }
@@ -86,7 +121,7 @@ const CodeSolution = () => {
           <h2 className="problem-question text-white text-left border-b border-gray-700">Resources</h2>
             <div className="flex gap-8 flex-wrap">
               {
-              relevantLinks.map((link, index) => 
+                relevantLinks.map((link, index) => 
                   {
                     return <>
                       <a href={link} className="relevant-links mt-4" target="_blank" rel="noopener noreferrer">

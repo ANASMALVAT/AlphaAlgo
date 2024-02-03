@@ -25,6 +25,7 @@ const CodeProblem = () => {
     const problemStatement = problemData?.M?.question_statement.S || "";
     const problemHint = problemData?.M?.hint.S || "";
     const problemConstraint = problemData?.M?.question_constraints.M || "";
+    const problemTask = problemData?.M?.question_task?.S || "";
     const problemExampleInput = problemData?.M?.example?.M?.input.S || "";
     const problemExampleOutput = problemData?.M?.example?.M?.output.S || "";
     const problemVisualization = problemData?.M?.visualization?.S || "";
@@ -39,16 +40,14 @@ const CodeProblem = () => {
     return (
         <>
             <div className=" code-problem flex flex-col h-full w-full whitespace-pre overflow-auto rounded-md ">
-
                 <div className="mb-2">
                     <div className="flex ">
                         <h2 className="problem-question text-white">{problemName}</h2>
                     </div>
-                    <div className=" problem-statement text-justify word-break bg-[transparent] pt-2 pb-2  border-t border-b border-gray-700  antialiased" style={{ whiteSpace: 'pre-line' }}>
-                        <h2 className=" whitespace-pre-wrap font-light text-[16px] text-justify  tracking-tight text-gray-300 ">{problemStatement}</h2>
+                    <div className=" problem-statement text-justify word-break bg-[transparent] pt-2 pb-2 pr-4  border-t border-b border-gray-700  antialiased" style={{ whiteSpace: 'pre-line' }}>
+                        <h2 className=" whitespace-pre-wrap font-normal text-[16px] text-justify  tracking-normal text-gray-200 ">{problemStatement}</h2>
                     </div>
                 </div>
-
                 { 
                 <div name ="example-1">
                     <h1 className=" problem-example text-xl antialiased  font-normal tracking-semibold landing-relaxed  text-white mb-3">Example </h1>
@@ -65,7 +64,6 @@ const CodeProblem = () => {
                     </div>
                 </div>
                 }
-
                 { problemVisualization &&
                 
                     <div className="mb-4">
@@ -73,8 +71,18 @@ const CodeProblem = () => {
                         <img src = {problemVisualization} className="rounded-md"></img>
                     </div>
                 }
+                { problemTask &&
+                <div className="mb-2">
+                    <div className="flex ">
+                    <h1 className=" problem-example text-2xl antialiased  font-normal tracking-semibold landing-relaxed  text-white mb-3">Your task </h1>
+                    </div>
+                    <div className=" problem-statement text-justify word-break bg-[transparent] pt-2 pb-2 pr-4  border-t border-b border-gray-700  antialiased" style={{ whiteSpace: 'pre-line' }}>
+                        <h2 className=" whitespace-pre-wrap font-normal text-[16px] text-justify  tracking-normal text-gray-200 ">{problemTask}</h2>
+                    </div>
+                </div>
+                }
 
-                <div name = 'constraint' className="mb-4  w-full  rounded-md font-mono">
+                <div name = 'constraint' className="mb-4 mt-2  w-full  rounded-md font-mono">
                     <h1 name = "example" className=" text-xl antialiased tracking-normal landing-relaxed text-white mb-2">Expected Time Complexity </h1>
                     <div className=" text-[16px] w-full bg-[#002451]  whitespace-pre-wrap rounded-md pt-4 pb-4 font-mono text-sm antialiased  font-normal tracking-normal landing-relaxed text-white">
                             <SyntaxHighlighter language="C#" wrapLongLines={true} customStyle={{borderRadius:"8px",fontSize:"16px"}} style={tomorrowNightBlue}>

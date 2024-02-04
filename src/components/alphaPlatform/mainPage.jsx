@@ -312,7 +312,7 @@ const AlphaPlatform = ({}) => {
         <div className='flex h-full w-full min-h-screen min-w-screen bg-[#00182D]'>
             <div className='flex flex-col m-auto justify-center text-center items-center'>
                 <div className='h-40 w-40 mb-4'>
-                    <img className='animate-spin ' style={{ animationDuration: '2.5s' }} src='https://www.svgrepo.com//show/408307/cog-wheel-settings.svg'></img>
+                    <img className='animate-spin ' style={{ animationDuration: '2.5s' }} src='https://alpha-images.s3.amazonaws.com/loading-wheel.svg'></img>
                 </div>
             </div>
         </div>

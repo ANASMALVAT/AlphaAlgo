@@ -41,11 +41,12 @@ const CodeSolution = () => {
  
   const problemName = problemSolution?.M?.problem_name?.S || "";
   const problemDescription = problemSolution?.M?.problem_description?.S || "";
-  const relevantLinks = problemSolution?.M?.relevant_links?.SS || [];
+  const relevantLinks = problemSolution?.M?.relevant_links?.L || [];
   const prerequisite = problemSolution?.M?.solution_prerequiste?.S || "";
   const prerequisiteLink = problemSolution?.M?.solution_prerequiste_links?.S || "";
   const requirement = problemSolution?.M?.solution_requirement?.S || "";
   const [solutionBlurred, setSolutionBlured] = useState(true);
+  console.log(relevantLinks);
 
 
 
@@ -119,15 +120,20 @@ const CodeSolution = () => {
 
         <div name="code-links" className="mt-8">
           <h2 className="problem-question text-white text-left border-b border-gray-700">Resources</h2>
-            <div className="flex gap-8 flex-wrap">
+            <div className="flex gap-2 flex-wrap">
               {
-                relevantLinks.map((link, index) => 
+                relevantLinks.map((links, index) => 
                   {
-                    return <>
-                      <a href={link} className="relevant-links mt-4" target="_blank" rel="noopener noreferrer">
-                          <YouTubeIcon className="icon-hover rounded-md " sx={{color:"#F37F1B",fontSize:"120px"}}/>
-                      </a>
-                    </>
+                    return (
+                      <div key={index} className=" p-3  flex w-full max-h-[400px] h-[275px]  ">
+                        <a href={links.SS[1]} className=" relative max-w-[500px] " target="_blank" rel="noopener noreferrer">
+                            <YouTubeIcon className="absolute w-full h-full text-[#CD201F]  transition-all duration-300 scale-[2.5] hover:transition-all hover:duration-200 hover:scale-[3.5]   left-1/2 top-1/2  text-3xl "   />
+                            <img src={links.SS[0]} width={400}  className=" flex  h-full  rounded-md ">
+                            </img>
+                        </a>
+                      </div>
+                      
+                    )
                 })
               }
             </div>

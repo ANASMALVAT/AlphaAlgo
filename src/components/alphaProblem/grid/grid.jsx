@@ -15,10 +15,10 @@ const Grid = ({problemInfo, isUserLoggedIn, isProblemSolved}) => {
             
             {
                 isUserLoggedIn && isProblemSolved &&
-                <div className=' w-5 h-5  rounded-full border border-gray-300 bg-green-500'>
+                <div className=' w-5 h-5  rounded-full border border-gray-300 bg-green-700'>
                 </div>
             }
-            
+
             {
                 isUserLoggedIn && !isProblemSolved &&
                 <div className=' w-5 h-5  rounded-full border border-gray-400 bg-white'>

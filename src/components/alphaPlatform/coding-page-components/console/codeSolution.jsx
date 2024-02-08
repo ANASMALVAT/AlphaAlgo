@@ -46,7 +46,6 @@ const CodeSolution = () => {
   const prerequisiteLink = problemSolution?.M?.solution_prerequiste_links?.S || "";
   const requirement = problemSolution?.M?.solution_requirement?.S || "";
   const [solutionBlurred, setSolutionBlured] = useState(true);
-  console.log(relevantLinks);
 
 
 
@@ -105,7 +104,14 @@ const CodeSolution = () => {
           driverSolution &&
           <div name="code-solution " className=" mt-8">
             <h2 className="problem-question text-white text-left border-b border-gray-700">solution</h2>
-              <div className="solution">
+              <div className="solution relative">
+                <div className=" absolute flex  top-20 right-2 z-1  w-8 h-8 justify-center items-center rounded-sm  bg-[#4C5ADF]">
+                    <CopyToClipboard text={driverSolutionCode} >
+                        <div>
+                          <ContentCopyIcon className=' cursor-pointer transition-all duration-200 hover:text-white  text-zinc-100 ' color='white' fontSize='small'/>
+                        </div>
+                    </CopyToClipboard>
+                </div>
                 <div className=" flex justify-items-end gap-10 flex-wrap items-center ">
                 <SolutionButton  />
                 </div>
@@ -125,9 +131,9 @@ const CodeSolution = () => {
                 relevantLinks.map((links, index) => 
                   {
                     return (
-                      <div key={index} className=" p-3  flex w-full max-h-[400px] h-[275px]  ">
+                      <div key={index} className=" p-3 pl-0  flex w-full max-h-[400px] h-[275px]  ">
                         <a href={links.SS[1]} className=" relative max-w-[500px] " target="_blank" rel="noopener noreferrer">
-                            <YouTubeIcon className="absolute w-full h-full text-[#CD201F]  transition-all duration-300 scale-[2.5] hover:transition-all hover:duration-200 hover:scale-[3.5]   left-1/2 top-1/2  text-3xl "   />
+                            <YouTubeIcon className="absolute w-20 h-20 text-[#CD201F]  transition-all duration-300 scale-[2.5] hover:transition-all hover:duration-200 hover:scale-[3.5]   left-1/2 top-1/2  text-3xl "   />
                             <img src={links.SS[0]} width={400}  className=" flex  h-full  rounded-md ">
                             </img>
                         </a>

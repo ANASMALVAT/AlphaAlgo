@@ -1,11 +1,9 @@
-import React, { useState,useEffect }  from 'react'
+import React  from 'react'
 import {GoogleLogin} from "react-google-login";
 import GitHubLogin from 'react-github-login';
 import { userAuthenticationGoogle } from '../../../services/userAuthenticationGoogle';
 import { userAuthenticationGithub } from '../../../services/userAuthenticationGithub';
 import {GithubLoginButton} from 'react-social-login-buttons'
-import {LoginSocialFacebook} from 'reactjs-social-login';
-import {FacebookLoginButton} from 'react-social-login-buttons'
 
 import { toast } from 'react-toastify';
 import { gapi } from 'gapi-script';
@@ -14,9 +12,6 @@ const LoginComponent = () => {
 
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
-  const facebookClientId = process.env.REACT_APP_FACEBOOK_CLIENT_ID;
-
-
   const githubRedirectUri = process.env.REACT_APP_GITHUB_REDIRECT_URL;
   
   const setCookieAndToken = (response) => {
@@ -37,7 +32,9 @@ const LoginComponent = () => {
   }
 
   const onGoogleFailure = (res) => {
-    toast("Error occured during login!")
+    if(res.error != "popup_closed_by_user"){
+      toast("Error occured during login!")
+    }
   }
 
   const onGithubSuccess = async (res) => {
@@ -52,7 +49,9 @@ const LoginComponent = () => {
   }
 
   const onGithubFailure = (res) => {
-    toast("Error occured during login!")
+    if(res.error != "popup_closed_by_user"){
+      toast("Error occured during login!")
+    }  
   }
 
   function startGoogle(){
@@ -87,29 +86,15 @@ const LoginComponent = () => {
                       >
                       <span className='text-gray-800 font-normal  text-[16px] ml-1'>Google</span>
                       </GoogleLogin>
-
-                        <GitHubLogin 
-                          clientId={githubClientId}
-                          redirectUri={githubRedirectUri}
-                          onSuccess={onGithubSuccess}
-                          onFailure={onGithubFailure} >
-                            <GithubLoginButton style={{background:"black",color:"white",height:"45px",width:"225px",fontSize:"15px"}}  iconColor='white' className='  !hover:bg-black' >
-                                <span className='text-gray-100 font-normal  text-[16px] ml-2'>GitHub</span>
-                            </GithubLoginButton>
-                        </GitHubLogin>
-
-{/* 
-                        <LoginSocialFacebook
-                        appId={facebookClientId}
-                        onResolve={onFacebookSuccess}
-                        onReject={onFacebookFailure}
-                        >
-                          <FacebookLoginButton
-                            style={{ background:"#1877F2", height:"45px",width:"225px",fontSize:"15px",marginTop:"10px" }}  iconColor='white'
-                          >
-                            <span className='text-gray-100 font-normal  text-[16px] ml-2'>Facebook</span>
-                          </FacebookLoginButton>
-                        </LoginSocialFacebook> */}
+                  <GitHubLogin 
+                    clientId={githubClientId}
+                    redirectUri={githubRedirectUri}
+                    onSuccess={onGithubSuccess}
+                    onFailure={onGithubFailure} >
+                      <GithubLoginButton style={{background:"black",color:"white",height:"45px",width:"225px",fontSize:"15px"}}  iconColor='white' className='  !hover:bg-black' >
+                          <span className='text-gray-100 font-normal  text-[16px] ml-2'>GitHub</span>
+                      </GithubLoginButton>
+                  </GitHubLogin>
                 </div>
         </div>
     )

@@ -19,7 +19,9 @@ const SubmissionDropDown = () => {
     },[])
 
     const openDialog = (selectedOption) => {
-        dispatch(setCode(selectedOption.code));
+        if(selectedOption?.code){
+            dispatch(setCode(selectedOption.code));
+        }
     }
 
     return(
@@ -41,7 +43,7 @@ const SubmissionDropDown = () => {
                         code: submission.user_code
                       };
                     })
-                  ) : []}
+                  ) : [{label :"No Submission", value:"No Submission"}]}
                 onChange={(selectedOption) => openDialog(selectedOption)}
                 placeholder={`Last 5 submission`}
                 isSearchable={false}

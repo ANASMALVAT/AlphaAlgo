@@ -4,23 +4,39 @@ import { useSelector } from 'react-redux';
 import "./styles/grid.css"
 
 
-const Grid = ({problemInfo}) => {
+const Grid = ({problemInfo, isUserLoggedIn, isProblemSolved}) => {
 
     const problemCategoryType = useSelector((state) => state.problemType.difficulty);
 
     return(
     <Link to={`/problems/${problemInfo?.question_id}`}>
         
-        <div className=' problem-grid  flex flex-row items-center justify-between h-12 shadow-md rounded-sm bg-[#F5F5F5]'>
+        <div className=' problem-grid  flex flex-row items-center justify-between h-12 pl-3 shadow-md rounded-sm bg-[#F5F5F5]'>
             
-            <div className='problem-name mr-8 ml-8 font-normal text-gray-900'>
+            {
+                isUserLoggedIn && isProblemSolved &&
+                <div className=' w-5 h-5  rounded-full border border-gray-300 bg-green-500'>
+                </div>
+            }
+            
+            {
+                isUserLoggedIn && !isProblemSolved &&
+                <div className=' w-5 h-5  rounded-full border border-gray-400 bg-white'>
+                </div>
+            }
+            
+            {
+                !isUserLoggedIn && !isProblemSolved && <></>
+            }
+
+            <div className='problem-name mr-6 ml-6 font-normal text-gray-900'>
                 <a>{ !problemCategoryType ? "Anonymous" :  problemInfo?.question_name}</a>
             </div>
 
             {  
                 !problemCategoryType ? <div  className='h-4 w-4'></div>
                 : problemInfo?.isFree && 
-                <img src='https://pngimg.com/d/free_PNG90767.png' className='h-8 w-8 mr-4'></img>
+                <img src='https://alpha-images.s3.amazonaws.com/free.png' className='h-8 w-8 mr-4'></img>
             }
 
             {  

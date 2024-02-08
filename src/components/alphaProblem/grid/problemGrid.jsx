@@ -9,7 +9,8 @@ const ProblemGrid = ({ problemList }) => {
   const [categorizedProblems, setCategorizedProblems] = useState({ easy: [], medium: [], hard: [], special:[]});
   const problemCategories = useSelector((state) => state.problemCategories.category);
   const problemCategoryType = useSelector((state) => state.problemType.difficulty);
-
+  const IsUserLoggedIn = useSelector((state) => state.userLogin.userLogin);
+  const userCompletedProblems = sessionStorage.getItem('user_completed_problems') || [];
 
   const categorizeProblems = (list, categories) => {
 
@@ -97,7 +98,7 @@ useEffect(() => {
       <div className='category-easy'>
         <h2 className='h2 mb-2 text-algoblack'>{problemCategoryType ? "Easy" : "Random"}</h2>
         <div className='grid gap-3 mt-4 fade-in'>
-          {categorizedProblems.easy.map((problem) => (<Grid   className="fade-in" problemInfo={problem} key={problem?.id} />))}
+          {categorizedProblems.easy.map((problem) => (<Grid isUserLoggedIn={IsUserLoggedIn}  className="fade-in" problemInfo={problem} key={problem?.id} />))}
         </div>
       </div>
     }
@@ -107,7 +108,7 @@ useEffect(() => {
       <div className='category-medium'>
         <h2 className='h2 mb-2 text-algoblack'>{problemCategoryType ? "Medium" : "Random"}</h2>
         <div className='grid gap-3 mt-4 fade-in'>
-          {categorizedProblems.medium.map((problem) => (<Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))}
+          {categorizedProblems.medium.map((problem) => (<Grid isUserLoggedIn={IsUserLoggedIn} isProblemSolved={userCompletedProblems.includes(problem.question_id)} className="fade-in" problemInfo={problem} key={problem?.id}  /> ))}
         </div>
       </div>
     }
@@ -116,7 +117,7 @@ useEffect(() => {
       <div className='category-hard'>
         <h2 className='h2 mb-2 text-algoblack'>{problemCategoryType ? "Hard" : "Random"}</h2>
         <div className='grid gap-3 mt-4 fade-in'>
-          {categorizedProblems.hard.map((problem) => ( <Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))}
+          {categorizedProblems.hard.map((problem) => ( <Grid isUserLoggedIn={IsUserLoggedIn} className="fade-in" problemInfo={problem} key={problem?.id} /> ))}
         </div>
       </div>
     }
@@ -133,7 +134,7 @@ useEffect(() => {
           </div>
           <div className='grid gap-3 mt-4 fade-in'>
             {
-              categorizedProblems.special.map((problem) => (  <Grid  className="fade-in" problemInfo={problem} key={problem?.id} /> ))
+              categorizedProblems.special.map((problem) => (<Grid isUserLoggedIn={IsUserLoggedIn} className="fade-in" problemInfo={problem} key={problem?.id} /> ))
             }
           </div>
         </div>

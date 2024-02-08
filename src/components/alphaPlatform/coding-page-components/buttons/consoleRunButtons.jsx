@@ -9,7 +9,7 @@ const ConsoleRunButtons = ({runCode}) => {
 
     return (
         <>
-            <div className="flex flex-row  bottom-0 mb-4 gap-2">
+            <div className="flex flex-row  bottom-0 mb-3 w-full gap-2">
                     <button
                         onClick={() => { compileCode(true)}}
                         className={` h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-normal text-gray-200

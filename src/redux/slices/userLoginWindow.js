@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const userWindowSlice = createSlice({
+export const userLoginWindowSlice = createSlice({
     name:'userLoginWindow',
     initialState:{showLoginWindow:false},
     reducers:{
@@ -13,5 +13,5 @@ export const userWindowSlice = createSlice({
 
     }
 })
-export  const { toggelLoginWindowTrue, toggelLoginWindowFalse } = userWindowSlice.actions;
-export default userWindowSlice.reducer;
+export  const { toggelLoginWindowTrue, toggelLoginWindowFalse } = userLoginWindowSlice.actions;
+export default userLoginWindowSlice.reducer;

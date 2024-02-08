@@ -9,6 +9,7 @@ import { authorizedUser } from "./api/authorizedUser";
 import { getUserSubmission } from "./api/userSubmissions";
 import { useParams } from "react-router-dom";
 import { toggelUserLoginFalse } from "../../redux/slices/userAuthentication";
+import { setUserCodeCompletion } from "./api/userCodeCompletion";
 import CodeEditorWindow from "./coding-page-components/code-editor/codeEditorWindow";
 import ConsoleInput from "./coding-page-components/console/console";
 import RestrictLogin from "./coding-page-components/alpha-restrictions/restrictLogin";
@@ -191,7 +192,7 @@ const AlphaPlatform = ({}) => {
           })
         );
       }
-      else if ( alphaPlatformComponents.editor === true && alphaPlatformComponents.console === true){
+      else if ( alphaPlatformComponents.editor === true && alphaPlatformComponents.console === true) {
          dispatch(setDifferentEditor({editor: true, console: false}));
       }
     };
@@ -229,11 +230,16 @@ const AlphaPlatform = ({}) => {
 
   async function runCode(runCode) {
     
+    
     if(isRunning){
       toast(" last execution still in progress!");
       return;
     }
 
+    if(language.value === 'text'){
+      showWhiteBoardToast(" White board is on, Please select your coding language.");
+      return;
+    }
 
     try{
       const verifyResult = await verifyToken();
@@ -268,7 +274,20 @@ const AlphaPlatform = ({}) => {
         showSuccess("Code compiled successfully!");
         setTimeout(function() {
           dispatch(alphaStopRunning());
-        }, 2000);
+        }, 4000);
+        if(!runCode){
+
+          const output = atob(codeCompileResponse.data.stdout);
+          const output_lines = output.split(/[\r\n]+/);
+          if(output_lines.length == 2 && output_lines[0] === "All test cases passed!"){
+              await setUserCodeCompletion(problemId);
+              showSubmission("You have successfully solved the problem!");
+          }
+          else if(output_lines.length > 2 && output_lines[output_lines.length - 2] === "All test cases passed!"){
+            showSubmission("Please remove print statements to makr this problem as solved!");
+          }
+      }
+
       }
       else{
         toast.update(toastId.current, { autoClose: 1 });
@@ -280,7 +299,7 @@ const AlphaPlatform = ({}) => {
     }
     catch(error){
       toast.update(toastId.current, { autoClose: 1 });
-      toast("Error compiling code!");
+      showError("Error compiling code!");
       setTimeout(function() {
         dispatch(alphaStopRunning());
       }, 2000);
@@ -300,9 +319,32 @@ const AlphaPlatform = ({}) => {
 
   const showSuccess = (notification) => {
     toast.success(notification ? notification : `Compiled Successfully!`, {
-      position: "top-right",
-      autoClose: 3000,
-      theme:"light"
+      position:"top-right",
+      autoClose:5000,
+      hideProgressBar:false,
+      newestOnTop:false,
+      theme:"light",
+      className:" bg-[#4C5ADF]"
+    });
+  };
+
+  const showSubmission = (notification) => {
+    toast.success(notification, {
+      position:"bottom-center",
+      autoClose:7000,
+      hideProgressBar:true,
+      newestOnTop:false,
+      theme:"dark",
+    });
+  };
+
+  const showWhiteBoardToast = (notification) => {
+    toast.success(notification, {
+      position:"top-center",
+      autoClose:4000,
+      hideProgressBar:true,
+      newestOnTop:false,
+      theme:"dark",
     });
   };
 

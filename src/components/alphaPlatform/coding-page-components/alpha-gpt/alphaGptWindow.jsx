@@ -57,9 +57,11 @@ const AlphaGPTWindow = () => {
         const response = await fetch(GPT_URL, {
           method: 'POST',
           headers: {
+            Authorization: `${localStorage.getItem('csrf-token')}`, 
             Accept: 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
           },
+          withCredentials:true,
           body: JSON.stringify({ currentChat: currentChats}),
         });
 

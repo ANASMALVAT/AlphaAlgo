@@ -3,15 +3,16 @@ import alphaPlatformReducer from "./slices/alphaPlatformSlice"
 import dropdownSliceReducer from "./slices/dropDownSlice"
 import problemCategories from "./slices/problemCategorySlice"
 import problemTypeSlice from "./slices/problemTypeSlice"
-import userLoginWindow from "./slices/userComponentSlice"
-import userLogin from "./slices/userAuthentication"
+import userLoginWindow from "./slices/userLoginWindow"
+import userLoginWindowSlice from "./slices/userAuthentication"
 import alphaNotification from "./slices/alphaNotification"
 import alphaRunning from "./slices/alphaRunning"
 import alphaConsole from "./slices/alphaConsole"
 import userAuthorization from "./slices/userAuthorizationSlice"
 import outputWindowSlice from "./slices/outputWindowSlice"
-import  codeDialog  from "./slices/codeDialog"
+import codeDialog  from "./slices/codeDialog"
 import solutionSlice from "./slices/solutionSlice"
+import alphaUser from "./slices/alphaUser"
 
 
 const store = configureStore({
@@ -20,7 +21,7 @@ const store = configureStore({
       dropdownValues:dropdownSliceReducer,
       problemCategories:problemCategories,
       userLoginWindow:userLoginWindow,
-      userLogin:userLogin,
+      userLogin:userLoginWindowSlice,
       alphaNotification:alphaNotification,
       alphaRunning:alphaRunning,
       alphaConsole:alphaConsole,
@@ -28,7 +29,8 @@ const store = configureStore({
       userAuthorization:userAuthorization,
       outputWindow:outputWindowSlice,
       codeDialog:codeDialog,
-      solutionLanguage:solutionSlice
+      solutionLanguage:solutionSlice,
+      alphaUser:alphaUser
     },
   });
 

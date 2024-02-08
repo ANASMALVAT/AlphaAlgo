@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { toggelLoginWindowTrue } from '../../../../redux/slices/userComponentSlice';
+import { toggelLoginWindowTrue } from '../../../../redux/slices/userLoginWindow';
 
 const RestrictLogin = () => {
     const dispatch = useDispatch();

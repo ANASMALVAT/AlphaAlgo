@@ -163,8 +163,8 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
                     <OutputWindowButtons makeFullWindow={makeFullWindow}  makePartialWindow={makePartialWindow} closeWindow={closeWindow}/>
                 </div>  
                 <div className=" flex gap-2 ml-2">
-                    <button onClick={makePartialWindow} className={`${outputWindow === 'cancel' ? 'z-10': 'z-0'}  h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-normal text-gray-200 bg-[#002451] sm:text-sm lg:text-md xl:text-md`}> 
-                        <h1 className=" text-[12px] font-normal">Console</h1>
+                    <button onClick={makePartialWindow} className={`${outputWindow === 'cancel' ? 'z-10': 'z-0'}  h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-light text-white bg-[#392A6D] sm:text-sm lg:text-md xl:text-md`}> 
+                        <h1 className=" text-[15px] font-normal ">console</h1>
                     </button>
                 </div>
             </div>

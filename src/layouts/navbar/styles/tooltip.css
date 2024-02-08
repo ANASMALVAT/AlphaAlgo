@@ -9,8 +9,8 @@
     outline: 0;
 }
 .product-item-problems:hover{
-    color: whitesmoke !important;
-    background: #392A6D;
+    color: white !important;
+    background: #00182D;
     transition-duration: 200ms;
 }
 .product-xblogs:hover{

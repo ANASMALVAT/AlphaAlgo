@@ -69,7 +69,7 @@ export default function CodeDialog() {
           <CloseIcon  className=' cursor-pointer transition-all duration-200 hover:text-white  text-zinc-200' />
         </IconButton>
 
-        <DialogContent  dividers className= 'max-w-[1200px] min-w-3/4 custom-scrollbar  rounded-none bg-[#4C5ADF]'>
+        <DialogContent  dividers className= 'max-w-[1200px] min-w-3/4  custom-scrollbar  rounded-none bg-[#4C5ADF]'>
             <div className=' flex gap-2'>
             <CopyToClipboard text={code}>
                 <ContentCopyIcon className=' cursor-pointer transition-all duration-200 hover:text-white  text-zinc-300' color='white' fontSize='small'/>

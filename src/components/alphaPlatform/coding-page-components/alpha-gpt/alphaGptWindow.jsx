@@ -61,9 +61,10 @@ const AlphaGPTWindow = () => {
             Accept: 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
           },
-          withCredentials:true,
+          credentials: 'include',
           body: JSON.stringify({ currentChat: currentChats}),
         });
+        
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder();

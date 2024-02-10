@@ -1,19 +1,25 @@
-import React  from 'react'
+import React, { useEffect, useLayoutEffect, useState }  from 'react'
 import {GoogleLogin} from "react-google-login";
 import GitHubLogin from 'react-github-login';
 import { userAuthenticationGoogle } from '../../../services/userAuthenticationGoogle';
 import { userAuthenticationGithub } from '../../../services/userAuthenticationGithub';
 import {GithubLoginButton} from 'react-social-login-buttons'
-
 import { toast } from 'react-toastify';
 import { gapi } from 'gapi-script';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLoginCredentials } from '../../../services/fetchLoginCredentials';
+import { setLoginCredentials } from '../../../redux/slices/loginCredentials';
 const LoginComponent = () => {
 
-  const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  const githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
   const githubRedirectUri = process.env.REACT_APP_GITHUB_REDIRECT_URL;
-  
+  const dispatch = useDispatch();
+  useLayoutEffect(async () => {
+    const response = await fetchLoginCredentials();
+    dispatch(setLoginCredentials(response.credentials));
+  },[])
+
+  const loginCredentials = useSelector((state) => state.loginCredentials.loginCredentials);
+
   const setCookieAndToken = (response) => {
     window.localStorage.setItem('csrf-token',response.data.csrfToken);
     window.location.reload();
@@ -55,14 +61,18 @@ const LoginComponent = () => {
   }
 
   function startGoogle(){
-        gapi.client.init({
-            clientId: googleClientId,
-            scope:""
-        })
+        if(loginCredentials.google_id){
+            gapi.client.init({
+                clientId: loginCredentials.google_id,
+                scope:""
+            })
+        }
   }
 
   const loadGoogleapi = () => {
-    gapi.load('client:auth2',startGoogle);
+    if(loginCredentials.google_id){
+        gapi.load('client:auth2',startGoogle);
+    }
   }
 
 
@@ -76,18 +86,22 @@ const LoginComponent = () => {
                 </div>
 
                 <div className=' flex  flex-col justify-center mt-2 gap-2 rounded-md items-center'>
+                  { loginCredentials.google_id &&
                   <GoogleLogin
                       className=' w-[225px] m-auto  font-semibold text-center placeholder:font-semibold text-white placeholder-gray-200::placeholder	'
-                      clientId={googleClientId}
+                      clientId={loginCredentials.google_id}
                       onSuccess={onGoogleSuccess}
                       onFailure={onGoogleFailure}
                       cookiePolicy='single_host_origin'
                       onClick={loadGoogleapi}
                       >
                       <span className='text-gray-800 font-normal  text-[16px] ml-1'>Google</span>
-                      </GoogleLogin>
+                  </GoogleLogin>
+                  }
+                  {
+                  loginCredentials.github_id &&
                   <GitHubLogin 
-                    clientId={githubClientId}
+                    clientId={loginCredentials.github_id}
                     redirectUri={githubRedirectUri}
                     onSuccess={onGithubSuccess}
                     onFailure={onGithubFailure} >
@@ -95,6 +109,7 @@ const LoginComponent = () => {
                           <span className='text-gray-100 font-normal  text-[16px] ml-2'>GitHub</span>
                       </GithubLoginButton>
                   </GitHubLogin>
+                  }
                 </div>
         </div>
     )

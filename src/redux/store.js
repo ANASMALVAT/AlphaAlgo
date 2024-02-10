@@ -13,7 +13,8 @@ import outputWindowSlice from "./slices/outputWindowSlice"
 import codeDialog  from "./slices/codeDialog"
 import solutionSlice from "./slices/solutionSlice"
 import alphaUser from "./slices/alphaUser"
-
+import alphaPremiumUser from "./slices/alphaPremiumUser"
+import loginCredentials from "./slices/loginCredentials"
 
 const store = configureStore({
     reducer:{
@@ -30,7 +31,9 @@ const store = configureStore({
       outputWindow:outputWindowSlice,
       codeDialog:codeDialog,
       solutionLanguage:solutionSlice,
-      alphaUser:alphaUser
+      alphaUser:alphaUser,
+      alphaPremiumUser:alphaPremiumUser,
+      loginCredentials:loginCredentials
     },
   });
 

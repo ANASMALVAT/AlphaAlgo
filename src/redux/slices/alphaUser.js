@@ -3,11 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const alphaUser = createSlice({
     name:"alphaUser",
     initialState: { 
-        alphaUser: { 
-            user_name: "",
-            user_profile: "",
-            user_email: "", 
-        }
+        alphaUser: {}
     },
     reducers : {
         setAlphaUser: (state,action) => {

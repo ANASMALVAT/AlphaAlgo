@@ -6,16 +6,15 @@ import {toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggelLoginWindowTrue } from "../../redux/slices/userLoginWindow";
-import { toggelUserLoginFalse } from "../../redux/slices/userAuthentication";
 import UserLogin from "../../components/alphaLogin/login-components/userLogin";
 import { showNotification } from "../../redux/slices/alphaNotification";
-
+import { useLogout } from "../../utils/logout";
 import ProfileTooltip from "./profileTooltip";
 
 import "../navbar/styles/AlphaNavbar.css"
 
 const AlphaNavbar  = () => {
-
+    const logout = useLogout();
     const dispatch = useDispatch();
     const [showLoginButton, setShowLoginButton] = useState(false);
     const [isOpen,setIsOpen] = useState(false);
@@ -43,12 +42,6 @@ const AlphaNavbar  = () => {
         dispatch(toggelLoginWindowTrue());
     }
 
-    const logout = async () => {
-        localStorage.clear();
-        sessionStorage.clear();
-        dispatch(toggelUserLoginFalse());
-        window.location.reload();
-    }
 
     return (
         <>
@@ -94,7 +87,7 @@ const AlphaNavbar  = () => {
                                     <a href="#" class="hover:underline me-3 md:me-3"></a>
                             </li>
                             <li>
-                                { !showLoginButton && <div  className="w-[50px] min-w-[40px] h-full justify-center align-bottom text-center opacity-0"></div> }
+                                { !showLoginButton && <div  className="w-[70px]  h-full justify-center align-bottom text-center opacity-0"></div> }
                                 {
                                 showLoginButton && 
                                 (
@@ -103,7 +96,7 @@ const AlphaNavbar  = () => {
                                         <Popup
                                         trigger =
                                         {
-                                            <div onClick={() => setIsOpen(true)} id="logout" className="w-[70px]  text-center hover:scale-110 hover:transition-transform  hover:duration-200  pb-1    items-center min-w-[40px] flex gap-3 h-full justify-center align-bottom text-center">
+                                            <div onClick={() => setIsOpen(true)} id="logout" className="w-[70px] mt-2  text-center hover:scale-110 hover:transition-transform  hover:duration-200  pb-1    items-center min-w-[40px] flex gap-3 h-full justify-center align-bottom text-center">
                                                 <img src={AlphaUser.user_profile} className=" flex justify-center  rounded-full " width={26} height={26}></img>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 292.362 292.362" className=" h-2 w-2">
                                                     <path d="M286.935 69.377q-5.422-5.425-12.848-5.424H18.274q-7.426 0-12.85 5.424Q-.001 74.807 0 82.228t5.424 12.847l127.907 127.907q5.43 5.427 12.85 5.428c7.42.001 9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847s-1.814-9.229-5.427-12.85"></path>
@@ -119,7 +112,7 @@ const AlphaNavbar  = () => {
                                     )
                                     :
                                     (
-                                        <div id="login" className=" w-[50px] min-w-[40px] h-full justify-center align-bottom text-center">
+                                        <div id="login" className=" w-[70px]  h-full justify-center align-bottom text-center">
                                             <button onClick={showLogin} className="login-ul flex h-full w-[50px] flex-row hover:duration-100 text-white justify-between p-2 items-center text-center">
                                                 <div className=" hover:underline text-[16px]" href="#">
                                                     <h1>Login</h1>

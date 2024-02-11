@@ -6,25 +6,17 @@ import { userAuthenticationGithub } from '../../../services/userAuthenticationGi
 import {GithubLoginButton} from 'react-social-login-buttons'
 import { toast } from 'react-toastify';
 import { gapi } from 'gapi-script';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchLoginCredentials } from '../../../services/fetchLoginCredentials';
-import { setLoginCredentials } from '../../../redux/slices/loginCredentials';
+import {  useSelector } from 'react-redux';
+
 const LoginComponent = () => {
 
   const githubRedirectUri = process.env.REACT_APP_GITHUB_REDIRECT_URL;
-  const dispatch = useDispatch();
-  useLayoutEffect(async () => {
-    const response = await fetchLoginCredentials();
-    dispatch(setLoginCredentials(response.credentials));
-  },[])
-
   const loginCredentials = useSelector((state) => state.loginCredentials.loginCredentials);
 
   const setCookieAndToken = (response) => {
     window.localStorage.setItem('csrf-token',response.data.csrfToken);
     window.location.reload();
   }
-
 
   const onGoogleSuccess = async (res) => {
     const token = res.tokenObj;

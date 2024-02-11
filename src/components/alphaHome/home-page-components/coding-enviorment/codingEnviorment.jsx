@@ -9,7 +9,7 @@ const CodingEnviorment = () => {
         <div className="enviorment flex min-h-[685px] h-screen w-full  flex-1 bg-transparent justify-x overflow-visible max-w-[1500px] ">
             <div className="div-enviorment  flex flex-col "> 
                 <div className="enviorment-header common-margin-enviorment mb-4">
-                    <h1 className="enviorment-header-text">Rich Coding Enviorment</h1>
+                <h1 className="enviorment-header-text text-[#F5F5F5]  font-semibold">Rich Coding Environment</h1>
                 </div>
 
                 <div className=" enviorment-text common-margin-enviorment mb-10">

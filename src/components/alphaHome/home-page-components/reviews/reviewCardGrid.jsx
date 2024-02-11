@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import { fetchReviewList } from '../../../../services/fetchReviewList';  
+import { fetchReviewListHome } from '../../../../services/fetchReviewListHome';
 import ReviewCard from './reviewCard';
 import "./styles/reviewCardGrid.css";
 
@@ -11,7 +11,7 @@ const ReviewCardGrid = () => {
   const [cardIndex, setCardIndex] = useState(0);
 
   useLayoutEffect(() => {
-    fetchReviewList().then(
+    fetchReviewListHome().then(
       reviewList => {
         setReviews(reviews => reviewList);
       })

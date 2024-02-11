@@ -13,6 +13,7 @@ import { cancelWindow,maximizeWindow,partialWindow } from "../../../../redux/sli
 import OutputWindowButtons from "../buttons/outputWindowButtons";
 import { Link } from "react-router-dom";
 import CodeOutput from "./codeOutput";
+import Popup from "reactjs-popup";
 import "./styles/codeEditorWindow.css";
 
 
@@ -119,9 +120,26 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
 
                 <div className=" buttons flex  text-center align-center rounded-sm ">
 
-                    <button onClick={handleRestore}  className={`button-disappear overflow-hidden mr-2 h-12  flex flex-row items-center border-b-4 border-algoXcolor rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
-                        <RestoreIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
-                    </button>
+
+                        <Popup
+                        trigger={
+                            <button onClick={handleRestore}  className={`button-disappear overflow-hidden mr-2 h-12  flex flex-row items-center border-b-4 border-algoXcolor rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
+                                <RestoreIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
+                            </button>
+                        }
+                        closeOnEscape
+                        position={"right center"}
+                        on={['hover']}
+                        arrow={"right center" !== 'center center'}
+                    >
+                        <div className='flex  justify-center items-center'>
+                            <div class="  border-t-[10px]  border-l-[0px] border-r-[10px] border-b-[10px] w-4 border-transparent border-r-[#4C5ADF]"></div>
+                            <div className=' w-32 h-12 bg-[#4C5ADF] flex justify-center items-center rounded-sm ' >
+                                <h1 className=' text-white text-[17px]'>Restore Code</h1>
+                            </div>
+                        </div>
+                    </Popup>
+                   
 
                     <button  onClick={openSettingPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center   border-b-4 border-algoXcolor rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
                         <SettingsIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>

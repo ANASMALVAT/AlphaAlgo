@@ -88,8 +88,8 @@ const AccountDashboard = () => {
                 <div className= ' flex  flex-col  items-start justify-start pt-4  rounded-lg border min-w-[370px] border-gray-300 max-w-[600px] md:w-[500px] lg:w-[600px] xl:w-[600px] h-[200px] px-4 '>
                     <div className=' w-full h-full'>
                         <div className=' mt-4 flex items-start px-3 py-3 w-full   justify-between rounded-md  bg-[#EDF2F7]' >
-                            <div className='  flex flex-col justify-center gap-1'>
-                                <h2 className='flex text-xl font-normal h-10 text-center items-center'>
+                            <div className='  flex flex-col justify-center items-center gap-1'>
+                                <h2 className='flex text-xl font-normal h-10 mt-1 my-auto text-center items-center'>
                                     Manage your plan
                                 </h2>
                             </div>

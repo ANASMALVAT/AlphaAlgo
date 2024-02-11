@@ -1,6 +1,7 @@
 import React  from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Popup from 'reactjs-popup';
 import "./styles/grid.css"
 
 
@@ -15,14 +16,44 @@ const Grid = ({problemInfo, isUserLoggedIn, isProblemSolved}) => {
             
             {
                 isUserLoggedIn && isProblemSolved &&
-                <div className=' w-5 h-5  rounded-full border border-gray-300 bg-green-700'>
+                <Popup
+                trigger={
+                    <div className=' w-5 h-5  rounded-full border border-gray-300 bg-green-700'>
+                    </div>
+                }
+                closeOnEscape
+                position={"top center"}
+                on={['hover']}
+                arrow={"top center" !== 'center center'}
+              >
+                <div className='flex flex-col justify-center items-center'>
+                    <div className=' w-32 h-10 bg-algoblack flex justify-center items-center rounded-sm ' >
+                        <h1 className=' text-white'>Solved</h1>
+                    </div>
+                    <div class="  border-t-[10px]  border-l-[10px] border-r-[10px] border-b-[0px] w-4 border-transparent border-t-algoblack"></div>
                 </div>
+              </Popup>
             }
 
             {
                 isUserLoggedIn && !isProblemSolved &&
-                <div className=' w-5 h-5  rounded-full border border-gray-400 bg-white'>
+                <Popup
+                trigger={
+                    <div className=' w-5 h-5  rounded-full border border-gray-300 bg-transparent'>
+                    </div>
+                }
+                closeOnEscape
+                position={"top center"}
+                on={['hover']}
+                arrow={"bottom center" !== 'center center'}
+              >
+                <div className='flex flex-col justify-center items-center'>
+                    <div className=' w-32 h-10 bg-algoblack flex justify-center items-center rounded-sm ' >
+                        <h1 className=' text-white'>No Submission</h1>
+                    </div>
+                    <div class="  border-t-[10px]  border-l-[10px] border-r-[10px] border-b-[0px] w-4 border-transparent border-t-algoblack"></div>
                 </div>
+              </Popup>
             }
             
             {

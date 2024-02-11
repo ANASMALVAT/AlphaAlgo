@@ -62,7 +62,6 @@ const AccountDashboard = () => {
                         <img src={AlphaUser.user_profile} className=" flex justify-left  rounded-full " width={80} height={80}></img>
                         <div className=' flex flex-col text-left'>
                             <h1 className=' text-4xl'>{AlphaUser.user_name}</h1>
-                            <h1>{AlphaUser.user_mail}</h1>
                         </div>
                     </div>
 
@@ -93,11 +92,6 @@ const AccountDashboard = () => {
                                 <h2 className='flex text-xl font-normal h-10 text-center items-center'>
                                     Manage your plan
                                 </h2>
-                                <div className=' bg-white rounded-md px-2'>
-                                <h2 className='flex text-lg flex-col text-gray-900 font-normal  py-1 text-left items-left'>
-                                    {AlphaPremiumUser.user_mail}
-                                </h2>
-                                </div>
                             </div>
                             <div onClick={() => window.open(MANAGE_PLAN_URL,"_blank")}  className='h-14  rounded-md flex justify-center text-center items-center '>
                                 <button  className=' flex justify-center items-center h-10 w-28 rounded-md  bg-[#626EE3] text-white'>

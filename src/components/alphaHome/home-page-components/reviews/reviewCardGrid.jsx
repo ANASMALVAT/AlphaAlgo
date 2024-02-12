@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { fetchReviewListHome } from '../../../../services/fetchReviewListHome';
 import ReviewCard from './reviewCard';
+import ReviewCardDummy from './reviewCardDummy';
 import "./styles/reviewCardGrid.css";
 
 const ReviewCardGrid = () => {
@@ -21,7 +22,7 @@ const ReviewCardGrid = () => {
   const totalCards = reviews.length;
 
   const moveRight = () => {
-    if (cardIndex < totalCards - 1) {
+    if (cardIndex < totalCards) {
       setCardIndex(prevIndex => prevIndex + 1);
     }
   };
@@ -73,6 +74,11 @@ const ReviewCardGrid = () => {
           </div>
         ))  
       }
+
+      {
+        <ReviewCardDummy cardShowWidth={cardShowWidth} cardIndex={cardIndex} />
+      }
+
       </div>
 
       <div className='button-container mt-4 flex m-auto'>

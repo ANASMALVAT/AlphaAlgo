@@ -4,6 +4,7 @@ import ReviewCard from '../../home-page-components/reviews/reviewCard';
 import AlphaNavbar from '../../../../layouts/navbar/AlphaNavbar';
 import AlphaFooter from '../../../../layouts/footer/AlphaFooter';
 import { fetchReviewList } from '../../../../services/fetchReviewList';
+import ReviewCardDummy from '../../home-page-components/reviews/reviewCardDummy';
 import "./reviewPage.css"
 
 const ReviewPage = () => {
@@ -30,9 +31,12 @@ const ReviewPage = () => {
             </div>
             <div className=' flex flex-wrap w-screen py-14 mb-20 bg-[#F5F5F5] gap-6 justify-center'>
                 {
+                    <ReviewCardDummy  />
+                }
+                {
                     Array.from({ length: reviews.length }, (_, index) => (
                         <ReviewCard review={reviews[index]} />
-                    ))  
+                    ))
                 }
             </div>
             <div className=' w-screen'>

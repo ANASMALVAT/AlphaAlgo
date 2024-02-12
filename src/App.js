@@ -18,6 +18,7 @@ import AccountDashboard from "./components/alphaLogin/login-components/accountDa
 import GithubLoginSuccess from "./components/alphaLogin/login-components/githubLoginSuccess";
 import { fetchLoginCredentials } from "./services/fetchLoginCredentials";
 import { setLoginCredentials } from "./redux/slices/loginCredentials";
+import SubmitReivew from "./components/alphaHome/alpha-pages/write-review/submitReview";
 import { toast } from "react-toastify";
 function App() {
 
@@ -45,7 +46,6 @@ function App() {
             const userMembership = await verifyMembership();
             const userMembershipData = userMembership.data;
             if(userMembershipData?.success && userMembershipData?.isPremium && userMembershipData?.premiumUser){
-              console.log(userMembershipData.premiumUser);
               dispatch(setAlphaPremiumUser(userMembershipData.premiumUser));
             }
           }
@@ -77,9 +77,11 @@ function App() {
           <Route path="/github/success" element={<GithubLoginSuccess/>} />
           <Route path="/problems" element={<CodingProblems />} />
           <Route path="/problems/:problemId" element={<AlphaPlatform />} />
-          <Route path="/reviews" element={<ReviewPage/>} />
           <Route path="/contact" element={<Contact/>} />
           <Route path="/account/dashboard" element={<AccountDashboard/>} />
+          <Route path="/reviews" element={<ReviewPage/>} />
+          <Route path="/reviews/submit" element={<SubmitReivew/>} />
+          
         </Routes>
       </BrowserRouter>
     </div>

@@ -13,6 +13,8 @@ const LoginComponent = () => {
   const githubRedirectUri = process.env.REACT_APP_GITHUB_REDIRECT_URL;
   const loginCredentials = useSelector((state) => state.loginCredentials.loginCredentials);
 
+
+
   const setCookieAndToken = (response) => {
     window.localStorage.setItem('csrf-token',response.data.csrfToken);
     window.location.reload();
@@ -55,18 +57,22 @@ const LoginComponent = () => {
   function startGoogle(){
         if(loginCredentials.google_id){
             gapi.client.init({
-                clientId: loginCredentials.google_id,
+                clientId: loginCredentials?.google_id,
                 scope:""
             })
         }
   }
 
   const loadGoogleapi = () => {
-    if(loginCredentials.google_id){
+    if(loginCredentials?.google_id){
         gapi.load('client:auth2',startGoogle);
     }
   }
 
+    if(!loginCredentials?.google_id || !loginCredentials?.github_id){
+      return <>
+            </>
+    }
 
     return (
         
@@ -78,10 +84,10 @@ const LoginComponent = () => {
                 </div>
 
                 <div className=' flex  flex-col justify-center mt-2 gap-2 rounded-md items-center'>
-                  { loginCredentials.google_id &&
+                  { loginCredentials?.google_id &&
                   <GoogleLogin
                       className=' w-[225px] m-auto  font-semibold text-center placeholder:font-semibold text-white placeholder-gray-200::placeholder	'
-                      clientId={loginCredentials.google_id}
+                      clientId={loginCredentials?.google_id}
                       onSuccess={onGoogleSuccess}
                       onFailure={onGoogleFailure}
                       cookiePolicy='single_host_origin'
@@ -91,9 +97,9 @@ const LoginComponent = () => {
                   </GoogleLogin>
                   }
                   {
-                  loginCredentials.github_id &&
+                  loginCredentials?.github_id &&
                   <GitHubLogin 
-                    clientId={loginCredentials.github_id}
+                    clientId={loginCredentials?.github_id}
                     redirectUri={githubRedirectUri}
                     onSuccess={onGithubSuccess}
                     onFailure={onGithubFailure} >

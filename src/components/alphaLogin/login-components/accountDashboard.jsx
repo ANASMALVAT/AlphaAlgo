@@ -56,7 +56,7 @@ const AccountDashboard = () => {
         <div className=' flex  flex-wrap xl:flex-row  justify-center w-full  gap-6  '>
             <div className=' profile-information flex flex-col gap-6  justify-center  mb-8'>
 
-                <div className= ' flex  flex-col items-start justify-start  rounded-lg border border-gray-300 min-w-[370px] max-w-[600px] md:w-[500px] lg:w-[600px] xl:w-[600px] h-[400px] px-4 '>
+                <div className= ' flex  flex-col w-full items-start justify-start  rounded-lg border border-gray-300 min-w-[370px] max-w-[600px] md:w-[500px] lg:w-[600px] xl:w-[600px]  h-[460px] sm:h-[425px]  px-4 '>
                     
                     <div  className=" pb-1  items-center min-w-[80px] flex gap-3 h-[125px] justify-left align-bottom text-center ">
                         <img src={AlphaUser.user_profile} className=" flex justify-left  rounded-full " width={80} height={80}></img>

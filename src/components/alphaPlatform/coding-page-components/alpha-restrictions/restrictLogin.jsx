@@ -4,8 +4,10 @@ import { useDispatch } from 'react-redux';
 import { toggelLoginWindowTrue } from '../../../../redux/slices/userLoginWindow';
 
 const RestrictLogin = () => {
+
     const dispatch = useDispatch();
     const showLogin = () => {
+        console.log("here");
         dispatch(toggelLoginWindowTrue());
     }
 
@@ -17,9 +19,7 @@ const RestrictLogin = () => {
                 </div>
                 <div className='text-center' onClick={showLogin}>
                     <h2 className=" flex text-2xl font-normal tracking-tight text-white">
-                        <Link to = "/">
-                            <p className=" font-mono font-bold text-2xl text-[#4C5ADF]  mr-1"> Login </p>
-                        </Link>
+                        <p onClick={showLogin} className=" cursor-pointer font-mono font-bold text-2xl text-[#4C5ADF]  mr-1"> Login </p>
                         <p className=' '>
                             to X
                         </p>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import AlphaGPTSearchBar from './alphaGptSearchBar';
 import { toast } from 'react-toastify';
 import AlphaGptWindowText from './alphaGptWindowText';
+import { useSelector } from 'react-redux';
 import './styles/alphaGptWindow.css';
 
 const AlphaGPTWindow = () => {
@@ -11,6 +12,7 @@ const AlphaGPTWindow = () => {
   const [messages, setMessages] = useState([]);
   const [chatMessage,setChatMessage] = useState([]);
   const consoleRef = useRef(null);
+  const IsUserLoggedIn = useSelector((state) => state.userLogin.userLogin);
 
   
   const showError = (notification) => {
@@ -19,13 +21,14 @@ const AlphaGPTWindow = () => {
         ? notification
         : 'Something Went Wrong, Please Try Again!',
         {
-            position: 'top-right',
-            autoClose: 3000,
+            position: 'top-center',
+            autoClose: 4000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
+            theme:"dark"
         }
     );
   };
@@ -36,6 +39,12 @@ const AlphaGPTWindow = () => {
 
 
   const askAlpha = async (userInput,setLoading) => {
+
+    
+    if(!IsUserLoggedIn){
+      showError("Please Login To Chat!")
+      return;
+    }
 
     if (userInput.trim() !== '') {
 
@@ -52,6 +61,7 @@ const AlphaGPTWindow = () => {
         ...prevMessages,
         { role: 'user', content: userInput },
       ]);
+
       setLoading(true);
       try {
         const response = await fetch(GPT_URL, {

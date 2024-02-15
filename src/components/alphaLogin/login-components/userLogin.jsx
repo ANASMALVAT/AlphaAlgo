@@ -23,7 +23,7 @@ const UserLogin = () => {
                 className=' my-popup'
             >
             {
-                <div className="modal flex min-w-[300px] max-w-[300px]">
+                <div className="modal flex min-w-[300px] max-w-[300px] z-10">
                     <button className="close absolute right-2 top-[-4px] text-gray-500"  style={{color:"rgb(107 114 128)",fontSize:"30px"}} onClick={handleClose}>
                         &times;
                     </button>

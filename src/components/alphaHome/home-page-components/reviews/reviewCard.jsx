@@ -19,7 +19,7 @@ const  ReviewCard = ({review}) =>
                 <div  className='user-review pb-2 overflow-auto mt-3 pl-2 rounded-md m-1'>
                     <h2 className='   text-left text-[14px] text-gray-600 font-light rounded-[0.25rem] w-[95%] '>
                         {review.description}
-                    </h2>
+                     </h2>
                 </div>
                 }
             </div>

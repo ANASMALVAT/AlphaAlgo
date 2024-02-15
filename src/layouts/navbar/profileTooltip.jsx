@@ -11,7 +11,7 @@ const ProfileTooltip = ({logout,setIsOpen}) => {
 
                 <div className=" flex flex-col h-[125px]  gap-1  flex-wrap w-full rounded-md bg-zinc-200 p-2">
                     <Link to={"/account/dashboard"}  className='border-none focus:outline-none focus:border-none'>
-                        <div onClick={() => setIsOpen(false)} className=' w-full  mt-1 flex gap-2 items-center  text-algoblack shadow-lg bg-[#F5F5F5]  justify-center text-center p-2  rounded-sm'>
+                        <div onClick={() => setIsOpen(false)} className='  w-full  mt-1 flex gap-2 items-center  text-algoblack shadow-lg bg-[#F5F5F5]  justify-center text-center p-2  rounded-sm'>
                             <h1  className=' text-[17px] font-normal '>Dashboard</h1>
                         </div>
                     </Link>

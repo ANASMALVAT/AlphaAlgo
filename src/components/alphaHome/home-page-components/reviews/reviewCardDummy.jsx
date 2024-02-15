@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { user_profile } from '../../../../utils/constants';
 
 const ReviewCardDummy = ({cardShowWidth, cardIndex}) => {
     return (
         <div  style={{ transition: '200ms', width: `${cardShowWidth}px`, transform: `translateX(-${cardIndex * 103.5}%)`, backfaceVisibility: 'hidden' }}>
           <div className='flex bg-[#F5F5F5] w-[325px] max-w-[350px] p-2 h-[360px] rounded-md  justify-center'>
-              { <img className=' absolute w-20 h-20 rounded-full bg-gray-50' src='https://alpha-users.s3.amazonaws.com/User-Profile-PNG-Clipart.png' ></img>  }
+              { <img className=' absolute w-20 h-20 rounded-full bg-gray-50' src={user_profile} ></img>  }
               <div className='flex flex-col mt-14 w-full h-[90%] bg-white rounded-[0.25rem] border-t-4 border-[#4C5ADF] align-center rounded-md '>
                   { <div  className='user-name mt-6 '><h2 className=' text-[16px] font-normal text-algoblack mb-1 '>You</h2></div> }
                   { <div  className='user-position '><h2 className=' text-[16px] text-algoblack'>Dream Job</h2></div> }

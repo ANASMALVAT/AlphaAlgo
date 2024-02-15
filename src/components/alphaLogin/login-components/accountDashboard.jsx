@@ -1,24 +1,29 @@
-import React from 'react'
+import React,{ useState, useLayoutEffect, useEffect }  from 'react'
 import AlphaNavbar from '../../../layouts/navbar/AlphaNavbar';
 import AlphaFooter from '../../../layouts/footer/AlphaFooter';
 import { useSelector, useDispatch} from 'react-redux';
 import { fetchQuestionList } from '../../../services/fetchQuestionList';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link } from 'react-router-dom';
-import { useState, useLayoutEffect } from 'react';
 import { toggelLoginWindowTrue } from '../../../redux/slices/userLoginWindow';
 import { useLogout } from '../../../utils/logout';
+import { user_profile } from '../../../utils/constants';
 
 const AccountDashboard = () => {
 
     const logout = useLogout();
+    const MANAGE_PLAN_URL = process.env.REACT_APP_MANAGE_PLAN;
     const AlphaUser = useSelector((state) => state.alphaUser.alphaUser);
     const AlphaPremiumUser = useSelector((state) => state.alphaPremiumUser.alphaPremiumUser);
     const IsUserLoggedIn = useSelector((state) => state.userLogin.userLogin);
     const sessionData = sessionStorage.getItem('user_completed_problems');
     const userCompletedProblems = sessionData ? JSON.parse(sessionData).length : 0;
     const [totalProblems, setTotalProblems] = useState(0);
-    const MANAGE_PLAN_URL = process.env.REACT_APP_MANAGE_PLAN;
+    const [userProfile,setUserprofile] = useState(user_profile);
+
+    useEffect(() => {
+        setUserprofile(AlphaUser?.user_profile);
+    },[AlphaUser])
 
     const dispatch = useDispatch()
 
@@ -59,7 +64,7 @@ const AccountDashboard = () => {
                 <div className= ' flex  flex-col w-full items-start justify-start  rounded-lg border border-gray-300 min-w-[370px] max-w-[600px] md:w-[500px] lg:w-[600px] xl:w-[600px]  h-[460px] sm:h-[425px]  px-4 '>
                     
                     <div  className=" pb-1  items-center min-w-[80px] flex gap-3 h-[125px] justify-left align-bottom text-center ">
-                        <img src={AlphaUser.user_profile} className=" flex justify-left  rounded-full " width={80} height={80}></img>
+                        <img src={userProfile} className=" flex justify-left  rounded-full " width={80} height={80}></img>
                         <div className=' flex flex-col text-left'>
                             <h1 className=' text-4xl'>{AlphaUser.user_name}</h1>
                         </div>

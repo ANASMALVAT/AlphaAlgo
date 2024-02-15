@@ -7,9 +7,10 @@ import { ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
 import Team from "./components/alphaHome/alpha-pages/team/teamPage";
 import ReviewPage from "./components/alphaHome/alpha-pages/reviews/reviewPage";
-import AlphaHomePage from './components/alphaHome/alphaHome';
-import AlphaPlatform from "./components/alphaPlatform/mainPage";
-import CodingProblems from "./components/alphaProblem/codingProblemsMainPage";
+import AlphaHomePage from './components/alphaHome/main';
+import AlphaPlatform from "./components/alphaPlatform/main";
+import CodingProblems from "./components/alphaProblem/main";
+import UserLogin from "./components/alphaLogin/login-components/userLogin";
 import Purchase from "./components/alphaHome/alpha-pages/purchase/purchasePage";
 import { setAlphaUser } from "./redux/slices/alphaUser";
 import { setAlphaPremiumUser } from "./redux/slices/alphaPremiumUser";
@@ -62,6 +63,7 @@ function App() {
 
   return (
     <div className="App">
+      <UserLogin/>
       <ToastContainer
         position="top-right"
         pauseOnHover={false}
@@ -81,6 +83,7 @@ function App() {
           <Route path="/account/dashboard" element={<AccountDashboard/>} />
           <Route path="/reviews" element={<ReviewPage/>} />
           <Route path="/reviews/submit" element={<SubmitReivew/>} />
+          {/* <Route path="/xvlogs" element={ } /> */}
           
         </Routes>
       </BrowserRouter>

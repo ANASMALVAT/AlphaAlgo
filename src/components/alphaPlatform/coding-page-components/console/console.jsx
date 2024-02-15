@@ -1,29 +1,41 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import CustomInput from "./customInput";
-import CodeOutput from "../code-editor/codeOutput";
 import ConsoleButton from "../buttons/consoleButtons";
 import CodeProblem from "./codeProblem";
 import AlphaGPTWindow from "../alpha-gpt/alphaGptWindow";
 import CodeSolution from "./codeSolution";
 import { useSelector } from "react-redux";
-import ConsoleDropDown from "../drop-downs/consoleDropDown";
 
 import "./styles/consoleInput.css";
 
-const ConsoleInput = ({output,runCode}) =>{
+
+
+const ConsoleInput = () =>{
+
+    const [height, setHeight] = useState(window.innerHeight);
+
+    useEffect(() => {
+        const handleResize = () => {
+        setHeight(window.innerHeight);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+        window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const alphaConsole = useSelector((state) => state.alphaConsole.consoleState);
 
     return (
-        <div className="  main-console flex-grow overflow-hidden p-2 pb-0 border border-gray-500 min-h-[375px] bg-algoblack rounded-md">
+        <div style={{height:height - 5}} className=" main-console overflow-auto  flex-grow  p-2  border border-gray-500 border-b-none  bg-algoblack rounded-md">
             
-            <div className="console-console-buttons flex flex-row items-start space-x-1  h-12 min-h-[10] w-full bg-algoblack">
-                <div className="console-button flex h-full gap-1">
-                  <ConsoleButton />
-                </div>
+            <div className="console-button flex  gap-1 h-12">
+                <ConsoleButton />
             </div>
 
-            <div className="flex-grow output-input  h-full mt-2 mb-2 border border-gray-600 rounded-md  p-2 overflow-hidden   ">
+            <div className="flex-grow overflow-auto h-full mt-2 border-t border-gray-600  p-2 pb-0 ">
                 {alphaConsole.isProblem && <CodeProblem />}
                 {alphaConsole.isInput   && <CustomInput  /> }
                 {alphaConsole.isAlphaGPT && <AlphaGPTWindow  /> }

@@ -75,10 +75,10 @@ const handleSubmit = async (e) => {
                             arrow={"top center" !== 'center center'}
                         >
                             <div className='flex flex-col justify-center items-center'>
-                                <div className=' w-40 p-1 text-center h-12 bg-[#4C5ADF] flex justify-center items-center rounded-md ' >
+                                <div className=' w-40 p-1 text-center h-12 bg-algoXcolor flex justify-center items-center rounded-md ' >
                                     <span className=' text-white '>Buy Alpha To Submit</span>
                                 </div>
-                                <div class="  border-t-[10px]  border-l-[10px] border-r-[10px] border-b-[0px] w-4 border-transparent border-t-[#4C5ADF]"></div>
+                                <div class="  border-t-[10px]  border-l-[10px] border-r-[10px] border-b-[0px] w-4 border-transparent border-t-algoXcolor"></div>
                             </div>
                         </Popup>
                     

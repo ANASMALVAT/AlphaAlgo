@@ -3,7 +3,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import "./styles/codeProblem.css"
 
-const CodeProblem = () => {
+const   CodeProblem = () => {
 
     const [problemData, setProblemData] = useState(null);
 
@@ -30,8 +30,6 @@ const CodeProblem = () => {
     const problemExampleOutput = problemData?.M?.example?.M?.output.S || "";
     const problemVisualization = problemData?.M?.visualization?.S || "";
     const [isHintBlurred, setIsHintBlurred] = useState(true);
-    const [isConstraintBlurred, setIsConstraintBlurred] = useState(true);
-
 
     const toggleBlur = () => {
         setIsHintBlurred(!isHintBlurred);
@@ -40,8 +38,7 @@ const CodeProblem = () => {
     return (
         <>
             <div className=" code-problem flex flex-col h-full w-full whitespace-pre overflow-auto rounded-md ">
-                <div className="mb-2">
-
+                <div className="">
                     { problemName &&
                     <div className="flex ">
                         <h2 className="problem-question text-white">{problemName}</h2>

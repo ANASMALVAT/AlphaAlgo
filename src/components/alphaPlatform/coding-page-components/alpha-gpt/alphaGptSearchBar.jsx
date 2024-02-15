@@ -4,6 +4,8 @@ import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import SendIcon from '@mui/icons-material/Send';
+import { loading_image } from '../../../../utils/constants';
+
 import "./styles/alphaGptSearchBar.css";
 
 
@@ -37,7 +39,7 @@ export default function AlphaGPTSearchBar({sendRequest, loading}) {
           loading ? 
           (
                 <div className='h-11 w-11 flex justify-center items-start'>
-                    <img className='animate-spin ' style={{ animationDuration: '1s' }} src='https://alpha-images.s3.amazonaws.com/loading-wheel.svg'></img>
+                    <img className='animate-spin ' style={{ animationDuration: '1s' }} src={loading_image}></img>
                 </div>
           )
           : <SendIcon  sx={{color:"white", fontWeight:"bold",fontSize:"30px"}} />

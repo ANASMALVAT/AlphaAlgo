@@ -17,6 +17,7 @@ import RestrictUnauthorized from "./coding-page-components/alpha-restrictions/re
 import RestrictQuestion from "./coding-page-components/alpha-restrictions/restrictQuestion";
 import RestrictServerSide from "./coding-page-components/alpha-restrictions/restrictServerSide";
 import CodeDialog from "./coding-page-components/ui/codeDialog";
+import { loading_image } from "../../utils/constants";
 import "./styles/mainPage.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -332,7 +333,7 @@ const AlphaPlatform = ({}) => {
     toast.success(notification, {
       position:"bottom-center",
       autoClose:7000,
-      hideProgressBar:true,
+      hideProgressBar:true, 
       newestOnTop:false,
       theme:"dark",
     });
@@ -354,7 +355,7 @@ const AlphaPlatform = ({}) => {
         <div className='flex h-full w-full min-h-screen min-w-screen bg-[#00182D]'>
             <div className='flex flex-col m-auto justify-center text-center items-center'>
                 <div className='h-40 w-40 mb-4'>
-                    <img className='animate-spin ' style={{ animationDuration: '2.5s' }} src='https://alpha-images.s3.amazonaws.com/loading-wheel.svg'></img>
+                    <img className='animate-spin ' style={{ animationDuration: '2.5s' }} src={loading_image}></img>
                 </div>
             </div>
         </div>
@@ -383,7 +384,7 @@ const AlphaPlatform = ({}) => {
         <CodeDialog />
         { alphaPlatformComponents.editor && (
           <div
-            className={`editor-class overflow-hidden flex flex-col grow-1 h-[100vh]  min-h-[375px]  flex-grow `}
+            className={`editor-class overflow-hidden flex flex-col grow-1 min-h-screen h-[500px]  flex-grow `}
             style={{ width: editorWidth }} 
           >
             < CodeEditorWindow code={code} onChangeData={onChange}  runCode={runCode} outputDetail={output}/>
@@ -398,10 +399,7 @@ const AlphaPlatform = ({}) => {
         { 
           alphaPlatformComponents.console && (
           <div className={`console-gpt flex`} >
-            <ConsoleInput
-              output={output}
-              runCode={runCode}
-            />
+            <ConsoleInput />
           </div>)
         }
       </div>

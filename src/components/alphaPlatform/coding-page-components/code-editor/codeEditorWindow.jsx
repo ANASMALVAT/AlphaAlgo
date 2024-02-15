@@ -22,6 +22,7 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
     const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
     const outputWindow = useSelector((state) => state.outputWindow.windowState);
     const [initialValue, setInitialValue] = useState(code); // New state variable
+    const [height, setHeight] = useState(window.innerHeight);
     const [currentFontSize,setFontSize] = useState("16px");
     const [settingPane,setSettingPane] = useState(false);
     const [consolePane,setConsolePane] = useState(false);
@@ -109,12 +110,24 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
         }
     }
 
+    useEffect(() => {
+      const handleResize = () => {
+        setHeight(window.innerHeight);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+
     return(
     <>
         < SettingSlidingPane isOpen={settingPane} onRequestClose={closeSettingPane} />
         < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} />
 
-        <div className=" relative   code-editor  flex flex-col w-full min-w-[385px] border-4 border-b-0 min-h-screen border-[#1f2937] rounded-lg">
+        <div className=" relative  code-editor  flex flex-col w-full min-w-[385px] border-4 border-b-0 min-h-screen border-[#1f2937] rounded-lg">
             
             <div className=" flex flex-row justify-between min-w-[385px]  rounded-sm border-4 m-1 border-[#1f2937] h-14 ">
 
@@ -155,7 +168,7 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
                     <LanguageDropDown />
                 </div>
 
-                <div className="side-menu-editor flex  min-w-[125px] text-white ml-8 items-center justify-left p-2">
+                <div className="side-menu-editor flex  min-w-[75px] text-white ml-8 items-center justify-left p-2">
                     <button  onClick={openConsolePane} >
                         <MenuIcon sx={{fontSize:'28px'}}/>
                     </button>
@@ -163,7 +176,7 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
 
             </div>
             
-            <div className=" w-full h-28 flex-grow min-h-[200px] min-w-[385px] rounded-md ">
+            <div style={{height:height}} className=" w-full  min-h-screen  flex-grow  min-w-[385px] rounded-md ">
                 <Editor
                     height={`100%`}
                     width={`100%`}
@@ -172,7 +185,7 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
                     onMount={handleEditorDidMount}
                     value={code}
                     onChange={editorChange}
-                    options={{fontSize: currentFontSize, borderRadius:"5px"}}
+                    options={{fontSize: currentFontSize, borderRadius:"5px",height:"100vh"}}
                 />
             </div>
 

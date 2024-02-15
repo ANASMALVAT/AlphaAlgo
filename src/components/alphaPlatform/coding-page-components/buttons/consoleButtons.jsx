@@ -37,10 +37,10 @@ const ConsoleButton = ({}) => {
     }
 
     return (
-        <>
+        <div className=" flex w-full  justify-between ">
             < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} />
 
-            <div className="flex gap-2 console-buttons ">
+            <div className="flex gap-2 console-buttons  ">
                 <button
                     onClick={setConsoleProblem}
                     className={` border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full font-mono text-sm font-normal text-white
@@ -82,12 +82,12 @@ const ConsoleButton = ({}) => {
             </div>
             <button
                 onClick={openConsolePane}
-                className={` side-menu-console border border-algoXcolor overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
+                className={` side-menu-console border ml-auto border-zinc-700  items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
                 sm:text-sm lg:text-md xl:text-md`}
             >
                 <MenuIcon sx={{fontSize:'28px'}}/>
             </button>
-        </>
+        </div>
     )
 }
 

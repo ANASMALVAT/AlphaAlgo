@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState,useLayoutEffect } from 'react'
+import React, { useState,useLayoutEffect } from 'react'
 import AlphaNavbar from '../../layouts/navbar/AlphaNavbar';
 import ProblemGrid from './grid/problemGrid';
 import TopicFilterDropdown from './ui/topicFilterDropdown';
@@ -6,7 +6,7 @@ import ProblemInformation from './ui/problemInformation';
 import ProblemButtons from './ui/problemButtons';
 import ProblemRandom from './ui/problemRandom';
 import { fetchQuestionList } from '../../services/fetchQuestionList';
-
+import { loading_image } from '../../utils/constants';
 import DefaultFooter from '../../layouts/footer/AlphaFooter';
 
 
@@ -37,19 +37,19 @@ const CodingProblems = () => {
             { 
               loading && 
               <div className='h-60 w-60 ml-auto mr-auto'>
-                <img className='animate-spin ' style={{ animationDuration: '3s' }} src='https://alpha-images.s3.amazonaws.com/loading-wheel.svg'></img>
+                <img className='animate-spin ' style={{ animationDuration: '3s' }} src={loading_image}></img>
               </div>
             }
 
             {!loading  &&
               (
-                <div className='flex flex-col min-h-screen flex-1 w-full h-2 flex-grow bg-white '>
-                  <div className=' flex flex-wrap gap-8 topic-dropdown mt-8 justify-evenly '>
+                <div className='flex flex-col min-h-screen flex-1 w-full h-2 flex-grow bg-white  '>
+                  <div className=' flex flex-wrap gap-8 topic-dropdown mt-8 justify-evenly max-w-[1450px] min-w-[1450px] mx-auto'>
                     <TopicFilterDropdown />
                     <ProblemButtons />
                     <ProblemRandom problemList = {questions} />
                   </div>
-                  <div className='  mt-4'>
+                  <div className='  mt-4 max-w-[1450px] min-w-[1450px] mx-auto '>
                       <ProblemGrid problemList = {questions}/>
                   </div>
                 </div>

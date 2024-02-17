@@ -31,7 +31,7 @@ const CodingProblems = () => {
         <AlphaNavbar/>
         <div className='  flex flex-col min-h-screen h-full w-full bg-[#00182D]'>
             
-            <div className=' flex flex-col  justify-center items-center h-40 mt-2 w-full text-center '>
+            <div className=' flex flex-col  justify-center items-center h-40 mt-2   w-full text-center '>
                <ProblemInformation/>
             </div>
             { 
@@ -44,12 +44,12 @@ const CodingProblems = () => {
             {!loading  &&
               (
                 <div className='flex flex-col min-h-screen flex-1 w-full h-2 flex-grow bg-white  '>
-                  <div className=' flex flex-wrap gap-8 topic-dropdown mt-8 justify-evenly max-w-[1450px] min-w-[1450px] mx-auto'>
+                  <div className=' flex flex-wrap gap-8 topic-dropdown mt-8 justify-evenly max-w-[1450px] '>
                     <TopicFilterDropdown />
                     <ProblemButtons />
                     <ProblemRandom problemList = {questions} />
                   </div>
-                  <div className='  mt-4 max-w-[1450px] min-w-[1450px] mx-auto '>
+                  <div className='  mt-4 w-full max-w-[1450px]  mx-auto px-4'>
                       <ProblemGrid problemList = {questions}/>
                   </div>
                 </div>

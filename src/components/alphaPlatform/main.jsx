@@ -380,7 +380,7 @@ const AlphaPlatform = ({}) => {
 
   return (
     <>
-      <div className="main-class min-w-[375px] min-h-[600px] w-full h-full flex flex-grow   min-w-screen max-h-screen bg-algoblack overflow-auto">
+      <div className="main-class min-w-[375px] w-full h-full flex flex-grow   min-w-screen max-h-screen bg-algoblack overflow-auto">
         <CodeDialog />
         { alphaPlatformComponents.editor && (
           <div

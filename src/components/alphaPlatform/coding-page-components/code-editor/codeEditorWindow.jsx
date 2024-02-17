@@ -21,7 +21,7 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
  {
     const dropdownValue = useSelector((state) => state.dropdownValues.dropdownValue);
     const outputWindow = useSelector((state) => state.outputWindow.windowState);
-    const [initialValue, setInitialValue] = useState(code); // New state variable
+    const [initialValue, setInitialValue] = useState(code);
     const [height, setHeight] = useState(window.innerHeight);
     const [currentFontSize,setFontSize] = useState("16px");
     const [settingPane,setSettingPane] = useState(false);
@@ -127,14 +127,14 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
         < SettingSlidingPane isOpen={settingPane} onRequestClose={closeSettingPane} />
         < ConsoleSlidingPane isOpen={consolePane} onRequestClose={closeConsolePane} />
 
-        <div className=" relative  code-editor  flex flex-col w-full min-w-[385px] border-4 border-b-0 min-h-screen border-[#1f2937] rounded-lg">
+        <div className=" relative  code-editor  flex flex-col w-full min-w-[370px] border-4 border-b-0 min-h-screen border-[#1f2937] rounded-lg">
             
             <div className=" flex flex-row justify-between min-w-[385px]  rounded-sm border-4 m-1 border-[#1f2937] h-14 ">
 
                 <div className=" buttons flex  text-center align-center rounded-sm ">
 
 
-                        <Popup
+                    <Popup
                         trigger={
                             <button onClick={handleRestore}  className={`button-disappear overflow-hidden mr-2 h-12  flex flex-row items-center border-b-4 border-algoXcolor rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
                                 <RestoreIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
@@ -154,9 +154,9 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
                     </Popup>
                    
 
-                    <button  onClick={openSettingPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center   border-b-4 border-algoXcolor rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
-                        <SettingsIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
-                    </button>
+                <button  onClick={openSettingPane} className={`  overflow-hidden mr-2 flex h-12 flex-row items-center   border-b-4 border-algoXcolor rounded-sm px-4 py-2 font-mono text-sm font-normal text-white ${false ? 'bg-[#1C283B]' : 'bg-[#12151D]'}`}>
+                    <SettingsIcon style={{  fontSize: '26px',color:"purple", color:"white",marginRight:"4px"}}/>
+                </button>
 
                 </div>
 
@@ -168,7 +168,7 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
                     <LanguageDropDown />
                 </div>
 
-                <div className="side-menu-editor flex  min-w-[75px] text-white ml-8 items-center justify-left p-2">
+                <div className="side-menu-editor flex  text-white ml-8 items-center justify-left p-2">
                     <button  onClick={openConsolePane} >
                         <MenuIcon sx={{fontSize:'28px'}}/>
                     </button>
@@ -189,19 +189,20 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
                 />
             </div>
 
-            <div className="flex h-14 p-4 w-full bg-[#00182D] justify-between items-center rounded-[0.25rem] mr-2   absolute bottom-0">
-                <div className=" mb-4">
-                    <OutputWindowButtons makeFullWindow={makeFullWindow}  makePartialWindow={makePartialWindow} closeWindow={closeWindow}/>
-                </div>  
+            <div className="flex h-14 p-4 w-full bg-[#00182D] justify-end items-center rounded-[0.25rem]  absolute bottom-0"> 
                 <div className=" flex gap-2 ml-2">
-                    <button onClick={makePartialWindow} className={`${outputWindow === 'cancel' ? 'z-10': 'z-0'}  h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-light text-white bg-[#392A6D] sm:text-sm lg:text-md xl:text-md`}> 
-                        <h1 className=" text-[15px] font-normal ">console</h1>
+                   
+                    <button
+                        onClick={() => { runCode(true); makePartialWindow();}}
+                        className={` ${outputWindow === 'cancel' ? 'z-10': 'z-0'}  h-8  overflow-hidden flex flex-row items-center rounded-[4px] px-3 py-2  font-mono text-sm font-normal text-gray-200 bg-[#455B65] sm:text-sm lg:text-md xl:text-md`}
+                    > 
+                    <h1 className=" text-[12px] font-normal">Compile & Run</h1>
                     </button>
                 </div>
             </div>
 
-            <div className={` transition-all duration-1000 ${outputWindow === 'cancel' ? ' h-0  ' : outputWindow === 'partial' ? 'h-[40%]' : 'h-[80%]' } absolute bg-transparent w-full m-auto bottom-0 mb-10 p-1`}>
-                <div className="output-window-header flex justify-between  h-10 bg-algoblack rounded-t-xl   w-full">
+            <div className={` transition-all visible duration-1000 ${outputWindow === 'cancel' ? ' h-0  invisible ' : outputWindow === 'partial' ? 'h-[40%]' : 'h-[80%]' } absolute bg-transparent w-full m-auto bottom-0 mb-10 p-1 pb-1`}>
+                <div className={` visible  output-window-header flex justify-between  h-10 bg-algoblack rounded-t-xl   w-full`}>
                     <OutputWindowButtons makeFullWindow={makeFullWindow} makePartialWindow={makePartialWindow} closeWindow={closeWindow}/>
                 </div>
                 <div className="flex-grow bg-[#1F2937] h-full w-full  ">

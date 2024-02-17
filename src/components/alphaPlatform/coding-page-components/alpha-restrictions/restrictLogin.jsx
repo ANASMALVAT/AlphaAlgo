@@ -6,6 +6,7 @@ import { toggelLoginWindowTrue } from '../../../../redux/slices/userLoginWindow'
 const RestrictLogin = () => {
 
     const dispatch = useDispatch();
+    
     const showLogin = () => {
         console.log("here");
         dispatch(toggelLoginWindowTrue());

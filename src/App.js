@@ -20,7 +20,10 @@ import GithubLoginSuccess from "./components/alphaLogin/login-components/githubL
 import { fetchLoginCredentials } from "./services/fetchLoginCredentials";
 import { setLoginCredentials } from "./redux/slices/loginCredentials";
 import SubmitReivew from "./components/alphaHome/alpha-pages/write-review/submitReview";
+import AlphaVlogsMain from "./components/alphaVlogs/main";
 import { toast } from "react-toastify";
+
+
 function App() {
 
   const dispatch = useDispatch();
@@ -83,7 +86,7 @@ function App() {
           <Route path="/account/dashboard" element={<AccountDashboard/>} />
           <Route path="/reviews" element={<ReviewPage/>} />
           <Route path="/reviews/submit" element={<SubmitReivew/>} />
-          {/* <Route path="/xvlogs" element={ } /> */}
+          <Route path="/xvlogs" element={<AlphaVlogsMain/>} />
           
         </Routes>
       </BrowserRouter>

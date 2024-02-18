@@ -93,11 +93,11 @@ const AlphaPlatform = ({}) => {
     setIsQuestion(true);
     setIsAuthorised(true);
     setIsServer(true);
-    sessionStorage.setItem(`problemData`,JSON.stringify(questionDetail?.question_detail));
+    sessionStorage.setItem(`problemData`,JSON.stringify(questionDetail?.question_detail?.question_detail));
     sessionStorage.setItem('problemSolution',JSON.stringify(questionDetail?.question_solution));
-    sessionStorage.setItem('problemTestCases',JSON.stringify(questionDetail?.test_cases.SS));
-    sessionStorage.setItem('driverCode',JSON.stringify(questionDetail.driver_codes.M));
-    sessionStorage.setItem('custom_testcase',questionDetail?.custom_test_case.S);
+    sessionStorage.setItem('problemTestCases',JSON.stringify(questionDetail?.question_detail?.test_cases.SS));
+    sessionStorage.setItem('driverCode',JSON.stringify(questionDetail?.question_detail?.driver_codes.M));
+    sessionStorage.setItem('custom_testcase',questionDetail?.question_detail?.custom_test_case.S);
     updateCodeAndDriverCode();
   }
 
@@ -126,14 +126,14 @@ const AlphaPlatform = ({}) => {
           setIsLoggedIn(false);
           return;
         }
-      localStorage.removeItem('stored-messages');
-      const getQuestionDetail = await authorizedUser(problemId);
-        if (getQuestionDetail) {
-          handleSuccess(getQuestionDetail.data);
-        } else {
+        localStorage.removeItem('stored-messages');
+        const problemDetail = await authorizedUser(problemId);
+        if(problemDetail){
+            handleSuccess(problemDetail.data);
+          }
+        else{
           handleServerFailure();
         }
-
         try{
           const getUserSubmissionData = await getUserSubmission(problemId);
           setUserSubmission(getUserSubmissionData);

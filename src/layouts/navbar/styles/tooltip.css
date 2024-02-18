@@ -10,7 +10,7 @@
 }
 .product-item-problems:hover{
     color: white !important;
-    background: #4C5ADF;
+    background: rgb(0 24 45);
     transition-duration: 200ms;
 }
 .product-xblogs:hover{

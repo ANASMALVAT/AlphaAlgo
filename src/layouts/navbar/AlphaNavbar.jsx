@@ -82,7 +82,7 @@ const AlphaNavbar  = () => {
                             </Popup>
                             <Link to={"/purchase"}>
                                 <li>
-                                    <a href="/purchase" class="hover:underline me-4 md:me-4">Membership </a>
+                                    <a href="/purchase" class="hover:underline me-4 md:me-4">Pricing </a>
                                 </li>
                             </Link>
                             <li>

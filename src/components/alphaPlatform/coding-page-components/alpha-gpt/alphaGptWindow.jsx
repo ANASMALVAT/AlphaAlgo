@@ -137,7 +137,6 @@ const AlphaGPTWindow = () => {
             <AlphaGptWindowText key={index} type={message.role} message={message.content} />
           ))
         }
-   
       </div>
         <AlphaGPTSearchBar sendRequest={handleAskGPT} loading={loading} />
     </div>

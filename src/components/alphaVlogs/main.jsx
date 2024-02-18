@@ -11,24 +11,21 @@ const AlphaVlogsMain = () => {
     const [blogList, setBlogList] = useState([]); 
 
     useEffect(() => {
-        // Check if 'xvlogs' is already set in sessionStorage
         const xvlogs = sessionStorage.getItem('xvlogs');
         if (xvlogs !== null) {
             setIsXvlogSet(xvlogs === 'true');
         } else {
-            // If not, set it to true
             sessionStorage.setItem('xvlogs', true);
         }
     }, []);
 
     useLayoutEffect(() => {
-        // Fetch blog list
         fetchAlphaBlog()
             .then(blogList => {
                 setBlogList(blogList);
             })
             .catch(error => {
-                toast.error("Error fetching blog list!"); // Display error message using toast
+                toast.error("Error fetching blog list!"); 
             });
     }, []);
 
@@ -47,10 +44,10 @@ const AlphaVlogsMain = () => {
             <AlphaNavbar />
             <div className='flex flex-col gap-4 min-h-screen min-w-screen items-center mt-4'>
                 <div className='flex gap-2 w-60 h-12 bg-[#15314B] rounded-[0.25rem] p-1'>
-                    <button onClick={setVlogsTrue} className={`w-1/2 h-full bg-rounded-sm ${isXvlogSet ? 'bg-[#626EE3]' : 'bg-transparent'}`}>
+                    <button onClick={setVlogsTrue} className={`w-1/2 h-full rounded-[0.25rem] ${isXvlogSet ? 'bg-[#626EE3]' : 'bg-transparent'}`}>
                         <h1 className='text-white text-lg'>Xvlogs</h1>
                     </button>
-                    <button onClick={setVlogsFalse} className={`w-1/2 h-full bg-rounded-sm ${!isXvlogSet ? 'bg-[#626EE3]' : 'bg-transparent'}`}>
+                    <button onClick={setVlogsFalse} className={`w-1/2 h-full rounded-[0.25rem] ${!isXvlogSet ? 'bg-[#626EE3]' : 'bg-transparent'}`}>
                         <h1 className='text-white text-lg'>Xblogs</h1>
                     </button>
                 </div>

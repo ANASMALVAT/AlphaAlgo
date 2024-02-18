@@ -6,6 +6,13 @@
   font-weight: 700;
 }
 
+.problem-company{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.8285714em;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
 
 .blurred {
   filter: blur(5px);

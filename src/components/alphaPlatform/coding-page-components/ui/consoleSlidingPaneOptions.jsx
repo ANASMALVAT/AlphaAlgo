@@ -21,15 +21,15 @@ const ConsoleSlidingPaneOptions = () => {
 
     return (
         <>
-           <div className="bg-algoblack flex flex-col justify-center items-center w-full p-4">
+           <div className="bg-algoblack flex flex-col  justify-center items-center w-full p-4">
                 <div> 
-                    <button onClick={openEditor} className={` mb-4 bg-[#4C5ADF] overflow-hidden w-44 rounded-sm   flex flex-row items-center   px-2 py-2 font-mono text-sm font-normal justify-center  text-white hover:opacity-100 opacity-80`}>
-                        Editor
+                    <button onClick={openEditor} className={` mb-4 bg-[#4C5ADF] overflow-hidden w-44 rounded-[0.25rem]   flex flex-row items-center   px-2 py-2 font-mono text-sm font-normal justify-center  text-white hover:opacity-100 opacity-80`}>
+                       <span className=' text-[16px]'> Editor</span>
                     </button>
                 </div>
                 <div>
-                <button onClick={openConsole} className={`mb-4 bg-[#4C5ADF] overflow-hidden w-44 rounded-sm   flex flex-row items-center   px-2 py-2 font-mono text-sm font-normal justify-center  text-white hover:opacity-100 opacity-80`}>
-                        Console
+                    <button onClick={openConsole} className={`mb-4 bg-[#4C5ADF] overflow-hidden w-44 rounded-[0.25rem]   flex flex-row items-center   px-2 py-2 font-mono text-sm font-normal justify-center  text-white hover:opacity-100 opacity-80`}>
+                        <span className=' text-[16px]'> Console</span>
                     </button>
                 </div>
                 <LanguageDropDown/>

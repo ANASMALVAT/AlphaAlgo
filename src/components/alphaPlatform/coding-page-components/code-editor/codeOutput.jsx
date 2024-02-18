@@ -56,7 +56,9 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
                     codeOutput?.[0] &&
                     <div className=' flex  flex-col gap-2 w-full bg-algoblack rounded-md p-2  mb-2'>
                         <h1 className=' text-xl px-2 bg-[#626EE3] w-48 rounded-[0.25rem] py-1 text-white'> Your output </h1>
-                        <CodeBlock   text = {codeOutput[0]} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                        <div className=' rounded-md  border border-gray-700  '>
+                            <CodeBlock   text = {codeOutput[0]} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                        </div>
                     </div>
 
                     }
@@ -65,7 +67,9 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
                     codeOutput?.[1] &&
                     <div className=' flex  flex-col gap-2 w-full bg-algoblack rounded-md p-2 mb-2 '>
                         <h1 className=' text-xl px-2 bg-[#626EE3] w-48 rounded-[0.25rem] py-1 text-white'> Expected output </h1>
-                        <CodeBlock   text = {codeOutput[1]} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                        <div className=' rounded-md  border border-gray-700  '>
+                            <CodeBlock   text = {codeOutput[1]} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                        </div>
                     </div>
                     }
 
@@ -73,7 +77,9 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
                     codeOutput?.[2] &&
                     <div className=' flex  flex-col gap-2 w-full bg-algoblack rounded-md p-2 mb-2 '>
                         <h1 className=' text-xl px-2 bg-[#626EE3] w-40 rounded-[0.25rem] py-1 text-white'>For Input </h1>
-                        <CodeBlock   text = {codeOutput[2]} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                        <div className=' rounded-md  border border-gray-700  '>
+                            <CodeBlock   text = {codeOutput[2]} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                        </div>
                     </div>
                     }
 
@@ -82,15 +88,19 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
                     {
                         outputDetail?.memory  && 
                         <div className=' flex  flex-col gap-2 text-xl w-full bg-algoblack rounded-md p-2 mb-2 '>
-                            <h1 className=' text-xl px-2 bg-[#1b2165] w-40   rounded-[0.25rem] py-1 text-white'> Memory usage </h1>
-                            <CodeBlock   text = {`${outputDetail?.memory} Kilo Bytes`} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                            <h1 className=' text-xl px-2 bg-[#303bb9] w-40   rounded-[0.25rem] py-1 text-white'> Memory usage </h1>
+                            <div className=' rounded-md  border border-gray-700  '>
+                                <CodeBlock   text = {`${outputDetail?.memory} Kilo Bytes`} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                            </div>
                         </div>
                     }
                     {
                         outputDetail?.time  && 
                         <div className=' flex  flex-col gap-2  text-xl w-full bg-algoblack rounded-md p-2 mb-2 '>
-                            <h1 className=' text-xl px-2 bg-[#1b2165] w-40   rounded-[0.25rem] py-1 text-white'> Execution time </h1>
-                            <CodeBlock   text = {`${outputDetail?.time} Seconds`} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                            <h1 className=' text-xl px-2 bg-[#303bb9] w-40   rounded-[0.25rem] py-1 text-white'> Execution time </h1>
+                            <div className=' rounded-md  border border-gray-700  '>
+                                <CodeBlock   text = {`${outputDetail?.time} Seconds`} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                            </div>
                         </div>
                     }
                 </div>

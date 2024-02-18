@@ -21,15 +21,17 @@ const   CodeProblem = () => {
 
     }, []);
   
-    const problemName = problemData?.M?.question_name.S || "";
+    const problemName = problemData?.M?.question_name?.S || "";
+    const companies = problemData?.M?.question_companies?.SS || [];
     const problemStatement = problemData?.M?.question_statement.S || "";
-    const problemHint = problemData?.M?.hint.S || "";
-    const problemConstraint = problemData?.M?.question_constraints.M || "";
+    const problemHint = problemData?.M?.hint?.S || "";
+    const problemConstraint = problemData?.M?.question_constraints?.M || "";
     const problemTask = problemData?.M?.question_task?.S || "";
-    const problemExampleInput = problemData?.M?.example?.M?.input.S || "";
-    const problemExampleOutput = problemData?.M?.example?.M?.output.S || "";
+    const problemExampleInput = problemData?.M?.example?.M?.input?.S || "";
+    const problemExampleOutput = problemData?.M?.example?.M?.output?.S || "";
     const problemVisualization = problemData?.M?.visualization?.S || "";
     const [isHintBlurred, setIsHintBlurred] = useState(true);
+    console.log(companies);
 
     const toggleBlur = () => {
         setIsHintBlurred(!isHintBlurred);
@@ -39,6 +41,21 @@ const   CodeProblem = () => {
         <>
             <div className=" code-problem flex flex-col h-full w-full whitespace-pre overflow-auto rounded-md ">
                 <div className="">
+
+                    {
+                        companies && companies.length > 0 && 
+                        <div className=" mb-4">
+                        <h2 className=" problem-company text-white text-left ">Companies</h2>
+                            <div className=" flex flex-wrap gap-2">
+                                {companies.map((company, index) => (
+                                    <div key={index} className=" bg-algoprob p-1 px-2 rounded-[0.25rem] text-white">
+                                        <h2 className=" text-[14px] font-normal">{company}</h2>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    }
+
                     { problemName &&
                     <div className="flex ">
                         <h2 className="problem-question text-white">{problemName}</h2>

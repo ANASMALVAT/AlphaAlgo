@@ -8,7 +8,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { closeCodeDialog } from '../../../../redux/slices/codeDialog';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CopyButton from '../buttons/copyButton';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -22,12 +22,21 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 
 
+
 export default function CodeDialog() {
 
   const userSubmission = useSelector((state) => state.codeDialog.codeDialog);
+  const [buttonText, setButtonText] = useState('Copy');
   const [open, setOpen] = React.useState(false);
   const [code,setCode] = useState("");
   const dispatch = useDispatch();
+
+  const copyText = () => {
+    setButtonText('Copied');
+    setTimeout(() => {
+      setButtonText('Copy');
+    }, 3000);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,25 +63,25 @@ export default function CodeDialog() {
         open={open}
         className=' bg-transparent '
       >
-
         <IconButton
           aria-label="close"
           onClick={handleClose}
           sx={{
             position: 'absolute',
-            right: 8,
-            top: 10,
+            right: 18,
+            top: 14,
             fontWeight:"bold",
           }}
-          
         >
-          <CloseIcon  className=' cursor-pointer transition-all duration-200 hover:text-white  text-zinc-200' />
+          <CloseIcon  className=' cursor-pointer transition-all duration-200 hover:text-white  text-zinc-200 bg-algoXcolor rounded-md' />
         </IconButton>
 
-        <DialogContent  dividers className= 'max-w-[1200px] min-w-3/4  custom-scrollbar  rounded-none bg-[#4C5ADF]'>
+        <DialogContent  dividers className= 'max-w-[1200px] min-w-3/4  custom-scrollbar rounded-none bg-algoblack'>
             <div className=' flex gap-2'>
             <CopyToClipboard text={code}>
-                <ContentCopyIcon className=' cursor-pointer transition-all duration-200 hover:text-white  text-zinc-300' color='white' fontSize='small'/>
+              <button onClick={copyText} className=' px-2 py-1 rounded-[0.25rem] bg-algoXcolor '>
+                <pre className='text-white  text-[16px]'> {buttonText} </pre>
+              </button>
             </CopyToClipboard>
 
             </div>

@@ -37,7 +37,6 @@ function CustomNode({ data }) {
                     position={"top center"}
                     on={['hover']}
                     arrow={"top center" !== 'center center'}
-                    open={isOpen}
                 >
                     <div className='flex flex-col justify-center items-center '>
                         <div className=' w-32 h-10 bg-algoblack flex justify-center items-center rounded-sm ' >
@@ -62,7 +61,6 @@ function CustomNode({ data }) {
             position={"top center"}
             on={['hover']}
             arrow={"top center" !== 'center center'}
-            open={isOpen}
         >
             <div className='flex flex-col justify-center items-center '>
                 <div className=' w-32 h-10 bg-algoblack flex justify-center items-center rounded-sm ' >

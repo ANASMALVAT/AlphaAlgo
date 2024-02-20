@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import SolutionButton from "../buttons/solutionButton";
 import { unauthorized_image } from "../../../../utils/constants";
@@ -65,11 +65,38 @@ const CodeSolution = () => {
   return (
     <>
       <div className=" solution-layout max-h-full pt-4 pl-3 p-2 overflow-auto flex flex-col text-left h-full m-auto flex-grow  ">
+      
+      {relevantLinks && relevantLinks.length &&
+        <div name="code-links" className="">
+          <h2 className="problem-question text-white text-left border-b border-gray-700">Resources</h2>
+            <div className="flex gap-2 flex-wrap">
+              {
+                relevantLinks.map((links, index) => 
+                  {
+                    return (
+                      <div key={index} className=" p-3 pl-0  flex w-full max-h-[400px] h-[275px]  ">
+                        <a href={links.SS[1]} className=" flex justify-center items-center relative max-w-[500px] " target="_blank" rel="noopener noreferrer">
+                        <div className='absolute  flex    w-10 h-10 scale-150 hover:scale-[1.75] hover:duration-150 rounded-lg bg-teal-500 '>
+                          <SlowMotionVideoIcon className='text-white m-auto p-0'  />
+                        </div>                            
+                        <img src={links.SS[0]} width={400}  className=" flex  h-full  rounded-md ">
+                        </img>
+                        </a>
+                      </div>
+                    )
+                })
+              }
+            </div>
+        </div>
+      }
       {
         !isAuthorised && 
         <div className=" flex flex-col justify-center items-center">
           <img width={400} height={400} src={unauthorized_image}></img>
-          <h2 className=" text-white text-3xl">Purchase to access</h2>
+          <h1 className=" text-white text-xl font-semibold line-clamp-2 leading-6 flex">
+            
+            <a href="/purchase" className="mr-1 hover:border-b-2 hover:border-teal-400 hover:duration-100 text-teal-400">Purchase </a>
+            to access</h1>
         </div>
       }
       {
@@ -133,27 +160,7 @@ const CodeSolution = () => {
               </div>
           </div>
         }
-      {relevantLinks && relevantLinks.length &&
-        <div name="code-links" className="mt-8">
-          <h2 className="problem-question text-white text-left border-b border-gray-700">Resources</h2>
-            <div className="flex gap-2 flex-wrap">
-              {
-                relevantLinks.map((links, index) => 
-                  {
-                    return (
-                      <div key={index} className=" p-3 pl-0  flex w-full max-h-[400px] h-[275px]  ">
-                        <a href={links.SS[1]} className=" relative max-w-[500px] " target="_blank" rel="noopener noreferrer">
-                            <YouTubeIcon className="absolute w-20 h-20 text-[#CD201F]  transition-all duration-300 scale-[2.5] hover:transition-all hover:duration-200 hover:scale-[3.5]   left-1/2 top-1/2  text-3xl "   />
-                            <img src={links.SS[0]} width={400}  className=" flex  h-full  rounded-md ">
-                            </img>
-                        </a>
-                      </div>
-                    )
-                })
-              }
-            </div>
-        </div>
-      }
+      
       </div>
       
     </>

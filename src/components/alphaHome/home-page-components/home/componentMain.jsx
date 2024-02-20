@@ -11,7 +11,7 @@ const ComponentMain = () =>
         <>
             <div className=" h-[450px] w-full max-w-[1450px] m-auto min-w-screen flex flex-row flex-grow  text-algoXcolor justify-center text-center ">
                 <div className="w-full h-full absolute gap-0">
-                    <div className=" div-container flex  w-full h-full gap-0 pt-4">
+                    <div className=" div-container flex  w-full h-full justify-center overflow-hidden gap-0 pt-4">
                         <ComponentMainGrid />
                     </div>
                 </div>

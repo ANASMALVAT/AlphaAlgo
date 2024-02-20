@@ -47,7 +47,7 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
     return (
         <>
         <div className=' code-output flex flex-col h-full w-full gap-2 flex-grow '>
-            <div className= 'code-output text-start   flex-col w-full h-full overflow-auto max-h-screen  border-b border-gray-700 flex flex-1  text-white font-normal text-2xl p-2 pl-4'>
+            <div className= 'code-output text-start   flex-col w-full h-full overflow-auto max-h-screen  border-b border-gray-700 flex flex-1  text-gray-300 font-normal text-2xl p-2 pl-4'>
                 <div className=' mb-4'>
                     {/* <h2 className='text-[18px] flex text-left w-full '>
                         <CodeBlock    text = {outputDetail ? codeOutPut(): ""} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
@@ -55,7 +55,7 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
                     { 
                     codeOutput?.[0] &&
                     <div className=' flex  flex-col gap-2 w-full bg-algoblack rounded-md p-2  mb-2'>
-                        <h1 className=' text-xl px-2 bg-[#626EE3] w-48 rounded-[0.25rem] py-1 text-white'> Your output </h1>
+                        <span className=' text-lg px-2  w-48 rounded-[0.25rem] py-1 text-gray-300'>Output </span>
                         <div className=' rounded-md  border border-gray-700  '>
                             <CodeBlock   text = {codeOutput[0]} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
                         </div>
@@ -66,7 +66,7 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
                     { 
                     codeOutput?.[1] &&
                     <div className=' flex  flex-col gap-2 w-full bg-algoblack rounded-md p-2 mb-2 '>
-                        <h1 className=' text-xl px-2 bg-[#626EE3] w-48 rounded-[0.25rem] py-1 text-white'> Expected output </h1>
+                        <span className=' text-lg px-2  w-48 rounded-[0.25rem] py-1 text-gray-300'> Expected </span>
                         <div className=' rounded-md  border border-gray-700  '>
                             <CodeBlock   text = {codeOutput[1]} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
                         </div>
@@ -76,7 +76,7 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
                     { 
                     codeOutput?.[2] &&
                     <div className=' flex  flex-col gap-2 w-full bg-algoblack rounded-md p-2 mb-2 '>
-                        <h1 className=' text-xl px-2 bg-[#626EE3] w-40 rounded-[0.25rem] py-1 text-white'>For Input </h1>
+                        <span className=' text-lg px-2  w-40 rounded-[0.25rem] py-1 text-gray-300'>Input </span>
                         <div className=' rounded-md  border border-gray-700  '>
                             <CodeBlock   text = {codeOutput[2]} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
                         </div>
@@ -87,19 +87,19 @@ const CodeOutput = ( { outputDetail ,runCode} ) =>
                 <div className='flex flex-col '>
                     {
                         outputDetail?.memory  && 
-                        <div className=' flex  flex-col gap-2 text-xl w-full bg-algoblack rounded-md p-2 mb-2 '>
-                            <h1 className=' text-xl px-2 bg-[#303bb9] w-40   rounded-[0.25rem] py-1 text-white'> Memory usage </h1>
-                            <div className=' rounded-md  border border-gray-700  '>
-                                <CodeBlock   text = {`${outputDetail?.memory} Kilo Bytes`} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                        <div className=' flex  flex-col gap-2 text-lg w-full bg-algoblack rounded-md p-2 mb-2 '>
+                            <span className=' text-lg px-2  w-40   rounded-[0.25rem] py-1 text-gray-300'> Memory usage </span>
+                            <div className=' rounded-md  border border-gray-700 '>
+                                <CodeBlock   text = {`${outputDetail?.memory} KB`} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
                             </div>
                         </div>
                     }
                     {
                         outputDetail?.time  && 
-                        <div className=' flex  flex-col gap-2  text-xl w-full bg-algoblack rounded-md p-2 mb-2 '>
-                            <h1 className=' text-xl px-2 bg-[#303bb9] w-40   rounded-[0.25rem] py-1 text-white'> Execution time </h1>
+                        <div className=' flex  flex-col gap-2  text-lg w-full bg-algoblack rounded-md p-2 mb-2 '>
+                            <span className=' text-lg px-2  w-40   rounded-[0.25rem] py-1 text-gray-300'> Execution time </span>
                             <div className=' rounded-md  border border-gray-700  '>
-                                <CodeBlock   text = {`${outputDetail?.time} Seconds`} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
+                                <CodeBlock   text = {`${outputDetail?.time} sec`} language='c++' showLineNumbers={false} theme={dracula}  customStyle={{background:"transparent",color:"orange",padding:"0px",width:"100%"}}   codeBlockStyle={{padding:"0px"}} />
                             </div>
                         </div>
                     }

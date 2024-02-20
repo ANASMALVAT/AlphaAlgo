@@ -4,11 +4,14 @@
     cursor: default;
 }
 
-.enviorment-block:hover{
+.enviorment-block:hover {
     background-color: rgba(243,244,246,.05);
     cursor: default;
 }
 
+.enviorment-block:hover p{
+    color:azure;
+}
 .enviorment-description{
     text-align: left;
     cursor: default;}

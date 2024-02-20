@@ -23,7 +23,6 @@ import SubmitReivew from "./components/alphaHome/alpha-pages/write-review/submit
 import AlphaVlogsMain from "./components/alphaVlogs/main";
 import { toast } from "react-toastify";
 
-
 function App() {
 
   const dispatch = useDispatch();

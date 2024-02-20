@@ -8,7 +8,6 @@ import { useSelector,useDispatch } from 'react-redux';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { closeCodeDialog } from '../../../../redux/slices/codeDialog';
-import CopyButton from '../buttons/copyButton';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({

@@ -7,7 +7,7 @@ import { fetchAlphaBlog } from '../../services/fetchAlphaBlogs';
 import { toast } from 'react-toastify';
 
 const AlphaVlogsMain = () => {
-    const [isXvlogSet, setIsXvlogSet] = useState(false);
+    const [isXvlogSet, setIsXvlogSet] = useState(true);
     const [blogList, setBlogList] = useState([]); 
 
     useEffect(() => {

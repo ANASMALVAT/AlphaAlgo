@@ -107,7 +107,7 @@ const Grid = ({problemInfo, isUserLoggedIn, isProblemSolved}) => {
                 problemInfo?.visualize &&
                 <Popup
                 trigger={
-                    <button onClick={showVisualization} className='px-2 flex justify-center items-center  rounded-full bg-[#626EE3] mr-3'>
+                    <button onClick={showVisualization} className='px-2 flex justify-center items-center  hover:scale-[1.2] hover:duration-200 rounded-full bg-[#626EE3] mr-3'>
                         <h2 className=' text-lg  text-white font-normal'>V</h2>
                     </button>
                 }

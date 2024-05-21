@@ -22,6 +22,7 @@ const initEdges = []
 
 export default function OverviewFlow({questionVisualizationData}) {
 
+  const [middelX, setMiddleX] = useState(0);
 
   useEffect(() => {
 
@@ -33,13 +34,13 @@ export default function OverviewFlow({questionVisualizationData}) {
     const dependentNodes = questionVisualizationData?.dependant || [];
     const dependingNodes = questionVisualizationData?.depending || [];
 
-    const middleX = (dependentNodes.length - 1) * 300 / 2;
-    
+    const tempMiddleX = (dependentNodes.length - 1) * 300 / 2;
+
     tempNodes.push({
       id: questionVisualizationData.question_id,
       type:"custom",
       data:{question_id:questionVisualizationData.question_id, question_name:questionVisualizationData.question_name},
-      position: {x:middleX, y:200},
+      position: {x: tempMiddleX < 200 ? 200 : tempMiddleX , y:200},
     })
 
     dependentNodes.forEach((node, index) => {
@@ -68,11 +69,9 @@ export default function OverviewFlow({questionVisualizationData}) {
             stroke: '#FF0072',
           },
         })
-
       });
 
       dependingNodes.forEach((node, index) => {
-        
         tempNodes.push({
           id: node?.question_id,
           type: 'custom',
@@ -127,6 +126,7 @@ export default function OverviewFlow({questionVisualizationData}) {
         onConnect={onConnect}
         nodeTypes={nodeTypes}
         selectionMode={SelectionMode.Full}
+        
         className=' custom-scrollbar bg-teal-50'
       >
         <Controls />

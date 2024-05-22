@@ -29,7 +29,7 @@ const ConsoleInput = () =>{
     const alphaConsole = useSelector((state) => state.alphaConsole.consoleState);
 
     return (
-        <div style={{height:height - 5}} className=" main-console overflow-auto  flex-grow  p-2  border border-gray-500 border-b-none  bg-algoblack rounded-md">
+        <div style={{height:height - 5}} className=" main-console overflow-auto  flex-grow  p-2  border border-gray-700 border-b-none  bg-algoblack rounded-md">
             
             <div className="console-button flex  gap-1 h-12">
                 <ConsoleButton />

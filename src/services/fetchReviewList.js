@@ -8,6 +8,8 @@ export async function fetchReviewList() {
         const response = await axios.get(REVIEW_LIST);
 
         const reviewList = response.data;
+        debugger
+        console.log("here");
 
         let returnList = [];
 
@@ -19,6 +21,7 @@ export async function fetchReviewList() {
                 });
             returnList.push(returnListObject);
         }
+        console.log(reviewList);
         if (response.status === 200) {
           return returnList;
         }else {

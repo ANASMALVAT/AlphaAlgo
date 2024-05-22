@@ -8,9 +8,17 @@ import "./styles/reviewCardGrid.css";
 const ReviewCardGrid = () => {
 
 
+
   const [reviews,setReviews] = useState([]);
   const [cardIndex, setCardIndex] = useState(0);
 
+  useLayoutEffect(() => {
+    fetchReviewListHome().then(
+      reviewList => {
+        setReviews(reviews => reviewList);
+      })
+      .catch(error =>  { console.log("error"); } )
+  },[])
 
   const totalCards = reviews.length;
 

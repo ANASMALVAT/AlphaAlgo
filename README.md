@@ -1,0 +1,6 @@
+![A1](https://github.com/ANASMALVAT/AlphaAlgo/master/public/A1.png)
+![A2](https://github.com/ANASMALVAT/AlphaAlgo/master/public/A2.png)
+![A3](https://github.com/ANASMALVAT/AlphaAlgo/master/public/A3.png)
+![A4](https://github.com/ANASMALVAT/AlphaAlgo/master/public/A4.png)
+![A5](https://github.com/ANASMALVAT/AlphaAlgo/master/public/A5.png)
+![A6](https://github.com/ANASMALVAT/AlphaAlgo/master/public/A6.png)

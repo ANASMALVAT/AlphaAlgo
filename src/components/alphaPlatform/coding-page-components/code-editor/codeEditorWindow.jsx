@@ -161,7 +161,7 @@ const CodeEditorWindow = ({onChangeData,code,outputDetail,runCode }) =>
                 </div>
 
                 <Link to={"/problems"}>
-                    <h1 className=" font-semibold text-4xl  text-[#4C5ADF] hover:duration-300 h-full flex items-center justify-center hover:scale-110">X</h1>
+                    <h1 className=" font-semibold text-4xl  text-[#3946ae] hover:duration-300 h-full flex items-center justify-center hover:scale-110">X</h1>
                 </Link>
 
                 <div className="language-button ">

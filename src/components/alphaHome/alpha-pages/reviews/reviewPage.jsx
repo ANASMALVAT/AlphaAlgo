@@ -18,7 +18,6 @@ const ReviewPage = () => {
         })
         .catch(error =>  { console.log("error"); } )
     },[])
-    console.log(reviews);
 
     return <>
         <div className='  bg-[#F5F5F5] w-screen  min-h-screen flex flex-wrap  justify-center '>

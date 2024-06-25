@@ -393,7 +393,7 @@ const AlphaPlatform = ({}) => {
 
         <div id="resize" class="resize"
           onMouseDown={handleMouseDown} 
-          className=" resize no-select w-[4px] h-full min-h-screen bg-algoXcolor pt-4 pb-4 ml-1 mr-1  rounded-md">
+          className=" resize no-select w-[4px] h-full min-h-screen bg-[#1f2664] pt-4 pb-4 ml-1 mr-1  rounded-md">
         </div>
 
         { 

@@ -8,7 +8,6 @@ export async function fetchReviewList() {
         const response = await axios.get(REVIEW_LIST);
 
         const reviewList = response.data;
-        debugger
         console.log("here");
 
         let returnList = [];

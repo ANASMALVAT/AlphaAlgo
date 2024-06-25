@@ -48,7 +48,7 @@ const   CodeProblem = () => {
                         <h2 className=" problem-company text-white text-left ">Companies</h2>
                             <div className=" flex flex-wrap gap-2">
                                 {companies.map((company, index) => (
-                                    <div key={index} className=" bg-algoprob p-1 px-2 rounded-[0.25rem] text-white">
+                                    <div key={index} className=" bg-[#1E2663] p-1 px-2 rounded-[0.25rem] text-white">
                                         <h2 className=" text-[14px] font-normal">{company}</h2>
                                     </div>
                                 ))}

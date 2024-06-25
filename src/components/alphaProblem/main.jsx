@@ -44,7 +44,7 @@ const CodingProblems = () => {
             {!loading  &&
               (
                 <div className='flex flex-col min-h-screen flex-1 w-full h-2 flex-grow bg-white  '>
-                  <div className=' flex flex-wrap gap-8 topic-dropdown mt-8 justify-evenly max-w-[1450px] '>
+                  <div className=' flex flex-wrap gap-12 topic-dropdown mt-8 justify-evenly max-w-[1450px] mx-auto'>
                     <TopicFilterDropdown />
                     <ProblemButtons />
                     <ProblemRandom problemList = {questions} />
@@ -61,4 +61,4 @@ const CodingProblems = () => {
     )
 }
 
-export default CodingProblems;
+export default CodingProblems; 

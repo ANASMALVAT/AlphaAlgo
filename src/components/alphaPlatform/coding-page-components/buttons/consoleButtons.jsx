@@ -44,7 +44,7 @@ const ConsoleButton = ({}) => {
                 <button
                     onClick={setConsoleProblem}
                     className={` border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full font-mono text-sm font-normal text-white
-                    ${alphaConsole.isProblem ? 'bg-algoXcolor' : 'bg-[#002451]'}
+                    ${alphaConsole.isProblem ? 'bg-[#1E2663]' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                 >
                     <span className="font-normal font-resize">Problem</span>
@@ -53,7 +53,7 @@ const ConsoleButton = ({}) => {
                 <button
                     onClick={setConsoleInput}
                     className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
-                    ${alphaConsole.isInput ? 'bg-algoXcolor' : 'bg-[#002451]'}
+                    ${alphaConsole.isInput ? 'bg-[#1E2663]' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                 >
                     <pre className="font-normal font-resize">Test Cases</pre>
@@ -62,7 +62,7 @@ const ConsoleButton = ({}) => {
                 <button
                     onClick={setConsoleAlpha}
                     className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
-                    ${alphaConsole.isAlphaGPT ? 'bg-algoXcolor' : 'bg-[#002451]'}
+                    ${alphaConsole.isAlphaGPT ? 'bg-[#1E2663]' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                 >
                     <pre className="font-normal font-resize">AlphaGPT</pre>
@@ -71,7 +71,7 @@ const ConsoleButton = ({}) => {
                 <button
                     onClick={setConsoleSolution}
                     className={`border border-[#1F2937] overflow-hidden flex flex-row items-center rounded-[4px] px-3 h-full  font-mono text-sm font-normal text-white
-                    ${alphaConsole.isSolution ? 'bg-algoXcolor' : 'bg-[#002451]'}
+                    ${alphaConsole.isSolution ? 'bg-[#1E2663]' : 'bg-[#002451]'}
                     sm:text-sm lg:text-md xl:text-md`}
                     >
                     <pre className="font-normal font-resize">Solution</pre>
